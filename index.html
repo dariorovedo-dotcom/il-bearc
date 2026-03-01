@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Vacanze Il Bearč</title>
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1f1f1f">
+<link rel="icon" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/icon-512.png">
+
+</head>
+<body>
+<h1>Casa Vacanze Il Bearč</h1>
+<p>Sito installabile come Web App (PWA).</p>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("Service Worker registrato"))
+    .catch(err => console.log("Errore SW:", err));
+}
+</script>
+
+</body>
+</html>
