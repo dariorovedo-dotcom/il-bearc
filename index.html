@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Il Bearč — Casa Vacanze in Carnia</title>
+<meta name="description" content="Casa Vacanze Il Bearč — Feltrone, Carnia. Montagna, natura e relax nelle Alpi Carniche, Friuli Venezia Giulia. Prenota direttamente.">
+
+<!-- Open Graph (anteprima social) -->
+<meta property="og:title" content="Il Bearč — Casa Vacanze in Carnia">
+<meta property="og:description" content="Montagna, natura e relax a Feltrone, Socchieve (UD). A 716m tra le Alpi Carniche.">
+<meta property="og:image" content="https://i.ibb.co/MyF3JmxP/Original.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heartfelt-genie-6b101a.netlify.app/">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Il Bearč — Casa Vacanze in Carnia">
+<meta name="twitter:image" content="https://i.ibb.co/MyF3JmxP/Original.jpg">
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1f1f1f">
+
+<!-- Icone -->
+<link rel="icon" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/icon-512.png">
+
+</head>
+<style>
+  :root {
+    --forest: #1e3a2f;
+    --moss: #3d6b4f;
+    --sage: #7aaa8a;
+    --cream: #f5f0e8;
+    --warm: #e8dfc8;
+    --stone: #8a7e6e;
+    --bark: #5c4a35;
+    --snow: #fafaf8;
+    --accent: #c8a96e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--snow);
+    color: var(--forest);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      linear-gradient(to bottom, rgba(15,30,20,0.55) 0%, rgba(30,58,47,0.3) 60%, rgba(245,240,232,0) 100%),
+      url('https://static.wixstatic.com/media/c2ed84_7d02b82572294dfd8c0ea2df09156d94~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85/c2ed84_7d02b82572294dfd8c0ea2df09156d94~mv2.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,169,110,0.25);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(6px);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--forest);
+    border: none;
+    padding: 0.9rem 2.2rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #b8954f; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.25); }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+    backdrop-filter: blur(6px);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,240,232,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(61,107,79,0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--forest);
+    font-style: italic;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--stone);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--forest); }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--moss);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--moss);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--cream); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-text p {
+    color: var(--stone);
+    line-height: 1.8;
+    font-weight: 300;
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+  .about-img {
+    position: relative;
+  }
+  .about-img img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+  }
+  .about-img::before {
+    content: '';
+    position: absolute;
+    inset: -12px -12px auto auto;
+    width: 60%;
+    height: 60%;
+    border: 2px solid var(--accent);
+    border-radius: 3px;
+    z-index: -1;
+  }
+  .stats-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(138,126,110,0.2);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--forest);
+    display: block;
+  }
+  .stat-lbl {
+    font-size: 0.72rem;
+    color: var(--stone);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* SERVICES */
+  #servizi { background: var(--snow); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 3px;
+    border-left: 3px solid var(--moss);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(30,58,47,0.1); }
+  .service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+  .service-card p { color: var(--stone); font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+
+  /* ACTIVITIES */
+  #attivita { background: var(--forest); }
+  #attivita .section-label { color: var(--sage); }
+  #attivita .section-label::after { background: var(--sage); }
+  #attivita .section-title { color: var(--cream); }
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .activity-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(122,170,138,0.2);
+    padding: 1.8rem;
+    border-radius: 3px;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    transition: background 0.25s;
+  }
+  .activity-card:hover { background: rgba(255,255,255,0.09); }
+  .activity-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .activity-card h3 { color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .activity-card p { color: rgba(245,240,232,0.6); font-size: 0.88rem; line-height: 1.6; font-weight: 300; }
+
+  /* BOOKING */
+  #prenotazione { background: var(--warm); }
+  .booking-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .booking-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--forest);
+    margin-bottom: 1rem;
+  }
+  .booking-info p {
+    color: var(--stone);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .contact-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    color: var(--forest);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .contact-item span:first-child { font-size: 1.2rem; }
+  .platforms {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(138,126,110,0.25);
+  }
+  .platforms p { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.8rem; }
+  .platform-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .platform-link {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .platform-link:hover { background: var(--moss); }
+
+  /* FORM */
+  .booking-form {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(30,58,47,0.08);
+  }
+  .booking-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--forest);
+    margin-bottom: 0.4rem;
+  }
+  .form-subtitle {
+    font-size: 0.82rem;
+    color: var(--stone);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(138,126,110,0.3);
+    border-radius: 2px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    color: var(--forest);
+    background: var(--snow);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--moss);
+    background: white;
+  }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-submit {
+    width: 100%;
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    padding: 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--moss); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,58,47,0.2); }
+
+  /* SUCCESS */
+  .form-success {
+    text-align: center;
+    padding: 2rem 0;
+    display: none;
+  }
+  .form-success .checkmark { font-size: 3rem; margin-bottom: 1rem; }
+  .form-success h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--forest); margin-bottom: 0.5rem; }
+  .form-success p { color: var(--stone); font-weight: 300; }
+
+  /* CALENDAR */
+  #disponibilita { background: var(--forest); }
+  #disponibilita .section-label { color: var(--sage); }
+  #disponibilita .section-label::after { background: var(--sage); }
+  #disponibilita .section-title { color: var(--cream); }
+
+  .calendar-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .cal-month {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(122,170,138,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .cal-header {
+    background: rgba(122,170,138,0.18);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cal-header h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+  .cal-nav {
+    background: none;
+    border: 1px solid rgba(122,170,138,0.4);
+    color: var(--sage);
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cal-nav:hover { background: rgba(122,170,138,0.2); }
+  .cal-grid {
+    padding: 1rem 1.2rem 1.5rem;
+  }
+  .cal-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 0.5rem;
+  }
+  .cal-day-name {
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: rgba(122,170,138,0.8);
+    text-transform: uppercase;
+    padding: 0.3rem 0;
+  }
+  .cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    color: rgba(245,240,232,0.85);
+    font-weight: 300;
+  }
+  .cal-day.empty { cursor: default; }
+  .cal-day.available { background: rgba(122,170,138,0.12); }
+  .cal-day.available:hover { background: rgba(122,170,138,0.3); }
+  .cal-day.booked {
+    background: rgba(200,100,80,0.25);
+    color: rgba(245,240,232,0.35);
+    cursor: not-allowed;
+    text-decoration: line-through;
+  }
+  .cal-day.today {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .cal-day.past {
+    color: rgba(245,240,232,0.2);
+    cursor: default;
+  }
+  .cal-day.selected-start,
+  .cal-day.selected-end {
+    background: var(--accent) !important;
+    color: var(--forest) !important;
+    font-weight: 600;
+  }
+  .cal-day.in-range {
+    background: rgba(200,169,110,0.2) !important;
+  }
+  .cal-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.6);
+  }
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+  }
+  .legend-dot.available { background: rgba(122,170,138,0.4); }
+  .legend-dot.booked { background: rgba(200,100,80,0.4); }
+  .legend-dot.selected { background: var(--accent); }
+  .cal-note {
+    margin-top: 2rem;
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.25);
+    border-radius: 3px;
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.65);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .avaibook-note {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(61,107,79,0.07);
+    border: 1px solid rgba(61,107,79,0.18);
+    border-radius: 3px;
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    font-size: 0.82rem;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+  .avaibook-note span:first-child { flex-shrink: 0; font-size: 1rem; }
+
+  /* LOCATION */
+  #posizione { background: var(--snow); }
+  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .map-placeholder {
+    background: var(--cream);
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(138,126,110,0.2);
+  }
+  .map-placeholder iframe { width: 100%; height: 100%; border: none; }
+  .location-details p { color: var(--stone); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+  .location-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--cream);
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    color: var(--forest);
+    margin: 0.2rem 0.2rem 0.2rem 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest);
+    color: rgba(245,240,232,0.6);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  footer p { font-size: 0.85rem; font-weight: 300; line-height: 1.8; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .cin-code { font-size: 0.7rem; letter-spacing: 0.08em; margin-top: 1rem; opacity: 0.5; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.15; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid, .booking-layout, .location-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .activities-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { flex-direction: column; gap: 1rem; }
+    .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .about-img::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <span class="hero-badge">Carnia · Friuli Venezia Giulia · 716m</span>
+  <h1>Il <em>Bearč</em></h1>
+  <p class="hero-sub">Casa Vacanze · Feltrone, Socchieve</p>
+  <div class="hero-ctas">
+    <a href="#prenotazione" class="btn-primary">Prenota ora</a>
+    <a href="#about" class="btn-outline">Scopri la struttura</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scorri</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Il Bearč</span>
+  <ul class="nav-links">
+    <li><a href="#about">La Casa</a></li>
+    <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#attivita">Attività</a></li>
+    <li><a href="#disponibilita">Disponibilità</a></li>
+    <li><a href="#posizione">Dove siamo</a></li>
+    <li><a href="#prenotazione">Prenota</a></li>
+  </ul>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">La nostra storia</p>
+        <h2 class="section-title">Una casa nel cuore<br>delle Alpi Carniche</h2>
+        <p>Ci trovate a Feltrone, un ameno paesino della Carnia, immerso nel verde a <strong>716 metri di altitudine</strong>, in comune di Socchieve, nella regione Friuli Venezia Giulia, a ridosso del confine con l'Austria.</p>
+        <p>La casa gode di una posizione soleggiata dalla mattina alla sera, dotata di ampio giardino recintato dove i bambini possono giocare — ideale per chi cerca tranquillità lontano dai rumori e dall'inquinamento.</p>
+        <p>Passeggiate tra antichi boschi di faggio e abete, incorniciati dalle cime suggestive delle Alpi Carniche, trekking, mountain bike, sci. Il Bearč è il punto di partenza perfetto per vivere la montagna autentica.</p>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Camere da letto</span></div>
+          <div class="stat"><span class="stat-num">6</span><span class="stat-lbl">Persone max</span></div>
+          <div class="stat"><span class="stat-num">716m</span><span class="stat-lbl">Altitudine</span></div>
+          <div class="stat"><span class="stat-num">30km</span><span class="stat-lbl">Dallo Zoncolan</span></div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://static.wixstatic.com/media/c2ed84_08d17c59119f429fad931b0ed099044e~mv2.jpg/v1/fill/w_840,h_630,al_c,q_85/c2ed84_08d17c59119f429fad931b0ed099044e~mv2.jpg" alt="Soggiorno Il Bearč">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section id="servizi">
+  <div class="container">
+    <p class="section-label">Comfort e dotazioni</p>
+    <h2 class="section-title">Tutto quello di cui hai bisogno</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏔️</div>
+        <h3>Vista sulle montagne</h3>
+        <p>Una vista mozzafiato sulle maestose Alpi Carniche direttamente dalla casa, per svegliarsi ogni mattina in un paesaggio straordinario.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📶</div>
+        <h3>WiFi gratuito</h3>
+        <p>Connessione Wi-Fi veloce inclusa per tutto il soggiorno, così puoi restare connesso quando vuoi — o scollegarti in totale libertà.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <h3>Giardino e terrazze</h3>
+        <p>Giardino recintato, due terrazze e parcheggio pubblico gratuito nelle immediate vicinanze. Spazio all'aria aperta per tutta la famiglia.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❄️</div>
+        <h3>Aria condizionata</h3>
+        <p>Clima perfetto in ogni stagione grazie all'impianto di aria condizionata, per dormire e rilassarsi sempre nelle condizioni ideali.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍳</div>
+        <h3>Cucina attrezzata</h3>
+        <p>Cucina completa con lavastoviglie, lavatrice, forno a microonde, piano cottura e tostapane. Tutto il necessario per sentirsi a casa.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📺</div>
+        <h3>TV satellitare</h3>
+        <p>TV a schermo piatto con canali satellitari nel soggiorno. Area salotto e zona pranzo spaziose per trascorrere piacevoli serate in casa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATTIVITÀ -->
+<section id="attivita">
+  <div class="container">
+    <p class="section-label">Cosa fare nei dintorni</p>
+    <h2 class="section-title">Avventura e relax<br>a portata di mano</h2>
+    <div class="activities-grid">
+      <div class="activity-card">
+        <div class="activity-icon">⛷️</div>
+        <div>
+          <h3>Sci alpino e fondo</h3>
+          <p>Le piste dello Zoncolan e di Forni di Sopra sono a soli 30 km. Mai troppo affollate, perfette per sciare in serenità. In zona anche tracciati per lo sci di fondo.</p>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🥾</div>
+        <div>
+          <h3>Trekking e hiking</h3>
+          <p>Numerosi itinerari tra boschi di faggio e abete con vista sulle Alpi Carniche. Dal Cammino delle Pievi ai sentieri del Monte Forcella di Priuso.</p>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🚵</div>
+        <div>
+          <h3>Mountain bike</h3>
+          <p>Percorsi per ogni livello nelle vallate della Carnia. Noleggio e assistenza nei centri vicini, itinerari segnalati su tutta la zona.</p>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🦌</div>
+        <div>
+          <h3>Area faunistica Forni di Sopra</h3>
+          <p>Incontri ravvicinati con la fauna alpina in un contesto naturale protetto. Un'esperienza imperdibile specialmente con i bambini.</p>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🌲</div>
+        <div>
+          <h3>Parco delle Colline Carniche</h3>
+          <p>Immersione nella natura tra paesaggi incontaminati, flora alpina e biodiversità. Ottimo per passeggiate lente e fotografia naturalistica.</p>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🏘️</div>
+        <div>
+          <h3>Borghi e cultura carnica</h3>
+          <p>Antiche pievi, architettura tradizionale friulana, gastronomia locale con i famosi cjalsons. La Carnia racconta secoli di storia alpina.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISPONIBILITÀ -->
+<section id="disponibilita">
+  <div class="container">
+    <p class="section-label">Quando vuoi venire?</p>
+    <h2 class="section-title">Calendario disponibilità</h2>
+
+    <div class="calendar-wrapper" id="cal-container">
+      <!-- Generated by JS -->
+    </div>
+
+    <div class="cal-legend">
+      <div class="legend-item"><div class="legend-dot available"></div> Disponibile</div>
+      <div class="legend-item"><div class="legend-dot booked"></div> Non disponibile</div>
+      <div class="legend-item"><div class="legend-dot selected"></div> Selezione</div>
+    </div>
+
+    <div class="cal-note">
+      💡 <strong>Come funziona:</strong> Clicca sul giorno di arrivo, poi sul giorno di partenza. <strong>Soggiorno minimo: 3 notti.</strong> Una volta selezionato il periodo clicca <em>"Verifica disponibilità e prenota"</em> — verrai reindirizzato su <strong>Avaibook</strong> che verifica la disponibilità reale in tempo reale ed elabora la prenotazione in sicurezza.
+    </div>
+  </div>
+</section>
+
+<!-- PRENOTAZIONE -->
+<section id="prenotazione">
+  <div class="container">
+    <p class="section-label">Richiesta di prenotazione</p>
+    <h2 class="section-title">Prenota il tuo soggiorno</h2>
+    <div class="booking-layout">
+
+      <!-- INFO -->
+      <div class="booking-info">
+        <h3>Contattaci direttamente</h3>
+        <p>Per prenotare o ricevere informazioni, scrivici o chiamaci. Risponderemo il prima possibile per confermare la disponibilità.</p>
+        <a href="tel:+393299451083" class="contact-item">
+          <span>📞</span><span>+39 329 945 1083</span>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#8de9ecffe4e2a3ffe2fbe8e9e2cdeae0ece4e1a3eee2e0" class="contact-item">
+          <span>✉️</span><span><span class="__cf_email__" data-cfemail="0c686d7e6563227e637a6968634c6b616d6560226f6361">[email&#160;protected]</span></span>
+        </a>
+        <a href="https://maps.google.com/?q=Feltrone,Socchieve,UD" target="_blank" class="contact-item">
+          <span>📍</span><span>Via Col Gentile — Feltrone, Socchieve (UD) 33020</span>
+        </a>
+        <div class="platforms">
+          <p>Prenota anche su</p>
+          <div class="platform-links">
+            <a href="https://www.booking.com/hotel/it/casa-vacanze-il-bearc.it.html" target="_blank" class="platform-link">🔵 Booking.com</a>
+            <a href="https://www.tripadvisor.it/VacationRentalReview-g7104509-d23629233-Casa_Vacanze_Il_Bearc-Socchieve_Province_of_Udine_Friuli_Venezia_Giulia.html" target="_blank" class="platform-link">🟢 TripAdvisor</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AVAIBOOK WIDGET -->
+      <div class="booking-form">
+        <h3>Seleziona le date</h3>
+        <p class="form-subtitle">Scegli arrivo e partenza · <strong>Soggiorno minimo: 3 notti</strong></p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Arrivo *</label>
+            <input type="date" id="checkin" required>
+          </div>
+          <div class="form-group">
+            <label>Partenza *</label>
+            <input type="date" id="checkout" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Adulti</label>
+            <select id="adults">
+              <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Bambini</label>
+            <select id="children">
+              <option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="form-submit" onclick="goToAvaibook()">
+          🔒 Verifica disponibilità e prenota
+        </button>
+
+        <div class="avaibook-note">
+          <span>🔄</span>
+          <span>La disponibilità è gestita in tempo reale da <strong>Avaibook</strong>. Cliccando verrai reindirizzato al sistema di prenotazione ufficiale — nessun rischio di overbooking.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSIZIONE -->
+<section id="posizione">
+  <div class="container">
+    <div class="location-grid">
+      <div class="map-placeholder">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2738.0!2d12.8356!3d46.4184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477884c0b123456%3A0x1!2sFeltrone%2C+Socchieve+UD!5e0!3m2!1sit!2sit!4v1700000000000"
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+      <div class="location-details">
+        <p class="section-label">Come raggiungerci</p>
+        <h2 class="section-title">Feltrone, Socchieve</h2>
+        <p>Siamo nel cuore della Carnia, nel comune di Socchieve, a pochi chilometri da Tolmezzo e ben collegati con le principali stazioni sciistiche della regione.</p>
+        <p>Raggiungibile comodamente in auto dall'A23 (autostrada Udine-Tarvisio), uscita Carnia. Da Udine circa 55 km, da Vienna circa 280 km.</p>
+        <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <span class="location-tag">🚗 55km da Udine</span>
+          <span class="location-tag">⛷️ 30km dallo Zoncolan</span>
+          <span class="location-tag">🇦🇹 464km da Vienna</span>
+          <span class="location-tag">🏔️ 716m slm</span>
+          <span class="location-tag">🌲 Alpi Carniche</span>
+        </div>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Feltrone,Socchieve,UD&travelmode=driving" target="_blank" class="btn-primary" style="margin-top:1rem">
+            🗺️ Apri in Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Il Bearč</div>
+  <p>Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="/cdn-cgi/l/email-protection#4d292c3f2422633f223b2829220d2a202c2421632e2220"><span class="__cf_email__" data-cfemail="670306150e084915081102030827000a060e0b4904080a">[email&#160;protected]</span></a></p>
+  <p class="cin-code">CIN: IT030110C2TSFD92GI</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Set min date for check-in/checkout
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkin').min = today;
+  document.getElementById('checkout').min = today;
+
+  document.getElementById('checkin').addEventListener('change', function() {
+    document.getElementById('checkout').min = this.value;
+  });
+
+  function formatDateIT(dateStr) {
+    // Convert YYYY-MM-DD to DD/MM/YYYY for Avaibook
+    if (!dateStr) return '';
+    const [y, m, d] = dateStr.split('-');
+    return `${d}/${m}/${y}`;
+  }
+
+  function goToAvaibook() {
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const adults = document.getElementById('adults').value;
+    const children = document.getElementById('children').value;
+
+    if (!checkin || !checkout) {
+      alert('⚠️ Seleziona le date di arrivo e partenza prima di procedere.');
+      return;
+    }
+
+    if (new Date(checkout) <= new Date(checkin)) {
+      alert('La data di partenza deve essere successiva alla data di arrivo.');
+      return;
+    }
+
+    const nights = Math.round((new Date(checkout) - new Date(checkin)) / (1000*60*60*24));
+    if (nights < 3) {
+      alert('⚠️ Soggiorno minimo: 3 notti.\nIl periodo selezionato (' + nights + ' notte' + (nights === 1 ? '' : 'i') + ') è inferiore al minimo consentito.\nSeleziona almeno 3 notti.');
+      return;
+    }
+
+    const baseUrl = 'https://www.avaibook.com/reservas/nueva_reserva.php';
+    const params = new URLSearchParams({
+      cod_alloggio: '308348',
+      lang: 'it',
+      fecha_entrada: formatDateIT(checkin),
+      fecha_salida: formatDateIT(checkout),
+      adultos: adults,
+      ninos: children
+    });
+
+    window.open(`${baseUrl}?${params.toString()}`, '_blank');
+  }
+
+  // ===== CALENDAR =====
+  // Booked ranges — edit these to update availability
+  const bookedRanges = [
+    { from: '2025-06-14', to: '2025-06-21' },
+    { from: '2025-07-05', to: '2025-07-19' },
+    { from: '2025-07-26', to: '2025-08-09' },
+    { from: '2025-08-16', to: '2025-08-30' },
+    { from: '2025-12-20', to: '2026-01-06' },
+    { from: '2026-02-14', to: '2026-02-22' },
+    { from: '2026-07-04', to: '2026-07-18' },
+    { from: '2026-08-01', to: '2026-08-22' },
+  ];
+
+  let selStart = null, selEnd = null;
+  let calOffset = 0;
+  const MONTHS_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  const DAYS_IT = ['Lu','Ma','Me','Gi','Ve','Sa','Do'];
+
+  function toDateStr(y, m, d) {
+    return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  }
+
+  function isBooked(dateStr) {
+    return bookedRanges.some(r => dateStr >= r.from && dateStr <= r.to);
+  }
+
+  function isPast(dateStr) {
+    return dateStr < today;
+  }
+
+  function renderCal() {
+    const container = document.getElementById('cal-container');
+    container.innerHTML = '';
+    const now = new Date();
+
+    for (let m = 0; m < 2; m++) {
+      const d = new Date(now.getFullYear(), now.getMonth() + calOffset + m, 1);
+      const year = d.getFullYear();
+      const month = d.getMonth();
+      const firstDay = (d.getDay() + 6) % 7; // Monday=0
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      const wrap = document.createElement('div');
+      wrap.className = 'cal-month';
+
+      // Header
+      const hdr = document.createElement('div');
+      hdr.className = 'cal-header';
+      hdr.innerHTML = `
+        ${m === 0 ? `<button class="cal-nav" onclick="calPrev()">‹</button>` : '<span></span>'}
+        <h4>${MONTHS_IT[month]} ${year}</h4>
+        ${m === 1 ? `<button class="cal-nav" onclick="calNext()">›</button>` : '<span></span>'}
+      `;
+      wrap.appendChild(hdr);
+
+      const grid = document.createElement('div');
+      grid.className = 'cal-grid';
+
+      // Day names
+      const daysHdr = document.createElement('div');
+      daysHdr.className = 'cal-days-header';
+      DAYS_IT.forEach(n => {
+        const dn = document.createElement('div');
+        dn.className = 'cal-day-name';
+        dn.textContent = n;
+        daysHdr.appendChild(dn);
+      });
+      grid.appendChild(daysHdr);
+
+      // Days
+      const daysGrid = document.createElement('div');
+      daysGrid.className = 'cal-days';
+
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        daysGrid.appendChild(empty);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const ds = toDateStr(year, month, day);
+        const el = document.createElement('div');
+        el.className = 'cal-day';
+        el.textContent = day;
+
+        if (isPast(ds)) {
+          el.classList.add('past');
+        } else if (isBooked(ds)) {
+          el.classList.add('booked');
+        } else {
+          el.classList.add('available');
+          if (ds === today) el.classList.add('today');
+          if (selStart && ds === selStart) el.classList.add('selected-start');
+          if (selEnd && ds === selEnd) el.classList.add('selected-end');
+          if (selStart && selEnd && ds > selStart && ds < selEnd) el.classList.add('in-range');
+
+          el.addEventListener('click', () => selectDay(ds));
+        }
+
+        daysGrid.appendChild(el);
+      }
+
+      grid.appendChild(daysGrid);
+      wrap.appendChild(grid);
+      container.appendChild(wrap);
+    }
+  }
+
+  function selectDay(ds) {
+    if (!selStart || (selStart && selEnd)) {
+      selStart = ds;
+      selEnd = null;
+    } else {
+      if (ds <= selStart) {
+        selStart = ds;
+        selEnd = null;
+      } else {
+        // Check no booked days in range
+        const s = new Date(selStart), e = new Date(ds);
+        let hasBooked = false;
+        for (let d = new Date(s); d <= e; d.setDate(d.getDate()+1)) {
+          if (isBooked(d.toISOString().split('T')[0])) { hasBooked = true; break; }
+        }
+        // Check minimum 3 nights
+        const diffDays = Math.round((new Date(ds) - new Date(selStart)) / (1000*60*60*24));
+        if (diffDays < 3) {
+          alert('⚠️ Soggiorno minimo: 3 notti.\nSeleziona una data di partenza che garantisca almeno 3 notti di soggiorno.');
+          return;
+        }
+        if (hasBooked) {
+          alert('Il periodo selezionato include date non disponibili. Scegli un periodo diverso.');
+          selStart = null; selEnd = null;
+        } else {
+          selEnd = ds;
+          // Auto-fill booking form dates
+          document.getElementById('checkin').value = selStart;
+          document.getElementById('checkout').value = selEnd;
+          // Scroll to booking section
+          setTimeout(() => {
+            document.getElementById('prenotazione').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 400);
+        }
+      }
+    }
+    renderCal();
+  }
+
+  function calPrev() { calOffset--; renderCal(); }
+  function calNext() { calOffset++; renderCal(); }
+
+  renderCal();
+
+  // ===== END CALENDAR =====
+
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Intersection observer for animations
+  const observer = new Intersectio
