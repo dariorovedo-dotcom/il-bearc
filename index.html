@@ -1037,14 +1037,18 @@
       return;
     }
 
+    // f_fin = ultima notte (giorno prima del checkout, come da doc Avaibook)
+    const fFinDate = new Date(checkout);
+    fFinDate.setDate(fFinDate.getDate() - 1);
+    const fFin = fFinDate.toISOString().split('T')[0];
+
     const baseUrl = 'https://www.avaibook.com/reservas/nueva_reserva.php';
     const params = new URLSearchParams({
       cod_alloggio: '308348',
       lang: 'it',
       f_ini: checkin,
-      f_fin: checkout,
-      adultos: adults,
-      ninos: children
+      f_fin: fFin,
+      capacidad: parseInt(adults) + parseInt(children)
     });
 
     const url = `${baseUrl}?${params.toString()}`;
