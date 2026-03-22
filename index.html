@@ -894,8 +894,8 @@
         <a href="tel:+393299451083" class="contact-item">
           <span>📞</span><span>+39 329 945 1083</span>
         </a>
-        <a href="mailto:dario.rovedo@gmail.com" class="contact-item">
-          <span>✉️</span><span>dario.rovedo@gmail.com</span>
+        <a href="/cdn-cgi/l/email-protection#f99d988b9096d78b968f9c9d96b99e94989095d79a9694" class="contact-item">
+          <span>✉️</span><span><span class="__cf_email__" data-cfemail="5c383d2e3533722e332a3938331c3b313d3530723f3331">[email&#160;protected]</span></span>
         </a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Feltrone,Socchieve,UD&waypoints=46.40265,12.82263&travelmode=driving" target="_blank" class="contact-item">
           <span>📍</span><span>Via Col Gentile — Feltrone, Socchieve (UD) 33020</span>
@@ -1002,10 +1002,10 @@
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
-  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a></p>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="/cdn-cgi/l/email-protection#bcd8ddced5d392ced3cad9d8d3fcdbd1ddd5d092dfd3d1"><span class="__cf_email__" data-cfemail="751114071c1a5b071a0310111a351218141c195b161a18">[email&#160;protected]</span></a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
   // Set min date for check-in/checkout
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('checkin').min = today;
@@ -1016,10 +1016,8 @@
   });
 
   function formatDateIT(dateStr) {
-    // Convert YYYY-MM-DD to DD/MM/YYYY for Avaibook
-    if (!dateStr) return '';
-    const [y, m, d] = dateStr.split('-');
-    return `${d}/${m}/${y}`;
+    // YYYY-MM-DD è il formato corretto per Avaibook
+    return dateStr || '';
   }
 
   function goToAvaibook() {
@@ -1244,16 +1242,4 @@ document.body.removeChild(a);
 
   initCalendar();
 
-  // ===== END CALENDAR =====
-
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-
-  // Intersection observer for animations
-  const observer = new Intersectio
+  // ===== END CALE
