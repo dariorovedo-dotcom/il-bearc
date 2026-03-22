@@ -1015,12 +1015,6 @@
     document.getElementById('checkout').min = this.value;
   });
 
-  function formatDateIT(dateStr) {
-    if (!dateStr) return '';
-    const [y, m, d] = dateStr.split('-');
-    return `${d}/${m}/${y}`;
-  }
-
   function goToAvaibook() {
     const checkin = document.getElementById('checkin').value;
     const checkout = document.getElementById('checkout').value;
@@ -1047,8 +1041,8 @@
     const params = new URLSearchParams({
       cod_alloggio: '308348',
       lang: 'it',
-      fecha_entrada: formatDateIT(checkin),
-      fecha_salida: formatDateIT(checkout),
+      f_ini: checkin,
+      f_fin: checkout,
       adultos: adults,
       ninos: children
     });
