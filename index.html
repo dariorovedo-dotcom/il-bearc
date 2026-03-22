@@ -1241,4 +1241,20 @@ document.body.removeChild(a);
 
   initCalendar();
 
-  // ===== END CALE
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.style.opacity = '1';
+    });
+  }, { threshold: 0.1 });
+
+</script>
+</body>
+</html>
