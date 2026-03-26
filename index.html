@@ -895,7 +895,7 @@
           <span>📞</span><span>+39 329 945 1083</span>
         </a>
         <a href="/cdn-cgi/l/email-protection#d1b5b0a3b8beffa3bea7b4b5be91b6bcb0b8bdffb2bebc" class="contact-item">
-          <span>✉️</span><span><span class="__cf_email__" data-cfemail="6c080d1e0503421e031a0908032c0b010d0500420f0301">[email&#160;protected]</span></span>
+          <span>✉️</span><span>dario.rovedo@gmail.com</span>
         </a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Feltrone,Socchieve,UD&waypoints=46.40265,12.82263&travelmode=driving" target="_blank" class="contact-item">
           <span>📍</span><span>Via Col Gentile — Feltrone, Socchieve (UD) 33020</span>
@@ -903,6 +903,7 @@
         <div class="platforms">
           <p>Prenota anche su</p>
           <div class="platform-links">
+            <a href="https://bookonline.pro/it/property/308348" target="_blank" class="platform-link">🟠 Prenota Diretto</a>
             <a href="https://www.booking.com/hotel/it/casa-vacanze-il-bearc.it.html" target="_blank" class="platform-link">🔵 Booking.com</a>
             <a href="https://www.tripadvisor.it/VacationRentalReview-g7104509-d23629233-Casa_Vacanze_Il_Bearc-Socchieve_Province_of_Udine_Friuli_Venezia_Giulia.html" target="_blank" class="platform-link">🟢 TripAdvisor</a>
           </div>
@@ -1002,10 +1003,10 @@
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
-  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="/cdn-cgi/l/email-protection#a4c0c5d6cdcb8ad6cbd2c1c0cbe4c3c9c5cdc88ac7cbc9"><span class="__cf_email__" data-cfemail="442025362d2b6a362b3221202b042329252d286a272b29">[email&#160;protected]</span></a></p>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Set min date for check-in/checkout
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('checkin').min = today;
@@ -1245,4 +1246,10 @@ document.body.removeChild(a);
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      e.preventDe
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
