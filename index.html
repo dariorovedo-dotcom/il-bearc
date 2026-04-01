@@ -702,13 +702,131 @@
   color: var(--forest);
   line-height: 1.6;
 }
-
 .no-pets-alert strong {
   display: block;
   margin-bottom: 0.3rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.75rem;
+}
+
+/* RECENSIONI */
+#recensioni { background: var(--cream); }
+.reviews-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.reviews-score-block { display: flex; align-items: center; gap: 1.2rem; }
+.score-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  color: var(--forest);
+  line-height: 1;
+}
+.score-meta { display: flex; flex-direction: column; gap: 0.3rem; }
+.score-stars { display: flex; gap: 2px; }
+.star { color: var(--accent); font-size: 1.1rem; }
+.score-sub { font-size: 0.78rem; color: var(--stone); letter-spacing: 0.04em; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.review-card {
+  background: var(--snow);
+  border: 1px solid rgba(138,126,110,0.15);
+  border-radius: 4px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.review-card:hover { box-shadow: 0 8px 30px rgba(30,58,47,0.09); transform: translateY(-3px); }
+.review-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  line-height: 0.6;
+  color: var(--accent);
+  opacity: 0.5;
+}
+.review-score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--forest);
+  color: var(--cream);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  width: fit-content;
+}
+.review-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: var(--forest);
+  line-height: 1.3;
+}
+.review-text {
+  color: var(--stone);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  font-weight: 300;
+  font-style: italic;
+  flex: 1;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(138,126,110,0.15);
+  margin-top: auto;
+}
+.review-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--warm);
+  border: 1px solid rgba(138,126,110,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--forest);
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+.review-name { font-size: 0.85rem; font-weight: 500; color: var(--forest); }
+.review-date { font-size: 0.73rem; color: var(--stone); letter-spacing: 0.04em; }
+.reviews-cta { text-align: center; padding-top: 0.5rem; }
+.btn-booking {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #003580;
+  color: white;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-family: 'Jost', sans-serif;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-booking:hover { background: #00266e; transform: translateY(-2px); }
+@media (max-width: 768px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-header { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -736,6 +854,7 @@
     <li><a href="#about">La Casa</a></li>
     <li><a href="#servizi">Servizi</a></li>
     <li><a href="#attivita">Attività</a></li>
+    <li><a href="#recensioni">Recensioni</a></li>
     <li><a href="#disponibilita">Disponibilità</a></li>
     <li><a href="#posizione">Dove siamo</a></li>
     <li><a href="#prenotazione">Prenota</a></li>
@@ -858,6 +977,124 @@
   </div>
 </section>
 
+<!-- RECENSIONI -->
+<section id="recensioni">
+  <div class="container">
+
+    <div class="reviews-header">
+      <div>
+        <p class="section-label">Cosa dicono gli ospiti</p>
+        <h2 class="section-title">Recensioni verificate<br>su Booking.com</h2>
+      </div>
+      <div class="reviews-score-block">
+        <span class="score-big">9.6</span>
+        <div class="score-meta">
+          <div class="score-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span class="score-sub">Eccezionale · 54 recensioni</span>
+          <span class="score-sub">Booking.com · verificate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <span class="review-score-badge">★ 10 / 10</span>
+        <p class="review-title">Eccezionale!! Pace per ritrovare se stessi!</p>
+        <p class="review-text">Il Signor Dario è stato gentilissimo, dà consigli su cosa vedere e scoprire. La casa è molto confortevole, c'è tutto quello che serve per trascorrere una vacanza eccezionale. Il silenzio è quello che cercavo. La pace e la tranquillità. Grazie.</p>
+        <div class="review-author">
+          <div class="review-avatar">Do</div>
+          <div>
+            <p class="review-name">Doriano 🇮🇹</p>
+            <p class="review-date">Luglio 2023</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <span class="review-score-badge">★ 10 / 10</span>
+        <p class="review-title">Perfect stay in Friuli-Venezia Giulia</p>
+        <p class="review-text">The apartment was very clean, well-equipped and beautiful. We received metal water bottles from the owner as a gift for hiking — a lovely touch. Communication was smooth and easy, he was very friendly and helpful. Good value for money, I can gladly recommend this apartment to anybody.</p>
+        <div class="review-author">
+          <div class="review-avatar">Nó</div>
+          <div>
+            <p class="review-name">Nóra 🇭🇺</p>
+            <p class="review-date">Maggio 2023</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <span class="review-score-badge">★ 10 / 10</span>
+        <p class="review-title">Looking better than in the pics!</p>
+        <p class="review-text">Dario was a great host, always helpful and proactive. The accommodation was excellent, looking better than in the pictures!</p>
+        <div class="review-author">
+          <div class="review-avatar">On</div>
+          <div>
+            <p class="review-name">Ondrej 🇨🇿</p>
+            <p class="review-date">Agosto 2024</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <span class="review-score-badge">★ 10 / 10</span>
+        <p class="review-title">Esperienza inaspettata e da ripetere</p>
+        <p class="review-text">Molto accogliente e pulita. Siamo stati accolti con biscotti tipici, giochi da tavolo per i bimbi e una fornitissima libreria con guide per scoprire la zona. Giardino molto curato e vista delle montagne spettacolare. È stata una delle migliori esperienze che ho vissuto.</p>
+        <div class="review-author">
+          <div class="review-avatar">Ma</div>
+          <div>
+            <p class="review-name">Marco 🇮🇹</p>
+            <p class="review-date">Agosto 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <span class="review-score-badge">★ 10 / 10</span>
+        <p class="review-title">A quiet place for retreat</p>
+        <p class="review-text">A lovely place on three levels, very well equipped, clean and spacious. Two balconies with a view of the surrounding mountains and a nice garden. A hefty collection of maps and guidebooks prepared by the host — very helpful! If you're looking for a quiet place far away from the hustle of civilization, this is the place for you.</p>
+        <div class="review-author">
+          <div class="review-avatar">Lu</div>
+          <div>
+            <p class="review-name">Lukasz 🇵🇱</p>
+            <p class="review-date">Luglio 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <span class="review-score-badge">★ 10 / 10</span>
+        <p class="review-title">Consigliatissimo!</p>
+        <p class="review-text">Casa perfetta, pulitissima e in ordine. Proprietario super gentile. La struttura era perfetta, non mancava nulla. Spero di ritornare il prossimo anno.</p>
+        <div class="review-author">
+          <div class="review-avatar">Ti</div>
+          <div>
+            <p class="review-name">Tiziana 🇮🇹</p>
+            <p class="review-date">Dicembre 2024</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reviews-cta">
+      <a href="https://www.booking.com/hotel/it/casa-vacanze-il-bearc.it.html#tab-reviews" target="_blank" class="btn-booking">
+        🔵 Leggi tutte le 54 recensioni su Booking.com
+      </a>
+    </div>
+
+  </div>
+</section>
+
 <!-- DISPONIBILITÀ -->
 <section id="disponibilita">
   <div class="container">
@@ -895,7 +1132,7 @@
           <span>📞</span><span>+39 329 945 1083</span>
         </a>
         <a href="/cdn-cgi/l/email-protection#d1b5b0a3b8beffa3bea7b4b5be91b6bcb0b8bdffb2bebc" class="contact-item">
-          <span>✉️</span><span>dario.rovedo@gmail.com</span>
+          <span>✉️</span><span><span class="__cf_email__" data-cfemail="1a7e7b6873753468756c7f7e755a7d777b737634797577">[email&#160;protected]</span></span>
         </a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Feltrone,Socchieve,UD&waypoints=46.40265,12.82263&travelmode=driving" target="_blank" class="contact-item">
           <span>📍</span><span>Via Col Gentile — Feltrone, Socchieve (UD) 33020</span>
@@ -1003,10 +1240,10 @@
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
-  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a></p>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="/cdn-cgi/l/email-protection#167277647f793864796073727956717b777f7a3875797b"><span class="__cf_email__" data-cfemail="553134273c3a7b273a2330313a153238343c397b363a38">[email&#160;protected]</span></a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Set min date for check-in/checkout
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('checkin').min = today;
@@ -1253,3 +1490,5 @@ document.body.removeChild(a);
     });
   });
 </script>
+</body>
+</html>
