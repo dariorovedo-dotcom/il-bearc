@@ -1,0 +1,33 @@
+name: Aggiorna calendario iCal
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # ogni ora
+  workflow_dispatch:        # avvio manuale dal pannello Actions
+
+jobs:
+  fetch-ical:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Scarica file iCal da Avaibook
+        run: |
+          curl -s -L \
+            "https://ical.avaibook.com/ical/ua_bdd83e5fb20c20a2f7498e817ba1866f-d3d9446802a44259755d38e6d163e820-bc70747295cab63db65cb9d1f7fd856d.ics" \
+            -o calendar.ics
+          echo "✅ iCal scaricato: $(wc -l < calendar.ics) righe"
+
+      - name: Commit e push se ci sono modifiche
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add calendar.ics
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica al calendario."
+          else
+            git commit -m "🗓️ Aggiorna calendar.ics [auto]"
+            git push
+          fi
