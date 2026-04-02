@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistente — Il Bearč</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #1e3a2f;
+    --moss: #3d6b4f;
+    --sage: #7aaa8a;
+    --cream: #f5f0e8;
+    --warm: #e8dfc8;
+    --stone: #8a7e6e;
+    --bark: #5c4a35;
+    --snow: #fafaf8;
+    --accent: #c8a96e;
+    --accent-light: rgba(200,169,110,0.15);
+    --shadow: rgba(30,58,47,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--snow);
+    color: var(--forest);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  /* ── CHAT WRAPPER ─────────────────────────── */
+  .chat-wrapper {
+    width: 100%;
+    max-width: 430px;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    max-height: 760px;
+    background: var(--snow);
+    border-radius: 20px;
+    box-shadow: 0 8px 40px var(--shadow), 0 0 0 1px rgba(30,58,47,0.07);
+    overflow: hidden;
+  }
+
+  /* ── HEADER ───────────────────────────────── */
+  .chat-header {
+    background: var(--forest);
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .chat-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .chat-header-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: white;
+    font-weight: 600;
+  }
+
+  .chat-header-info span {
+    font-size: 0.72rem;
+    color: var(--sage);
+    letter-spacing: 0.06em;
+  }
+
+  .online-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #6ee7a0;
+    margin-right: 5px;
+    vertical-align: middle;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+
+  /* ── MESSAGES AREA ───────────────────────── */
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.4rem 1.1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    scroll-behavior: smooth;
+  }
+
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--warm); border-radius: 4px; }
+
+  /* Bot bubble */
+  .msg-bot {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    animation: slideIn 0.3s ease;
+  }
+
+  .msg-bot-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .msg-bot-bubble {
+    background: white;
+    border: 1px solid rgba(30,58,47,0.09);
+    border-radius: 0 14px 14px 14px;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--forest);
+    max-width: calc(100% - 42px);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .msg-bot-bubble b {
+    font-weight: 500;
+    color: var(--moss);
+  }
+
+  .msg-bot-bubble .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--forest);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .msg-bot-bubble ul {
+    padding-left: 1.1rem;
+    margin: 0.4rem 0;
+  }
+
+  .msg-bot-bubble li {
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+  }
+
+  .msg-bot-bubble .place-card {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    margin: 0.4rem 0;
+    border-left: 3px solid var(--accent);
+  }
+
+  .msg-bot-bubble .place-card strong {
+    display: block;
+    font-size: 0.87rem;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 0.1rem;
+  }
+
+  .msg-bot-bubble .place-card small {
+    font-size: 0.76rem;
+    color: var(--stone);
+  }
+
+  .msg-bot-bubble .place-card a {
+    color: var(--moss);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .msg-bot-bubble .place-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* User bubble */
+  .msg-user {
+    display: flex;
+    justify-content: flex-end;
+    animation: slideIn 0.2s ease;
+  }
+
+  .msg-user-bubble {
+    background: var(--forest);
+    color: white;
+    border-radius: 14px 0 14px 14px;
+    padding: 0.65rem 1rem;
+    font-size: 0.87rem;
+    max-width: 75%;
+    line-height: 1.4;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Typing indicator */
+  .typing {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    animation: slideIn 0.2s ease;
+  }
+
+  .typing-dots {
+    background: white;
+    border: 1px solid rgba(30,58,47,0.09);
+    border-radius: 0 14px 14px 14px;
+    padding: 0.7rem 1.1rem;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .typing-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sage);
+    animation: bounce 1.3s ease-in-out infinite;
+  }
+
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+  }
+
+  /* ── QUICK REPLIES / BUTTONS ─────────────── */
+  .chat-buttons {
+    padding: 0.8rem 1.1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(30,58,47,0.07);
+    background: var(--snow);
+  }
+
+  .chat-buttons-label {
+    font-size: 0.72rem;
+    color: var(--stone);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.1rem;
+  }
+
+  .quick-btn {
+    background: white;
+    border: 1.5px solid rgba(30,58,47,0.15);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.87rem;
+    font-weight: 400;
+    color: var(--forest);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 1px 4px var(--shadow);
+  }
+
+  .quick-btn:hover {
+    border-color: var(--moss);
+    background: var(--cream);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px var(--shadow);
+  }
+
+  .quick-btn:active {
+    transform: translateY(0);
+  }
+
+  .quick-btn .btn-icon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* Home button */
+  .home-btn {
+    background: none;
+    border: none;
+    color: var(--sage);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    cursor: pointer;
+    padding: 0.3rem 0;
+    letter-spacing: 0.05em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: 0.1rem;
+    text-align: center;
+  }
+
+  .home-btn:hover { color: var(--accent); }
+
+  /* ── DIVIDER ─────────────────────────────── */
+  .msg-divider {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--stone);
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0;
+    opacity: 0.7;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 480px) {
+    body { padding: 0; align-items: flex-end; }
+    .chat-wrapper { max-height: 100vh; height: 100vh; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chat-wrapper">
+
+  <!-- Header -->
+  <div class="chat-header">
+    <div class="chat-avatar">🏔️</div>
+    <div class="chat-header-info">
+      <h2>Il Bearč</h2>
+      <span><span class="online-dot"></span>Assistente · Carnia, FVG</span>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-messages" id="chat-messages"></div>
+
+  <!-- Buttons -->
+  <div class="chat-buttons" id="chat-buttons"></div>
+
+</div>
+
+<script>
+// ─── DATI RISPOSTE ────────────────────────────────────────────────────────────
+
+const RESPONSES = {
+
+  home: {
+    label: null,
+    message: `Ciao 👋 Benvenuto all'<b>Assistente del Bearč</b>!<br>Clicca su una domanda per ricevere subito una risposta.`,
+    buttons: ['mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
+  },
+
+  mangiare: {
+    label: '🍽️ Dove si può mangiare',
+    message: `<span class="section-title">🍽️ Dove mangiare in zona</span>
+I posti consigliati da Dario, tutti a pochi minuti dal Bearč:
+
+<div class="place-card">
+  <strong>⭐ 4.7 · Agriturismo In Già – Lungis</strong>
+  <small>Cucina a km zero · cjarsons, frico con polenta · Lun/Ven/Sab/Dom 9–20 · Mer/Gio chiuso</small>
+  <small>📞 <a href="tel:+393381716413">338 171 6413</a> · <a href="https://maps.app.goo.gl/HLAWiMmx3cG3qffG8" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>⭐ 4.7 · Osteria al Cervo – Lungis</strong>
+  <small>Forno a legna, tutto fatto in casa, vista splendida · Mer/Gio 17–20 · Ven 17–24 · Sab 10–24 · Dom 10–20</small>
+  <small>📞 <a href="tel:+393477152842">347 715 2842</a> · <a href="https://maps.app.goo.gl/oAmcaN9PLDR1renS9" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>⭐ 4.6 · Ristorante La Baita – Viaso</strong>
+  <small>Selvaggina, funghi, ravioli al ragù di cervo · vista panoramica · Aperto tutti i giorni tranne mercoledì</small>
+  <small>📞 <a href="tel:+393294126681">329 412 6681</a> · <a href="https://maps.app.goo.gl/5Y9PEnu9tD6RP266A" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>⭐ 4.5 · Pizzeria Al Greco – Ampezzo</strong>
+  <small>La pizza più buona della zona (1400 recensioni!) · Aperta lun/mer–dom 8:30–23 · Mar chiuso</small>
+  <small>📞 <a href="tel:+390433080145">0433 80145</a> · <a href="https://maps.app.goo.gl/ooi8bwxNFZa4JZFB6" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>⭐ 4.5 · Osteria di Nonta – Socchieve</strong>
+  <small>⚠️ <b>Solo su prenotazione</b> · Niente menù fisso, piatti del giorno · Atmosfera unica con camino</small>
+  <small>📞 <a href="tel:+393385987306">338 598 7306</a> · <a href="https://maps.app.goo.gl/V9jNUupiaJD3TZSY8" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>⭐ 4.7 · Osteria alla Buona Vite – Mediis</strong>
+  <small>Bar e osteria · Lun/Mar/Gio/Ven/Sab 7–21 · Mer/Dom 7–13</small>
+  <small>📞 <a href="tel:+393332362805">333 236 2805</a> · <a href="https://maps.app.goo.gl/GdVbbhe3erXZLYBP9" target="_blank">📍 Mappa</a></small>
+</div>`,
+    buttons: ['home']
+  },
+
+  faq: {
+    label: '💡 Domande frequenti',
+    message: `<span class="section-title">💡 Le domande più frequenti</span>
+
+<b>📅 Check-in</b><br>
+A partire dalle <b>17:00</b>. Il check-in è autonomo tramite cassetta portachiavi — non è necessario aspettare il proprietario.
+
+<b>🚪 Check-out</b><br>
+Entro le <b>10:00</b>. Lasciare le chiavi nell'apposita cassetta portachiavi all'uscita.
+
+<b>🌙 Soggiorno minimo</b><br>
+<b>3 notti</b>, sia in alta che in bassa stagione.
+
+<b>💳 Pagamento</b><br>
+Il pagamento avviene contestualmente alla prenotazione.
+
+<b>🛏️ Cosa è incluso</b><br>
+Biancheria da letto, asciugamani e cucina completamente attrezzata sono inclusi nel soggiorno.
+
+<b>🐾 Animali domestici</b><br>
+Spiacenti, gli animali non sono ammessi.
+
+<b>🌍 Lingue parlate</b><br>
+Italiano e <b>Inglese</b>.`,
+    buttons: ['home']
+  },
+
+  farmacie: {
+    label: '💊 Farmacie e supermercati',
+    message: `<span class="section-title">💊 Farmacie</span>
+
+<div class="place-card">
+  <strong>Farmacia Danelon – Mediis</strong>
+  <small>Mar/Mer/Ven 8:30–12:30 e 15:30–19:30 · Gio/Sab 8:30–12:30 · Lun/Dom chiuso</small>
+  <small>📞 <a href="tel:+390433080137">0433 80137</a> · <a href="https://maps.app.goo.gl/tcLNC6o7fnQkZPH48" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>Farmacia Siega – Ampezzo</strong>
+  <small>Lun/Mar/Gio/Ven/Sab 8:30–12:30 e 16:00–19:30 · Mer 8:30–12:30 · Dom chiuso</small>
+  <small>📞 <a href="tel:+390433080287">0433 80287</a> · <a href="https://maps.app.goo.gl/3F9JSQmtGWgJYKT16" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>Farmacia Marini – Enemonzo</strong>
+  <small>Lun/Mar/Gio/Ven/Sab 8:30–12:30 e 15:15–19:15 · Mer 8:30–12:30 · Dom chiuso</small>
+  <small>📞 <a href="tel:+390433074213">0433 74213</a> · <a href="https://maps.app.goo.gl/1iX18bqTKMtBC9N98" target="_blank">📍 Mappa</a></small>
+</div>
+
+<span class="section-title">🛒 Supermercati</span>
+
+<div class="place-card">
+  <strong>Eurospar – Villa Santina</strong>
+  <small>Mar–Sab 8:00–20:00 · Lun 9:00–13:00 · Dom chiuso</small>
+  <small>📞 <a href="tel:+390433074411">0433 74411</a> · <a href="https://maps.app.goo.gl/zUAY8gs1TwsNFSFe9" target="_blank">📍 Mappa</a></small>
+</div>
+<div class="place-card">
+  <strong>Prix Quality – Villa Santina</strong>
+  <small>Lun–Sab 8:30–20:00 · Dom 9:00–19:30 · aperto anche la domenica!</small>
+  <small><a href="https://maps.app.goo.gl/Aq8NBixmq8Fi38oU9" target="_blank">📍 Mappa</a></small>
+</div>
+
+<span class="section-title">🏥 Pronto Soccorso</span>
+<div class="place-card">
+  <strong>Ospedale di Tolmezzo</strong>
+  <small>Via Morgagni, 18 · Tel. <a href="tel:+390433004881">0433 4881</a></small>
+</div>`,
+    buttons: ['home']
+  },
+
+  carnia: {
+    label: '🗺️ Guida della Carnia',
+    message: null,
+    buttons: ['carnia-natura', 'carnia-gastronomia', 'carnia-cultura', 'carnia-sport'],
+    submenu: true,
+    intro: `<span class="section-title">🗺️ Guida alla Carnia</span>
+La <b>Carnia</b> è l'angolo più autentico delle Alpi friulane, al confine con l'Austria. Ha conservato intatti nei secoli dialetti, tradizioni, architetture e gastronomia che rendono ogni vallata unica.<br><br>Cosa vuoi scoprire?`
+  },
+
+  'carnia-natura': {
+    label: '🌲 Natura e paesaggi',
+    message: `<span class="section-title">🌲 Natura e paesaggi della Carnia</span>
+
+La Carnia è attraversata da <b>Sette Valli</b>, ognuna con un carattere unico:
+
+<div class="place-card">
+  <strong>Val Tagliamento</strong>
+  <small>Il cuore della Carnia. Dal Lago di Cavazzo fino alle piste di Forni di Sopra, passando per Tolmezzo. Forni di Sopra è una delle aree botaniche più ricche d'Europa, nel Parco Naturale delle Dolomiti Friulane.</small>
+</div>
+<div class="place-card">
+  <strong>Val Lumiei – Sauris</strong>
+  <small>La "Perla delle Alpi": un lago verde smeraldo circondato da boschi fitti, prati di erbe officinali e malghe. A Sauris si parla ancora un dialetto di origine tedesca.</small>
+</div>
+<div class="place-card">
+  <strong>Val Degano</strong>
+  <small>Boschi di abeti e larici, rocce dolomitiche, vette oltre i 2000 m come il Cogliàns, la cima più alta delle Alpi Carniche.</small>
+</div>
+<div class="place-card">
+  <strong>Val Pesarina – "Valle del Tempo"</strong>
+  <small>Famosa per i suoi orologi da torre (XVIII sec.). Gli antichi stavoli di Orias, oggi disabitati, sembrano fermi nel tempo.</small>
+</div>
+<div class="place-card">
+  <strong>Valle del Bût – Canale di San Pietro</strong>
+  <small>Percorsa dall'antica Via Iulia Augusta romana. Bosco Bandito di Timau con alberi secolari, orto botanico con oltre 1000 specie di piante.</small>
+</div>
+<div class="place-card">
+  <strong>Valcalda</strong>
+  <small>Dominata dal Monte Zoncolan. Grandi prati, abetaie e faggeti. Leggenda: sul Monte Tenchia le streghe ballavano facendo fiorire gigli e campanule.</small>
+</div>
+<div class="place-card">
+  <strong>Val d'Incaroio</strong>
+  <small>Cime dolomitiche dei monti Sernio, Tersadia e Zermula. Cascate spettacolari tra cui quella di Salino e pascoli alpini con malghe.</small>
+</div>`,
+    buttons: ['carnia', 'home']
+  },
+
+  'carnia-gastronomia': {
+    label: '🧀 Gastronomia tipica',
+    message: `<span class="section-title">🧀 I sapori della Carnia</span>
+
+<div class="place-card">
+  <strong>Cjarsons</strong>
+  <small>Il piatto simbolo della Carnia: agnolotti ripieni di erbe o misto dolce-salato. Ogni vallata ha la sua ricetta segreta.</small>
+</div>
+<div class="place-card">
+  <strong>Frico con polenta</strong>
+  <small>Cialda croccante di formaggio fuso con patate, servita con polenta. Semplice e indimenticabile.</small>
+</div>
+<div class="place-card">
+  <strong>Prosciutto crudo di Sauris</strong>
+  <small>Leggermente affumicato, dal sapore dolce e inconfondibile. Acquistabile direttamente dai produttori a Sauris.</small>
+</div>
+<div class="place-card">
+  <strong>Formaggi di malga e ricotta affumicata</strong>
+  <small>Prodotti nelle malghe d'alta quota e nei caseifici locali. Burro, ricotta e formaggi stagionati.</small>
+</div>
+<div class="place-card">
+  <strong>Salumi, miele e grappa</strong>
+  <small>Salami artigianali, mieli di ogni tipo (millefiori, castagno) e grappa di prugne e pere distillata in piccole distillerie locali.</small>
+</div>
+💡 <b>Curiosità:</b> vengono organizzati corsi di cucina per imparare le ricette tradizionali!`,
+    buttons: ['carnia', 'home']
+  },
+
+  'carnia-cultura': {
+    label: '🏛️ Storia e cultura',
+    message: `<span class="section-title">🏛️ Storia, arte e tradizioni</span>
+
+<div class="place-card">
+  <strong>Zuglio – Iulium Carnicum</strong>
+  <small>Antica città romana, uno dei siti archeologici più importanti del Friuli. Pievi di San Floriano e San Pietro.</small>
+</div>
+<div class="place-card">
+  <strong>Museo Carnico "Michele Gortani" – Tolmezzo</strong>
+  <small>Il principale museo etnografico della Carnia · Lun 10–12 e 15–17 · Mar/Gio/Ven 9–12 e 15–17 · Mer 9–12 · Sab/Dom 10–12 e 15–17 · Tel. 0433 43233</small>
+</div>
+<div class="place-card">
+  <strong>Arta Terme – Fonte Pudia</strong>
+  <small>Acque sulfuree curative note già ai Romani. Terme aperte tutti i giorni 9:30–20:00.</small>
+</div>
+<div class="place-card">
+  <strong>Museo della Grande Guerra – Timau</strong>
+  <small>Camminamenti, trincee e reperti della Prima Guerra Mondiale in alta quota.</small>
+</div>
+<b>Feste e tradizioni</b>
+<div class="place-card">
+  <strong>Bacio delle Croci – Zuglio (Ascensione)</strong>
+  <small>Processione con le croci argentee delle vallate portate sul colle di San Pietro.</small>
+</div>
+<div class="place-card">
+  <strong>Magia del Legno – Sutrio (1ª dom. settembre)</strong>
+  <small>Festa degli artigiani del legno, una delle più belle della Carnia.</small>
+</div>
+<div class="place-card">
+  <strong>Mistîrs – Paularo (fine agosto)</strong>
+  <small>Rievocazione dei mestieri antichi con degustazione di ricette tradizionali.</small>
+</div>`,
+    buttons: ['carnia', 'home']
+  },
+
+  'carnia-sport': {
+    label: '⛷️ Sport e attività',
+    message: `<span class="section-title">⛷️ Sport e attività nella Carnia</span>
+
+<b>☀️ Estate</b>
+<div class="place-card">
+  <strong>Trekking e passeggiate</strong>
+  <small>Centinaia di km di sentieri tra le Alpi Carniche, con rifugi, casere e bivacchi in quota.</small>
+</div>
+<div class="place-card">
+  <strong>MTB e percorsi in bici</strong>
+  <small>Percorsi per tutti i livelli, inclusa la Via delle Malghe Carniche.</small>
+</div>
+<div class="place-card">
+  <strong>Arrampicata e vie ferrate</strong>
+  <small>Palestre di roccia sulle Dolomiti Carniche e Pesarine per tutti i livelli.</small>
+</div>
+<div class="place-card">
+  <strong>Trekking a cavallo · Parapendio · Canoa</strong>
+  <small>Escursioni a cavallo · volo dal Monte Tenchia in Valcalda · canoa sui torrenti.</small>
+</div>
+
+<b>❄️ Inverno</b>
+<div class="place-card">
+  <strong>Monte Zoncolan – Ravascletto</strong>
+  <small>Il principale polo sciistico del FVG, palcoscenico del Giro d'Italia. Discesa, snowboard, scuole di sci.</small>
+</div>
+<div class="place-card">
+  <strong>Forni di Sopra · Sauris · Val Pesarina</strong>
+  <small>Piste mai troppo affollate, sci di fondo e anelli illuminati.</small>
+</div>
+<div class="place-card">
+  <strong>Sci alpinismo e gatto delle nevi</strong>
+  <small>Per i più allenati: vette oltre i 2000 m, paesaggi invernali spettacolari.</small>
+</div>`,
+    buttons: ['carnia', 'home']
+  },
+
+  meteo: {
+    label: '⛅ Meteo a Feltrone',
+    message: null,
+    buttons: ['home'],
+    dynamic: 'meteo'
+  },
+
+  emergenze: {
+    label: '🚨 Emergenze e numeri utili',
+    message: `<span class="section-title">🚨 Emergenze e numeri utili</span>
+
+<div class="place-card">
+  <strong>🆘 Numero Unico Emergenze</strong>
+  <small>📞 <a href="tel:112"><b>112</b></a> — Polizia, Ambulanza, Vigili del Fuoco, Soccorso Alpino</small>
+</div>
+<div class="place-card">
+  <strong>🏔️ Soccorso Alpino</strong>
+  <small>📞 <a href="tel:118"><b>118</b></a> — per emergenze in montagna chiama sempre il 112</small>
+</div>
+<div class="place-card">
+  <strong>🏥 Pronto Soccorso – Ospedale di Tolmezzo</strong>
+  <small>Via Morgagni, 18 · ~20 min dal Bearč · 📞 <a href="tel:+390433004881">0433 4881</a></small>
+</div>
+<div class="place-card">
+  <strong>🚒 Vigili del Fuoco</strong>
+  <small>📞 <a href="tel:115"><b>115</b></a></small>
+</div>
+<div class="place-card">
+  <strong>🚓 Carabinieri di Tolmezzo</strong>
+  <small>📞 <a href="tel:+390433002376">0433 2376</a></small>
+</div>`,
+    buttons: ['home']
+  },
+
+  benzinai: {
+    label: '⛽ Benzinai vicini',
+    message: `<span class="section-title">⛽ Prezzi carburante in zona</span>
+
+<div class="place-card">
+  <strong>⛽ Prezzi carburante Carnia</strong>
+  <small>Mappa interattiva con tutti i distributori della zona e i prezzi del giorno</small>
+  <small>👉 <a href="https://dariorovedo-dotcom.github.io/prezzi-carburante/" target="_blank"><b>Apri la mappa dei prezzi</b></a></small>
+</div>
+💡 <b>Consiglio:</b> i distributori di montagna spesso sono self-service nelle ore notturne — conviene fare il pieno durante il giorno!`,
+    buttons: ['home']
+  },
+
+  piove: {
+    label: '🌧️ Cosa fare se piove',
+    message: `<span class="section-title">🌧️ Cosa fare se piove</span>
+
+<b>🏛️ Musei</b>
+<div class="place-card">
+  <strong>⭐ 4.5 · Museo Carnico "Michele Gortani" – Tolmezzo</strong>
+  <small>Arti e tradizioni popolari · ~20 min · Lun 10–12 e 15–17 · Mar/Gio/Ven 9–12 e 15–17 · Mer 9–12 · Sab/Dom 10–12 e 15–17</small>
+  <small>📞 <a href="tel:+390433043233">0433 43233</a> · <a href="https://museocarnico.it" target="_blank">🌐 museocarnico.it</a></small>
+</div>
+<div class="place-card">
+  <strong>⭐ 4.3 · Museo Geologico della Carnia – Ampezzo</strong>
+  <small>450 milioni di anni di storia · fossili, pterosauri · ingresso gratuito! · ~10 min</small>
+  <small>Sab/Dom 15–18 (estate: tutti i giorni 9:30–12 e 15–18)</small>
+  <small>📞 <a href="tel:+390433487779">0433 487779</a></small>
+</div>
+
+<b>🧖 Terme e benessere</b>
+<div class="place-card">
+  <strong>Terme di Arta – Arta Terme</strong>
+  <small>Piscine termali, sauna, centro benessere · ~30 min · Lun–Ven 9:30–20:00 · Sab/Dom 10:00–20:00</small>
+  <small>📞 <a href="tel:+390433929320">0433 929320</a> · <a href="https://www.termediarta.it" target="_blank">🌐 termediarta.it</a></small>
+</div>
+
+<b>🛍️ Altro</b>
+<div class="place-card">
+  <strong>Centro storico di Tolmezzo</strong>
+  <small>Palazzi storici, botteghe artigiane e negozi · ~20 min</small>
+</div>
+<div class="place-card">
+  <strong>CarniaMusei – Rete museale</strong>
+  <small>👉 <a href="https://www.carniamusei.org" target="_blank">carniamusei.org</a></small>
+</div>`,
+    buttons: ['home']
+  },
+
+  rifiuti: {
+    label: '🗑️ Raccolta differenziata',
+    message: `<span class="section-title">🗑️ Raccolta differenziata</span>
+
+La raccolta differenziata <b>è presente</b> al Bearč. Trovi le istruzioni dettagliate su come separare i rifiuti all'interno della casa.
+
+<div class="place-card">
+  <strong>Per qualsiasi dubbio</strong>
+  <small>Chiedi direttamente a Dario</small>
+  <small>📞 <a href="tel:+393299451083">329 945 1083</a></small>
+</div>`,
+    buttons: ['home']
+  },
+
+  lago: {
+    label: '🏊 Dove fare il bagno',
+    message: `<span class="section-title">🏊 Dove fare il bagno</span>
+
+<div class="place-card">
+  <strong>⭐ 4.7 · Lago di Cavazzo (Lago dei Tre Comuni)</strong>
+  <small>Il lago alpino più grande del Friuli · acqua cristallina turchese · spiagge attrezzate · ~25 min dal Bearč</small>
+  <small>Nuoto, kayak, windsurf, canoa · area picnic · parcheggio · campeggio</small>
+  <small><a href="https://www.google.com/maps/search/?api=1&query=Lago+di+Cavazzo" target="_blank">📍 Indicazioni stradali</a></small>
+</div>
+💡 <b>Consiglio:</b> nei weekend di luglio e agosto può essere affollato — meglio andarci in settimana o la mattina presto!`,
+    buttons: ['home']
+  }
+
+};
+
+// ─── BOTTONI CONFIGURAZIONE ───────────────────────────────────────────────────
+
+const BUTTON_CONFIG = {
+  home:              { label: '↩ Torna al menu principale', icon: '' },
+  mangiare:          { label: 'Dove si può mangiare', icon: '🍽️' },
+  faq:               { label: 'Domande frequenti', icon: '💡' },
+  farmacie:          { label: 'Farmacie e supermercati', icon: '💊' },
+  carnia:            { label: 'Guida della Carnia', icon: '🗺️' },
+  'carnia-natura':   { label: 'Natura e paesaggi', icon: '🌲' },
+  'carnia-gastronomia': { label: 'Gastronomia tipica', icon: '🧀' },
+  'carnia-cultura':  { label: 'Storia e cultura', icon: '🏛️' },
+  'carnia-sport':    { label: 'Sport e attività', icon: '⛷️' },
+  meteo:             { label: 'Meteo a Feltrone', icon: '⛅' },
+  emergenze:         { label: 'Emergenze e numeri utili', icon: '🚨' },
+  benzinai:          { label: 'Benzinai vicini', icon: '⛽' },
+  piove:             { label: 'Cosa fare se piove', icon: '🌧️' },
+  rifiuti:           { label: 'Raccolta differenziata', icon: '🗑️' },
+  lago:              { label: 'Dove fare il bagno', icon: '🏊' },
+};
+
+// ─── METEO ────────────────────────────────────────────────────────────────────
+
+const WMO_ICONS = {
+  0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️',
+  45:'🌫️', 48:'🌫️',
+  51:'🌦️', 53:'🌦️', 55:'🌧️',
+  61:'🌧️', 63:'🌧️', 65:'🌧️',
+  71:'🌨️', 73:'🌨️', 75:'❄️',
+  77:'❄️', 80:'🌦️', 81:'🌧️', 82:'⛈️',
+  85:'🌨️', 86:'🌨️',
+  95:'⛈️', 96:'⛈️', 99:'⛈️'
+};
+
+const WMO_DESC = {
+  0:'Sereno', 1:'Prevalentemente sereno', 2:'Parzialmente nuvoloso', 3:'Coperto',
+  45:'Nebbia', 48:'Nebbia con brina',
+  51:'Pioggerella leggera', 53:'Pioggerella', 55:'Pioggerella intensa',
+  61:'Pioggia leggera', 63:'Pioggia', 65:'Pioggia intensa',
+  71:'Neve leggera', 73:'Neve', 75:'Neve intensa',
+  77:'Granelli di neve', 80:'Rovesci leggeri', 81:'Rovesci', 82:'Rovesci forti',
+  85:'Neve a rovesci', 86:'Neve intensa a rovesci',
+  95:'Temporale', 96:'Temporale con grandine', 99:'Temporale con grandine forte'
+};
+
+const DAYS_IT = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
+const MONTHS_IT = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
+
+async function fetchMeteo() {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.40265&longitude=12.82263&elevation=716&current=temperature_2m,apparent_temperature,weathercode,windspeed_10m,relativehumidity_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FRome&forecast_days=5&wind_speed_unit=kmh';
+
+  const res  = await fetch(url);
+  const data = await res.json();
+  const c    = data.current;
+  const d    = data.daily;
+
+  const icon = WMO_ICONS[c.weathercode] || '🌡️';
+  const desc = WMO_DESC[c.weathercode]  || '';
+
+  let forecastRows = '';
+  for (let i = 1; i < 5; i++) {
+    const date    = new Date(d.time[i]);
+    const dayName = DAYS_IT[date.getDay()];
+    const dayNum  = date.getDate();
+    const mon     = MONTHS_IT[date.getMonth()];
+    const ico     = WMO_ICONS[d.weathercode[i]] || '🌡️';
+    const max     = Math.round(d.temperature_2m_max[i]);
+    const min     = Math.round(d.temperature_2m_min[i]);
+    const rain    = d.precipitation_probability_max[i];
+    forecastRows += `
+      <div class="place-card">
+        <strong>${ico} ${dayName} ${dayNum} ${mon}</strong>
+        <small>${WMO_DESC[d.weathercode[i]] || ''} · Max ${max}° Min ${min}° · 🌧️ ${rain}%</small>
+      </div>`;
+  }
+
+  return `<span class="section-title">${icon} Meteo a Feltrone – ora</span>
+<div class="place-card">
+  <strong>${icon} ${Math.round(c.temperature_2m)}° — ${desc}</strong>
+  <small>Percepita ${Math.round(c.apparent_temperature)}° · Umidità ${c.relativehumidity_2m}% · Vento ${Math.round(c.windspeed_10m)} km/h</small>
+  <small>📍 Feltrone, Socchieve · 716 m s.l.m.</small>
+</div>
+<b>Prossimi 4 giorni</b>${forecastRows}
+<small style="color:var(--stone);font-size:0.72rem">Fonte: Open-Meteo · aggiornato in tempo reale</small>`;
+}
+
+// ─── ENGINE ───────────────────────────────────────────────────────────────────
+
+const messagesEl = document.getElementById('chat-messages');
+const buttonsEl  = document.getElementById('chat-buttons');
+
+function scrollBottom() {
+  setTimeout(() => { messagesEl.scrollTop = messagesEl.scrollHeight; }, 50);
+}
+
+function addBotBubble(html) {
+  const row = document.createElement('div');
+  row.className = 'msg-bot';
+  row.innerHTML = `
+    <div class="msg-bot-icon">🏔️</div>
+    <div class="msg-bot-bubble">${html}</div>
+  `;
+  messagesEl.appendChild(row);
+  scrollBottom();
+}
+
+function addUserBubble(text) {
+  const row = document.createElement('div');
+  row.className = 'msg-user';
+  row.innerHTML = `<div class="msg-user-bubble">${text}</div>`;
+  messagesEl.appendChild(row);
+  scrollBottom();
+}
+
+function showTyping() {
+  const row = document.createElement('div');
+  row.className = 'typing';
+  row.id = 'typing-indicator';
+  row.innerHTML = `
+    <div class="msg-bot-icon">🏔️</div>
+    <div class="typing-dots">
+      <span></span><span></span><span></span>
+    </div>
+  `;
+  messagesEl.appendChild(row);
+  scrollBottom();
+}
+
+function hideTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+
+function renderButtons(keys) {
+  buttonsEl.innerHTML = '';
+
+  if (keys.includes('home') && keys.length === 1) {
+    // Only home button
+    const btn = document.createElement('button');
+    btn.className = 'home-btn';
+    btn.textContent = '↩ Torna al menu principale';
+    btn.onclick = () => handleClick('home');
+    buttonsEl.appendChild(btn);
+    return;
+  }
+
+  const mainKeys = keys.filter(k => k !== 'home');
+  const hasHome  = keys.includes('home');
+
+  if (mainKeys.length > 0) {
+    const label = document.createElement('div');
+    label.className = 'chat-buttons-label';
+    label.textContent = 'Scegli un\'opzione';
+    buttonsEl.appendChild(label);
+  }
+
+  mainKeys.forEach(key => {
+    const cfg = BUTTON_CONFIG[key] || { label: key, icon: '' };
+    const btn = document.createElement('button');
+    btn.className = 'quick-btn';
+    btn.innerHTML = `<span class="btn-icon">${cfg.icon}</span>${cfg.label}`;
+    btn.onclick = () => handleClick(key);
+    buttonsEl.appendChild(btn);
+  });
+
+  if (hasHome) {
+    const btn = document.createElement('button');
+    btn.className = 'home-btn';
+    btn.textContent = '↩ Torna al menu principale';
+    btn.onclick = () => handleClick('home');
+    buttonsEl.appendChild(btn);
+  }
+}
+
+async function handleClick(key) {
+  const data = RESPONSES[key];
+  if (!data) return;
+
+  if (key !== 'home') {
+    const label = BUTTON_CONFIG[key]?.label || key;
+    addUserBubble(label);
+  }
+
+  buttonsEl.innerHTML = '';
+  showTyping();
+
+  // Dynamic meteo fetch
+  if (data.dynamic === 'meteo') {
+    try {
+      const html = await fetchMeteo();
+      hideTyping();
+      addBotBubble(html);
+    } catch (e) {
+      hideTyping();
+      addBotBubble('⚠️ Non riesco a recuperare le previsioni meteo in questo momento. Riprova tra poco!');
+    }
+    renderButtons(data.buttons);
+    return;
+  }
+
+  setTimeout(() => {
+    hideTyping();
+    if (data.submenu) {
+      addBotBubble(data.intro);
+    } else if (data.message) {
+      addBotBubble(data.message);
+    }
+    renderButtons(data.buttons);
+  }, key === 'home' ? 300 : 800);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+
+function init() {
+  const data = RESPONSES.home;
+  addBotBubble(data.message);
+  renderButtons(data.buttons);
+}
+
+init();
+</script>
+</body>
+</html>
