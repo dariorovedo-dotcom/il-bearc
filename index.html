@@ -1890,5 +1890,18 @@
     const elText = document.getElementById('email-text');
     const elF = document.getElementById('email-link-footer');
     if (el) el.href = mailto;
-    if
- 
+    if (elText) elText.textContent = email;
+    if (elF) elF.href = mailto;
+  })();
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
