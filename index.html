@@ -1240,8 +1240,8 @@
         <a href="tel:+393299451083" class="contact-item">
           <span>📞</span><span>+39 329 945 1083</span>
         </a>
-        <a href="/cdn-cgi/l/email-protection#d1b5b0a3b8beffa3bea7b4b5be91b6bcb0b8bdffb2bebc" class="contact-item">
-          <span>✉️</span><span><span class="__cf_email__" data-cfemail="1a7e7b6873753468756c7f7e755a7d777b737634797577">[email&#160;protected]</span></span>
+        <a id="email-link" class="contact-item" href="#">
+          <span>✉️</span><span id="email-text"></span>
         </a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Feltrone,Socchieve,UD&waypoints=46.40265,12.82263&travelmode=driving" target="_blank" class="contact-item">
           <span>📍</span><span>Via Col Gentile — Feltrone, Socchieve (UD) 33020</span>
@@ -1442,10 +1442,10 @@
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
-  <a href="tel:+393299451083">+39 329 945 1083</a> · <a href="/cdn-cgi/l/email-protection#167277647f793864796073727956717b777f7a3875797b"><span class="__cf_email__" data-cfemail="553134273c3a7b273a2330313a153238343c397b363a38">[email&#160;protected]</span></a></p>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="#">dario.rovedo@gmail.com</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Set min date for check-in/checkout
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('checkin').min = today;
@@ -1680,6 +1680,18 @@ document.body.removeChild(a);
   function calNext() { calOffset++; renderCal(); }
 
   initCalendar();
+
+  // Anti-spam: l'email viene composta via JS, mai visibile in chiaro nell'HTML
+  (function() {
+    const u = 'dario.rovedo';
+    const d = 'gmail.com';
+    const email = u + '@' + d;
+    const mailto = 'mailto:' + email;
+    const el = document.getElementById('email-link');
+    const elF = document.getElementById('email-link-footer');
+    if (el) { el.href = mailto; document.getElementById('email-text').textContent = email; }
+    if (elF) { elF.href = mailto; }
+  })();
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
