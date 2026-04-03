@@ -1401,7 +1401,7 @@
           <span>📞</span><span>+39 329 945 1083</span>
         </a>
         <a id="email-link" class="contact-item" href="#">
-          <span>✉️</span><span id="email-text"></span>
+          <span>✉️</span><span id="email-text">dario&#46;rovedo&#64;gmail&#46;com</span>
         </a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Feltrone,Socchieve,UD&waypoints=46.40265,12.82263&travelmode=driving" target="_blank" class="contact-item">
           <span>📍</span><span>Via Col Gentile — Feltrone, Socchieve (UD) 33020</span>
@@ -1602,7 +1602,7 @@
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
-  <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="#"><span class="__cf_email__" data-cfemail="472326352e286935283122232807202a262e2b6924282a">[email&#160;protected]</span></a></p>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="#">dario.rovedo@gmail.com</a></p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -1886,12 +1886,15 @@ document.body.removeChild(a);
     const email = u + '@' + d;
     const mailto = 'mailto:' + email;
     const el = document.getElementById('email-link');
+    const elText = document.getElementById('email-text');
     const elF = document.getElementById('email-link-footer');
-    if (el) { el.href = mailto; document.getElementById('email-text').textContent = email; }
-    if (elF) { elF.href = mailto; }
+    if (el) el.href = mailto;
+    if (elText) elText.textContent = email;
+    if (elF) elF.href = mailto;
   })();
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
+ 
  
