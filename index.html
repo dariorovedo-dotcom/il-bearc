@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Il Bearč — Casa Vacanze a Feltrone-Socchieve, Carnia | Alpi Carniche</title>
-<meta name="description" content="Casa vacanze Il Bearč a Feltrone di Socchieve (UD), 716m, Alpi Carniche. 2 camere, 6 ospiti, giardino, Wi-Fi. A 30 km dallo Zoncolan. Valutazione 9.6/10 su Booking.com. Prenota direttamente.">
+<meta name="description" content="Casa vacanze Il Bearč a Feltrone di Socchieve (UD), 716m, Alpi Carniche. 2 camere, 1 bagno, 4 ospiti, giardino, Wi-Fi. A 30 km dallo Zoncolan. Valutazione 9.6/10 su Booking.com. Prenota direttamente.">
 
 <!-- Open Graph (anteprima social) -->
 <meta property="og:title" content="Il Bearč — Casa Vacanze a Socchieve, Carnia · 9.6/10 su Booking">
-<meta property="og:description" content="Montagna, natura e relax a Feltrone, Socchieve (UD). A 716m tra le Alpi Carniche. 2 camere, 6 ospiti, giardino. A 30 km dallo Zoncolan.">
+<meta property="og:description" content="Montagna, natura e relax a Feltrone, Socchieve (UD). A 716m tra le Alpi Carniche. 2 camere, 1 bagno, 4 ospiti, giardino. A 30 km dallo Zoncolan.">
 <meta property="og:image" content="https://i.ibb.co/MyF3JmxP/Original.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.ilbearc.com/">
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "VacationRental",
   "name": "Il Bearč — Casa Vacanze in Carnia",
-  "description": "Casa vacanze a Feltrone di Socchieve, nelle Alpi Carniche, a 716 metri di altitudine. 2 camere da letto, fino a 6 ospiti, giardino recintato, Wi-Fi, aria condizionata, cucina attrezzata. A 30 km dallo Zoncolan.",
+  "description": "Casa vacanze a Feltrone di Socchieve, nelle Alpi Carniche, a 716 metri di altitudine. 2 camere da letto, 1 bagno, fino a 4 ospiti, giardino recintato, Wi-Fi, aria condizionata, cucina attrezzata. A 30 km dallo Zoncolan.",
   "url": "https://www.ilbearc.com/",
   "telephone": "+393299451083",
   "email": "dario.rovedo@gmail.com",
@@ -51,8 +51,9 @@
   "numberOfRooms": 2,
   "occupancy": {
     "@type": "QuantitativeValue",
-    "maxValue": 6
+    "maxValue": 4
   },
+  "numberOfBathroomsTotal": 1,
   "petsAllowed": false,
   "checkinTime": "17:00",
   "checkoutTime": "10:00",
@@ -430,7 +431,109 @@
   }
   .service-card p { color: var(--stone); font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
 
-  /* ACTIVITIES */
+  /* GALLERY */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-top: 3rem;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    cursor: pointer;
+    aspect-ratio: 4/3;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,30,20,0.7) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay span {
+    color: white;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* LIGHTBOX */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,20,15,0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  #lightbox.open { display: flex; }
+  #lb-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 3px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  #lb-caption {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  #lb-prev, #lb-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+  #lb-prev { left: 1rem; }
+  #lb-next { right: 1rem; }
+  #lb-prev:hover, #lb-next:hover { background: rgba(255,255,255,0.2); }
+  #lb-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  #lb-close:hover { background: rgba(255,255,255,0.2); }
+  @media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
   #attivita { background: var(--forest); }
   #attivita .section-label { color: var(--sage); }
   #attivita .section-label::after { background: var(--sage); }
@@ -961,6 +1064,7 @@
   <span class="nav-logo">Il Bearč</span>
   <ul class="nav-links">
     <li><a href="#about">La Casa</a></li>
+    <li><a href="#galleria">Foto</a></li>
     <li><a href="#servizi">Servizi</a></li>
     <li><a href="#attivita">Attività</a></li>
     <li><a href="#recensioni">Recensioni</a></li>
@@ -982,7 +1086,8 @@
         <p>Passeggiate tra antichi boschi di faggio e abete, incorniciati dalle cime suggestive delle Alpi Carniche, trekking, mountain bike, sci. Il Bearč è il punto di partenza perfetto per vivere la montagna autentica.</p>
         <div class="stats-row">
           <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Camere da letto</span></div>
-          <div class="stat"><span class="stat-num">6</span><span class="stat-lbl">Persone max</span></div>
+          <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Persone max</span></div>
+          <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">Bagno</span></div>
           <div class="stat"><span class="stat-num">716m</span><span class="stat-lbl">Altitudine</span></div>
           <div class="stat"><span class="stat-num">30km</span><span class="stat-lbl">Dallo Zoncolan</span></div>
         </div>
@@ -993,6 +1098,61 @@
     </div>
   </div>
 </section>
+
+<!-- GALLERIA -->
+<section id="galleria" style="background: var(--snow); padding: 6rem 2rem;">
+  <div class="container">
+    <p class="section-label">La casa e i dintorni</p>
+    <h2 class="section-title">Galleria fotografica</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="https://i.ibb.co/kV93F1P7/Vista-dall-esterno.jpg" alt="Vista esterna della casa">
+        <div class="gallery-overlay"><span>Vista esterna</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="https://i.ibb.co/FL9xxzKh/Feltrone-inverno-2010-009.jpg" alt="La casa in inverno con la neve">
+        <div class="gallery-overlay"><span>Inverno</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="https://i.ibb.co/99pFHmFq/Feltrone-inverno-2010-012.jpg" alt="Feltrone sotto la neve">
+        <div class="gallery-overlay"><span>Feltrone in inverno</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="https://i.ibb.co/sptwYg4x/319176038.jpg" alt="Vista del borgo di Feltrone">
+        <div class="gallery-overlay"><span>Il borgo</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="https://i.ibb.co/TBmddqR8/Soggiorno.jpg" alt="Soggiorno con stufa">
+        <div class="gallery-overlay"><span>Soggiorno</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="https://i.ibb.co/zWwBV6Xs/Cucina.jpg" alt="Cucina attrezzata">
+        <div class="gallery-overlay"><span>Cucina</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="https://i.ibb.co/BVNVdQL2/Camera.jpg" alt="Camera da letto">
+        <div class="gallery-overlay"><span>Camera</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="https://i.ibb.co/x8hp7DpT/Camera-matrimoniale.jpg" alt="Camera matrimoniale">
+        <div class="gallery-overlay"><span>Camera matrimoniale</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(8)">
+        <img src="https://i.ibb.co/Kcn3WhDB/Bagno.jpg" alt="Bagno">
+        <div class="gallery-overlay"><span>Bagno</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lb-prev" onclick="event.stopPropagation(); lbMove(-1)">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <span id="lb-caption"></span>
+  <button id="lb-next" onclick="event.stopPropagation(); lbMove(1)">&#8250;</button>
+  <button id="lb-close" onclick="closeLightbox()">&#10005;</button>
+</div>
 
 <!-- SERVIZI -->
 <section id="servizi">
@@ -1275,7 +1435,7 @@
           <div class="form-group">
             <label>Adulti</label>
             <select id="adults">
-              <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+              <option>1</option><option selected>2</option><option>3</option><option>4</option>
             </select>
           </div>
           <div class="form-group">
@@ -1442,10 +1602,10 @@
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
-  <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="#">dario.rovedo@gmail.com</a></p>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="#"><span class="__cf_email__" data-cfemail="472326352e286935283122232807202a262e2b6924282a">[email&#160;protected]</span></a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Set min date for check-in/checkout
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('checkin').min = today;
@@ -1681,6 +1841,44 @@ document.body.removeChild(a);
 
   initCalendar();
 
+  // ===== LIGHTBOX =====
+  const lbPhotos = [
+    { src: 'https://i.ibb.co/kV93F1P7/Vista-dall-esterno.jpg', caption: 'Vista esterna' },
+    { src: 'https://i.ibb.co/FL9xxzKh/Feltrone-inverno-2010-009.jpg', caption: 'Inverno' },
+    { src: 'https://i.ibb.co/99pFHmFq/Feltrone-inverno-2010-012.jpg', caption: 'Feltrone in inverno' },
+    { src: 'https://i.ibb.co/sptwYg4x/319176038.jpg', caption: 'Il borgo' },
+    { src: 'https://i.ibb.co/TBmddqR8/Soggiorno.jpg', caption: 'Soggiorno' },
+    { src: 'https://i.ibb.co/zWwBV6Xs/Cucina.jpg', caption: 'Cucina' },
+    { src: 'https://i.ibb.co/BVNVdQL2/Camera.jpg', caption: 'Camera' },
+    { src: 'https://i.ibb.co/x8hp7DpT/Camera-matrimoniale.jpg', caption: 'Camera matrimoniale' },
+    { src: 'https://i.ibb.co/Kcn3WhDB/Bagno.jpg', caption: 'Bagno' },
+  ];
+  let lbIndex = 0;
+
+  function openLightbox(i) {
+    lbIndex = i;
+    document.getElementById('lb-img').src = lbPhotos[i].src;
+    document.getElementById('lb-caption').textContent = lbPhotos[i].caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbMove(dir) {
+    lbIndex = (lbIndex + dir + lbPhotos.length) % lbPhotos.length;
+    document.getElementById('lb-img').src = lbPhotos[lbIndex].src;
+    document.getElementById('lb-caption').textContent = lbPhotos[lbIndex].caption;
+  }
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') lbMove(-1);
+    if (e.key === 'ArrowRight') lbMove(1);
+    if (e.key === 'Escape') closeLightbox();
+  });
+  // ===== FINE LIGHTBOX =====
+
   // Anti-spam: l'email viene composta via JS, mai visibile in chiaro nell'HTML
   (function() {
     const u = 'dario.rovedo';
@@ -1696,11 +1894,4 @@ document.body.removeChild(a);
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
-</body>
-</html>
+ 
