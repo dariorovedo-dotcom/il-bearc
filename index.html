@@ -49,6 +49,7 @@
     "https://static.wixstatic.com/media/c2ed84_08d17c59119f429fad931b0ed099044e~mv2.jpg"
   ],
   "numberOfRooms": 2,
+  "floorSize": { "@type": "QuantitativeValue", "value": 70, "unitCode": "MTK" },
   "occupancy": {
     "@type": "QuantitativeValue",
     "maxValue": 4
@@ -1088,6 +1089,7 @@
           <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Camere da letto</span></div>
           <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Persone max</span></div>
           <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">Bagno</span></div>
+          <div class="stat"><span class="stat-num">70m²</span><span class="stat-lbl">Superficie</span></div>
           <div class="stat"><span class="stat-num">716m</span><span class="stat-lbl">Altitudine</span></div>
           <div class="stat"><span class="stat-num">30km</span><span class="stat-lbl">Dallo Zoncolan</span></div>
         </div>
@@ -1173,7 +1175,12 @@
       <div class="service-card">
         <div class="service-icon">🌿</div>
         <h3>Giardino e terrazze</h3>
-        <p>Giardino recintato, due terrazze e parcheggio pubblico gratuito nelle immediate vicinanze. Spazio all'aria aperta per tutta la famiglia.</p>
+        <p>Ampio giardino recintato e due terrazze con vista sulle Alpi Carniche. Spazio all'aria aperta ideale per tutta la famiglia.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🅿️</div>
+        <h3>Parcheggio gratuito</h3>
+        <p>Parcheggio pubblico gratuito nelle immediate vicinanze della casa. Scoperto, sempre disponibile, senza prenotazione.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">❄️</div>
@@ -1602,10 +1609,10 @@
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile — Feltrone, Socchieve (UD) 33020<br>
-  <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="#">dario.rovedo@gmail.com</a></p>
+  <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="#"><span class="__cf_email__" data-cfemail="c5a1a4b7acaaebb7aab3a0a1aa85a2a8a4aca9eba6aaa8">[email&#160;protected]</span></a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Set min date for check-in/checkout
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('checkin').min = today;
@@ -1889,12 +1896,5 @@ document.body.removeChild(a);
     const elText = document.getElementById('email-text');
     const elF = document.getElementById('email-link-footer');
     if (el) el.href = mailto;
-    if (elText) elText.textContent = email;
-    if (elF) elF.href = mailto;
-  })();
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
- 
+    if
  
