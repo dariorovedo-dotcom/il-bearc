@@ -1955,6 +1955,7 @@
     if (el) el.href = mailto;
     if (elText) elText.textContent = email;
     if (elF) elF.href = mailto;
+	if (elF) elF.textContent = email;  
   })();
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
