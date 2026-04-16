@@ -904,15 +904,93 @@
     50% { opacity: 0.15; }
   }
 
+  /* NAV HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--forest);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .about-grid, .booking-layout, .location-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
     .activities-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    nav { flex-direction: column; gap: 1rem; }
-    .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
     .about-img::before { display: none; }
+    .calendar-wrapper { grid-template-columns: 1fr !important; }
+
+    section { padding: 3.5rem 1.2rem; }
+
+    nav {
+      flex-wrap: wrap;
+      padding: 0.8rem 1.2rem;
+      position: relative;
+    }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem 0 0.8rem;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-top: 1px solid rgba(61,107,79,0.08); }
+    .nav-links a {
+      display: block;
+      padding: 0.7rem 0.2rem;
+      font-size: 0.85rem;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .stat { text-align: center; }
+
+    .hero { padding: 1.5rem; }
+    .hero-sub { font-size: 0.82rem; letter-spacing: 0.08em; }
+
+    .section-title { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+
+    .booking-layout { gap: 2rem; }
+    .about-grid { gap: 2rem; }
+    .location-grid { gap: 2rem; }
+
+    .services-grid { gap: 1rem; }
+    .activities-grid { gap: 1rem; }
+
+    .booking-form { padding: 1.5rem; }
+    .calendar-wrapper { gap: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 2.5rem 1rem; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .stat-num { font-size: 1.5rem; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; }
+    .platform-links { flex-direction: column; }
+    .platform-link { justify-content: center; }
+    footer { padding: 2rem 1rem; }
+    .score-big { font-size: 2.8rem; }
   }
   .no-pets-alert {
   margin-top: 1.2rem;
@@ -1072,7 +1150,10 @@
 <!-- NAV -->
 <nav>
   <span class="nav-logo">Il Bearč</span>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">La Casa</a></li>
     <li><a href="#galleria">Foto</a></li>
     <li><a href="#servizi">Servizi</a></li>
@@ -1262,10 +1343,6 @@
         <div>
           <h3>Foresta di Ampezzo — Bosco Flobia e Bosco della Stua</h3>
           <p>A circa 18 km da Feltrone, nella parte alta della Val Lumiei verso il Passo Pura, si estende una delle foreste più belle della Carnia. Faggi, abeti rossi e bianchi lasciano spazio in quota ai larici e ai pini mughi. Il sentiero didattico del Bosco Flobia — 3,5 km con partenza dal Rifugio Tita Piaz, dislivello 130 m, circa 2 ore — attraversa un bosco famoso per il suo legname di risonanza, usato per costruire violini e strumenti musicali a corda. Fauna: caprioli, camosci, gallo forcello e aquile reali.</p>
-        </div>
-      </div>
-
-      <div class="activity-card">
           <p>Immersione nella natura tra paesaggi incontaminati, flora alpina e biodiversità. Ottimo per passeggiate lente e fotografia naturalistica.</p>
         </div>
       </div>
@@ -1597,8 +1674,8 @@
 <style>
   .widget-stack {
     position: fixed;
-    bottom: 11rem;
-    right: 4rem;
+    bottom: 5.5rem;
+    right: 1.5rem;
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -1699,6 +1776,21 @@
     document.getElementById('fab-guida-label').textContent = guidaOpen ? '✕ Chiudi guida' : '🏔️ Guida della zona';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && guidaOpen) toggleGuida(); });
+
+  // Hamburger nav
+  function toggleNav() {
+    const btn = document.getElementById('nav-hamburger');
+    const links = document.getElementById('nav-links');
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  }
+  // Close nav when a link is clicked on mobile
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('nav-hamburger').classList.remove('open');
+      document.getElementById('nav-links').classList.remove('open');
+    });
+  });
 </script>
 
 <!--Start of Tawk.to Script-->
@@ -1706,7 +1798,6 @@
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-Tawk_API.customStyle = { visibility: { desktop: { xOffset: '100', yOffset: '20', position: 'br' } } };	
 s1.async=true;
 s1.src='https://embed.tawk.to/69df3997eecbbf1c3360f4c6/1jm7vhu47';
 s1.charset='UTF-8';
@@ -2018,6 +2109,8 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 </body>
 </html>
+
+
 
 
 
