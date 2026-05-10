@@ -1125,6 +1125,122 @@
   text-decoration: underline;
   color: var(--forest);
 }
+
+/* ====================================================
+   WIDGET CHATBOT — Guida della zona
+   ==================================================== */
+.widget-stack {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  pointer-events: none;
+}
+
+.widget-stack > * {
+  pointer-events: auto;
+}
+
+.fab-guida {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.3rem;
+  background: var(--forest);
+  color: var(--cream);
+  border: none;
+  border-radius: 999px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(30, 58, 47, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.fab-guida:hover {
+  transform: translateY(-2px);
+  background: #2a4d3e;
+  box-shadow: 0 10px 25px rgba(30, 58, 47, 0.45);
+}
+
+.fab-guida:active {
+  transform: translateY(0);
+}
+
+.fab-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #7aaa8a;
+  border-radius: 50%;
+  animation: fabPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(122, 170, 138, 0.7);
+}
+
+@keyframes fabPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(122, 170, 138, 0.7); }
+  50%      { box-shadow: 0 0 0 8px rgba(122, 170, 138, 0); }
+}
+
+.guida-panel {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  width: 380px;
+  height: 560px;
+  max-width: calc(100vw - 3rem);
+  max-height: calc(100vh - 8rem);
+  background: var(--cream);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 9997;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.guida-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.guida-panel iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Mobile: pannello a tutto schermo */
+@media (max-width: 600px) {
+  .widget-stack {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .fab-guida {
+    padding: 0.75rem 1.1rem;
+    font-size: 0.88rem;
+  }
+  .guida-panel {
+    bottom: 5rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    height: calc(100vh - 7rem);
+  }
+}
+
+/* Tawk.to è in basso-destra: lasciamogli spazio.
+   Tawk.to ha già xOffset 100, quindi siamo in posizione compatibile. */
 </style>
 <script type="application/ld+json">
 {
@@ -1757,10 +1873,11 @@
     <div class="location-grid">
       <div class="map-placeholder">
   <div class="map-wrapper">
-    <iframe src="https://www.google.com/maps/embed?pb=..."
+    <iframe src="https://maps.google.com/maps?q=46.40265,12.82263&hl=it&z=14&output=embed"
       height="360" style="border:0; width:100%;"
       allowfullscreen loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mappa - Casa Vacanze Il Bearč a Feltrone, Socchieve">
     </iframe>
     <p class="map-link">
       <a href="https://maps.app.goo.gl/yVgmEp5hS2dSB3Aa8"
@@ -2261,6 +2378,29 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
