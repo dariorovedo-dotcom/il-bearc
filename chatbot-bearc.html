@@ -25,28 +25,32 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  /* MODIFICA: html e body occupano tutto lo spazio disponibile (iframe o schermo) */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
   body {
     font-family: 'Jost', sans-serif;
     background: var(--snow);
     color: var(--forest);
-    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    padding: 1rem;
   }
 
   /* ── CHAT WRAPPER ─────────────────────────── */
+  /* MODIFICA: il wrapper si adatta all'altezza del contenitore (iframe) */
   .chat-wrapper {
     width: 100%;
     max-width: 430px;
     display: flex;
     flex-direction: column;
-    height: 90vh;
-    max-height: 760px;
+    height: 100%;
     background: var(--snow);
-    border-radius: 20px;
-    box-shadow: 0 8px 40px var(--shadow), 0 0 0 1px rgba(30,58,47,0.07);
     overflow: hidden;
   }
 
@@ -106,6 +110,7 @@
   .chat-messages {
     flex: 1;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 1.4rem 1.1rem 0.5rem;
     display: flex;
     flex-direction: column;
@@ -270,7 +275,14 @@
     flex-shrink: 0;
     border-top: 1px solid rgba(30,58,47,0.07);
     background: var(--snow);
+    max-height: 50%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
+
+  .chat-buttons::-webkit-scrollbar { width: 4px; }
+  .chat-buttons::-webkit-scrollbar-track { background: transparent; }
+  .chat-buttons::-webkit-scrollbar-thumb { background: var(--warm); border-radius: 4px; }
 
   .chat-buttons-label {
     font-size: 0.72rem;
@@ -296,6 +308,7 @@
     align-items: center;
     gap: 0.6rem;
     box-shadow: 0 1px 4px var(--shadow);
+    flex-shrink: 0;
   }
 
   .quick-btn:hover {
@@ -330,6 +343,7 @@
     text-underline-offset: 3px;
     margin-top: 0.1rem;
     text-align: center;
+    flex-shrink: 0;
   }
 
   .home-btn:hover { color: var(--accent); }
@@ -345,9 +359,10 @@
   }
 
   /* ── RESPONSIVE ──────────────────────────── */
+  /* MODIFICA: rimosse altezze fisse, ora si adatta all'iframe */
   @media (max-width: 480px) {
-    body { padding: 0; align-items: flex-end; }
-    .chat-wrapper { max-height: 100vh; height: 100vh; border-radius: 0; }
+    body { padding: 0; }
+    .chat-wrapper { border-radius: 0; }
   }
 </style>
 </head>
@@ -972,3 +987,4 @@ init();
 </script>
 </body>
 </html>
+
