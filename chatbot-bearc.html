@@ -460,7 +460,29 @@ const RESPONSES = {
   home: {
     label: null,
     message: `Ciao 👋 Benvenuto all'<b>Assistente del Bearč</b>!<br>Clicca su una domanda oppure <b>scrivi liberamente</b> qui sotto.`,
-    buttons: ['mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
+    buttons: ['disponibilita', 'mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
+  },
+
+  disponibilita: {
+    label: '📅 Verifica disponibilità e prenota',
+    message: `<span class="section-title">📅 Verifica disponibilità</span>
+
+<div class="place-card">
+  <strong>🗓️ Calendario in tempo reale</strong>
+  <small>Sul sito del Bearč trovi il calendario aggiornato con le date libere (verdi) e occupate (rosse). La disponibilità è sincronizzata via <b>Avaibook</b> in tempo reale — nessun rischio di overbooking.</small>
+</div>
+
+<div class="place-card">
+  <strong>👉 Come prenotare</strong>
+  <small>1. Clicca sul giorno di <b>arrivo</b><br>2. Clicca sul giorno di <b>partenza</b> (min. 3 notti)<br>3. Premi <b>"Verifica disponibilità"</b><br>4. Sarai reindirizzato su Avaibook per completare la prenotazione in sicurezza</small>
+</div>
+
+<div style="text-align:center; margin:1rem 0;">
+  <a href="#disponibilita" onclick="goToCalendar(); return false;" style="display:inline-block; background:var(--forest); color:white; padding:0.8rem 1.4rem; border-radius:10px; text-decoration:none; font-weight:500; box-shadow:0 3px 10px var(--shadow);">📅 Vai al calendario</a>
+</div>
+
+<small style="color:var(--stone)">In alternativa puoi contattare Dario direttamente al <a href="tel:+393299451083"><b>329 945 1083</b></a> per organizzare il soggiorno.</small>`,
+    buttons: ['home']
   },
 
   mangiare: {
@@ -834,6 +856,7 @@ La raccolta differenziata <b>è presente</b> al Bearč. Trovi le istruzioni dett
 
 const BUTTON_CONFIG = {
   home:                 { label: '↩ Torna al menu principale', icon: '' },
+  disponibilita:        { label: 'Verifica disponibilità', icon: '📅' },
   mangiare:             { label: 'Dove si può mangiare', icon: '🍽️' },
   faq:                  { label: 'Domande frequenti', icon: '💡' },
   farmacie:             { label: 'Farmacie e supermercati', icon: '💊' },
@@ -916,6 +939,32 @@ async function fetchMeteo() {
 </div>
 <b>Prossimi 4 giorni</b>${forecastRows}
 <small style="color:var(--stone);font-size:0.72rem">Fonte: Open-Meteo · aggiornato in tempo reale</small>`;
+}
+
+// ─── NAVIGAZIONE PAGINA PADRE (se il chatbot è in un iframe) ──────────────────
+// Permette al chatbot di portare il sito principale a una specifica sezione,
+// uscendo dall'iframe se necessario.
+function goToCalendar() {
+  try {
+    // Se siamo dentro un iframe, comunichiamo al sito padre di scorrere
+    if (window.parent && window.parent !== window) {
+      // Tenta scroll diretto della pagina padre
+      window.parent.location.hash = '#disponibilita';
+      // Prova anche a chiudere il widget chatbot se la pagina padre espone
+      // una funzione globale per farlo (opzionale, fallisce silenziosamente)
+      try {
+        if (typeof window.parent.closeChatbot === 'function') {
+          window.parent.closeChatbot();
+        }
+      } catch (e) { /* cross-origin: ignora */ }
+    } else {
+      // Non siamo in iframe: scroll diretto
+      window.location.hash = '#disponibilita';
+    }
+  } catch (e) {
+    // Se per qualche motivo non funziona, apri il sito in una nuova scheda
+    window.open('https://www.ilbearc.com/#disponibilita', '_blank');
+  }
 }
 
 // ─── ENGINE ───────────────────────────────────────────────────────────────────
@@ -1053,6 +1102,25 @@ async function handleClick(key) {
 // direttamente quel bottone invece di sprecare una chiamata GPT.
 
 const INTENT_KEYWORDS = {
+  disponibilita: [
+    // IT
+    'disponibilita', 'disponibilità', 'disponibile', 'libero', 'libera', 'liberi',
+    'calendario', 'date libere', 'date', 'prenotare', 'prenotazione', 'prenotazioni',
+    'prenoto', 'voglio prenotare', 'quando', 'periodo', 'soggiorno',
+    'agosto', 'luglio', 'giugno', 'settembre', 'ottobre', 'novembre', 'dicembre',
+    'gennaio', 'febbraio', 'marzo', 'aprile', 'maggio',
+    // EN
+    'availability', 'available', 'calendar', 'book', 'booking', 'reservation',
+    'dates', 'when', 'free dates', 'i want to book',
+    // DE
+    'verfugbarkeit', 'verfügbarkeit', 'verfugbar', 'verfügbar', 'kalender',
+    'buchen', 'reservierung', 'termine', 'wann',
+    // FR
+    'disponibilite', 'disponibilité', 'disponible', 'calendrier', 'reserver',
+    'reservation', 'reserver', 'reservation', 'dates libres',
+    // ES
+    'disponibilidad', 'disponible', 'calendario', 'reservar', 'reserva', 'fechas'
+  ],
   meteo: [
     // IT
     'meteo', 'tempo', 'previsioni', 'piover', 'piove', 'pioggia', 'sole', 'nuvol',
@@ -1284,5 +1352,6 @@ init();
 </script>
 </body>
 </html>
+
 
 
