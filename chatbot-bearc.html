@@ -1048,6 +1048,128 @@ async function handleClick(key) {
   }, key === 'home' ? 300 : 800);
 }
 
+// ─── INTENT DETECTION (intercetta parole-chiave PRIMA di GPT) ─────────────────
+// Se l'utente scrive una parola che corrisponde a un bottone, attiviamo
+// direttamente quel bottone invece di sprecare una chiamata GPT.
+
+const INTENT_KEYWORDS = {
+  meteo: [
+    // IT
+    'meteo', 'tempo', 'previsioni', 'piover', 'piove', 'pioggia', 'sole', 'nuvol',
+    'temperatura', 'gradi', 'caldo', 'freddo', 'neve', 'nev',
+    // EN
+    'weather', 'forecast', 'rain', 'sunny', 'snow', 'temperature', 'cold', 'hot',
+    // DE
+    'wetter', 'vorhersage', 'regen', 'sonne', 'schnee', 'kalt', 'warm',
+    // FR
+    'meteo', 'temps', 'pluie', 'soleil', 'neige', 'froid', 'chaud',
+    // ES
+    'tiempo', 'lluvia', 'sol', 'nieve', 'frio', 'calor'
+  ],
+  mangiare: [
+    // IT
+    'mangiare', 'ristorante', 'ristoranti', 'osteria', 'osterie', 'trattoria',
+    'pizzeria', 'pizza', 'cena', 'pranzo', 'colazione', 'cibo', 'cibarsi',
+    'cjarsons', 'frico', 'piatti', 'dove si mangia', 'agriturismo',
+    // EN
+    'eat', 'food', 'restaurant', 'dinner', 'lunch', 'breakfast', 'where to eat',
+    // DE
+    'essen', 'restaurant', 'abendessen', 'mittagessen', 'frühstück', 'wo essen',
+    // FR
+    'manger', 'restaurant', 'diner', 'dejeuner', 'petit dejeuner', 'ou manger',
+    // ES
+    'comer', 'restaurante', 'cena', 'almuerzo', 'desayuno', 'donde comer'
+  ],
+  farmacie: [
+    'farmacia', 'farmacie', 'medicine', 'medicina', 'medicinali', 'medico',
+    'supermercato', 'supermercati', 'spesa', 'fare la spesa',
+    'pharmacy', 'medicine', 'drugstore', 'supermarket', 'shopping',
+    'apotheke', 'medikament', 'supermarkt', 'einkauf',
+    'pharmacie', 'medicament', 'supermarche',
+    'farmacia', 'medicamento', 'supermercado'
+  ],
+  carnia: [
+    'carnia', 'cosa vedere', 'attrazioni', 'visitare', 'visita', 'turismo',
+    'gita', 'escursione', 'cosa fare',
+    'sightseeing', 'attractions', 'things to do', 'tourism', 'visit',
+    'sehenswürdigkeiten', 'ausflug', 'besichtigen',
+    'visiter', 'attractions', 'que faire',
+    'visitar', 'que ver', 'turismo'
+  ],
+  emergenze: [
+    // IT
+    'emergenza', 'emergenze', 'aiuto', 'soccorso', 'pronto soccorso', 'ospedale',
+    'polizia', 'carabinieri', 'ambulanza', 'pompieri', 'vigili del fuoco',
+    'incidente', 'malore', '112', '113', '115', '118',
+    // EN
+    'emergency', 'help', 'police', 'ambulance', 'hospital', 'fire brigade', 'accident',
+    // DE
+    'notfall', 'hilfe', 'polizei', 'krankenwagen', 'krankenhaus', 'feuerwehr', 'unfall',
+    // FR
+    'urgence', 'aide', 'police', 'ambulance', 'hopital', 'pompiers', 'accident',
+    // ES
+    'emergencia', 'ayuda', 'policia', 'ambulancia', 'hospital', 'bomberos', 'accidente'
+  ],
+  benzinai: [
+    'benzina', 'benzinaio', 'benzinai', 'distributore', 'distributori', 'carburante',
+    'gasolio', 'diesel', 'pieno', 'fare il pieno', 'rifornimento',
+    'gas station', 'fuel', 'petrol', 'gasoline',
+    'tankstelle', 'benzin', 'tanken',
+    'station service', 'essence', 'carburant',
+    'gasolinera', 'combustible', 'gasolina'
+  ],
+  piove: [
+    'cosa fare se piove', 'piove cosa fare', 'museo', 'musei', 'terme', 'spa',
+    'what to do if it rains', 'rainy day', 'museum', 'thermal',
+    'museum', 'thermalbad',
+    'musee', 'thermes',
+    'museo', 'termas'
+  ],
+  rifiuti: [
+    'rifiuti', 'spazzatura', 'raccolta differenziata', 'differenziata', 'immondizia',
+    'pattumiera', 'cestino', 'plastica', 'vetro', 'umido', 'carta',
+    'garbage', 'trash', 'recycling', 'waste',
+    'müll', 'abfall', 'recycling',
+    'dechets', 'poubelle', 'recyclage',
+    'basura', 'reciclaje', 'residuos'
+  ],
+  lago: [
+    'lago', 'laghi', 'bagno', 'fare il bagno', 'nuotare', 'nuoto', 'spiaggia',
+    'cavazzo', 'tre comuni',
+    'lake', 'swim', 'swimming', 'beach', 'bathe',
+    'see', 'schwimmen', 'baden', 'strand',
+    'lac', 'nager', 'baignade', 'plage',
+    'lago', 'nadar', 'playa', 'banarse'
+  ],
+  faq: [
+    'check-in', 'checkin', 'check in', 'check-out', 'checkout', 'check out',
+    'orario', 'orari', 'arrivo', 'partenza', 'chiavi', 'pagamento',
+    'animali', 'cane', 'gatto', 'pet', 'soggiorno minimo', 'minimo notti',
+    'arrival', 'departure', 'keys', 'payment', 'pets', 'dog', 'cat', 'minimum stay',
+    'ankunft', 'abreise', 'schlüssel', 'zahlung', 'haustiere', 'hund', 'katze',
+    'arrivee', 'depart', 'cles', 'paiement', 'animaux', 'chien', 'chat',
+    'llegada', 'salida', 'llaves', 'pago', 'mascotas', 'perro', 'gato'
+  ]
+};
+
+function detectIntent(text) {
+  const normalized = text.toLowerCase().trim();
+
+  // Score per ogni intent: quante parole-chiave matchano
+  const scores = {};
+  for (const [intent, keywords] of Object.entries(INTENT_KEYWORDS)) {
+    for (const kw of keywords) {
+      if (normalized.includes(kw)) {
+        scores[intent] = (scores[intent] || 0) + kw.length; // peso = lunghezza parola
+      }
+    }
+  }
+
+  // Trova l'intent con score più alto (se esiste)
+  const best = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
+  return best ? best[0] : null;
+}
+
 // ─── FREE INPUT (GPT via proxy) ───────────────────────────────────────────────
 
 async function sendFreeMessage() {
@@ -1059,6 +1181,45 @@ async function sendFreeMessage() {
   inputEl.style.height = 'auto';
   sendBtn.disabled = true;
   buttonsEl.innerHTML = '';
+
+  // 🎯 INTENT DETECTION: se l'utente ha scritto una parola-chiave,
+  // attiviamo direttamente il bottone invece di chiamare GPT
+  const intent = detectIntent(text);
+  if (intent && RESPONSES[intent]) {
+    // Piccolo delay per dare l'impressione di "elaborazione"
+    showTyping();
+    setTimeout(async () => {
+      hideTyping();
+      const data = RESPONSES[intent];
+
+      // Caso meteo (dinamico)
+      if (data.dynamic === 'meteo') {
+        showTyping();
+        try {
+          const html = await fetchMeteo();
+          hideTyping();
+          addBotBubble(html);
+        } catch (e) {
+          hideTyping();
+          addBotBubble('⚠️ Non riesco a recuperare le previsioni meteo in questo momento. Riprova tra poco!');
+        }
+      }
+      // Caso submenu (carnia)
+      else if (data.submenu) {
+        addBotBubble(data.intro);
+      }
+      // Caso messaggio statico
+      else if (data.message) {
+        addBotBubble(data.message);
+      }
+
+      renderButtons(data.buttons);
+      sendBtn.disabled = false;
+    }, 600);
+    return;
+  }
+
+  // Nessuna parola-chiave riconosciuta: chiama GPT
   showTyping();
 
   try {
