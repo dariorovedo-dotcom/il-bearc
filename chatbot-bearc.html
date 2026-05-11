@@ -460,7 +460,7 @@ const RESPONSES = {
   home: {
     label: null,
     message: `Ciao 👋 Benvenuto all'<b>Assistente del Bearč</b>!<br>Clicca su una domanda oppure <b>scrivi liberamente</b> qui sotto.`,
-    buttons: ['disponibilita', 'mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
+    buttons: ['disponibilita', 'prezzi', 'mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
   },
 
   disponibilita: {
@@ -482,6 +482,42 @@ const RESPONSES = {
 </div>
 
 <small style="color:var(--stone)">In alternativa puoi contattare Dario direttamente al <a href="tel:+393299451083"><b>329 945 1083</b></a> per organizzare il soggiorno.</small>`,
+    buttons: ['home']
+  },
+
+  prezzi: {
+    label: '💰 Tariffe indicative',
+    message: `<span class="section-title">💰 Tariffe indicative del Bearč</span>
+
+Casa intera, fino a 4 ospiti. <b>Soggiorno minimo: 3 notti</b>. Tutto incluso (pulizie, biancheria, Wi-Fi).
+
+<div class="place-card">
+  <strong>🌸 Bassa stagione · 95€/notte</strong>
+  <small>Aprile, Maggio, Giugno, Settembre, Ottobre</small>
+</div>
+
+<div class="place-card">
+  <strong>☀️ Alta stagione estiva · 100€/notte</strong>
+  <small>Luglio, Agosto</small>
+</div>
+
+<div class="place-card">
+  <strong>🍂 Inizio stagione invernale · 105€/notte</strong>
+  <small>Novembre</small>
+</div>
+
+<div class="place-card">
+  <strong>❄️ Alta stagione invernale · 110€/notte</strong>
+  <small>Dicembre, Gennaio, Febbraio, Marzo</small>
+</div>
+
+<small style="color:var(--stone)">ℹ️ <b>Prezzi indicativi.</b> Il prezzo esatto per il tuo periodo viene calcolato in tempo reale dal calendario, sincronizzato con Avaibook.</small>
+
+<div style="text-align:center; margin:1rem 0;">
+  <a href="#disponibilita" onclick="goToCalendar(); return false;" style="display:inline-block; background:var(--forest); color:white; padding:0.8rem 1.4rem; border-radius:10px; text-decoration:none; font-weight:500; box-shadow:0 3px 10px var(--shadow);">📅 Vai al calendario e calcola il prezzo</a>
+</div>
+
+<small style="color:var(--stone)">Per offerte speciali o soggiorni particolari, contatta Dario al <a href="tel:+393299451083"><b>329 945 1083</b></a>.</small>`,
     buttons: ['home']
   },
 
@@ -857,6 +893,7 @@ La raccolta differenziata <b>è presente</b> al Bearč. Trovi le istruzioni dett
 const BUTTON_CONFIG = {
   home:                 { label: '↩ Torna al menu principale', icon: '' },
   disponibilita:        { label: 'Verifica disponibilità', icon: '📅' },
+  prezzi:               { label: 'Tariffe indicative', icon: '💰' },
   mangiare:             { label: 'Dove si può mangiare', icon: '🍽️' },
   faq:                  { label: 'Domande frequenti', icon: '💡' },
   farmacie:             { label: 'Farmacie e supermercati', icon: '💊' },
@@ -1121,6 +1158,23 @@ const INTENT_KEYWORDS = {
     // ES
     'disponibilidad', 'disponible', 'calendario', 'reservar', 'reserva', 'fechas'
   ],
+  prezzi: [
+    // IT
+    'prezzo', 'prezzi', 'costo', 'costi', 'costa', 'costano', 'quanto',
+    'tariffa', 'tariffe', 'listino', 'quanto costa', 'quanto viene',
+    'spesa', 'budget', 'euro', '€', 'preventivo',
+    // EN
+    'price', 'prices', 'cost', 'costs', 'rate', 'rates', 'how much',
+    'how much does', 'fee', 'tariff', 'pricing', 'quote',
+    // DE
+    'preis', 'preise', 'kosten', 'kostet', 'wie viel', 'wieviel',
+    'tarif', 'gebühr', 'gebuhr',
+    // FR
+    'prix', 'tarif', 'tarifs', 'cout', 'coût', 'coute', 'coûte',
+    'combien', 'combien coute',
+    // ES
+    'precio', 'precios', 'cuesta', 'cuanto', 'cuánto', 'tarifa', 'tarifas'
+  ],
   meteo: [
     // IT
     'meteo', 'tempo', 'previsioni', 'piover', 'piove', 'pioggia', 'sole', 'nuvol',
@@ -1352,6 +1406,7 @@ init();
 </script>
 </body>
 </html>
+
 
 
 
