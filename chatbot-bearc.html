@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e3a2f">
 <title>Assistente — Il Bearč</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +26,6 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* MODIFICA: html e body occupano tutto lo spazio disponibile (iframe o schermo) */
   html, body {
     height: 100%;
     margin: 0;
@@ -43,7 +43,6 @@
   }
 
   /* ── CHAT WRAPPER ─────────────────────────── */
-  /* MODIFICA: il wrapper si adatta all'altezza del contenitore (iframe) */
   .chat-wrapper {
     width: 100%;
     max-width: 430px;
@@ -153,6 +152,7 @@
     color: var(--forest);
     max-width: calc(100% - 42px);
     box-shadow: 0 2px 8px var(--shadow);
+    word-wrap: break-word;
   }
 
   .msg-bot-bubble b {
@@ -197,6 +197,7 @@
   .msg-bot-bubble .place-card small {
     font-size: 0.76rem;
     color: var(--stone);
+    display: block;
   }
 
   .msg-bot-bubble .place-card a {
@@ -224,6 +225,7 @@
     font-size: 0.87rem;
     max-width: 75%;
     line-height: 1.4;
+    word-wrap: break-word;
   }
 
   @keyframes slideIn {
@@ -268,14 +270,14 @@
 
   /* ── QUICK REPLIES / BUTTONS ─────────────── */
   .chat-buttons {
-    padding: 0.8rem 1.1rem 1rem;
+    padding: 0.8rem 1.1rem 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
     flex-shrink: 0;
     border-top: 1px solid rgba(30,58,47,0.07);
     background: var(--snow);
-    max-height: 50%;
+    max-height: 40%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -318,9 +320,7 @@
     box-shadow: 0 3px 10px var(--shadow);
   }
 
-  .quick-btn:active {
-    transform: translateY(0);
-  }
+  .quick-btn:active { transform: translateY(0); }
 
   .quick-btn .btn-icon {
     font-size: 1.1rem;
@@ -348,18 +348,64 @@
 
   .home-btn:hover { color: var(--accent); }
 
-  /* ── DIVIDER ─────────────────────────────── */
-  .msg-divider {
-    text-align: center;
-    font-size: 0.7rem;
-    color: var(--stone);
-    letter-spacing: 0.08em;
-    padding: 0.2rem 0;
-    opacity: 0.7;
+  /* ── INPUT BAR (free text per GPT) ───────── */
+  .chat-input-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    padding: 0.7rem 0.9rem 0.9rem;
+    background: var(--snow);
+    border-top: 1px solid rgba(30,58,47,0.07);
+    flex-shrink: 0;
+  }
+
+  .chat-input {
+    flex: 1;
+    border: 1.5px solid rgba(30,58,47,0.15);
+    border-radius: 18px;
+    padding: 0.6rem 0.95rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    color: var(--forest);
+    background: white;
+    resize: none;
+    outline: none;
+    min-height: 40px;
+    max-height: 100px;
+    line-height: 1.4;
+    transition: border-color 0.2s ease;
+  }
+
+  .chat-input:focus { border-color: var(--moss); }
+
+  .chat-send-btn {
+    background: var(--forest);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .chat-send-btn:hover:not(:disabled) {
+    background: var(--moss);
+    transform: scale(1.05);
+  }
+
+  .chat-send-btn:disabled {
+    background: var(--stone);
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   /* ── RESPONSIVE ──────────────────────────── */
-  /* MODIFICA: rimosse altezze fisse, ora si adatta all'iframe */
   @media (max-width: 480px) {
     body { padding: 0; }
     .chat-wrapper { border-radius: 0; }
@@ -382,19 +428,38 @@
   <!-- Messages -->
   <div class="chat-messages" id="chat-messages"></div>
 
-  <!-- Buttons -->
+  <!-- Quick reply buttons -->
   <div class="chat-buttons" id="chat-buttons"></div>
+
+  <!-- Free text input (GPT) -->
+  <div class="chat-input-bar">
+    <textarea
+      id="chat-input"
+      class="chat-input"
+      placeholder="Scrivi la tua domanda..."
+      rows="1"
+      maxlength="500"
+      aria-label="Scrivi un messaggio"></textarea>
+    <button
+      id="chat-send-btn"
+      class="chat-send-btn"
+      aria-label="Invia messaggio">➤</button>
+  </div>
 
 </div>
 
 <script>
-// ─── DATI RISPOSTE ────────────────────────────────────────────────────────────
+// ─── ENDPOINT PROXY (Vercel) ──────────────────────────────────────────────────
+// La chiave OpenAI NON è qui: sta nelle env vars di Vercel, lato server.
+const PROXY_URL = '/api/chat';
+
+// ─── DATI RISPOSTE (bottoni rapidi) ───────────────────────────────────────────
 
 const RESPONSES = {
 
   home: {
     label: null,
-    message: `Ciao 👋 Benvenuto all'<b>Assistente del Bearč</b>!<br>Clicca su una domanda per ricevere subito una risposta.`,
+    message: `Ciao 👋 Benvenuto all'<b>Assistente del Bearč</b>!<br>Clicca su una domanda oppure <b>scrivi liberamente</b> qui sotto.`,
     buttons: ['mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
   },
 
@@ -499,7 +564,7 @@ Italiano e <b>Inglese</b>.`,
 <span class="section-title">🏥 Pronto Soccorso</span>
 <div class="place-card">
   <strong>Ospedale di Tolmezzo</strong>
-  <small>Via Morgagni, 18 · Tel. <a href="tel:+390433004881">0433 4881</a></small>
+  <small>Via Morgagni, 18 · Tel. <a href="tel:+3904334881">0433 4881</a></small>
 </div>`,
     buttons: ['home']
   },
@@ -673,7 +738,7 @@ La Carnia è attraversata da <b>Sette Valli</b>, ognuna con un carattere unico:
 </div>
 <div class="place-card">
   <strong>🏥 Pronto Soccorso – Ospedale di Tolmezzo</strong>
-  <small>Via Morgagni, 18 · ~20 min dal Bearč · 📞 <a href="tel:+390433004881">0433 4881</a></small>
+  <small>Via Morgagni, 18 · ~20 min dal Bearč · 📞 <a href="tel:+3904334881">0433 4881</a></small>
 </div>
 <div class="place-card">
   <strong>🚒 Vigili del Fuoco</strong>
@@ -681,7 +746,7 @@ La Carnia è attraversata da <b>Sette Valli</b>, ognuna con un carattere unico:
 </div>
 <div class="place-card">
   <strong>🚓 Carabinieri di Tolmezzo</strong>
-  <small>📞 <a href="tel:+390433002376">0433 2376</a></small>
+  <small>📞 <a href="tel:+3904332376">0433 2376</a></small>
 </div>`,
     buttons: ['home']
   },
@@ -768,24 +833,24 @@ La raccolta differenziata <b>è presente</b> al Bearč. Trovi le istruzioni dett
 // ─── BOTTONI CONFIGURAZIONE ───────────────────────────────────────────────────
 
 const BUTTON_CONFIG = {
-  home:              { label: '↩ Torna al menu principale', icon: '' },
-  mangiare:          { label: 'Dove si può mangiare', icon: '🍽️' },
-  faq:               { label: 'Domande frequenti', icon: '💡' },
-  farmacie:          { label: 'Farmacie e supermercati', icon: '💊' },
-  carnia:            { label: 'Guida della Carnia', icon: '🗺️' },
-  'carnia-natura':   { label: 'Natura e paesaggi', icon: '🌲' },
+  home:                 { label: '↩ Torna al menu principale', icon: '' },
+  mangiare:             { label: 'Dove si può mangiare', icon: '🍽️' },
+  faq:                  { label: 'Domande frequenti', icon: '💡' },
+  farmacie:             { label: 'Farmacie e supermercati', icon: '💊' },
+  carnia:               { label: 'Guida della Carnia', icon: '🗺️' },
+  'carnia-natura':      { label: 'Natura e paesaggi', icon: '🌲' },
   'carnia-gastronomia': { label: 'Gastronomia tipica', icon: '🧀' },
-  'carnia-cultura':  { label: 'Storia e cultura', icon: '🏛️' },
-  'carnia-sport':    { label: 'Sport e attività', icon: '⛷️' },
-  meteo:             { label: 'Meteo a Feltrone', icon: '⛅' },
-  emergenze:         { label: 'Emergenze e numeri utili', icon: '🚨' },
-  benzinai:          { label: 'Benzinai vicini', icon: '⛽' },
-  piove:             { label: 'Cosa fare se piove', icon: '🌧️' },
-  rifiuti:           { label: 'Raccolta differenziata', icon: '🗑️' },
-  lago:              { label: 'Dove fare il bagno', icon: '🏊' },
+  'carnia-cultura':     { label: 'Storia e cultura', icon: '🏛️' },
+  'carnia-sport':       { label: 'Sport e attività', icon: '⛷️' },
+  meteo:                { label: 'Meteo a Feltrone', icon: '⛅' },
+  emergenze:            { label: 'Emergenze e numeri utili', icon: '🚨' },
+  benzinai:             { label: 'Benzinai vicini', icon: '⛽' },
+  piove:                { label: 'Cosa fare se piove', icon: '🌧️' },
+  rifiuti:              { label: 'Raccolta differenziata', icon: '🗑️' },
+  lago:                 { label: 'Dove fare il bagno', icon: '🏊' },
 };
 
-// ─── METEO ────────────────────────────────────────────────────────────────────
+// ─── METEO (Open-Meteo, free) ─────────────────────────────────────────────────
 
 const WMO_ICONS = {
   0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️',
@@ -815,10 +880,13 @@ const MONTHS_IT = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','
 async function fetchMeteo() {
   const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.40265&longitude=12.82263&elevation=716&current=temperature_2m,apparent_temperature,weathercode,windspeed_10m,relativehumidity_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FRome&forecast_days=5&wind_speed_unit=kmh';
 
-  const res  = await fetch(url);
+  const controller = new AbortController();
+  setTimeout(() => controller.abort(), 8000);
+
+  const res = await fetch(url, { signal: controller.signal });
   const data = await res.json();
-  const c    = data.current;
-  const d    = data.daily;
+  const c = data.current;
+  const d = data.daily;
 
   const icon = WMO_ICONS[c.weathercode] || '🌡️';
   const desc = WMO_DESC[c.weathercode]  || '';
@@ -854,6 +922,8 @@ async function fetchMeteo() {
 
 const messagesEl = document.getElementById('chat-messages');
 const buttonsEl  = document.getElementById('chat-buttons');
+const inputEl    = document.getElementById('chat-input');
+const sendBtn    = document.getElementById('chat-send-btn');
 
 function scrollBottom() {
   setTimeout(() => { messagesEl.scrollTop = messagesEl.scrollHeight; }, 50);
@@ -873,7 +943,11 @@ function addBotBubble(html) {
 function addUserBubble(text) {
   const row = document.createElement('div');
   row.className = 'msg-user';
-  row.innerHTML = `<div class="msg-user-bubble">${text}</div>`;
+  // textContent per sicurezza anti-XSS sull'input dell'utente
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-user-bubble';
+  bubble.textContent = text;
+  row.appendChild(bubble);
   messagesEl.appendChild(row);
   scrollBottom();
 }
@@ -901,7 +975,6 @@ function renderButtons(keys) {
   buttonsEl.innerHTML = '';
 
   if (keys.includes('home') && keys.length === 1) {
-    // Only home button
     const btn = document.createElement('button');
     btn.className = 'home-btn';
     btn.textContent = '↩ Torna al menu principale';
@@ -975,6 +1048,69 @@ async function handleClick(key) {
   }, key === 'home' ? 300 : 800);
 }
 
+// ─── FREE INPUT (GPT via proxy) ───────────────────────────────────────────────
+
+async function sendFreeMessage() {
+  const text = inputEl.value.trim();
+  if (!text) return;
+
+  addUserBubble(text);
+  inputEl.value = '';
+  inputEl.style.height = 'auto';
+  sendBtn.disabled = true;
+  buttonsEl.innerHTML = '';
+  showTyping();
+
+  try {
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), 20000);
+
+    const res = await fetch(PROXY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text }),
+      signal: controller.signal
+    });
+
+    const data = await res.json();
+    hideTyping();
+
+    if (res.ok && data.reply) {
+      // Anti-XSS: convertiamo i \n in <br> ma rendiamo testo il resto
+      const safeReply = data.reply
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>');
+      addBotBubble(safeReply);
+    } else if (res.status === 429) {
+      addBotBubble('⚠️ ' + (data.error || 'Troppe richieste, riprova tra poco.'));
+    } else {
+      addBotBubble('⚠️ ' + (data.error || 'Mi dispiace, non riesco a rispondere ora. Contatta Dario al <a href="tel:+393299451083">329 945 1083</a>.'));
+    }
+  } catch (e) {
+    hideTyping();
+    addBotBubble('⚠️ Connessione non disponibile. Contatta Dario al <a href="tel:+393299451083">329 945 1083</a>.');
+  }
+
+  sendBtn.disabled = false;
+  renderButtons(['home']);
+}
+
+sendBtn.addEventListener('click', sendFreeMessage);
+
+inputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendFreeMessage();
+  }
+});
+
+inputEl.addEventListener('input', () => {
+  inputEl.style.height = 'auto';
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + 'px';
+});
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 
 function init() {
@@ -987,4 +1123,5 @@ init();
 </script>
 </body>
 </html>
+
 
