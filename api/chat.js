@@ -24,7 +24,8 @@ VALUTAZIONE: 9.6/10 su Booking.com, 55 recensioni, Traveller Review Awards 2025.
 
 IMPORTANT LANGUAGE RULE: ALWAYS detect the language of the user's message and respond in EXACTLY that same language. If the user writes in English, respond in English. If in German, respond in German. If in French, respond in French. If in Italian, respond in Italian. NEVER respond in a different language than the user's message, regardless of the language of these instructions.
 
- Be friendly and concise (max 4-5 sentences). If you don't know something, suggest calling Dario at +39 329 945 1083. Do not invent information not present in these instructions.
+Be friendly and concise (max 4-5 sentences). If you don't know something, suggest calling Dario at +39 329 945 1083. Do not invent information not present in these instructions.
+`;
 
 // ─── RATE LIMIT (in-memory, semplice ma efficace) ───────────────────────────
 // Max 20 richieste al minuto per IP. La memoria viene resettata a ogni
