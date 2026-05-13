@@ -78,21 +78,26 @@
       "unitCode": "MTK"
     },
     "numberOfBathroomsTotal": 1,
+    "numberOfBeds": 3,
     "amenityFeature": [
       { "@type": "LocationFeatureSpecification", "name": "Wi‑Fi gratuito", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Stufa a pellet", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Lavastoviglie", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Lavatrice", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "TV satellitare", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Giardino recintato", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Terrazza", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true }
+      { "@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Biancheria fornita", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Lettino per bambini su richiesta", "value": true }
     ]
   },
   "checkinTime": "17:00",
   "checkoutTime": "10:00",
   "petsAllowed": false,
+  "smokingAllowed": false,
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": 9.6,
@@ -538,8 +543,8 @@
   #prenotazione { background: var(--warm); }
   .booking-layout {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 4rem;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 5rem;
     align-items: start;
   }
   .booking-info h3 {
@@ -1287,6 +1292,30 @@
     },
     {
       "@type": "Question",
+      "name": "Come sono organizzate le camere da letto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La casa dispone di due camere: una con letto matrimoniale e una con due letti singoli, per ospitare comodamente fino a 4 persone. La biancheria da letto e gli asciugamani sono forniti dall'host."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cosa \u00e8 incluso nel prezzo del soggiorno?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nel prezzo a notte \u00e8 tutto compreso: biancheria da letto, asciugamani, pellet per la stufa, utenze (luce, acqua, gas, riscaldamento), Wi-Fi e pulizie finali. Non \u00e8 prevista alcuna tassa di soggiorno e non sono richieste cauzioni."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual \u00e8 la politica di cancellazione?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La cancellazione \u00e8 gratuita fino a 5 giorni prima della data di arrivo, con rimborso totale dell'importo versato. Per cancellazioni successive, contattare direttamente il proprietario."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Qual \u00e8 il soggiorno minimo?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -1303,10 +1332,58 @@
     },
     {
       "@type": "Question",
+      "name": "Com'\u00e8 riscaldata la casa in inverno?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La casa \u00e8 riscaldata da una stufa a pellet in soggiorno. Il pellet \u00e8 fornito incluso nel prezzo. In estate \u00e8 disponibile l'aria condizionata."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00c8 adatta a famiglie con bambini piccoli?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "S\u00ec, Il Bear\u010d \u00e8 adatto alle famiglie: il giardino recintato permette ai bambini di giocare in sicurezza. Su richiesta \u00e8 disponibile un lettino per neonati o bambini molto piccoli, da segnalare al momento della prenotazione."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "La casa \u00e8 accessibile a persone con disabilit\u00e0 motoria?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, la casa si sviluppa su pi\u00f9 livelli con scale interne e non \u00e8 accessibile a persone con disabilit\u00e0 motoria o ridotte capacit\u00e0 di deambulazione."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si pu\u00f2 fumare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "\u00c8 vietato fumare all'interno della casa. \u00c8 possibile fumare all'esterno, in giardino o sulle terrazze."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Sono ammessi animali domestici?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No, gli animali non sono ammessi all'interno della casa vacanze Il Bear\u010d."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come si arriva con i mezzi pubblici?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La stazione ferroviaria pi\u00f9 vicina \u00e8 Stazione Carnia, sulla linea Udine-Tarvisio. Gli aeroporti pi\u00f9 vicini sono Trieste, Venezia, Treviso e Lubiana, tutti raggiungibili con auto a noleggio. La modalit\u00e0 pi\u00f9 comoda per arrivare resta l'auto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quali servizi ci sono nei dintorni?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bar e forno si trovano a Mediis, dove c'\u00e8 anche la farmacia. Per bancomat e distributore di carburante il riferimento \u00e8 Ampezzo. I supermercati si raggiungono in auto nei paesi vicini. Il pronto soccorso pi\u00f9 vicino \u00e8 a Tolmezzo."
       }
     },
     {
@@ -1512,7 +1589,7 @@
       <div class="service-card">
         <div class="service-icon">📶</div>
         <h3>WiFi gratuito</h3>
-        <p>Connessione Wi-Fi veloce inclusa per tutto il soggiorno, così puoi restare connesso quando vuoi — o scollegarti in totale libertà.</p>
+        <p>Connessione Wi-Fi veloce inclusa per tutto il soggiorno — circa 68 Mbps in download e 20 in upload, ideale anche per smart working e streaming. O scollegati in totale libertà.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🌿</div>
@@ -1538,6 +1615,16 @@
         <div class="service-icon">📺</div>
         <h3>TV satellitare</h3>
         <p>TV a schermo piatto con canali satellitari nel soggiorno. Area salotto e zona pranzo spaziose per trascorrere piacevoli serate in casa.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔥</div>
+        <h3>Stufa a pellet</h3>
+        <p>Stufa a pellet in soggiorno per le serate fredde. Il pellet è fornito incluso nel prezzo del soggiorno: nessun pensiero, solo il calore avvolgente di una casa di montagna.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛏️</div>
+        <h3>Camere e biancheria</h3>
+        <p>Una camera con letto matrimoniale, una camera con due letti singoli. Biancheria da letto e asciugamani forniti. Lettino per bambini disponibile su richiesta.</p>
       </div>
     </div>
   </div>
@@ -1874,6 +1961,29 @@
   Procedendo con la prenotazione dichiari di aver letto e accettato questa condizione.
 </div>
 <div class="avaibook-note">
+  <span>✅</span>
+  <span>
+  <strong>Tutto incluso nel prezzo a notte:</strong> biancheria da letto, asciugamani,
+  pellet per la stufa, utenze e pulizie finali. <strong>Nessuna tassa di soggiorno</strong>,
+  nessun costo nascosto.
+  </span>
+</div>
+<div class="avaibook-note">
+  <span>🔄</span>
+  <span>
+  <strong>Cancellazione gratuita</strong> fino a 5 giorni prima della data di arrivo:
+  rimborso totale dell'importo versato.
+  </span>
+</div>
+<div class="avaibook-note">
+  <span>🚭</span>
+  <span><strong>Vietato fumare all'interno della casa.</strong> È possibile fumare in giardino o sulle terrazze.</span>
+</div>
+<div class="avaibook-note">
+  <span>♿</span>
+  <span><strong>Accessibilità:</strong> la casa si sviluppa su più livelli e <strong>non è accessibile</strong> a persone con disabilità motoria.</span>
+</div>
+<div class="avaibook-note">
   <span>⏰</span>
   <span>
   <strong>Check-in:</strong> dalle ore 17:00<br>
@@ -1910,77 +2020,19 @@
   </div>
 </div>
       <div class="location-details">
-	 <section id="faq" class="section">
-  <div class="faq-layout">
-    <!-- colonna destra: testo FAQ -->
-    <div class="faq-content">
-      <p class="eyebrow">Domande frequenti</p>
-      <h2>Domande frequenti</h2>
-      <p class="faq-intro">
-        Una raccolta delle domande più comuni su Casa Vacanze Il Bearč:
-        check‑in, soggiorno minimo, animali, pagamento e servizi in zona.
-      </p>
-
-      <!-- ELENCO DOMANDE CON LINK -->
-      <ul class="faq-list">
-        <li><a href="#faq-dove-si-trova">Dove si trova esattamente Il Bearč?</a></li>
-        <li><a href="#faq-quante-persone">Quante persone può ospitare e com’è la casa?</a></li>
-        <li><a href="#faq-soggiorno-minimo">Qual è il soggiorno minimo?</a></li>
-        <li><a href="#faq-checkin">Come funziona il check‑in e a che ora posso arrivare?</a></li>
-        <li><a href="#faq-animali">Sono ammessi animali domestici?</a></li>
-        <li><a href="#faq-prenotazione">Come avviene la prenotazione e il pagamento?</a></li>
-      </ul>
-
-      <!-- RISPOSTE ANCORATE -->
-      <div class="faq-answers">
-        <h3 id="faq-dove-si-trova">Dove si trova esattamente Il Bearč?</h3>
-        <p>
-          Casa Vacanze Il Bearč si trova a Feltrone, frazione del comune di Socchieve (Udine),
-          nel cuore della Carnia, a circa 716 metri di altitudine e pochi chilometri da Tolmezzo.
-        </p>
-
-        <h3 id="faq-quante-persone">Quante persone può ospitare e com’è la casa?</h3>
-        <p>
-          Il Bearč è una casa vacanze indipendente su più livelli con 2 camere da letto,
-          1 bagno e capienza fino a 4 ospiti. Dispone di soggiorno con TV satellitare,
-          cucina attrezzata con lavastoviglie e lavatrice e di un ampio giardino recintato
-          con vista sulle Alpi Carniche.
-        </p>
-
-        <h3 id="faq-soggiorno-minimo">Qual è il soggiorno minimo?</h3>
-        <p>
-          Il soggiorno minimo a Casa Vacanze Il Bearč è di 3 notti in tutte le stagioni.
-        </p>
-
-        <h3 id="faq-checkin">Come funziona il check‑in e a che ora posso arrivare?</h3>
-        <p>
-          Il check‑in è a partire dalle 17:00 con self check‑in tramite cassetta portachiavi,
-          così puoi arrivare in autonomia senza vincoli di orario. Il check‑out è entro le 10:00.
-        </p>
-
-        <h3 id="faq-animali">Sono ammessi animali domestici?</h3>
-        <p>
-          No, gli animali non sono ammessi all'interno della casa vacanze Il Bearč.
-        </p>
-
-        <h3 id="faq-prenotazione">Come avviene la prenotazione e il pagamento?</h3>
-        <p>
-          Puoi verificare la disponibilità e prenotare direttamente dal calendario sul sito:
-          la disponibilità è gestita in tempo reale da Avaibook, che elabora il pagamento
-          in modo sicuro. In alternativa puoi contattare direttamente il proprietario via
-          telefono o email per una richiesta di prenotazione.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+	 
         <p class="section-label">Arrivare a Il Bearč</p>
         <h2 class="section-title">Feltrone, Socchieve</h2>
         <p>Siamo nel cuore della Carnia, nel comune di Socchieve, a pochi chilometri da Tolmezzo e ben collegati con le principali stazioni sciistiche della regione.</p>
-        <p>Raggiungibile comodamente in auto dall'A23 (autostrada Udine-Tarvisio), uscita Carnia. Da Udine circa 55 km, da Vienna circa 464 km.</p>
+        <p>Raggiungibile comodamente in auto dall'A23 (autostrada Udine-Tarvisio), uscita Carnia. Da Udine circa 55 km, da Vienna circa 464 km. La stazione ferroviaria più vicina è Stazione Carnia, a circa 25 km.</p>
         <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
           <span class="location-tag">🚗 55km da Udine</span>
           <span class="location-tag">⛷️ 30km dallo Zoncolan</span>
+          <span class="location-tag">🚆 25km da Stazione Carnia</span>
+          <span class="location-tag">✈️ 100km da Trieste</span>
+          <span class="location-tag">✈️ 180km da Venezia</span>
+          <span class="location-tag">✈️ 175km da Treviso</span>
+          <span class="location-tag">✈️ 183km da Lubiana</span>
           <span class="location-tag">🇦🇹 464km da Vienna</span>
           <span class="location-tag">🏔️ 716m slm</span>
           <span class="location-tag">🌲 Alpi Carniche</span>
@@ -1990,7 +2042,264 @@
             🗺️ Apri il percorso
           </a>
         </div>
+
+        <div style="margin-top: 3rem;">
+          <p class="section-label">Servizi nelle vicinanze</p>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--forest); margin-bottom:1rem;">Tutto quello che ti serve a pochi chilometri</h3>
+          <p style="margin-bottom:1.5rem;">Feltrone è un piccolo borgo tranquillo. I servizi essenziali si raggiungono comodamente in auto nei paesi vicini:</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="location-tag">🍞 Bar e forno a Mediis</span>
+            <span class="location-tag">💊 Farmacia a Mediis</span>
+            <span class="location-tag">💳 Bancomat ad Ampezzo</span>
+            <span class="location-tag">⛽ Distributore ad Ampezzo</span>
+            <span class="location-tag">🛒 Supermercati nei paesi vicini</span>
+            <span class="location-tag">🏥 Pronto soccorso a Tolmezzo</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.2rem 1.5rem; background: var(--cream); border-radius: 8px;">
+          <p style="margin:0; font-size:0.95rem; color:var(--forest);">
+            📶 <strong>Connettività:</strong> ottima copertura del segnale mobile e Wi-Fi domestico con velocità reali misurate di <strong>~68 Mbps in download</strong> e <strong>~20 Mbps in upload</strong> — adatto anche allo smart working e alle videochiamate.
+          </p>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ - SEZIONE A LARGHEZZA PIENA -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="faq-content">
+      <p class="eyebrow">Domande frequenti</p>
+      <h2>Domande frequenti</h2>
+      <p class="faq-intro">
+        Una raccolta delle domande più comuni su Casa Vacanze Il Bearč:
+        check‑in, soggiorno minimo, animali, pagamento e servizi in zona.
+      </p>
+
+      <!-- ACCORDION FAQ (native <details>, no external JS required) -->
+      <style>
+        .faq-accordion {
+          column-count: 2;
+          column-gap: 1rem;
+          margin-top: 1.5rem;
+        }
+        .faq-accordion details {
+          background: var(--snow);
+          border: 1px solid var(--warm);
+          border-radius: 6px;
+          margin: 0 0 0.7rem;
+          overflow: hidden;
+          transition: border-color 0.25s, background 0.25s;
+          break-inside: avoid;
+          -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+          display: block;
+        }
+        @media (max-width: 768px) {
+          .faq-accordion { column-count: 1; }
+        }
+        .faq-accordion details[open] {
+          border-color: var(--accent);
+          background: var(--cream);
+        }
+        .faq-accordion summary {
+          list-style: none;
+          cursor: pointer;
+          padding: 1rem 1.2rem;
+          font-family: 'Jost', sans-serif;
+          font-weight: 500;
+          font-size: 1rem;
+          color: var(--forest);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+          transition: background 0.2s;
+        }
+        .faq-accordion summary::-webkit-details-marker { display: none; }
+        .faq-accordion summary::after {
+          content: '+';
+          font-size: 1.6rem;
+          font-weight: 300;
+          color: var(--accent);
+          line-height: 1;
+          flex-shrink: 0;
+          transition: transform 0.25s;
+        }
+        .faq-accordion details[open] summary::after {
+          content: '−';
+        }
+        .faq-accordion summary:hover {
+          background: rgba(200, 169, 110, 0.08);
+        }
+        .faq-accordion .faq-answer {
+          padding: 0 1.2rem 1.1rem;
+          color: var(--forest);
+          font-family: 'Jost', sans-serif;
+          font-weight: 300;
+          line-height: 1.7;
+          font-size: 0.95rem;
+        }
+        .faq-accordion .faq-answer strong { font-weight: 500; }
+        .faq-accordion details:target {
+          border-color: var(--accent);
+          box-shadow: 0 0 0 3px rgba(200,169,110,0.15);
+        }
+      </style>
+
+      <div class="faq-accordion">
+        <details id="faq-dove-si-trova">
+          <summary>Dove si trova esattamente Il Bearč?</summary>
+          <div class="faq-answer">
+            Casa Vacanze Il Bearč si trova a Feltrone, frazione del comune di Socchieve (Udine),
+            nel cuore della Carnia, a circa 716 metri di altitudine e pochi chilometri da Tolmezzo.
+          </div>
+        </details>
+
+        <details id="faq-quante-persone">
+          <summary>Quante persone può ospitare e com'è la casa?</summary>
+          <div class="faq-answer">
+            Il Bearč è una casa vacanze indipendente su più livelli con 2 camere da letto,
+            1 bagno e capienza fino a 4 ospiti. Dispone di soggiorno con TV satellitare,
+            cucina attrezzata con lavastoviglie e lavatrice e di un ampio giardino recintato
+            con vista sulle Alpi Carniche. In giardino sono disponibili un tavolo e quattro sedie.
+          </div>
+        </details>
+
+        <details id="faq-camere">
+          <summary>Come sono organizzate le camere da letto?</summary>
+          <div class="faq-answer">
+            La casa dispone di due camere: una con letto matrimoniale e una con due letti
+            singoli, per ospitare comodamente fino a 4 persone. La biancheria da letto e gli
+            asciugamani sono forniti dall'host e già pronti al tuo arrivo.
+          </div>
+        </details>
+
+        <details id="faq-incluso">
+          <summary>Cosa è incluso nel prezzo del soggiorno?</summary>
+          <div class="faq-answer">
+            Nel prezzo a notte è tutto compreso: biancheria da letto, asciugamani, pellet
+            per la stufa, utenze (luce, acqua, gas, riscaldamento), Wi-Fi e pulizie finali.
+            <strong>Non è prevista alcuna tassa di soggiorno</strong>, non ci sono costi nascosti
+            e nessuna cauzione da versare.
+          </div>
+        </details>
+
+        <details id="faq-cancellazione">
+          <summary>Qual è la politica di cancellazione?</summary>
+          <div class="faq-answer">
+            La cancellazione è gratuita fino a 5 giorni prima della data di arrivo: in questo
+            caso viene rimborsato l'intero importo versato. Per cancellazioni successive,
+            contatta direttamente il proprietario.
+          </div>
+        </details>
+
+        <details id="faq-soggiorno-minimo">
+          <summary>Qual è il soggiorno minimo?</summary>
+          <div class="faq-answer">
+            Il soggiorno minimo a Casa Vacanze Il Bearč è di 3 notti in tutte le stagioni.
+          </div>
+        </details>
+
+        <details id="faq-checkin">
+          <summary>Come funziona il check‑in e a che ora posso arrivare?</summary>
+          <div class="faq-answer">
+            Il check‑in è a partire dalle 17:00 con self check‑in tramite cassetta portachiavi,
+            così puoi arrivare in autonomia senza vincoli di orario. Il check‑out è entro le 10:00.
+          </div>
+        </details>
+
+        <details id="faq-riscaldamento">
+          <summary>Com'è riscaldata la casa in inverno?</summary>
+          <div class="faq-answer">
+            La casa è riscaldata da una stufa a pellet in soggiorno. Il pellet necessario al
+            soggiorno è fornito incluso nel prezzo: non devi preoccuparti di acquistarlo o
+            trasportarlo. In estate è disponibile l'aria condizionata.
+          </div>
+        </details>
+
+        <details id="faq-bambini">
+          <summary>È adatta a famiglie con bambini piccoli?</summary>
+          <div class="faq-answer">
+            Sì, Il Bearč è particolarmente adatto alle famiglie: il giardino recintato permette
+            ai bambini di giocare in sicurezza. Su richiesta è disponibile un lettino per
+            neonati o bambini molto piccoli — basta segnalarlo al momento della prenotazione.
+          </div>
+        </details>
+
+        <details id="faq-accessibilita">
+          <summary>La casa è accessibile a persone con disabilità motoria?</summary>
+          <div class="faq-answer">
+            No. La casa si sviluppa su più livelli con scale interne e non è accessibile a
+            persone con disabilità motoria o ridotte capacità di deambulazione.
+          </div>
+        </details>
+
+        <details id="faq-fumo">
+          <summary>Si può fumare?</summary>
+          <div class="faq-answer">
+            È vietato fumare all'interno della casa. Puoi farlo all'esterno, in giardino o
+            sulle terrazze.
+          </div>
+        </details>
+
+        <details id="faq-animali">
+          <summary>Sono ammessi animali domestici?</summary>
+          <div class="faq-answer">
+            No, gli animali non sono ammessi all'interno della casa vacanze Il Bearč.
+          </div>
+        </details>
+
+        <details id="faq-mezzi">
+          <summary>Come si arriva con i mezzi pubblici?</summary>
+          <div class="faq-answer">
+            La stazione ferroviaria più vicina è <strong>Stazione Carnia</strong>, sulla linea
+            Udine–Tarvisio. Da lì si raggiunge Feltrone in auto o con i collegamenti locali.
+            Gli aeroporti più vicini sono Trieste, Venezia (Marco Polo), Treviso e Lubiana —
+            tutti raggiungibili con auto a noleggio. La modalità più comoda per arrivare resta
+            comunque l'auto, soprattutto per spostarsi in zona.
+          </div>
+        </details>
+
+        <details id="faq-servizi">
+          <summary>Quali servizi ci sono nei dintorni?</summary>
+          <div class="faq-answer">
+            Bar e forno si trovano a <strong>Mediis</strong>, dove c'è anche la farmacia.
+            Per bancomat e distributore di carburante il riferimento è <strong>Ampezzo</strong>.
+            I supermercati si raggiungono in auto nei paesi vicini. Il pronto soccorso più
+            vicino è a <strong>Tolmezzo</strong>.
+          </div>
+        </details>
+
+        <details id="faq-prenotazione">
+          <summary>Come avviene la prenotazione e il pagamento?</summary>
+          <div class="faq-answer">
+            Puoi verificare la disponibilità e prenotare direttamente dal calendario sul sito:
+            la disponibilità è gestita in tempo reale da Avaibook, che elabora il pagamento
+            in modo sicuro. In alternativa puoi contattare direttamente il proprietario via
+            telefono o email per una richiesta di prenotazione.
+          </div>
+        </details>
+      </div>
+
+      <script>
+        // Apre automaticamente la FAQ corrispondente quando si arriva da un link con ancora (es. #faq-cancellazione)
+        (function openFaqFromHash(){
+          function openTarget(){
+            var id = (location.hash || '').replace('#','');
+            if (!id) return;
+            var el = document.getElementById(id);
+            if (el && el.tagName === 'DETAILS') {
+              el.open = true;
+              setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'start'}); }, 50);
+            }
+          }
+          window.addEventListener('DOMContentLoaded', openTarget);
+          window.addEventListener('hashchange', openTarget);
+        })();
+      </script>
     </div>
   </div>
 </section>
@@ -2402,6 +2711,190 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
