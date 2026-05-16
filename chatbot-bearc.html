@@ -460,7 +460,7 @@ const RESPONSES = {
   home: {
     label: null,
     message: `Ciao 👋 Benvenuto all'<b>Assistente del Bearč</b>!<br>Clicca su una domanda oppure <b>scrivi liberamente</b> qui sotto.`,
-    buttons: ['disponibilita', 'prezzi', 'mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
+    buttons: ['disponibilita', 'prezzi', 'famiglie', 'coppie', 'mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
   },
 
   disponibilita: {
@@ -884,6 +884,92 @@ La raccolta differenziata <b>è presente</b> al Bearč. Trovi le istruzioni dett
 </div>
 💡 <b>Consiglio:</b> nei weekend di luglio e agosto può essere affollato — meglio andarci in settimana o la mattina presto!`,
     buttons: ['home']
+  },
+
+  famiglie: {
+    label: '👨‍👩‍👧 Il Bearč per le famiglie',
+    message: `<span class="section-title">👨‍👩‍👧 Il Bearč per le famiglie con bambini</span>
+
+Il Bearč è una scelta ideale per le famiglie che cercano una vacanza in montagna in tutta tranquillità.
+
+<div class="place-card">
+<b>🏠 LA CASA È PENSATA PER VOI</b>
+<small>
+• 2 camere separate (1 matrimoniale + 1 con 2 letti singoli per i bambini)<br>
+• Giardino recintato — i bimbi possono giocare in sicurezza<br>
+• Lettino bimbi disponibile su richiesta<br>
+• Cucina attrezzata per preparare i pasti<br>
+• Lavatrice (utilissima coi piccoli!)<br>
+• Stufa a pellet — casa sempre calda d'inverno<br>
+• Aria di montagna a 716 m s.l.m., silenziosa e salubre
+</small>
+</div>
+
+<div class="place-card">
+<b>🦌 ATTIVITÀ PER BAMBINI IN ZONA</b>
+<small>
+• <b>Area Faunistica di Forni di Sopra</b> (~30 km): caprioli, camosci, cervi da vedere da vicino<br>
+• <b>Bosco Flobia</b> (~18 km): sentiero didattico facile di 3,5 km, perfetto per i piccoli<br>
+• <b>Lumina Milia</b> (Ampezzo): giardino botanico esperienziale, 400+ specie, divertente per scoprire la natura<br>
+• <b>Lago di Cavazzo</b>: spiaggia tranquilla per il bagno in estate<br>
+• Sentieri facili nei boschi attorno a casa
+</small>
+</div>
+
+<div class="place-card">
+<b>❄️ INVERNO COI BAMBINI</b>
+<small>
+• Piste Zoncolan e Forni di Sopra (~30 km), scuole sci adatte ai principianti<br>
+• Sci di fondo per famiglie<br>
+• Giochi sulla neve nei prati attorno al borgo
+</small>
+</div>
+
+<small style="color:var(--stone)">Per esigenze particolari (lettino, seggiolone, info su attività) contatta Dario al <a href="tel:+393299451083"><b>+39 329 945 1083</b></a>.</small>`,
+    buttons: ['home']
+  },
+
+  coppie: {
+    label: '💑 Il Bearč per le coppie',
+    message: `<span class="section-title">💑 Il Bearč per le coppie</span>
+
+Il Bearč è un piccolo rifugio di pace in montagna — perfetto per chi cerca silenzio, natura e qualche giorno lontano dal caos quotidiano.
+
+<div class="place-card">
+<b>🏡 LA CASA TUTTA PER VOI</b>
+<small>
+• 70 mq solo per voi, su più livelli<br>
+• 2 terrazze con vista sulle Alpi Carniche<br>
+• Giardino recintato — colazione all'aperto in primavera/estate<br>
+• Stufa a pellet — serate intime davanti al fuoco<br>
+• A 716 m s.l.m., silenzio assoluto<br>
+• Cucina attrezzata per cenare con calma a casa<br>
+• Niente vicini rumorosi: borgo tranquillo di poche case
+</small>
+</div>
+
+<div class="place-card">
+<b>🌅 ESPERIENZE ROMANTICHE IN ZONA</b>
+<small>
+• <b>Sentieri panoramici</b>: camminate al tramonto tra boschi di faggio<br>
+• <b>Lumina Milia</b> (Ampezzo): sentiero notturno illuminato tra i più lunghi d'Europa — atmosfera magica<br>
+• <b>Sauris</b>: borgo montano con prosciutto crudo affumicato DOP, birrificio Zahre, lago alpino<br>
+• <b>Bosco Flobia</b>: silenzio assoluto tra abeti del legno per violini<br>
+• <b>Cucina tipica carnica</b>: cjalsòns, frico, tiramisù (inventato proprio a Tolmezzo!)
+</small>
+</div>
+
+<div class="place-card">
+<b>❄️ ROMANTICA D'INVERNO</b>
+<small>
+• Sci a Zoncolan e Forni di Sopra (30 km)<br>
+• Casa avvolta nella neve, panorami da cartolina<br>
+• Serate davanti alla stufa con vino del Friuli
+</small>
+</div>
+
+<small style="color:var(--stone)">Per organizzare un soggiorno speciale (anniversario, viaggio di nozze, fuga romantica) contatta Dario al <a href="tel:+393299451083"><b>+39 329 945 1083</b></a>.</small>`,
+    buttons: ['home']
   }
 
 };
@@ -908,6 +994,8 @@ const BUTTON_CONFIG = {
   piove:                { label: 'Cosa fare se piove', icon: '🌧️' },
   rifiuti:              { label: 'Raccolta differenziata', icon: '🗑️' },
   lago:                 { label: 'Dove fare il bagno', icon: '🏊' },
+  famiglie:             { label: 'Per le famiglie', icon: '👨‍👩‍👧' },
+  coppie:               { label: 'Per le coppie', icon: '💑' },
 };
 
 // ─── METEO (Open-Meteo, free) ─────────────────────────────────────────────────
@@ -1212,7 +1300,7 @@ const INTENT_KEYWORDS = {
   ],
   carnia: [
     'carnia', 'cosa vedere', 'attrazioni', 'visitare', 'visita', 'turismo',
-    'gita', 'escursione', 'cosa fare',
+    'gita', 'escursione',
     'sightseeing', 'attractions', 'things to do', 'tourism', 'visit',
     'sehenswürdigkeiten', 'ausflug', 'besichtigen',
     'visiter', 'attractions', 'que faire',
@@ -1271,6 +1359,44 @@ const INTENT_KEYWORDS = {
     'ankunft', 'abreise', 'schlüssel', 'zahlung', 'haustiere', 'hund', 'katze',
     'arrivee', 'depart', 'cles', 'paiement', 'animaux', 'chien', 'chat',
     'llegada', 'salida', 'llaves', 'pago', 'mascotas', 'perro', 'gato'
+  ],
+  famiglie: [
+    // IT
+    'famiglia', 'famiglie', 'bambini', 'bambino', 'bimbi', 'bimbo', 'figli', 'figlio',
+    'lettino', 'culla', 'neonato', 'neonati', 'piccoli', 'kids',
+    'cosa fare con bambini', 'attività bambini', 'per bambini', 'baby',
+    // EN
+    'family', 'families', 'children', 'child', 'kids', 'kid', 'baby', 'babies',
+    'cot', 'crib', 'with kids', 'for kids', 'for children', 'kids activities',
+    // DE
+    'familie', 'familien', 'kinder', 'kind', 'baby', 'kinderbett',
+    'mit kindern', 'für kinder',
+    // FR
+    'famille', 'familles', 'enfants', 'enfant', 'bébé', 'bebe',
+    'avec enfants', 'pour enfants',
+    // ES
+    'familia', 'familias', 'niños', 'niño', 'bebe', 'bebé',
+    'con niños', 'para niños'
+  ],
+  coppie: [
+    // IT
+    'coppia', 'coppie', 'romantico', 'romantica', 'romantici', 'romantiche',
+    'luna di miele', 'viaggio di nozze', 'anniversario', 'anniversari',
+    'fuga romantica', 'weekend romantico', 'in due', 'soli', 'intimità', 'intimo',
+    'fidanzato', 'fidanzata', 'partner', 'marito', 'moglie',
+    // EN
+    'couple', 'couples', 'romantic', 'romance', 'honeymoon', 'anniversary',
+    'romantic getaway', 'romantic weekend', 'just two', 'two of us', 'partner',
+    'husband', 'wife', 'boyfriend', 'girlfriend',
+    // DE
+    'paar', 'paare', 'romantisch', 'romantik', 'hochzeitsreise', 'flitterwochen',
+    'jahrestag', 'zu zweit', 'partner', 'mann', 'frau',
+    // FR
+    'couple', 'couples', 'romantique', 'romance', 'lune de miel', 'anniversaire',
+    'escapade romantique', 'week-end romantique', 'a deux', 'à deux',
+    // ES
+    'pareja', 'parejas', 'romantico', 'romántico', 'romantica', 'romántica',
+    'luna de miel', 'aniversario', 'escapada romantica', 'en pareja', 'dos'
   ]
 };
 
@@ -1406,6 +1532,10 @@ init();
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
