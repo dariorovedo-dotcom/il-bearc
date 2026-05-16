@@ -4,29 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Tag di Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6SCN63GQHJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-6SCN63GQHJ');
-</script>
-
 <title>Il Bearč — Casa Vacanze a Feltrone-Socchieve, Carnia | Alpi Carniche</title>
 <meta name="description" content="Casa vacanze Il Bearč a Feltrone di Socchieve (UD), 716m, Alpi Carniche. 2 camere, 1 bagno, 4 ospiti, giardino, Wi-Fi. A 30 km dallo Zoncolan. Valutazione 9.6/10 su Booking.com. Prenota direttamente.">
 
 <!-- Open Graph (anteprima social) -->
 <meta property="og:title" content="Il Bearč — Casa Vacanze a Socchieve, Carnia · 9.6/10 su Booking">
 <meta property="og:description" content="Montagna, natura e relax a Feltrone, Socchieve (UD). A 716m tra le Alpi Carniche. 2 camere, 1 bagno, 4 ospiti, giardino. A 30 km dallo Zoncolan.">
-<meta property="og:image" content="https://i.ibb.co/MyF3JmxP/Original.jpg">
+<meta property="og:image" content="immagini/Vista-dall-esterno.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.ilbearc.com/">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Il Bearč — Casa Vacanze in Carnia">
-<meta name="twitter:image" content="https://i.ibb.co/MyF3JmxP/Original.jpg">
+<meta name="twitter:image" content="immagini/Vista-dall-esterno.jpg">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -53,16 +44,14 @@
     "longitude": 12.82263,
     "elevation": 716
   },
+  "logo": "immagini/Logo.jpg",
   "image": [
-    "https://i.ibb.co/MyF3Jmx/POriginal.jpg",
-    "https://static.wixstatic.com/media/c2ed847d02b82572294dfd8c0ea2df09/156d94mv2.jpg",
-    "https://static.wixstatic.com/media/c2ed8408d17c59119f429fad931b0ed0/99044emv2.jpg",
-    "https://i.ibb.co/kV93F1P7/Vista-dall-esterno.jpg",
-    "https://i.ibb.co/TBmddqR8/Soggiorno.jpg",
-    "https://i.ibb.co/zWwBV6X/Cucina.jpg",
-    "https://i.ibb.co/BVNVdQL/Camera.jpg",
-    "https://i.ibb.co/x8hp7Dp/TCamera-matrimoniale.jpg",
-    "https://i.ibb.co/Kcn3WhD/BBagno.jpg"
+    "immagini/Vista-dall-esterno.jpg",
+    "immagini/Soggiorno.jpg",
+    "immagini/Cucina.jpg",
+    "immagini/Camera.jpg",
+    "immagini/Camera-matrimoniale.jpg",
+    "immagini/Bagno.jpg"
   ],
   "containsPlace": {
     "@type": "House",
@@ -114,13 +103,54 @@
 <meta name="theme-color" content="#1f1f1f">
 
 <!-- Icone -->
-<link rel="icon" href="/icon-192.png">
-<link rel="apple-touch-icon" href="/icon-512.png">
+<link rel="icon" type="image/jpeg" href="immagini/Logo.jpg">
+<link rel="apple-touch-icon" href="immagini/Logo.jpg">
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<!-- Font locali (privacy-friendly, no Google Fonts) -->
+<style>
+  @font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('fonts/jost-300.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/jost-400.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('fonts/jost-500.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/playfair-display-400.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/playfair-display-400-italic.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/playfair-display-600.woff2') format('woff2');
+  }
+</style>
 
 <style>
   :root {
@@ -149,7 +179,7 @@
     min-height: 100vh;
     background:
       linear-gradient(to bottom, rgba(15,30,20,0.55) 0%, rgba(30,58,47,0.3) 60%, rgba(245,240,232,0) 100%),
-      url('https://static.wixstatic.com/media/c2ed84_7d02b82572294dfd8c0ea2df09156d94~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85/c2ed84_7d02b82572294dfd8c0ea2df09156d94~mv2.jpg') center/cover no-repeat;
+      url('immagini/Vista-dall-esterno.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -278,11 +308,28 @@
     align-items: center;
     justify-content: space-between;
   }
+  .nav-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .nav-logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
   .nav-logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
     color: var(--forest);
     font-style: italic;
+  }
+  @media (max-width: 600px) {
+    .nav-logo-img { height: 32px; width: 32px; }
+    .nav-logo { font-size: 1.1rem; }
   }
   .nav-links {
     display: flex;
@@ -855,10 +902,19 @@
   }
   footer .footer-logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--cream);
     font-style: italic;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  footer .footer-logo-img {
+    height: 48px;
+    width: 48px;
+    object-fit: contain;
+    border-radius: 4px;
   }
   footer p { font-size: 0.85rem; font-weight: 300; line-height: 1.8; }
   footer a { color: var(--accent); text-decoration: none; }
@@ -1265,9 +1321,6 @@
     -webkit-overflow-scrolling: touch;
   }
 }
-
-/* Tawk.to è in basso-destra: lasciamogli spazio.
-   Tawk.to ha già xOffset 100, quindi siamo in posizione compatibile. */
 </style>
 <script type="application/ld+json">
 {
@@ -1477,7 +1530,7 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">Il Bearč</span>
+  <a href="#hero" class="nav-logo-wrap" aria-label="Il Bearč - Torna su"><img src="immagini/Logo.jpg" alt="Logo Il Bearč" class="nav-logo-img"><span class="nav-logo">Il Bearč</span></a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </button>
@@ -1514,7 +1567,7 @@
         </div>
       </div>
       <div class="about-img">
-        <img src="https://static.wixstatic.com/media/c2ed84_08d17c59119f429fad931b0ed099044e~mv2.jpg/v1/fill/w_840,h_630,al_c,q_85/c2ed84_08d17c59119f429fad931b0ed099044e~mv2.jpg" alt="Soggiorno luminoso della casa vacanze Il Bearč a Feltrone, Socchieve, Carnia">
+        <img src="immagini/Soggiorno.jpg" alt="Soggiorno luminoso della casa vacanze Il Bearč a Feltrone, Socchieve, Carnia">
       </div>
     </div>
   </div>
@@ -1527,39 +1580,35 @@
     <h2 class="section-title">Galleria fotografica</h2>
     <div class="gallery-grid">
       <div class="gallery-item" onclick="openLightbox(0)">
-        <img src="https://i.ibb.co/kV93F1P7/Vista-dall-esterno.jpg" alt="Vista esterna della casa">
+        <img src="immagini/Vista-dall-esterno.jpg" alt="Vista esterna della casa">
         <div class="gallery-overlay"><span>Vista esterna</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(1)">
-        <img src="https://i.ibb.co/FL9xxzKh/Feltrone-inverno-2010-009.jpg" alt="La casa in inverno con la neve">
+        <img src="immagini/Feltrone-inverno-2010-012.jpg" alt="La casa in inverno con la neve">
         <div class="gallery-overlay"><span>Inverno</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(2)">
-        <img src="https://i.ibb.co/99pFHmFq/Feltrone-inverno-2010-012.jpg" alt="Feltrone sotto la neve">
-        <div class="gallery-overlay"><span>Feltrone in inverno</span></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(3)">
-        <img src="https://i.ibb.co/sptwYg4x/319176038.jpg" alt="Vista del borgo di Feltrone">
+        <img src="immagini/Feltrone.jpg" alt="Vista del borgo di Feltrone">
         <div class="gallery-overlay"><span>Il borgo</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(4)">
-        <img src="https://i.ibb.co/TBmddqR8/Soggiorno.jpg" alt="Soggiorno con stufa">
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="immagini/Soggiorno.jpg" alt="Soggiorno con stufa">
         <div class="gallery-overlay"><span>Soggiorno</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(5)">
-        <img src="https://i.ibb.co/zWwBV6Xs/Cucina.jpg" alt="Cucina attrezzata">
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="immagini/Cucina.jpg" alt="Cucina attrezzata">
         <div class="gallery-overlay"><span>Cucina</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(6)">
-        <img src="https://i.ibb.co/BVNVdQL2/Camera.jpg" alt="Camera da letto">
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="immagini/Camera.jpg" alt="Camera da letto">
         <div class="gallery-overlay"><span>Camera</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(7)">
-        <img src="https://i.ibb.co/x8hp7DpT/Camera-matrimoniale.jpg" alt="Camera matrimoniale">
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="immagini/Camera-matrimoniale.jpg" alt="Camera matrimoniale">
         <div class="gallery-overlay"><span>Camera matrimoniale</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(8)">
-        <img src="https://i.ibb.co/Kcn3WhDB/Bagno.jpg" alt="Bagno">
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="immagini/Bagno.jpg" alt="Bagno">
         <div class="gallery-overlay"><span>Bagno</span></div>
       </div>
     </div>
@@ -2005,16 +2054,16 @@
     <div class="location-grid">
       <div class="map-placeholder">
   <div class="map-wrapper">
-    <iframe src="https://maps.google.com/maps?q=46.40265,12.82263&hl=it&z=14&output=embed"
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=12.80363%2C46.39265%2C12.84163%2C46.41265&amp;layer=mapnik&amp;marker=46.40265%2C12.82263"
       height="360" style="border:0; width:100%;"
-      allowfullscreen loading="lazy"
+      loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       title="Mappa - Casa Vacanze Il Bearč a Feltrone, Socchieve">
     </iframe>
     <p class="map-link">
-      <a href="https://maps.app.goo.gl/yVgmEp5hS2dSB3Aa8"
+      <a href="https://www.openstreetmap.org/?mlat=46.40265&amp;mlon=12.82263#map=14/46.40265/12.82263"
          target="_blank" rel="noopener noreferrer">
-        Guarda la posizione su Google Maps
+        Apri mappa interattiva su OpenStreetMap
       </a>
     </p>
   </div>
@@ -2344,21 +2393,6 @@
   });
 </script>
 
-<!--Start of Tawk.to Script-->
-<script>
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-Tawk_API.customStyle = { visibility: { desktop: { xOffset: '20', yOffset: '20', position: 'br' }, mobile: { xOffset: 5, yOffset: 5, position: 'br' } } };
-s1.async=true;
-s1.src='https://embed.tawk.to/69df3997eecbbf1c3360f4c6/1jm7vhu47';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-
 <!-- RICARICA EV -->
 <section id="ricarica-ev" style="background: var(--cream);">
   <div class="container">
@@ -2409,7 +2443,7 @@ s0.parentNode.insertBefore(s1,s0);
 </section>
 
 <footer>
-  <div class="footer-logo">Il Bearč</div>
+  <div class="footer-logo"><img src="immagini/Logo.jpg" alt="Logo Il Bearč" class="footer-logo-img"><span>Il Bearč</span></div>
   <p style="font-style:italic; margin-bottom:0.3rem;">Casa Vacanze</p>
   <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
@@ -2649,15 +2683,14 @@ s0.parentNode.insertBefore(s1,s0);
 
   // ===== LIGHTBOX =====
   const lbPhotos = [
-    { src: 'https://i.ibb.co/kV93F1P7/Vista-dall-esterno.jpg', caption: 'Vista esterna' },
-    { src: 'https://i.ibb.co/FL9xxzKh/Feltrone-inverno-2010-009.jpg', caption: 'Inverno' },
-    { src: 'https://i.ibb.co/99pFHmFq/Feltrone-inverno-2010-012.jpg', caption: 'Feltrone in inverno' },
-    { src: 'https://i.ibb.co/sptwYg4x/319176038.jpg', caption: 'Il borgo' },
-    { src: 'https://i.ibb.co/TBmddqR8/Soggiorno.jpg', caption: 'Soggiorno' },
-    { src: 'https://i.ibb.co/zWwBV6Xs/Cucina.jpg', caption: 'Cucina' },
-    { src: 'https://i.ibb.co/BVNVdQL2/Camera.jpg', caption: 'Camera' },
-    { src: 'https://i.ibb.co/x8hp7DpT/Camera-matrimoniale.jpg', caption: 'Camera matrimoniale' },
-    { src: 'https://i.ibb.co/Kcn3WhDB/Bagno.jpg', caption: 'Bagno' },
+    { src: 'immagini/Vista-dall-esterno.jpg', caption: 'Vista esterna' },
+    { src: 'immagini/Feltrone-inverno-2010-012.jpg', caption: 'Inverno' },
+    { src: 'immagini/Feltrone.jpg', caption: 'Il borgo' },
+    { src: 'immagini/Soggiorno.jpg', caption: 'Soggiorno' },
+    { src: 'immagini/Cucina.jpg', caption: 'Cucina' },
+    { src: 'immagini/Camera.jpg', caption: 'Camera' },
+    { src: 'immagini/Camera-matrimoniale.jpg', caption: 'Camera matrimoniale' },
+    { src: 'immagini/Bagno.jpg', caption: 'Bagno' },
   ];
   let lbIndex = 0;
 
@@ -2711,6 +2744,374 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
