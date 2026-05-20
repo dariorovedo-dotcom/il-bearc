@@ -9,6 +9,11 @@
   <meta name="author" content="Il Bearč - Dario Rovedo">
   <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
 
+  <!-- LEAFLET CSS (mappa OpenStreetMap interattiva) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+
   <!-- FONTS LOCALI -->
   <style>
     @font-face {
@@ -540,6 +545,91 @@
       text-decoration: none;
     }
 
+    /* ===== MAPPA INTERATTIVA ===== */
+    .map-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(30, 58, 47, 0.08);
+      overflow: hidden;
+      margin: 2rem 0 3rem 0;
+      border-top: 5px solid var(--accent);
+    }
+
+    .map-header {
+      padding: 1.5rem 2rem;
+      background: linear-gradient(to right, var(--cream), var(--warm));
+      border-bottom: 1px solid #e0d8c5;
+    }
+
+    .map-header h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest);
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .map-header p {
+      color: var(--stone);
+      font-size: 0.95rem;
+    }
+
+    #trekking-map {
+      width: 100%;
+      height: 500px;
+      background: var(--cream);
+    }
+
+    .map-legend {
+      padding: 1.2rem 2rem;
+      background: var(--snow);
+      border-top: 1px solid var(--cream);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem;
+      font-size: 0.9rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--forest);
+    }
+
+    .legend-icon {
+      font-size: 1.3rem;
+      width: 32px;
+      text-align: center;
+    }
+
+    /* Popup Leaflet custom */
+    .leaflet-popup-content-wrapper {
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .leaflet-popup-content {
+      margin: 12px 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .leaflet-popup-content strong {
+      color: var(--forest);
+      font-size: 1rem;
+    }
+
+    .leaflet-popup-content .quota {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-top: 0.3rem;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .hero { padding: 3rem 1rem; }
@@ -550,6 +640,9 @@
       .nav-links { gap: 1rem; font-size: 0.9rem; }
       .history-section { padding: 2rem 1.2rem; }
       .emergency-box { padding: 1.5rem; }
+      #trekking-map { height: 380px; }
+      .map-header { padding: 1.2rem; }
+      .map-legend { padding: 1rem 1.2rem; }
     }
   </style>
 </head>
@@ -619,6 +712,22 @@
       </div>
     </div>
   </div>
+
+  <!-- ===== MAPPA INTERATTIVA ===== -->
+  <section class="map-section">
+    <div class="map-header">
+      <h3>🗺️ Mappa interattiva dei percorsi</h3>
+      <p>I principali punti dei sentieri che partono da Feltrone. Clicca sui marker per dettagli, trascina e zooma per esplorare.</p>
+    </div>
+    <div id="trekking-map"></div>
+    <div class="map-legend">
+      <div class="legend-item"><span class="legend-icon">🏡</span><span><strong>Il Bearč</strong> — partenza</span></div>
+      <div class="legend-item"><span class="legend-icon">🏔️</span><span><strong>Vette</strong> — Col Gentile, Strabût...</span></div>
+      <div class="legend-item"><span class="legend-icon">⛰️</span><span><strong>Forcelle e passi</strong></span></div>
+      <div class="legend-item"><span class="legend-icon">🏠</span><span><strong>Casere e ricoveri</strong></span></div>
+      <div class="legend-item"><span class="legend-icon">🏘️</span><span><strong>Borghi vicini</strong></span></div>
+    </div>
+  </section>
 
   <!-- ===== PERCORSO 1: COL GENTILE ===== -->
   <h2 class="section-title">⛰️ I percorsi principali</h2>
@@ -871,7 +980,7 @@
   <!-- ===== STORIA ===== -->
   <section class="history-section">
     <h3>📜 La Repubblica Libera della Carnia (1944)</h3>
-    <p>I sentieri che partono da Feltrone non sono solo percorsi naturalistici: sono <strong>vie di memoria</strong>. Nell'estate-autunno 1944, tutta la Carnia divenne sede della <strong>Repubblica Libera della Carnia</strong>, una delle prime zone d'Italia liberate dai partigiani: un esperimento unico di democrazia in tempo di guerra che si estendeva su circa 2.500 km² e comprendeva oltre 40 comuni.</p>
+    <p>I sentieri che partono da Feltrone non sono solo percorsi naturalistici: sono <strong>vie di memoria</strong>. Nell'estate-autunno 1944, tutta la Carnia divenne sede della <strong>Repubblica Libera della Carnia</strong>, una delle prime zone d'Italia liberate dai partigiani: un esperimento unico di democrazia in tempo di guerra che si estendeva su circa 2.500 km² e comprendeva circa 40 comuni della Carnia, dell'Alto Friuli e del Cadore, abitati da circa 90.000 persone.</p>
 
     <p>Dopo la caduta della Repubblica a fine 1944, i sentieri di Pani e Feltrone divennero <strong>vie di fuga e rifugio</strong> per i partigiani delle Brigate Osoppo-Garibaldi durante i rastrellamenti condotti da tedeschi e cosacchi.</p>
 
@@ -984,6 +1093,133 @@
     <a href="index.html" class="back-link">← Torna alla home</a>
   </div>
 </footer>
+
+<!-- LEAFLET JS (mappa OpenStreetMap interattiva) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script>
+  // ===== MAPPA INTERATTIVA DEI PERCORSI DA FELTRONE =====
+  document.addEventListener('DOMContentLoaded', function() {
+    // Coordinate Il Bearč (Feltrone) — verificate
+    const bearcCoords = [46.4184520, 12.8356790];
+
+    // Inizializza mappa centrata sul Bearč
+    const map = L.map('trekking-map', {
+      scrollWheelZoom: false  // evita zoom involontario allo scroll della pagina
+    }).setView(bearcCoords, 12);
+
+    // Tile OpenStreetMap (gratuito, no tracking)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+
+    // Icone personalizzate per categoria
+    const iconBearc = L.divIcon({
+      html: '<div style="background:#c8a96e;color:white;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.3);font-size:18px;">🏡</div>',
+      className: 'custom-marker',
+      iconSize: [36, 36],
+      iconAnchor: [18, 18]
+    });
+
+    const iconVetta = L.divIcon({
+      html: '<div style="background:#1e3a2f;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:16px;">🏔️</div>',
+      className: 'custom-marker',
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
+    });
+
+    const iconForca = L.divIcon({
+      html: '<div style="background:#3d6b4f;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:14px;">⛰️</div>',
+      className: 'custom-marker',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
+    });
+
+    const iconCasera = L.divIcon({
+      html: '<div style="background:#5c4a35;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:14px;">🏠</div>',
+      className: 'custom-marker',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
+    });
+
+    const iconBorgo = L.divIcon({
+      html: '<div style="background:#7aaa8a;color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:12px;">🏘️</div>',
+      className: 'custom-marker',
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+
+    // ===== MARKER =====
+    // Il Bearč (Feltrone) — PARTENZA
+    L.marker(bearcCoords, {icon: iconBearc}).addTo(map)
+      .bindPopup('<strong>🏡 Il Bearč</strong><br>Casa Vacanze a Feltrone<br><span class="quota">696 m</span><br><br><em>Punto di partenza dei sentieri</em>')
+      .openPopup();
+
+    // VETTE
+    L.marker([46.4683, 12.7942], {icon: iconVetta}).addTo(map)
+      .bindPopup('<strong>🏔️ Col Gentile</strong><br>Vetta delle Alpi Tolmezzine<br><span class="quota">2.075 m</span><br><br>Sentiero CAI 235<br>Panorama 360°');
+
+    L.marker([46.4280, 12.8450], {icon: iconVetta}).addTo(map)
+      .bindPopup('<strong>🏔️ Monte Nolia</strong><br>Sopra Feltrone<br><span class="quota">1.102 m</span><br><br>Anello panoramico, ~3 ore');
+
+    // FORCELLE E PASSI
+    L.marker([46.4310, 12.8350], {icon: iconForca}).addTo(map)
+      .bindPopup('<strong>⛰️ Forca di Pani</strong><br>Accesso ai sentieri CAI 235<br><span class="quota">1.139 m</span><br><br>Possibile parcheggio in quota');
+
+    L.marker([46.4520, 12.8050], {icon: iconForca}).addTo(map)
+      .bindPopup('<strong>⛰️ Forca del Colador</strong><br>Bivio CAI 235 / 236<br><span class="quota">1.865 m</span><br><br>Tratto attrezzato vicino');
+
+    // CASERE
+    L.marker([46.4450, 12.8200], {icon: iconCasera}).addTo(map)
+      .bindPopup('<strong>🏠 Casera Chiarzò</strong><br>Ricovero aperto, ristrutturato<br><span class="quota">1.393 m</span><br><br>Possibilità accendere fuoco');
+
+    L.marker([46.4620, 12.7780], {icon: iconCasera}).addTo(map)
+      .bindPopup('<strong>🏠 Casera Forchia</strong><br>Ricovero d\'emergenza<br><span class="quota">1.730 m</span>');
+
+    // BORGHI DI SOCCHIEVE
+    L.marker([46.4045, 12.8480], {icon: iconBorgo}).addTo(map)
+      .bindPopup('<strong>🏘️ Mediis</strong><br>Sede del Comune di Socchieve<br><span class="quota">476 m</span><br><br>Bivio dalla SS52');
+
+    L.marker([46.4070, 12.8530], {icon: iconBorgo}).addTo(map)
+      .bindPopup('<strong>🏘️ Socchieve</strong><br>Centro del comune<br><span class="quota">486 m</span>');
+
+    L.marker([46.4160, 12.8410], {icon: iconBorgo}).addTo(map)
+      .bindPopup('<strong>🏘️ Viaso</strong><br>Borgo vicino, percorribile a piedi<br><span class="quota">525 m</span>');
+
+    L.marker([46.4150, 12.8290], {icon: iconBorgo}).addTo(map)
+      .bindPopup('<strong>🏘️ Dilignidis</strong><br>Frazione di Feltrone<br><span class="quota">601 m</span>');
+
+    // Bottone "fit all" per inquadrare tutti i marker
+    const allCoords = [
+      bearcCoords, [46.4683, 12.7942], [46.4280, 12.8450],
+      [46.4310, 12.8350], [46.4520, 12.8050],
+      [46.4450, 12.8200], [46.4620, 12.7780],
+      [46.4045, 12.8480], [46.4070, 12.8530],
+      [46.4160, 12.8410], [46.4150, 12.8290]
+    ];
+    const bounds = L.latLngBounds(allCoords);
+
+    // Pulsante custom "vista completa"
+    const fitAllControl = L.control({position: 'topright'});
+    fitAllControl.onAdd = function() {
+      const btn = L.DomUtil.create('button', 'fit-all-btn');
+      btn.innerHTML = '🗺️ Vista completa';
+      btn.style.cssText = 'background:white;border:2px solid rgba(0,0,0,0.2);border-radius:6px;padding:6px 10px;font-size:13px;cursor:pointer;font-family:inherit;box-shadow:0 1px 4px rgba(0,0,0,0.2);';
+      btn.onclick = function() {
+        map.fitBounds(bounds, {padding: [30, 30]});
+      };
+      L.DomEvent.disableClickPropagation(btn);
+      return btn;
+    };
+    fitAllControl.addTo(map);
+
+    // Inquadra subito tutti i marker
+    map.fitBounds(bounds, {padding: [30, 30]});
+  });
+</script>
 
 </body>
 </html>
