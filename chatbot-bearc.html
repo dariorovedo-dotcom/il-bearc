@@ -460,7 +460,7 @@ const RESPONSES = {
   home: {
     label: null,
     message: `Ciao 👋 Benvenuto all'<b>Assistente del Bearč</b>!<br>Clicca su una domanda oppure <b>scrivi liberamente</b> qui sotto.`,
-    buttons: ['disponibilita', 'prezzi', 'famiglie', 'coppie', 'mangiare', 'faq', 'farmacie', 'carnia', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
+    buttons: ['disponibilita', 'prezzi', 'famiglie', 'coppie', 'mangiare', 'faq', 'farmacie', 'carnia', 'trekking', 'meteo', 'piove', 'benzinai', 'emergenze', 'rifiuti', 'lago']
   },
 
   disponibilita: {
@@ -886,6 +886,59 @@ La raccolta differenziata <b>è presente</b> al Bearč. Trovi le istruzioni dett
     buttons: ['home']
   },
 
+  trekking: {
+    label: '🥾 Sentieri e trekking',
+    message: `<span class="section-title">🥾 Trekking ed escursioni da Feltrone</span>
+
+Feltrone è un punto di partenza fantastico per i sentieri della Carnia. Dalla casa si raggiungono a piedi o in pochi minuti d'auto numerosi percorsi per tutti i livelli.
+
+<div class="place-card">
+<b>⛰️ COL GENTILE (2.075 m) — Il percorso iconico</b>
+<small>
+• Sentiero <b>CAI 235</b><br>
+• Tempo: 7 ore (andata e ritorno)<br>
+• Dislivello: +1.350 m<br>
+• Difficoltà: Escursionisti Esperti (EE)<br>
+• Panorama 360° dalle Alpi Carniche alle Dolomiti
+</small>
+</div>
+
+<div class="place-card">
+<b>🐻 TROI DA L'ORS — Il sentiero dei partigiani</b>
+<small>
+• Anello panoramico, partenza/arrivo Feltrone<br>
+• Tempo: 3 ore e 30 minuti<br>
+• Dislivello: +/- 450 m<br>
+• Difficoltà: Escursionistico (E)<br>
+• Dedicato ad Antonio Zanella "L'Ors di Pani", partigiano leggendario del 1944
+</small>
+</div>
+
+<div class="place-card">
+<b>🌲 ALTRI PERCORSI</b>
+<small>
+• <b>Anello Monte Nolia</b> (1.102 m) — 3 ore, anche con ciaspole d'inverno<br>
+• <b>Anello dei borghi di Socchieve</b> — facile, per famiglie<br>
+• <b>Monte Corona</b> via Priuso — 15 km ad anello, anche MTB<br>
+• <b>Anello Viaso-Feltrone</b> — mulattiere e ruderi storici
+</small>
+</div>
+
+<div class="place-card">
+<b>🎒 PRIMA DI PARTIRE</b>
+<small>
+• Scarponi da media montagna obbligatori<br>
+• Carta Tabacco n. 013 (consigliata)<br>
+• Acqua, cibo, giacca antipioggia<br>
+• Comunica sempre l'itinerario al rientro<br>
+• Soccorso Alpino: <b>112</b>
+</small>
+</div>
+
+<small style="color:var(--stone)">📖 <b>Tutti i dettagli con tappe, mappe e info pratiche su</b> <a href="https://www.ilbearc.com/trekking.html" target="_blank">www.ilbearc.com/trekking.html</a></small>`,
+    buttons: ['home']
+  },
+
   famiglie: {
     label: '👨‍👩‍👧 Il Bearč per le famiglie',
     message: `<span class="section-title">👨‍👩‍👧 Il Bearč per le famiglie con bambini</span>
@@ -901,7 +954,7 @@ Il Bearč è una scelta ideale per le famiglie che cercano una vacanza in montag
 • Cucina attrezzata per preparare i pasti<br>
 • Lavatrice (utilissima coi piccoli!)<br>
 • Stufa a pellet — casa sempre calda d'inverno<br>
-• Aria di montagna a 716 m s.l.m., silenziosa e salubre
+• Aria di montagna a 696 m s.l.m., silenziosa e salubre
 </small>
 </div>
 
@@ -942,7 +995,7 @@ Il Bearč è un piccolo rifugio di pace in montagna — perfetto per chi cerca s
 • 2 terrazze con vista sulle Alpi Carniche<br>
 • Giardino recintato — colazione all'aperto in primavera/estate<br>
 • Stufa a pellet — serate intime davanti al fuoco<br>
-• A 716 m s.l.m., silenzio assoluto<br>
+• A 696 m s.l.m., silenzio assoluto<br>
 • Cucina attrezzata per cenare con calma a casa<br>
 • Niente vicini rumorosi: borgo tranquillo di poche case
 </small>
@@ -984,6 +1037,7 @@ const BUTTON_CONFIG = {
   faq:                  { label: 'Domande frequenti', icon: '💡' },
   farmacie:             { label: 'Farmacie e supermercati', icon: '💊' },
   carnia:               { label: 'Guida della Carnia', icon: '🗺️' },
+  trekking:             { label: 'Sentieri e trekking', icon: '🥾' },
   'carnia-natura':      { label: 'Natura e paesaggi', icon: '🌲' },
   'carnia-gastronomia': { label: 'Gastronomia tipica', icon: '🧀' },
   'carnia-cultura':     { label: 'Storia e cultura', icon: '🏛️' },
@@ -1026,7 +1080,7 @@ const DAYS_IT = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
 const MONTHS_IT = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
 
 async function fetchMeteo() {
-  const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.40265&longitude=12.82263&elevation=716&current=temperature_2m,apparent_temperature,weathercode,windspeed_10m,relativehumidity_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FRome&forecast_days=5&wind_speed_unit=kmh';
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.4184520&longitude=12.8356790&elevation=696&current=temperature_2m,apparent_temperature,weathercode,windspeed_10m,relativehumidity_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FRome&forecast_days=5&wind_speed_unit=kmh';
 
   const controller = new AbortController();
   setTimeout(() => controller.abort(), 8000);
@@ -1060,7 +1114,7 @@ async function fetchMeteo() {
 <div class="place-card">
   <strong>${icon} ${Math.round(c.temperature_2m)}° — ${desc}</strong>
   <small>Percepita ${Math.round(c.apparent_temperature)}° · Umidità ${c.relativehumidity_2m}% · Vento ${Math.round(c.windspeed_10m)} km/h</small>
-  <small>📍 Feltrone, Socchieve · 716 m s.l.m.</small>
+  <small>📍 Feltrone, Socchieve · 696 m s.l.m.</small>
 </div>
 <b>Prossimi 4 giorni</b>${forecastRows}
 <small style="color:var(--stone);font-size:0.72rem">Fonte: Open-Meteo · aggiornato in tempo reale</small>`;
@@ -1306,6 +1360,26 @@ const INTENT_KEYWORDS = {
     'visiter', 'attractions', 'que faire',
     'visitar', 'que ver', 'turismo'
   ],
+  trekking: [
+    // IT
+    'trekking', 'sentiero', 'sentieri', 'escursione', 'escursioni', 'hiking',
+    'camminata', 'camminate', 'cammino', 'percorso', 'percorsi', 'itinerario', 'itinerari',
+    'col gentile', 'troi da l\'ors', 'troi da lors', 'forca di pani', 'monte nolia',
+    'monte corona', 'pani', 'cai 235', 'partigiani', 'sentiero dei partigiani',
+    'casera chiarzò', 'casera chiarzo', 'mappa sentieri', 'cartina sentieri',
+    // EN
+    'hiking', 'hike', 'trail', 'trails', 'path', 'paths', 'walking trail',
+    'mountain trail', 'partisan trail', 'trekking route',
+    // DE
+    'wandern', 'wanderung', 'wanderungen', 'wanderweg', 'wanderwege',
+    'bergwandern', 'pfad', 'route',
+    // FR
+    'randonnée', 'randonnees', 'sentier', 'sentiers', 'chemin', 'chemins',
+    'parcours', 'itinéraire', 'itineraire',
+    // ES
+    'senderismo', 'sendero', 'senderos', 'caminata', 'caminatas',
+    'ruta', 'rutas', 'excursion', 'excursiones', 'itinerario'
+  ],
   emergenze: [
     // IT
     'emergenza', 'emergenze', 'aiuto', 'soccorso', 'pronto soccorso', 'ospedale',
@@ -1532,6 +1606,10 @@ init();
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
