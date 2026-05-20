@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trekking ed escursioni da Feltrone - Il Bearč</title>
+  <meta name="description" content="Sentieri di trekking che partono da Feltrone (Socchieve, Carnia, 696m): dal Col Gentile al sentiero dei partigiani, percorsi per ogni livello.">
+  <meta name="keywords" content="trekking Feltrone, sentieri Carnia, Col Gentile, Socchieve, escursioni Friuli, CAI 235, Forca di Pani, Troi da L'Ors">
+  <meta name="author" content="Il Bearč - Dario Rovedo">
+  <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
+
+  <!-- FONTS LOCALI -->
+  <style>
+    @font-face {
+      font-family: 'Jost';
+      src: url('fonts/jost-300.woff2') format('woff2');
+      font-weight: 300;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Jost';
+      src: url('fonts/jost-400.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Jost';
+      src: url('fonts/jost-500.woff2') format('woff2');
+      font-weight: 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Playfair Display';
+      src: url('fonts/playfair-display-400.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Playfair Display';
+      src: url('fonts/playfair-display-400-italic.woff2') format('woff2');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Playfair Display';
+      src: url('fonts/playfair-display-600.woff2') format('woff2');
+      font-weight: 600;
+      font-display: swap;
+    }
+
+    :root {
+      --forest: #1e3a2f;
+      --moss: #3d6b4f;
+      --sage: #7aaa8a;
+      --cream: #f5f0e8;
+      --warm: #e8dfc8;
+      --stone: #8a7e6e;
+      --bark: #5c4a35;
+      --snow: #fafaf8;
+      --accent: #c8a96e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--snow);
+      color: var(--forest);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
+      color: var(--cream);
+      padding: 1.2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      color: var(--cream);
+    }
+
+    .logo-block img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+
+    .logo-block h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, rgba(30, 58, 47, 0.78) 0%, rgba(61, 107, 79, 0.7) 100%),
+                  url('images/Vista-dall-esterno.jpg') center/cover;
+      color: var(--cream);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .hero-content { max-width: 900px; margin: 0 auto; }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--forest);
+      padding: 0.4rem 1.2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== MAIN ===== */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .intro {
+      background: var(--cream);
+      border-left: 4px solid var(--accent);
+      padding: 1.8rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+    }
+
+    .intro h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-box {
+      background: var(--snow);
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--moss);
+    }
+
+    .info-box strong {
+      display: block;
+      color: var(--moss);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ===== SEZIONI ===== */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--forest);
+      margin: 3rem 0 1.5rem 0;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    /* ===== CARD PERCORSI ===== */
+    .trail-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(30, 58, 47, 0.08);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      border-top: 5px solid var(--moss);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .trail-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(30, 58, 47, 0.15);
+    }
+
+    .trail-card.featured { border-top-color: var(--accent); }
+    .trail-card.history { border-top-color: var(--bark); }
+    .trail-card.easy { border-top-color: var(--sage); }
+
+    .trail-header {
+      padding: 1.5rem 2rem;
+      background: linear-gradient(to right, var(--cream), var(--warm));
+      border-bottom: 1px solid #e0d8c5;
+    }
+
+    .trail-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--forest);
+      margin-bottom: 0.5rem;
+    }
+
+    .trail-subtitle {
+      color: var(--stone);
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+    }
+
+    .badge.featured { background: var(--accent); color: white; }
+    .badge.history { background: var(--bark); color: white; }
+    .badge.easy { background: var(--sage); color: white; }
+    .badge.medium { background: #d4a574; color: white; }
+    .badge.hard { background: #c25450; color: white; }
+    .badge.expert { background: #8b3a3a; color: white; }
+
+    .trail-body { padding: 2rem; }
+
+    .trail-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--snow);
+      border-radius: 8px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--stone);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-value {
+      font-weight: 500;
+      color: var(--forest);
+      font-size: 1.05rem;
+    }
+
+    .trail-body h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--moss);
+      margin: 1.5rem 0 0.8rem 0;
+      font-size: 1.2rem;
+    }
+
+    .trail-body p { margin-bottom: 1rem; }
+
+    .trail-body ol, .trail-body ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .trail-body li { margin-bottom: 0.4rem; }
+
+    .historical-note {
+      background: var(--warm);
+      border-left: 4px solid var(--bark);
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
+    .historical-note strong {
+      font-style: normal;
+      color: var(--bark);
+    }
+
+    .warning-note {
+      background: #fef5e7;
+      border-left: 4px solid #d4a574;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .warning-note strong { color: #b8741e; }
+
+    /* ===== TABELLA QUOTE ===== */
+    .points-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .points-table th {
+      background: var(--moss);
+      color: white;
+      padding: 0.8rem;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .points-table td {
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid var(--cream);
+    }
+
+    .points-table tr:nth-child(even) td { background: var(--snow); }
+    .points-table tr:last-child td { border-bottom: none; }
+
+    /* ===== STORIA ===== */
+    .history-section {
+      background: linear-gradient(135deg, var(--bark) 0%, #735c45 100%);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      margin: 3rem 0;
+    }
+
+    .history-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .history-section p { margin-bottom: 1rem; line-height: 1.7; }
+
+    /* ===== INFO PRATICHE ===== */
+    .practical-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .practical-box {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--sage);
+    }
+
+    .practical-box h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .practical-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .practical-box li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed var(--cream);
+    }
+
+    .practical-box li:last-child { border-bottom: none; }
+
+    /* ===== EMERGENZE ===== */
+    .emergency-box {
+      background: #c25450;
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .emergency-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .emergency-numbers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .emergency-number {
+      background: rgba(255,255,255,0.15);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .emergency-number .number {
+      display: block;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0.3rem 0;
+    }
+
+    /* ===== CTA ===== */
+    .cta-final {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: var(--cream);
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+
+    .cta-final h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background: var(--accent);
+      color: var(--forest);
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #b89456;
+      transform: translateY(-2px);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--forest);
+      color: var(--cream);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    .footer-info { max-width: 800px; margin: 0 auto; }
+    .footer-info p { margin: 0.4rem 0; font-size: 0.95rem; }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.5rem;
+      background: var(--accent);
+      color: var(--forest);
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .back-link:hover {
+      background: #b89456;
+      text-decoration: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero { padding: 3rem 1rem; }
+      main { padding: 2rem 1rem; }
+      .trail-body { padding: 1.2rem; }
+      .trail-header { padding: 1.2rem; }
+      .section-title { font-size: 1.6rem; }
+      .nav-links { gap: 1rem; font-size: 0.9rem; }
+      .history-section { padding: 2rem 1.2rem; }
+      .emergency-box { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-content">
+    <a href="index.html" class="logo-block">
+      <img src="images/Logo.jpg" alt="Logo Il Bearč">
+      <h1>Il Bearč</h1>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#camere">Camere</a></li>
+        <li><a href="index.html#zona">La zona</a></li>
+        <li><a href="trekking.html">Trekking</a></li>
+        <li><a href="index.html#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">Carnia · Friuli Venezia Giulia · 696m</span>
+    <h2>Trekking ed escursioni da Feltrone</h2>
+    <p>Sentieri tra storia partigiana, faggete secolari e vette panoramiche delle Alpi Carniche, tutti raggiungibili a piedi dal Bearč.</p>
+  </div>
+</section>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h3>📍 Feltrone, il punto di partenza</h3>
+    <p>Feltrone è il <strong>paese più alto del Comune di Socchieve</strong>, immerso nella natura della Carnia tra le Dolomiti Friulane e le Alpi Tolmezzine Occidentali. Disposto al margine boschivo del Monte Nolia, gode di un panorama emozionante sull'intera valle dell'Alto Tagliamento ed è ufficialmente descritto come "punto di snodo per il trekker e il ciclista coraggioso".</p>
+
+    <div class="intro-grid">
+      <div class="info-box">
+        <strong>Altitudine</strong>
+        696 m s.l.m.
+      </div>
+      <div class="info-box">
+        <strong>Comune</strong>
+        Socchieve (UD)
+      </div>
+      <div class="info-box">
+        <strong>Regione</strong>
+        Friuli-Venezia Giulia
+      </div>
+      <div class="info-box">
+        <strong>Zona</strong>
+        Carnia, Alta Val Tagliamento
+      </div>
+      <div class="info-box">
+        <strong>Cartografia</strong>
+        Carta Tabacco n. 013
+      </div>
+      <div class="info-box">
+        <strong>Come arrivare</strong>
+        SS 52 → bivio Mediis → 3 km
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PERCORSO 1: COL GENTILE ===== -->
+  <h2 class="section-title">⛰️ I percorsi principali</h2>
+
+  <article class="trail-card featured">
+    <div class="trail-header">
+      <div class="trail-name">1. Col Gentile <span class="badge featured">Il più iconico</span><span class="badge expert">EE</span></div>
+      <div class="trail-subtitle">Il "re" dei sentieri da Feltrone — sentiero CAI 235</div>
+    </div>
+    <div class="trail-body">
+      <p>Il percorso più importante e iconico della zona conduce alla vetta del <strong>Col Gentile (2.075 m)</strong>, parte delle Alpi Tolmezzine Occidentali. Dalla cima si gode di un panorama 360° che spazia dalle Alpi Carniche alle Dolomiti, con vista su Monte Veltri, Lago di Sauris, Tinisa, Bivera e Val Pesarina.</p>
+
+      <div class="trail-stats">
+        <div class="stat">
+          <div class="stat-icon">🛤️</div>
+          <span class="stat-label">Sentiero</span>
+          <span class="stat-value">CAI 235</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">📈</div>
+          <span class="stat-label">Dislivello</span>
+          <span class="stat-value">+1.350 m</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">📏</div>
+          <span class="stat-label">Lunghezza</span>
+          <span class="stat-value">23 km</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">⏱️</div>
+          <span class="stat-label">Tempo</span>
+          <span class="stat-value">7 h totali</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🥾</div>
+          <span class="stat-label">Difficoltà</span>
+          <span class="stat-value">Esperti</span>
+        </div>
+      </div>
+
+      <h4>🗺️ Le tappe del percorso</h4>
+      <table class="points-table">
+        <thead>
+          <tr>
+            <th>Punto</th>
+            <th>Quota</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Feltrone</td><td>696 m</td><td>Partenza</td></tr>
+          <tr><td>Forca di Pani</td><td>1.139 m</td><td>Accesso comune in auto</td></tr>
+          <tr><td>Casera Chiarzò</td><td>1.393 m</td><td>Ricovero aperto, ristrutturato</td></tr>
+          <tr><td>Forca del Colador</td><td>1.865 m</td><td>Bivio con sentiero CAI 236</td></tr>
+          <tr><td>Col Gentile</td><td>2.075 m</td><td>🏔️ Vetta — panorama 360°</td></tr>
+          <tr><td>Casera Forchia</td><td>1.730 m</td><td>Ricovero di emergenza</td></tr>
+          <tr><td>Rifugio Pilang</td><td>1.551 m</td><td>Discesa verso Pesarina</td></tr>
+          <tr><td>Pieria (Prato Carnico)</td><td>680 m</td><td>Arrivo in Val Pesarina</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning-note">
+        <strong>⚠️ Variante CAI 235a:</strong> più impegnativa, attraversa una cengia attrezzata con cavi corrimano. Riservata a escursionisti esperti, da evitare con terreno bagnato o ghiacciato.
+      </div>
+
+      <p><em>💡 Suggerimento: presso l'Albergo Diffuso "Col Gentile" di Socchieve è possibile organizzare il viaggio di ritorno in pulmino da Prato Carnico.</em></p>
+    </div>
+  </article>
+
+  <!-- ===== PERCORSO 2: TROI DA L'ORS ===== -->
+  <article class="trail-card history">
+    <div class="trail-header">
+      <div class="trail-name">2. Troi da l'Ors <span class="badge history">Sentiero storico</span><span class="badge medium">E</span></div>
+      <div class="trail-subtitle">Il sentiero dei partigiani — anello panoramico</div>
+    </div>
+    <div class="trail-body">
+      <p>Anello panoramico che parte e arriva a Feltrone, dedicato alla memoria di <strong>Antonio Zanella detto "L'Ors di Pani"</strong>, il leggendario partigiano che diede rifugio alle Brigate Osoppo-Garibaldi durante il duro autunno-inverno del 1944.</p>
+
+      <div class="trail-stats">
+        <div class="stat">
+          <div class="stat-icon">🔄</div>
+          <span class="stat-label">Tipo</span>
+          <span class="stat-value">Ad anello</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">📈</div>
+          <span class="stat-label">Dislivello</span>
+          <span class="stat-value">+/- 450 m</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">⏱️</div>
+          <span class="stat-label">Tempo</span>
+          <span class="stat-value">3 h 30'</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🏷️</div>
+          <span class="stat-label">Segnavia</span>
+          <span class="stat-value">Bianco-azzurro</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🥾</div>
+          <span class="stat-label">Difficoltà</span>
+          <span class="stat-value">Escursionistico</span>
+        </div>
+      </div>
+
+      <h4>🗺️ Tappe del percorso</h4>
+      <ol>
+        <li><strong>Feltrone (696 m)</strong> — il sentiero parte a monte del paese</li>
+        <li>Attraversamento del <strong>torrente Filuvigna</strong></li>
+        <li>Prati di <strong>Duredia</strong></li>
+        <li>Località <strong>Nastona</strong> (Astona sulle carte Tabacco) — azienda zootecnica</li>
+        <li>Belvedere su <strong>Pani</strong> con il caratteristico faggio isolato</li>
+        <li><strong>Stavoli della Congregazione (1.094 m)</strong> — architettura rurale</li>
+        <li>Stavoli di <strong>Nolia</strong></li>
+        <li>Ritorno a Feltrone</li>
+      </ol>
+
+      <div class="historical-note">
+        <strong>📜 Storia:</strong> il sentiero, riaperto da Legambiente grazie ai Campi di Volontariato, è stato inaugurato il <strong>2 giugno 2019</strong> (Festa della Repubblica). Proprio in località Nastona, il 19 novembre 1944, fu respinto vittoriosamente l'attacco di tedeschi e cosacchi nella "Battaglia di Pani", raccontata da Tranquillo De Caneva (il partigiano "Ape").
+      </div>
+
+      <div class="warning-note">
+        <strong>⚠️ Attenzione:</strong> alcuni passaggi su frane e l'attraversamento del torrente Filuvigna richiedono prudenza in caso di portate di piena.
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== PERCORSO 3: MONTE NOLIA ===== -->
+  <article class="trail-card">
+    <div class="trail-header">
+      <div class="trail-name">3. Anello del Monte Nolia <span class="badge medium">E</span></div>
+      <div class="trail-subtitle">Versione breve ideale per mezza giornata</div>
+    </div>
+    <div class="trail-body">
+      <p>Variante più corta del Troi da l'Ors, tocca la cima del <strong>Monte Nolia (1.102 m)</strong> e gli stavoli omonimi. Un percorso usato dai partigiani nell'inverno del 1944 e ora riproposto da Legambiente anche nella versione invernale "Nevediversa".</p>
+
+      <div class="trail-stats">
+        <div class="stat">
+          <div class="stat-icon">🔄</div>
+          <span class="stat-label">Tipo</span>
+          <span class="stat-value">Ad anello</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🏔️</div>
+          <span class="stat-label">Vetta</span>
+          <span class="stat-value">1.102 m</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">⏱️</div>
+          <span class="stat-label">Tempo</span>
+          <span class="stat-value">~3 ore</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🥾</div>
+          <span class="stat-label">Difficoltà</span>
+          <span class="stat-value">Media</span>
+        </div>
+      </div>
+
+      <p>Ideale per chi vuole avere un assaggio del territorio senza impegnarsi in un'escursione di giornata intera. Adatto anche con neve fresca e ciaspole nei mesi invernali.</p>
+    </div>
+  </article>
+
+  <!-- ===== PERCORSO 4: ANELLO BORGHI ===== -->
+  <article class="trail-card easy">
+    <div class="trail-header">
+      <div class="trail-name">4. Anello dei borghi di Socchieve <span class="badge easy">Facile</span></div>
+      <div class="trail-subtitle">Per famiglie e relax — senza grandi dislivelli</div>
+    </div>
+    <div class="trail-body">
+      <p>Camminata salutare che collega i piccoli borghi del Comune di Socchieve passando per Feltrone, ideale per chi viaggia in famiglia, con bambini, o per chi cerca un'esperienza di tranquillità immersa nella tradizione carnica.</p>
+
+      <h4>🗺️ Itinerario completo</h4>
+      <ol>
+        <li><strong>Lungis</strong> — partenza</li>
+        <li>Sentiero di <strong>Nagri</strong> → zona prativa di Chialaria → Frizzon</li>
+        <li>Strada dell'acquedotto → <strong>Feltrone</strong></li>
+        <li><strong>Dilignidis</strong> (frazione di Feltrone, oltre la chiesa)</li>
+        <li>Ciottolato del Pecol → <strong>Viaso</strong></li>
+        <li>Crocifisso → sentiero "Dàs Vàls" → <strong>Mediis</strong></li>
+        <li>Ponte sul Lumiei → Borgo Siega</li>
+        <li>Sentiero della Lungjania → ritorno a <strong>Lungis</strong></li>
+      </ol>
+
+      <p><em>💡 Perfetto per scoprire l'architettura rurale carnica, gli antichi sentieri tra prati, boschi e mulattiere ciottolate.</em></p>
+    </div>
+  </article>
+
+  <!-- ===== PERCORSO 5: MONTE CORONA ===== -->
+  <article class="trail-card">
+    <div class="trail-header">
+      <div class="trail-name">5. Monte Corona — anello via Priuso <span class="badge hard">Difficile</span></div>
+      <div class="trail-subtitle">Sentiero ad anello popolare anche tra biker</div>
+    </div>
+    <div class="trail-body">
+      <p>Sentiero ad anello molto popolare anche a livello internazionale (recensito su AllTrails con 4,5/5 stelle), che collega Socchieve, Feltrone e Priuso. Adatto anche al mountain bike.</p>
+
+      <div class="trail-stats">
+        <div class="stat">
+          <div class="stat-icon">📏</div>
+          <span class="stat-label">Lunghezza</span>
+          <span class="stat-value">15 km</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">📈</div>
+          <span class="stat-label">Dislivello</span>
+          <span class="stat-value">672 m</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">⏱️</div>
+          <span class="stat-label">Tempo</span>
+          <span class="stat-value">~5 ore</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">📅</div>
+          <span class="stat-label">Stagione</span>
+          <span class="stat-value">Mag-Nov</span>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🐕</div>
+          <span class="stat-label">Cani</span>
+          <span class="stat-value">Al guinzaglio</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== PERCORSO 6: VIASO-FELTRONE ===== -->
+  <article class="trail-card">
+    <div class="trail-header">
+      <div class="trail-name">6. Anello Viaso-Feltrone <span class="badge medium">Media</span></div>
+      <div class="trail-subtitle">Mulattiere e percorsi mountain bike</div>
+    </div>
+    <div class="trail-body">
+      <p>Percorso adatto sia all'escursionismo che alla mountain bike, che attraversa mulattiere storiche, ruderi del molino di Baldo e terrazzamenti agricoli tipici della Carnia.</p>
+
+      <h4>🗺️ Tappe</h4>
+      <ol>
+        <li><strong>Viaso</strong> — partenza con mulattiera verso il rio Dusili</li>
+        <li>Ruderi del <strong>molino di Baldo</strong></li>
+        <li>Strada asfaltata Feltrone-Enemonzo</li>
+        <li>Terrazzamenti di <strong>Feltrone</strong></li>
+        <li>Sentiero verso il rio Filuvigna (omonimo casolare)</li>
+        <li>Percorsi MTB n°1 e n°2 → ritorno a Viaso</li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- ===== STORIA ===== -->
+  <section class="history-section">
+    <h3>📜 La Repubblica Libera della Carnia (1944)</h3>
+    <p>I sentieri che partono da Feltrone non sono solo percorsi naturalistici: sono <strong>vie di memoria</strong>. Nell'estate-autunno 1944, tutta la Carnia divenne sede della <strong>Repubblica Libera della Carnia</strong>, una delle prime zone d'Italia liberate dai partigiani: un esperimento unico di democrazia in tempo di guerra che si estendeva su circa 2.500 km² e comprendeva oltre 40 comuni.</p>
+
+    <p>Dopo la caduta della Repubblica a fine 1944, i sentieri di Pani e Feltrone divennero <strong>vie di fuga e rifugio</strong> per i partigiani delle Brigate Osoppo-Garibaldi durante i rastrellamenti condotti da tedeschi e cosacchi.</p>
+
+    <p><strong>🐻 Antonio Zanella "L'Ors di Pani"</strong> — partigiano leggendario che diede rifugio ai compagni nelle proprie casere. Il "Troi da l'Ors" porta il suo nome.</p>
+
+    <p><strong>🎖️ Romano Marchetti "Da Monte"</strong> — commissario delle Brigate Garibaldi-Osoppo Carnia. Le iniziative del 2019 furono dedicate alla sua memoria.</p>
+
+    <p><strong>⚔️ 19 novembre 1944</strong> — in località Nastona si svolse la "Battaglia di Pani", in cui i partigiani respinsero vittoriosamente un attacco di tedeschi e cosacchi.</p>
+  </section>
+
+  <!-- ===== INFO PRATICHE ===== -->
+  <h2 class="section-title">🎒 Informazioni pratiche</h2>
+
+  <div class="practical-grid">
+    <div class="practical-box">
+      <h4>👟 Equipaggiamento consigliato</h4>
+      <ul>
+        <li>🥾 Scarponi da media montagna (obbligatori)</li>
+        <li>🌧️ Giacca antipioggia</li>
+        <li>💧 Acqua e cibo (al sacco)</li>
+        <li>🗺️ Carta Tabacco n. 013</li>
+        <li>📱 Cellulare carico</li>
+        <li>🥢 Bastoncini da trekking</li>
+        <li>🧥 Abbigliamento a strati</li>
+      </ul>
+    </div>
+
+    <div class="practical-box">
+      <h4>📅 Periodo migliore</h4>
+      <ul>
+        <li>🌸 <strong>Mag-Giu:</strong> prati fioriti, faggete verdi</li>
+        <li>☀️ <strong>Lug-Ago:</strong> tutte le quote percorribili</li>
+        <li>🍂 <strong>Set-Ott:</strong> colori autunnali stupendi</li>
+        <li>❄️ <strong>Inverno:</strong> solo bassa quota</li>
+      </ul>
+      <p style="margin-top: 0.8rem; font-size: 0.9rem; color: var(--stone);"><em>⚠️ In estate attenzione ai temporali pomeridiani.</em></p>
+    </div>
+
+    <div class="practical-box">
+      <h4>🏠 Ricoveri lungo i percorsi</h4>
+      <ul>
+        <li>🏠 <strong>Casera Chiarzò</strong> (1.393 m) — aperta</li>
+        <li>🏠 <strong>Casera Forchia</strong> (1.730 m) — emergenza</li>
+        <li>🏠 <strong>Rifugio Pilang</strong> (1.551 m)</li>
+        <li>🏠 <strong>Casera Losa</strong> (1.765 m) — gest. 15/6-30/9 — 347.1628566</li>
+      </ul>
+    </div>
+
+    <div class="practical-box">
+      <h4>🚌 Servizi e logistica</h4>
+      <ul>
+        <li>🅿️ Parcheggi limitati a Feltrone</li>
+        <li>🅿️ Più posti a Forca di Pani (1.139 m)</li>
+        <li>🚐 Trasporto pulmino di ritorno (organizzabile)</li>
+        <li>🗺️ Mappa dei sentieri all'Albergo Diffuso</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== EMERGENZE ===== -->
+  <div class="emergency-box">
+    <h3>🚨 Numeri di emergenza</h3>
+    <p>Salva questi numeri sul tuo cellulare prima di partire</p>
+
+    <div class="emergency-numbers">
+      <div class="emergency-number">
+        <span>Numero Unico Europeo</span>
+        <span class="number">112</span>
+        <span>Soccorso Alpino</span>
+      </div>
+      <div class="emergency-number">
+        <span>Soccorso Sanitario</span>
+        <span class="number">118</span>
+        <span>Emergenze mediche</span>
+      </div>
+      <div class="emergency-number">
+        <span>Vigili del Fuoco</span>
+        <span class="number">115</span>
+        <span>Incendi, soccorso tecnico</span>
+      </div>
+    </div>
+
+    <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.9;">
+      💡 Comunica sempre il tuo itinerario al Bearč prima di partire.<br>
+      App utile da scaricare: <strong>GeoResq</strong> del Soccorso Alpino.
+    </p>
+  </div>
+
+  <!-- ===== CTA FINALE ===== -->
+  <div class="cta-final">
+    <h3>Domande sui percorsi?</h3>
+    <p style="margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Sono Dario, il proprietario del Bearč. Conosco questi sentieri da sempre e sono felice di consigliarti il percorso più adatto a te e al tuo gruppo, secondo il periodo, le condizioni meteo e il tuo livello di esperienza.
+    </p>
+    <a href="index.html#contatti" class="cta-button">📞 Contattami</a>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-info">
+    <p><strong>Il Bearč</strong> — Casa Vacanze in Carnia</p>
+    <p>Feltrone — 33020 Socchieve (UD) — Friuli-Venezia Giulia</p>
+    <p>📞 <a href="tel:+393299451083">+39 329 945 1083</a> — ✉️ <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a></p>
+    <p>CIN: IT030110C2TSFD92GI</p>
+    <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">
+      Le informazioni sui sentieri sono tratte da fonti ufficiali (CAI FVG, Albergo Diffuso Socchieve, Visita Socchieve, Legambiente FVG, ANPI Udine). I percorsi sono percorribili con attenzione e salvo problematiche insorte nel frattempo. Rispettate la natura e seguite sempre le segnalazioni ufficiali.
+    </p>
+    <a href="index.html" class="back-link">← Torna alla home</a>
+  </div>
+</footer>
+
+</body>
+</html>
