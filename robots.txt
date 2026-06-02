@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /chatbot-bearc.html
+Disallow: /Chatbot.html
+
+Sitemap: https://www.ilbearc.com/sitemap.xml
