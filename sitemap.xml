@@ -20,13 +20,4 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Chatbot (UI integrata via iframe nel sito) -->
-  <url>
-    <loc>https://www.ilbearc.com/chatbot-bearc.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
 </urlset>
-
