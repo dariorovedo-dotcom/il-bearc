@@ -1557,8 +1557,46 @@
   }
 }
 </script>
+<style>
+/* === INTRO CINEMATOGRAFICA (nebbia) === */
+#introBearc{position:fixed;inset:0;z-index:9999;overflow:hidden;
+  background:radial-gradient(130% 130% at 50% 42%, #24463a 0%, #162c22 60%, #0c1812 100%);
+  opacity:1;transition:opacity 1.3s ease;}
+#introBearc.done{opacity:0;pointer-events:none;}
+#introBearc .ib-fog{position:absolute;left:-30%;width:160%;height:70%;pointer-events:none;
+  background:radial-gradient(closest-side, rgba(245,240,232,.55), rgba(245,240,232,.18) 55%, transparent 78%);
+  filter:blur(14px);opacity:0;}
+#introBearc .ib-fog1{top:8%;height:60%;}
+#introBearc .ib-fog2{top:32%;height:66%;}
+#introBearc .ib-fog3{top:0;height:80%;}
+#introBearc .ib-sun{position:absolute;top:26%;left:50%;transform:translateX(-50%);width:70%;height:60%;
+  background:radial-gradient(closest-side, rgba(240,192,72,.20), transparent 70%);opacity:0;pointer-events:none;filter:blur(20px);}
+#introBearc .ib-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.04);
+  width:min(340px,72vw);text-align:center;opacity:0;filter:blur(8px);}
+#introBearc .ib-logo img{width:100%;display:block;filter:drop-shadow(0 6px 30px rgba(0,0,0,.45));}
+#introBearc .ib-welcome{position:absolute;top:calc(50% + min(150px,32vw));left:50%;transform:translateX(-50%);
+  width:90%;text-align:center;opacity:0;font-family:'Playfair Display',serif;}
+#introBearc .ib-welcome h2{color:#f5f0e8;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:600;}
+#introBearc .ib-welcome p{color:#c8a96e;font-size:clamp(.95rem,2.3vw,1.15rem);font-style:italic;margin-top:.4rem;}
+#introBearc .ib-skip{position:absolute;top:1.4rem;right:1.6rem;z-index:10000;background:rgba(0,0,0,.25);
+  border:1px solid rgba(245,240,232,.25);color:#f5f0e8;font-family:'Jost',sans-serif;
+  font-size:.78rem;letter-spacing:.05em;padding:.5rem .9rem;border-radius:2px;cursor:pointer;transition:background .2s;}
+#introBearc .ib-skip:hover{background:rgba(0,0,0,.45);}
+@media(prefers-reduced-motion:reduce){#introBearc .ib-fog,#introBearc .ib-sun{display:none;}}
+</style>
 </head>
 <body>
+
+<!-- INTRO CINEMATOGRAFICA -->
+<div id="introBearc" role="dialog" aria-label="Introduzione">
+  <button class="ib-skip" id="ibSkip" type="button">✕ Salta introduzione</button>
+  <div class="ib-sun" id="ibSun"></div>
+  <div class="ib-fog ib-fog1" id="ibFog1"></div>
+  <div class="ib-fog ib-fog2" id="ibFog2"></div>
+  <div class="ib-fog ib-fog3" id="ibFog3"></div>
+  <div class="ib-logo" id="ibLogo"><img src="images/logo-intro-trasparente.png" alt="Il Bearč — Casa Vacanze"></div>
+  <div class="ib-welcome" id="ibWelcome"><h2>Benvenuto al Bearč</h2><p>Dove la Carnia racconta la sua storia.</p></div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -2830,6 +2868,41 @@
     });
   });
 
+</script>
+
+<script>
+/* === INTRO CINEMATOGRAFICA (nebbia) === */
+(function(){
+  var intro=document.getElementById('introBearc');
+  if(!intro) return;
+  var skip=document.getElementById('ibSkip');
+  var fog1=document.getElementById('ibFog1'),fog2=document.getElementById('ibFog2'),fog3=document.getElementById('ibFog3');
+  var sun=document.getElementById('ibSun'),logo=document.getElementById('ibLogo'),welcome=document.getElementById('ibWelcome');
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var seen=false; try{ seen=sessionStorage.getItem('bearc_intro')==='1'; }catch(e){}
+  function finish(){ intro.classList.add('done'); try{sessionStorage.setItem('bearc_intro','1');}catch(e){}
+    setTimeout(function(){ if(intro&&intro.parentNode) intro.parentNode.removeChild(intro); },1300); }
+  skip.addEventListener('click',finish);
+  if(seen){ finish(); return; }
+  if(reduce){ logo.style.opacity='1';logo.style.filter='none';logo.style.transform='translate(-50%,-50%)';
+    welcome.style.opacity='1'; setTimeout(finish,3200); return; }
+  var mobile=window.innerWidth<640, DUR=mobile?4200:7000, t0=null;
+  function ei(t){ return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2; }
+  function cl(v){ return v<0?0:v>1?1:v; }
+  function frame(ts){
+    if(!t0)t0=ts; var e=ts-t0,p=cl(e/DUR);
+    var e1=ei(cl(p/0.38)), e2=ei(cl((p-0.30)/0.48)), e3=ei(cl((p-0.55)/0.35));
+    var fogOp=(0.85*e1)*(1-e2), drift=Math.sin(e/2600)*4;
+    fog1.style.opacity=fogOp; fog1.style.transform='translateX('+(drift-e2*12)+'%)';
+    fog2.style.opacity=fogOp*0.9; fog2.style.transform='translateX('+(-drift+e2*14)+'%)';
+    fog3.style.opacity=fogOp*0.6; fog3.style.transform='translateX('+(drift*0.5)+'%) translateY('+(-e2*8)+'%)';
+    sun.style.opacity=e2*0.9*(1-0.3*e3);
+    logo.style.opacity=e3; logo.style.filter='blur('+((1-e3)*8)+'px)'; logo.style.transform='translate(-50%,-50%) scale('+(1.04-0.04*e3)+')';
+    var tw=cl((p-0.72)/0.22); welcome.style.opacity=ei(tw); welcome.style.transform='translateX(-50%) translateY('+((1-tw)*12)+'px)';
+    if(e<DUR){ requestAnimationFrame(frame); } else { setTimeout(finish,500); }
+  }
+  requestAnimationFrame(frame);
+})();
 </script>
 </body>
 </html>
