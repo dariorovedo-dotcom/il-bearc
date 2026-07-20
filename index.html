@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Il Bearč — Casa Vacanze a Feltrone-Socchieve, Carnia | Alpi Carniche</title>
+<title data-i18n="head.title1">Il Bearč — Casa Vacanze a Feltrone-Socchieve, Carnia | Alpi Carniche</title>
 <meta name="description" content="Casa vacanze Il Bearč a Feltrone di Socchieve (UD), 696m, Alpi Carniche. 2 camere, 1 bagno, 4 ospiti, giardino, Wi-Fi. A 30 km dallo Zoncolan. Valutazione 9.6/10 su Booking.com. Prenota direttamente.">
 
 <!-- Open Graph (anteprima social) -->
@@ -1583,32 +1583,42 @@
   font-size:.78rem;letter-spacing:.05em;padding:.5rem .9rem;border-radius:2px;cursor:pointer;transition:background .2s;}
 #introBearc .ib-skip:hover{background:rgba(0,0,0,.45);}
 @media(prefers-reduced-motion:reduce){#introBearc .ib-fog,#introBearc .ib-sun{display:none;}}
+
+/* ==================== BEARC-I18N: selettore lingua ==================== */
+.lang-switch{display:flex;align-items:center;gap:.15rem;margin-left:.6rem;padding-left:.8rem;border-left:1px solid rgba(0,0,0,.12)}
+.lang-btn{background:none;border:none;cursor:pointer;font:inherit;font-size:.72rem;letter-spacing:.08em;color:var(--stone);padding:.25rem .35rem;border-radius:4px;transition:color .2s,background .2s;text-transform:uppercase}
+.lang-btn:hover{color:var(--forest)}
+.lang-btn.active{color:var(--forest);font-weight:600;background:rgba(0,0,0,.05)}
+@media (max-width:768px){
+  .lang-switch{margin:0;padding:.6rem 0 0;border-left:none;border-top:1px solid rgba(0,0,0,.1);justify-content:center;width:100%}
+  .lang-btn{font-size:.85rem;padding:.4rem .7rem}
+}
 </style>
 </head>
 <body>
 
 <!-- INTRO CINEMATOGRAFICA -->
 <div id="introBearc" role="dialog" aria-label="Introduzione">
-  <button class="ib-skip" id="ibSkip" type="button">✕ Salta introduzione</button>
+  <button data-i18n="global.button1" class="ib-skip" id="ibSkip" type="button">✕ Salta introduzione</button>
   <div class="ib-sun" id="ibSun"></div>
   <div class="ib-fog ib-fog1" id="ibFog1"></div>
   <div class="ib-fog ib-fog2" id="ibFog2"></div>
   <div class="ib-fog ib-fog3" id="ibFog3"></div>
   <div class="ib-logo" id="ibLogo"><img src="images/logo-intro-trasparente.png" alt="Il Bearč — Casa Vacanze"></div>
-  <div class="ib-welcome" id="ibWelcome"><h2>Benvenuto al Bearč</h2><p>Dove la Carnia racconta la sua storia.</p></div>
+  <div class="ib-welcome" id="ibWelcome"><h2 data-i18n="global.h21">Benvenuto al Bearč</h2><p data-i18n="global.p1">Dove la Carnia racconta la sua storia.</p></div>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <span class="hero-badge">Carnia · Friuli Venezia Giulia · 696m</span>
+  <span data-i18n="home.span1" class="hero-badge">Carnia · Friuli Venezia Giulia · 696m</span>
   <h1>Il <em>Bearč</em></h1>
-  <p class="hero-sub">Casa Vacanze a Feltrone · Socchieve, Carnia (UD)</p>
-  <div class="hero-ctas">
+  <p data-i18n="home.p1" class="hero-sub">Casa Vacanze a Feltrone · Socchieve, Carnia (UD)</p>
+  <div data-i18n="home.div1" class="hero-ctas">
     <a href="#prenotazione" class="btn-primary">Scopri la disponibilità</a>
     <a href="#about" class="btn-outline">Entra nell’atmosfera di Il Bearč</a>
   </div>
   <div class="scroll-hint">
-    <span>Scorri</span>
+    <span data-i18n="home.span2">Scorri</span>
     <div class="scroll-line"></div>
   </div>
 </section>
@@ -1620,18 +1630,19 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#about">La Casa</a></li>
-    <li><a href="#galleria">Foto</a></li>
-    <li><a href="#servizi">Servizi</a></li>
-    <li><a href="#attivita">Attività</a></li>
-    <li><a href="trekking.html">Trekking</a></li>
-    <li><a href="cucina.html">Cucina</a></li>
-    <li><a href="#storia">Storia</a></li>
-    <li><a href="#recensioni">Recensioni</a></li>
-    <li><a href="#disponibilita">Disponibilità</a></li>
-    <li><a href="#posizione">Dove siamo</a></li>
-    <li><a href="#prenotazione">Prenota</a></li>
-  </ul>
+    <li data-i18n="nav.li1"><a href="#about">La Casa</a></li>
+    <li data-i18n="nav.li2"><a href="#galleria">Foto</a></li>
+    <li data-i18n="nav.li3"><a href="#servizi">Servizi</a></li>
+    <li data-i18n="nav.li4"><a href="#attivita">Attività</a></li>
+    <li data-i18n="nav.li5"><a href="trekking.html">Trekking</a></li>
+    <li data-i18n="nav.li6"><a href="cucina.html">Cucina</a></li>
+    <li data-i18n="nav.li7"><a href="#storia">Storia</a></li>
+    <li data-i18n="nav.li8"><a href="#recensioni">Recensioni</a></li>
+    <li data-i18n="nav.li9"><a href="#disponibilita">Disponibilità</a></li>
+    <li data-i18n="nav.li10"><a href="#posizione">Dove siamo</a></li>
+    <li data-i18n="nav.li11"><a href="#prenotazione">Prenota</a></li>
+  <li class="lang-switch" aria-label="Lingua / Language / Sprache"><button type="button" class="lang-btn active" data-lang="it" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('it')" aria-pressed="true">IT</button><button type="button" class="lang-btn" data-lang="en" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('en')" aria-pressed="false">EN</button><button type="button" class="lang-btn" data-lang="de" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('de')" aria-pressed="false">DE</button></li>
+</ul>
 </nav>
 
 <!-- ABOUT -->
@@ -1639,18 +1650,18 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text">
-        <p class="section-label">La nostra storia</p>
-        <h2 class="section-title">Una casa nel cuore<br>delle Alpi Carniche</h2>
-        <p>Ci trovate a Feltrone, un ameno paesino della Carnia, immerso nel verde a <strong>696 metri di altitudine</strong>, in comune di Socchieve, nella regione Friuli Venezia Giulia, a ridosso del confine con l'Austria.</p>
-        <p>La casa gode di una posizione soleggiata dalla mattina alla sera, dotata di ampio giardino recintato dove i bambini possono giocare — ideale per chi cerca tranquillità lontano dai rumori e dall'inquinamento.</p>
-        <p>Passeggiate tra antichi boschi di faggio e abete, incorniciati dalle cime suggestive delle Alpi Carniche, <a href="trekking.html" style="color: var(--forest); font-weight: 500; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px;">trekking</a>, mountain bike, sci. Il Bearč è il punto di partenza perfetto per vivere la montagna autentica.</p>
+        <p data-i18n="about.p1" class="section-label">La nostra storia</p>
+        <h2 data-i18n="about.h21" class="section-title">Una casa nel cuore<br>delle Alpi Carniche</h2>
+        <p data-i18n="about.p2">Ci trovate a Feltrone, un ameno paesino della Carnia, immerso nel verde a <strong>696 metri di altitudine</strong>, in comune di Socchieve, nella regione Friuli Venezia Giulia, a ridosso del confine con l'Austria.</p>
+        <p data-i18n="about.p3">La casa gode di una posizione soleggiata dalla mattina alla sera, dotata di ampio giardino recintato dove i bambini possono giocare — ideale per chi cerca tranquillità lontano dai rumori e dall'inquinamento.</p>
+        <p data-i18n="about.p4">Passeggiate tra antichi boschi di faggio e abete, incorniciati dalle cime suggestive delle Alpi Carniche, <a href="trekking.html" style="color: var(--forest); font-weight: 500; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px;">trekking</a>, mountain bike, sci. Il Bearč è il punto di partenza perfetto per vivere la montagna autentica.</p>
         <div class="stats-row">
-          <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Camere da letto</span></div>
-          <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Persone max</span></div>
-          <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">Bagno</span></div>
-          <div class="stat"><span class="stat-num">70m²</span><span class="stat-lbl">Superficie</span></div>
-          <div class="stat"><span class="stat-num">696m</span><span class="stat-lbl">Altitudine</span></div>
-          <div class="stat"><span class="stat-num">30km</span><span class="stat-lbl">Dallo Zoncolan</span></div>
+          <div data-i18n="about.div1" class="stat"><span class="stat-num">2</span><span class="stat-lbl">Camere da letto</span></div>
+          <div data-i18n="about.div2" class="stat"><span class="stat-num">4</span><span class="stat-lbl">Persone max</span></div>
+          <div data-i18n="about.div3" class="stat"><span class="stat-num">1</span><span class="stat-lbl">Bagno</span></div>
+          <div data-i18n="about.div4" class="stat"><span class="stat-num">70m²</span><span class="stat-lbl">Superficie</span></div>
+          <div data-i18n="about.div5" class="stat"><span class="stat-num">696m</span><span class="stat-lbl">Altitudine</span></div>
+          <div data-i18n="about.div6" class="stat"><span class="stat-num">30km</span><span class="stat-lbl">Dallo Zoncolan</span></div>
         </div>
       </div>
       <div class="about-img">
@@ -1663,44 +1674,44 @@
 <!-- GALLERIA -->
 <section id="galleria" style="background: var(--snow); padding: 6rem 2rem;">
   <div class="container">
-    <p class="section-label">La casa e i dintorni</p>
-    <h2 class="section-title">Galleria fotografica</h2>
+    <p data-i18n="galleria.p1" class="section-label">La casa e i dintorni</p>
+    <h2 data-i18n="galleria.h21" class="section-title">Galleria fotografica</h2>
     <div class="gallery-grid">
       <div class="gallery-item" onclick="openLightbox(0)">
         <img src="images/Vista-dall-esterno.jpg" alt="Vista esterna della casa" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Vista esterna</span></div>
+        <div data-i18n="galleria.div1" class="gallery-overlay"><span>Vista esterna</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(1)">
         <img src="images/Feltrone-inverno-2010-012.jpg" alt="La casa in inverno con la neve" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Inverno</span></div>
+        <div data-i18n="galleria.div2" class="gallery-overlay"><span>Inverno</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(2)">
         <img src="images/Feltrone.jpg" alt="Vista del borgo di Feltrone" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Il borgo</span></div>
+        <div data-i18n="galleria.div3" class="gallery-overlay"><span>Il borgo</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(3)">
         <img src="images/Soggiorno.jpg" alt="Soggiorno con stufa" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Soggiorno</span></div>
+        <div data-i18n="galleria.div4" class="gallery-overlay"><span>Soggiorno</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(4)">
         <img src="images/Cucina.jpg" alt="Cucina attrezzata" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Cucina</span></div>
+        <div data-i18n="galleria.div5" class="gallery-overlay"><span>Cucina</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(5)">
         <img src="images/Camera.jpg" alt="Camera da letto" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Camera</span></div>
+        <div data-i18n="galleria.div6" class="gallery-overlay"><span>Camera</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(6)">
         <img src="images/Camera-matrimoniale.jpg" alt="Camera matrimoniale" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Camera matrimoniale</span></div>
+        <div data-i18n="galleria.div7" class="gallery-overlay"><span>Camera matrimoniale</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(7)">
         <img src="images/Bagno.jpg" alt="Bagno" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Bagno</span></div>
+        <div data-i18n="galleria.div8" class="gallery-overlay"><span>Bagno</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(8)">
         <img src="images/Giardino.jpg" alt="Giardino con vista sulle Prealpi" loading="lazy" decoding="async">
-        <div class="gallery-overlay"><span>Giardino</span></div>
+        <div data-i18n="galleria.div9" class="gallery-overlay"><span>Giardino</span></div>
       </div>
     </div>
   </div>
@@ -1718,53 +1729,53 @@
 <!-- SERVIZI -->
 <section id="servizi">
   <div class="container">
-    <p class="section-label">Comfort e dotazioni</p>
-    <h2 class="section-title">Il comfort di un soggiorno autentico</h2>
+    <p data-i18n="servizi.p1" class="section-label">Comfort e dotazioni</p>
+    <h2 data-i18n="servizi.h21" class="section-title">Il comfort di un soggiorno autentico</h2>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">🏔️</div>
-        <h3>Vista sulle montagne</h3>
-        <p>Una vista mozzafiato sulle maestose Alpi Carniche direttamente dalla casa, per svegliarsi ogni mattina in un paesaggio straordinario.</p>
+        <h3 data-i18n="servizi.h31">Vista sulle montagne</h3>
+        <p data-i18n="servizi.p2">Una vista mozzafiato sulle maestose Alpi Carniche direttamente dalla casa, per svegliarsi ogni mattina in un paesaggio straordinario.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">📶</div>
-        <h3>WiFi gratuito</h3>
-        <p>Connessione Wi-Fi veloce inclusa per tutto il soggiorno — circa 68 Mbps in download e 20 in upload, ideale anche per smart working e streaming. O scollegati in totale libertà.</p>
+        <h3 data-i18n="servizi.h32">WiFi gratuito</h3>
+        <p data-i18n="servizi.p3">Connessione Wi-Fi veloce inclusa per tutto il soggiorno — circa 68 Mbps in download e 20 in upload, ideale anche per smart working e streaming. O scollegati in totale libertà.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🌿</div>
-        <h3>Giardino e terrazze</h3>
-        <p>Ampio giardino recintato e due terrazze con vista sulle Alpi Carniche. Spazio all'aria aperta ideale per tutta la famiglia.</p>
+        <h3 data-i18n="servizi.h33">Giardino e terrazze</h3>
+        <p data-i18n="servizi.p4">Ampio giardino recintato e due terrazze con vista sulle Alpi Carniche. Spazio all'aria aperta ideale per tutta la famiglia.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🅿️</div>
-        <h3>Parcheggio gratuito</h3>
-        <p>Parcheggio pubblico gratuito nelle immediate vicinanze della casa. Scoperto, sempre disponibile, senza prenotazione.</p>
+        <h3 data-i18n="servizi.h34">Parcheggio gratuito</h3>
+        <p data-i18n="servizi.p5">Parcheggio pubblico gratuito nelle immediate vicinanze della casa. Scoperto, sempre disponibile, senza prenotazione.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">❄️</div>
-        <h3>Aria condizionata</h3>
-        <p>Clima perfetto in ogni stagione grazie all'impianto di aria condizionata, per dormire e rilassarsi sempre nelle condizioni ideali.</p>
+        <h3 data-i18n="servizi.h35">Aria condizionata</h3>
+        <p data-i18n="servizi.p6">Clima perfetto in ogni stagione grazie all'impianto di aria condizionata, per dormire e rilassarsi sempre nelle condizioni ideali.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🍳</div>
-        <h3>Cucina attrezzata</h3>
-        <p>Cucina completa con lavastoviglie, forno a microonde, piano cottura e tostapane. Tutto il necessario per sentirsi a casa.</p>
+        <h3 data-i18n="servizi.h36">Cucina attrezzata</h3>
+        <p data-i18n="servizi.p7">Cucina completa con lavastoviglie, forno a microonde, piano cottura e tostapane. Tutto il necessario per sentirsi a casa.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">📺</div>
-        <h3>TV satellitare</h3>
-        <p>TV a schermo piatto con canali satellitari nel soggiorno. Area salotto e zona pranzo spaziose per trascorrere piacevoli serate in casa.</p>
+        <h3 data-i18n="servizi.h37">TV satellitare</h3>
+        <p data-i18n="servizi.p8">TV a schermo piatto con canali satellitari nel soggiorno. Area salotto e zona pranzo spaziose per trascorrere piacevoli serate in casa.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🔥</div>
-        <h3>Stufa a pellet</h3>
-        <p>Stufa a pellet in soggiorno per le serate fredde. Il pellet è fornito incluso nel prezzo del soggiorno: nessun pensiero, solo il calore avvolgente di una casa di montagna.</p>
+        <h3 data-i18n="servizi.h38">Stufa a pellet</h3>
+        <p data-i18n="servizi.p9">Stufa a pellet in soggiorno per le serate fredde. Il pellet è fornito incluso nel prezzo del soggiorno: nessun pensiero, solo il calore avvolgente di una casa di montagna.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🛏️</div>
-        <h3>Camere e biancheria</h3>
-        <p>Una camera con letto matrimoniale, una camera con due letti singoli. Biancheria da letto e asciugamani forniti. Lettino per bambini disponibile su richiesta.</p>
+        <h3 data-i18n="servizi.h39">Camere e biancheria</h3>
+        <p data-i18n="servizi.p10">Una camera con letto matrimoniale, una camera con due letti singoli. Biancheria da letto e asciugamani forniti. Lettino per bambini disponibile su richiesta.</p>
       </div>
     </div>
   </div>
@@ -1773,16 +1784,16 @@
 <!-- ATTIVITÀ -->
 <section id="attivita">
   <div class="container">
-    <p class="section-label">Cosa fare nei dintorni</p>
-    <h2 class="section-title">Avventura e relax<br>a portata di mano</h2>
+    <p data-i18n="attivita.p1" class="section-label">Cosa fare nei dintorni</p>
+    <h2 data-i18n="attivita.h21" class="section-title">Avventura e relax<br>a portata di mano</h2>
     <!-- Lumina Milia in evidenza -->
     <a href="https://luminamilia.com" target="_blank" rel="noopener" style="text-decoration:none">
       <div class="activity-card" style="border:2px solid #4a7c59;background:linear-gradient(135deg,rgba(74,124,89,.08) 0%,rgba(74,124,89,.02) 100%);position:relative;margin-bottom:1.5rem;display:flex;gap:1.2rem;align-items:flex-start">
-        <span style="position:absolute;top:-1px;left:1.5rem;background:#4a7c59;color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.08em;padding:.15rem .6rem;border-radius:0 0 4px 4px;text-transform:uppercase">⭐ Da non perdere</span>
+        <span data-i18n="attivita.span1" style="position:absolute;top:-1px;left:1.5rem;background:#4a7c59;color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.08em;padding:.15rem .6rem;border-radius:0 0 4px 4px;text-transform:uppercase">⭐ Da non perdere</span>
         <div class="activity-icon" style="margin-top:.4rem">🌿</div>
         <div>
-          <h3 style="color:#4a7c59">Lumina Milia — Giardino Botanico Esperienziale</h3>
-          <p>Il primo giardino botanico esperienziale d'Italia, ad Ampezzo in Carnia. Oltre 5 ettari di parco naturale con 400+ specie vegetali e 2 km di percorso ad anello attraverso tre diversi ecosistemi boschivi. Di giorno si esplorano piante officinali e biodiversità alpina; di notte il bosco si trasforma in un'esperienza sensoriale unica grazie al sentiero illuminato — tra i più lunghi d'Europa del suo genere. Una visita scientificamente provata per ridurre lo stress e rigenerare corpo e mente. <strong style="color:#4a7c59">Prenotazione obbligatoria → luminamilia.com</strong></p>
+          <h3 data-i18n="attivita.h31" style="color:#4a7c59">Lumina Milia — Giardino Botanico Esperienziale</h3>
+          <p data-i18n="attivita.p2">Il primo giardino botanico esperienziale d'Italia, ad Ampezzo in Carnia. Oltre 5 ettari di parco naturale con 400+ specie vegetali e 2 km di percorso ad anello attraverso tre diversi ecosistemi boschivi. Di giorno si esplorano piante officinali e biodiversità alpina; di notte il bosco si trasforma in un'esperienza sensoriale unica grazie al sentiero illuminato — tra i più lunghi d'Europa del suo genere. Una visita scientificamente provata per ridurre lo stress e rigenerare corpo e mente. <strong style="color:#4a7c59">Prenotazione obbligatoria → luminamilia.com</strong></p>
         </div>
       </div>
     </a>
@@ -1791,67 +1802,67 @@
       <div class="activity-card">
         <div class="activity-icon">⛷️</div>
         <div>
-          <h3>Sci alpino e fondo</h3>
-          <p>Le piste dello Zoncolan e di Forni di Sopra sono a soli 30 km. Mai troppo affollate, perfette per sciare in serenità. In zona anche tracciati per lo sci di fondo.</p>
+          <h3 data-i18n="attivita.h32">Sci alpino e fondo</h3>
+          <p data-i18n="attivita.p3">Le piste dello Zoncolan e di Forni di Sopra sono a soli 30 km. Mai troppo affollate, perfette per sciare in serenità. In zona anche tracciati per lo sci di fondo.</p>
         </div>
       </div>
       <a href="trekking.html" class="activity-card" style="text-decoration: none; color: inherit; display: flex; gap: 1rem; cursor: pointer;">
         <div class="activity-icon">🥾</div>
         <div>
-          <h3>Trekking e hiking <span style="font-size: 0.85rem; opacity: 0.7;">→</span></h3>
-          <p>6 percorsi che partono direttamente da Feltrone: dal panoramico Col Gentile (2.075 m) al sentiero dei partigiani "Troi da l'Ors", dall'anello dei borghi di Socchieve al Monte Corona. Per ogni livello, dalle famiglie agli escursionisti esperti. <strong>Scopri tutti i percorsi →</strong></p>
+          <h3 data-i18n="attivita.h33">Trekking e hiking <span style="font-size: 0.85rem; opacity: 0.7;">→</span></h3>
+          <p data-i18n="attivita.p4">6 percorsi che partono direttamente da Feltrone: dal panoramico Col Gentile (2.075 m) al sentiero dei partigiani "Troi da l'Ors", dall'anello dei borghi di Socchieve al Monte Corona. Per ogni livello, dalle famiglie agli escursionisti esperti. <strong>Scopri tutti i percorsi →</strong></p>
         </div>
       </a>
       <div class="activity-card">
         <div class="activity-icon">🚵</div>
         <div>
-          <h3>Mountain bike ed enduro — Bike Arena Ravascletto/Zoncolan</h3>
-          <p>A circa 40 minuti d'auto da Feltrone (27,7 km via SR355) ha aperto la nuova <strong>Bike Arena Ravascletto/Zoncolan</strong>, dedicata a mountain bike ed enduro. Tre percorsi partono dalla stazione intermedia della Funifor e scendono fino alla base dell'impianto: <strong style="color:var(--cream)">Bad Bunny</strong> (blu, 5,5 km / 315 m, flow scorrevole adatto anche ai principianti), <strong style="color:var(--cream)">Joker</strong> (rosso, 2,8 km / 330 m, ritmo intenso con salti e sezioni tecniche) e <strong style="color:var(--cream)">Supernatural</strong> (nero, 2 km / 328 m, radici e freeride per rider esperti). Biglietto giornaliero con risalite illimitate in Funifor: 30 € intero, 20 € ridotto. Sul posto area Bike Wash, zona relax post-riding e corsi per adulti e bambini. Aperta per tutta la stagione estiva.</p>
-          <p style="margin-top:.7rem">Nelle vallate della Carnia inoltre percorsi per ogni livello, con noleggio e assistenza nei centri vicini e itinerari segnalati su tutta la zona.</p>
+          <h3 data-i18n="attivita.h34">Mountain bike ed enduro — Bike Arena Ravascletto/Zoncolan</h3>
+          <p data-i18n="attivita.p5">A circa 40 minuti d'auto da Feltrone (27,7 km via SR355) ha aperto la nuova <strong>Bike Arena Ravascletto/Zoncolan</strong>, dedicata a mountain bike ed enduro. Tre percorsi partono dalla stazione intermedia della Funifor e scendono fino alla base dell'impianto: <strong style="color:var(--cream)">Bad Bunny</strong> (blu, 5,5 km / 315 m, flow scorrevole adatto anche ai principianti), <strong style="color:var(--cream)">Joker</strong> (rosso, 2,8 km / 330 m, ritmo intenso con salti e sezioni tecniche) e <strong style="color:var(--cream)">Supernatural</strong> (nero, 2 km / 328 m, radici e freeride per rider esperti). Biglietto giornaliero con risalite illimitate in Funifor: 30 € intero, 20 € ridotto. Sul posto area Bike Wash, zona relax post-riding e corsi per adulti e bambini. Aperta per tutta la stagione estiva.</p>
+          <p data-i18n="attivita.p6" style="margin-top:.7rem">Nelle vallate della Carnia inoltre percorsi per ogni livello, con noleggio e assistenza nei centri vicini e itinerari segnalati su tutta la zona.</p>
         </div>
       </div>
       <div class="activity-card">
         <div class="activity-icon">🦌</div>
         <div>
-          <h3>Fauna selvatica delle Dolomiti Friulane</h3>
-          <p>I boschi intorno a Feltrone sono territorio di caprioli, cervi, camosci, scoiattoli, gallo forcello e — con un po' di fortuna — aquile reali. Camminando in silenzio sui sentieri all'alba o al tramonto è possibile avvistarli nel loro habitat naturale. Per chi ama l'osservazione faunistica, a circa 45 km c'è la Riserva del Lago di Cornino, celebre per la reintroduzione del grifone in Friuli; più lontano, a Cimolais, il Parco Faunistico Pianpinedo offre 35 ettari di bosco con cervi, stambecchi e camosci.</p>
+          <h3 data-i18n="attivita.h35">Fauna selvatica delle Dolomiti Friulane</h3>
+          <p data-i18n="attivita.p7">I boschi intorno a Feltrone sono territorio di caprioli, cervi, camosci, scoiattoli, gallo forcello e — con un po' di fortuna — aquile reali. Camminando in silenzio sui sentieri all'alba o al tramonto è possibile avvistarli nel loro habitat naturale. Per chi ama l'osservazione faunistica, a circa 45 km c'è la Riserva del Lago di Cornino, celebre per la reintroduzione del grifone in Friuli; più lontano, a Cimolais, il Parco Faunistico Pianpinedo offre 35 ettari di bosco con cervi, stambecchi e camosci.</p>
         </div>
       </div>
       <div class="activity-card">
         <div class="activity-icon">🌲</div>
         <div>
-          <h3>Foresta di Ampezzo — Bosco Flobia e Bosco della Stua</h3>
-          <p>A circa 22 km da Feltrone, nella parte alta della Val Lumiei verso il Passo Pura, si estende una delle foreste più belle della Carnia. Faggi, abeti rossi e bianchi lasciano spazio in quota ai larici e ai pini mughi. Il sentiero didattico del Bosco Flobia — 3,5 km con partenza dal Rifugio Tita Piaz, dislivello 130 m, circa 2 ore — attraversa un bosco famoso per il suo legname di risonanza, usato per costruire violini e strumenti musicali a corda. Nove pannelli illustrativi raccontano la vita del bosco, e una staccionata continua rende il percorso accessibile anche a persone non vedenti.</p>
-          <p>Fauna: caprioli, camosci, gallo forcello e aquile reali.</p>
+          <h3 data-i18n="attivita.h36">Foresta di Ampezzo — Bosco Flobia e Bosco della Stua</h3>
+          <p data-i18n="attivita.p8">A circa 22 km da Feltrone, nella parte alta della Val Lumiei verso il Passo Pura, si estende una delle foreste più belle della Carnia. Faggi, abeti rossi e bianchi lasciano spazio in quota ai larici e ai pini mughi. Il sentiero didattico del Bosco Flobia — 3,5 km con partenza dal Rifugio Tita Piaz, dislivello 130 m, circa 2 ore — attraversa un bosco famoso per il suo legname di risonanza, usato per costruire violini e strumenti musicali a corda. Nove pannelli illustrativi raccontano la vita del bosco, e una staccionata continua rende il percorso accessibile anche a persone non vedenti.</p>
+          <p data-i18n="attivita.p9">Fauna: caprioli, camosci, gallo forcello e aquile reali.</p>
         </div>
       </div>
       <a href="cucina.html" class="activity-card" style="text-decoration: none; color: inherit; display: flex; gap: 1rem; cursor: pointer;">
         <div class="activity-icon">🍽️</div>
         <div>
-          <h3>Cucina tipica carnica <span style="font-size: 0.85rem; opacity: 0.7;">→</span></h3>
-          <p>La cucina della Carnia è povera negli ingredienti e ricca di sapore. I <strong style="color:var(--cream)">cjalsòns</strong>, ravioli dal ripieno unico dove il dolce incontra il salato. Il <strong style="color:var(--cream)">frico</strong>, croccante fuori e morbido dentro. E un dolce che forse è nato proprio qui vicino, a Tolmezzo: il tiramisù. <strong>Scopri la cucina della Carnia →</strong></p>
+          <h3 data-i18n="attivita.h37">Cucina tipica carnica <span style="font-size: 0.85rem; opacity: 0.7;">→</span></h3>
+          <p data-i18n="attivita.p10">La cucina della Carnia è povera negli ingredienti e ricca di sapore. I <strong style="color:var(--cream)">cjalsòns</strong>, ravioli dal ripieno unico dove il dolce incontra il salato. Il <strong style="color:var(--cream)">frico</strong>, croccante fuori e morbido dentro. E un dolce che forse è nato proprio qui vicino, a Tolmezzo: il tiramisù. <strong>Scopri la cucina della Carnia →</strong></p>
         </div>
       </a>
 
       <div class="activity-card">
         <div class="activity-icon">🏘️</div>
         <div>
-          <h3>Borghi e cultura carnica</h3>
-          <p>Antichi borghi come Sauris (isola linguistica germanica) e Sutrio (famoso per l'intaglio del legno), pievi romaniche, case di pietra e legno con i ballatoi fioriti, gastronomia locale con i famosi cjalsòns. La Carnia racconta secoli di storia alpina.</p>
+          <h3 data-i18n="attivita.h38">Borghi e cultura carnica</h3>
+          <p data-i18n="attivita.p11">Antichi borghi come Sauris (isola linguistica germanica) e Sutrio (famoso per l'intaglio del legno), pievi romaniche, case di pietra e legno con i ballatoi fioriti, gastronomia locale con i famosi cjalsòns. La Carnia racconta secoli di storia alpina.</p>
         </div>
       </div>
       <div class="activity-card">
         <div class="activity-icon">🏛️</div>
         <div>
-          <h3>Musei della Carnia</h3>
-          <p>Quattro musei raccontano l'anima del territorio, tutti a breve distanza da Feltrone. Il <strong style="color:var(--cream)">Museo Carnico delle Arti Popolari “Michele Gortani”</strong> di Tolmezzo, ospitato nel seicentesco Palazzo Campeis, è uno dei più importanti musei etnografici d'Europa: oltre 4.000 oggetti su vita, lavoro e tradizioni carniche dal XIV al XX secolo. Il <strong style="color:var(--cream)">Museo Geologico della Carnia</strong> di Ampezzo ripercorre 450 milioni di anni di storia della Terra, con fossili friulani tra cui rarissimi pterosauri (ingresso libero). A Pesariis, borgo degli orologi, il <strong style="color:var(--cream)">Museo dell'Orologeria Pesarina</strong> narra tre secoli di arte orologiaia, con un percorso all'aperto di orologi monumentali per le vie del paese. A Timau, il <strong style="color:var(--cream)">Museo “La Zona Carnia nella Grande Guerra 1915-1918”</strong> custodisce reperti, documenti e la memoria delle Portatrici carniche, integrabile con i musei all'aperto di trincee e camminamenti sui monti. Gli orari variano molto per stagione: si consiglia di verificare prima della visita su <a href="https://www.carniamusei.org" target="_blank" rel="noopener" style="color:var(--cream)">carniamusei.org</a>.</p>
+          <h3 data-i18n="attivita.h39">Musei della Carnia</h3>
+          <p data-i18n="attivita.p12">Quattro musei raccontano l'anima del territorio, tutti a breve distanza da Feltrone. Il <strong style="color:var(--cream)">Museo Carnico delle Arti Popolari “Michele Gortani”</strong> di Tolmezzo, ospitato nel seicentesco Palazzo Campeis, è uno dei più importanti musei etnografici d'Europa: oltre 4.000 oggetti su vita, lavoro e tradizioni carniche dal XIV al XX secolo. Il <strong style="color:var(--cream)">Museo Geologico della Carnia</strong> di Ampezzo ripercorre 450 milioni di anni di storia della Terra, con fossili friulani tra cui rarissimi pterosauri (ingresso libero). A Pesariis, borgo degli orologi, il <strong style="color:var(--cream)">Museo dell'Orologeria Pesarina</strong> narra tre secoli di arte orologiaia, con un percorso all'aperto di orologi monumentali per le vie del paese. A Timau, il <strong style="color:var(--cream)">Museo “La Zona Carnia nella Grande Guerra 1915-1918”</strong> custodisce reperti, documenti e la memoria delle Portatrici carniche, integrabile con i musei all'aperto di trincee e camminamenti sui monti. Gli orari variano molto per stagione: si consiglia di verificare prima della visita su <a href="https://www.carniamusei.org" target="_blank" rel="noopener" style="color:var(--cream)">carniamusei.org</a>.</p>
         </div>
       </div>
       <div class="activity-card">
         <div class="activity-icon">♨️</div>
         <div>
-          <h3>Terme di Arta</h3>
-          <p>A pochi chilometri da Tolmezzo, le <strong>Terme di Arta</strong> sgorgano attorno alla storica Fonte Pudia, un'acqua solfato-calcico-magnesiaco-sulfurea che sgorga a 9°C, nota fin dall'epoca romana. Nel “Palazzo delle Acque” trovi un'ampia area wellness con piscine termali riscaldate e idromassaggio, saune di diverse temperature, bagno turco, docce emozionali, percorso Kneipp e palestra, oltre a trattamenti estetici e servizi di fisioterapia e riabilitazione. Dal 2023 c'è anche una nuova vasca parzialmente scoperta con giochi d'acqua, river e scivolo per i bambini. La struttura è accessibile alle persone con disabilità motoria, con sollevatore e maniglioni in vasca. La meta ideale per rigenerarsi dopo una giornata di trekking, bici o sci. Per orari e tariffe aggiornati consulta la <a href="https://www.turismofvg.it/it/terme-e-wellness/terme-di-arta" target="_blank" rel="noopener" style="color:var(--cream)">pagina ufficiale su PromoTurismoFVG</a>.</p>
+          <h3 data-i18n="attivita.h310">Terme di Arta</h3>
+          <p data-i18n="attivita.p13">A pochi chilometri da Tolmezzo, le <strong>Terme di Arta</strong> sgorgano attorno alla storica Fonte Pudia, un'acqua solfato-calcico-magnesiaco-sulfurea che sgorga a 9°C, nota fin dall'epoca romana. Nel “Palazzo delle Acque” trovi un'ampia area wellness con piscine termali riscaldate e idromassaggio, saune di diverse temperature, bagno turco, docce emozionali, percorso Kneipp e palestra, oltre a trattamenti estetici e servizi di fisioterapia e riabilitazione. Dal 2023 c'è anche una nuova vasca parzialmente scoperta con giochi d'acqua, river e scivolo per i bambini. La struttura è accessibile alle persone con disabilità motoria, con sollevatore e maniglioni in vasca. La meta ideale per rigenerarsi dopo una giornata di trekking, bici o sci. Per orari e tariffe aggiornati consulta la <a href="https://www.turismofvg.it/it/terme-e-wellness/terme-di-arta" target="_blank" rel="noopener" style="color:var(--cream)">pagina ufficiale su PromoTurismoFVG</a>.</p>
         </div>
       </div>
     </div>
@@ -1861,56 +1872,56 @@
 <!-- STORIA DEL TERRITORIO -->
 <section id="storia" style="background:var(--forest)">
   <div class="container">
-    <p class="section-label" style="color:var(--sage)">Radici di montagna</p>
-    <h2 class="section-title" style="color:var(--cream)">Il territorio<br>e la sua storia</h2>
-    <p style="color:rgba(245,240,232,0.6);font-size:.95rem;line-height:1.8;max-width:600px;margin:0 auto 2.5rem;text-align:center;font-weight:300">La Carnia custodisce secoli di storia. Scoprila attraverso i luoghi che ti circondano.</p>
+    <p data-i18n="storia.p1" class="section-label" style="color:var(--sage)">Radici di montagna</p>
+    <h2 data-i18n="storia.h21" class="section-title" style="color:var(--cream)">Il territorio<br>e la sua storia</h2>
+    <p data-i18n="storia.p2" style="color:rgba(245,240,232,0.6);font-size:.95rem;line-height:1.8;max-width:600px;margin:0 auto 2.5rem;text-align:center;font-weight:300">La Carnia custodisce secoli di storia. Scoprila attraverso i luoghi che ti circondano.</p>
     <div class="activities-grid">
 
       <div class="activity-card">
         <div class="activity-icon">🏔️</div>
         <div>
-          <h3>Il Tagliamento — il fiume selvaggio</h3>
-          <p>A pochi chilometri dalla casa vacanze scorre il Tagliamento, uno dei pochi fiumi europei che ha conservato la sua morfologia originaria. Non canalizzato, non deviato, libero di cambiare corso dopo ogni piena. Lungo 178 km con un bacino di quasi 3.000 km², attraversa paesaggi straordinari dalle Alpi alle pianure costiere, formando un ecosistema unico studiato come riferimento europeo per i fiumi ad alta naturalità. Già nel 1782 lo storico Niccolò Grassi lo descriveva come il fiume simbolo della Carnia.</p>
+          <h3 data-i18n="storia.h31">Il Tagliamento — il fiume selvaggio</h3>
+          <p data-i18n="storia.p3">A pochi chilometri dalla casa vacanze scorre il Tagliamento, uno dei pochi fiumi europei che ha conservato la sua morfologia originaria. Non canalizzato, non deviato, libero di cambiare corso dopo ogni piena. Lungo 178 km con un bacino di quasi 3.000 km², attraversa paesaggi straordinari dalle Alpi alle pianure costiere, formando un ecosistema unico studiato come riferimento europeo per i fiumi ad alta naturalità. Già nel 1782 lo storico Niccolò Grassi lo descriveva come il fiume simbolo della Carnia.</p>
         </div>
       </div>
 
       <div class="activity-card">
         <div class="activity-icon">🏰</div>
         <div>
-          <h3>Il Castello di Feltrone</h3>
-          <p>Otto secoli fa questo territorio era presidiato dal Castello di Feltrone, uno dei ventitré castelli antichi della Carnia ricordati dallo storico Niccolò Grassi nel 1782. I suoi Signori erano vassalli del Patriarca di Aquileia, fino al 1351, quando il Patriarca Nicolò di Lussemburgo — fratello dell'imperatore Carlo IV — fece radere al suolo gran parte dei castelli carnici. Del castello non rimane traccia visibile — ma camminando per questi luoghi si calpesta la stessa terra che loro percorrevano.</p>
+          <h3 data-i18n="storia.h32">Il Castello di Feltrone</h3>
+          <p data-i18n="storia.p4">Otto secoli fa questo territorio era presidiato dal Castello di Feltrone, uno dei ventitré castelli antichi della Carnia ricordati dallo storico Niccolò Grassi nel 1782. I suoi Signori erano vassalli del Patriarca di Aquileia, fino al 1351, quando il Patriarca Nicolò di Lussemburgo — fratello dell'imperatore Carlo IV — fece radere al suolo gran parte dei castelli carnici. Del castello non rimane traccia visibile — ma camminando per questi luoghi si calpesta la stessa terra che loro percorrevano.</p>
         </div>
       </div>
 
       <div class="activity-card">
         <div class="activity-icon">🌲</div>
         <div>
-          <h3>I boschi che costruirono Venezia</h3>
-          <p>I larici e gli abeti che ancora oggi ricoprono le montagne intorno a Socchieve hanno una storia straordinaria: per oltre due secoli i boschi della Carnia fornirono il legname per costruire le navi della Serenissima Repubblica di Venezia. Dal 1581 ben 47 boschi carnici erano riservati all'Arsenale veneziano. Un legame inaspettato tra questa montagna silenziosa e la città sul mare.</p>
+          <h3 data-i18n="storia.h33">I boschi che costruirono Venezia</h3>
+          <p data-i18n="storia.p5">I larici e gli abeti che ancora oggi ricoprono le montagne intorno a Socchieve hanno una storia straordinaria: per oltre due secoli i boschi della Carnia fornirono il legname per costruire le navi della Serenissima Repubblica di Venezia. Dal 1581 ben 47 boschi carnici erano riservati all'Arsenale veneziano. Un legame inaspettato tra questa montagna silenziosa e la città sul mare.</p>
         </div>
       </div>
 
 		<div class="activity-card">
         <div class="activity-icon">🎒</div>
         <div>
-          <h3>I Cramars — i mercanti delle spezie</h3>
-          <p>Dal Cinquecento fino all’Ottocento, molti uomini della Carnia furono cramars: mercanti ambulanti che attraversavano a piedi le Alpi portando sulle spalle la crassigne, una cassettiera di legno contenente spezie, stoffe, medicamenti e mercerie da vendere nei territori dell’Europa centrale. Tornavano in Carnia in primavera, e secondo la tradizione le spezie residue trasportate nei cassetti della crassigne venivano utilizzate dalle donne carniche per preparare il pistùm dei cjarsòns. Una delle prime descrizioni storiche del fenomeno compare nel 1599 nella “Descrittione della Cargna” di Jacopo Valvasone di Maniago.</p>
+          <h3 data-i18n="storia.h34">I Cramars — i mercanti delle spezie</h3>
+          <p data-i18n="storia.p6">Dal Cinquecento fino all’Ottocento, molti uomini della Carnia furono cramars: mercanti ambulanti che attraversavano a piedi le Alpi portando sulle spalle la crassigne, una cassettiera di legno contenente spezie, stoffe, medicamenti e mercerie da vendere nei territori dell’Europa centrale. Tornavano in Carnia in primavera, e secondo la tradizione le spezie residue trasportate nei cassetti della crassigne venivano utilizzate dalle donne carniche per preparare il pistùm dei cjarsòns. Una delle prime descrizioni storiche del fenomeno compare nel 1599 nella “Descrittione della Cargna” di Jacopo Valvasone di Maniago.</p>
         </div>
       </div>
 
       <a href="https://www.radiomagica.org/smartradio/it/mappa/carnia" target="_blank" rel="noopener noreferrer" class="activity-card" style="text-decoration:none;color:inherit;display:flex;gap:1rem;cursor:pointer">
         <div class="activity-icon">🎧</div>
         <div>
-          <h3>Mappa Parlante della Carnia <span style="font-size:0.85rem;opacity:0.7">↗</span></h3>
-          <p>Per prepararsi alla visita o approfondire dopo: 34 racconti audio realizzati dalla <strong>Fondazione Radio Magica ETS</strong> raccontano storia, arte e curiosità dei musei carnici. L'illustrazione del territorio — che rappresenta 34 delle 39 realtà espositive della rete <strong>CarniaMusei</strong> — è opera dell'artista carnico <strong>Adriano Fruch</strong>. Brevi storie e curiosità — "Sai cos'è una spiaggia fossile?", "Sai perché il burro di Sauris era buono, bello e prezioso?" — accessibili anche in Lingua dei Segni Italiana. Un modo originale per scoprire il territorio con le orecchie. <strong>Apri la mappa interattiva →</strong></p>
+          <h3 data-i18n="storia.h35">Mappa Parlante della Carnia <span style="font-size:0.85rem;opacity:0.7">↗</span></h3>
+          <p data-i18n="storia.p7">Per prepararsi alla visita o approfondire dopo: 34 racconti audio realizzati dalla <strong>Fondazione Radio Magica ETS</strong> raccontano storia, arte e curiosità dei musei carnici. L'illustrazione del territorio — che rappresenta 34 delle 39 realtà espositive della rete <strong>CarniaMusei</strong> — è opera dell'artista carnico <strong>Adriano Fruch</strong>. Brevi storie e curiosità — "Sai cos'è una spiaggia fossile?", "Sai perché il burro di Sauris era buono, bello e prezioso?" — accessibili anche in Lingua dei Segni Italiana. Un modo originale per scoprire il territorio con le orecchie. <strong>Apri la mappa interattiva →</strong></p>
         </div>
       </a>
 
       <a href="https://www.carniafotografia.it/" target="_blank" rel="noopener noreferrer" class="activity-card" style="text-decoration:none;color:inherit;display:flex;gap:1rem;cursor:pointer">
         <div class="activity-icon">📷</div>
         <div>
-          <h3>Fototeca CarniaFotografia <span style="font-size:0.85rem;opacity:0.7">↗</span></h3>
-          <p>L'archivio fotografico storico della Carnia, con sede a Palazzo Frisacco a Tolmezzo: circa 10.000 fotografie d'epoca — di cui oltre 5.000 consultabili online — che documentano la vita di un tempo nelle vallate carniche, tra paesaggi, mestieri e volti. Tra i fondi catalogati c'è anche quello dedicato a <strong>Socchieve</strong>, il territorio che circonda Il Bearč. Un modo per vedere questi luoghi com'erano. <strong>Sfoglia l'archivio →</strong></p>
+          <h3 data-i18n="storia.h36">Fototeca CarniaFotografia <span style="font-size:0.85rem;opacity:0.7">↗</span></h3>
+          <p data-i18n="storia.p8">L'archivio fotografico storico della Carnia, con sede a Palazzo Frisacco a Tolmezzo: circa 10.000 fotografie d'epoca — di cui oltre 5.000 consultabili online — che documentano la vita di un tempo nelle vallate carniche, tra paesaggi, mestieri e volti. Tra i fondi catalogati c'è anche quello dedicato a <strong>Socchieve</strong>, il territorio che circonda Il Bearč. Un modo per vedere questi luoghi com'erano. <strong>Sfoglia l'archivio →</strong></p>
         </div>
       </a>
 		
@@ -1925,8 +1936,8 @@
     <div class="reviews-header">
 
   <div>
-    <p class="section-label">Cosa dicono gli ospiti</p>
-    <h2 class="section-title">Recensioni verificate<br>su Booking.com</h2>
+    <p data-i18n="recensioni.p1" class="section-label">Cosa dicono gli ospiti</p>
+    <h2 data-i18n="recensioni.h21" class="section-title">Recensioni verificate<br>su Booking.com</h2>
   </div>
 
   <div class="reviews-score-block">
@@ -1935,8 +1946,8 @@
       <div class="score-stars">
         <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
       </div>
-      <span class="score-sub">Eccezionale · 53 recensioni</span>
-      <span class="score-sub">Booking.com · verificate</span>
+      <span data-i18n="recensioni.span1" class="score-sub">Eccezionale · 53 recensioni</span>
+      <span data-i18n="recensioni.span2" class="score-sub">Booking.com · verificate</span>
     </div>
   </div>
 
@@ -1947,7 +1958,7 @@
       loading="lazy" decoding="async"
       style="width: 140px; opacity: 0.92;"
     >
-    <p style="font-size: 0.72rem; color: var(--stone); letter-spacing: 0.06em; margin-top: 0.4rem; text-transform: uppercase;">Traveller Review Awards 2025</p>
+    <p data-i18n="recensioni.p2" style="font-size: 0.72rem; color: var(--stone); letter-spacing: 0.06em; margin-top: 0.4rem; text-transform: uppercase;">Traveller Review Awards 2025</p>
   </div>
 
 </div>
@@ -1957,13 +1968,13 @@
       <div class="review-card">
         <div class="review-quote">"</div>
         <span class="review-score-badge">★ 10 / 10</span>
-        <p class="review-title">Eccezionale!! Pace per ritrovare se stessi!</p>
-        <p class="review-text">Il Signor Dario è stato gentilissimo, dà consigli su cosa vedere e scoprire. La casa è molto confortevole, c'è tutto quello che serve per trascorrere una vacanza eccezionale. Il silenzio è quello che cercavo. La pace e la tranquillità. Grazie.</p>
+        <p data-i18n="recensioni.p3" class="review-title">Eccezionale!! Pace per ritrovare se stessi!</p>
+        <p data-i18n="recensioni.p4" class="review-text">Il Signor Dario è stato gentilissimo, dà consigli su cosa vedere e scoprire. La casa è molto confortevole, c'è tutto quello che serve per trascorrere una vacanza eccezionale. Il silenzio è quello che cercavo. La pace e la tranquillità. Grazie.</p>
         <div class="review-author">
           <div class="review-avatar">Do</div>
           <div>
             <p class="review-name">Doriano 🇮🇹</p>
-            <p class="review-date">Luglio 2023</p>
+            <p data-i18n="recensioni.p6" class="review-date">Luglio 2023</p>
           </div>
         </div>
       </div>
@@ -1971,13 +1982,13 @@
       <div class="review-card">
         <div class="review-quote">"</div>
         <span class="review-score-badge">★ 10 / 10</span>
-        <p class="review-title">Perfect stay in Friuli-Venezia Giulia</p>
-        <p class="review-text">The apartment was very clean, well-equipped and beautiful. We received metal water bottles from the owner as a gift for hiking — a lovely touch. Communication was smooth and easy, he was very friendly and helpful. Good value for money, I can gladly recommend this apartment to anybody.</p>
+        <p data-i18n="recensioni.p7" class="review-title">Perfect stay in Friuli-Venezia Giulia</p>
+        <p data-i18n="recensioni.p8" class="review-text">The apartment was very clean, well-equipped and beautiful. We received metal water bottles from the owner as a gift for hiking — a lovely touch. Communication was smooth and easy, he was very friendly and helpful. Good value for money, I can gladly recommend this apartment to anybody.</p>
         <div class="review-author">
           <div class="review-avatar">Nó</div>
           <div>
             <p class="review-name">Nóra 🇭🇺</p>
-            <p class="review-date">Maggio 2023</p>
+            <p data-i18n="recensioni.p10" class="review-date">Maggio 2023</p>
           </div>
         </div>
       </div>
@@ -1985,13 +1996,13 @@
       <div class="review-card">
         <div class="review-quote">"</div>
         <span class="review-score-badge">★ 10 / 10</span>
-        <p class="review-title">Looking better than in the pics!</p>
-        <p class="review-text">Dario was a great host, always helpful and proactive. The accommodation was excellent, looking better than in the pictures!</p>
+        <p data-i18n="recensioni.p11" class="review-title">Looking better than in the pics!</p>
+        <p data-i18n="recensioni.p12" class="review-text">Dario was a great host, always helpful and proactive. The accommodation was excellent, looking better than in the pictures!</p>
         <div class="review-author">
           <div class="review-avatar">On</div>
           <div>
             <p class="review-name">Ondrej 🇨🇿</p>
-            <p class="review-date">Agosto 2024</p>
+            <p data-i18n="recensioni.p14" class="review-date">Agosto 2024</p>
           </div>
         </div>
       </div>
@@ -1999,13 +2010,13 @@
       <div class="review-card">
         <div class="review-quote">"</div>
         <span class="review-score-badge">★ 10 / 10</span>
-        <p class="review-title">Esperienza inaspettata e da ripetere</p>
-        <p class="review-text">Molto accogliente e pulita. Siamo stati accolti con biscotti tipici, giochi da tavolo per i bimbi e una fornitissima libreria con guide per scoprire la zona. Giardino molto curato e vista delle montagne spettacolare. È stata una delle migliori esperienze che ho vissuto.</p>
+        <p data-i18n="recensioni.p15" class="review-title">Esperienza inaspettata e da ripetere</p>
+        <p data-i18n="recensioni.p16" class="review-text">Molto accogliente e pulita. Siamo stati accolti con biscotti tipici, giochi da tavolo per i bimbi e una fornitissima libreria con guide per scoprire la zona. Giardino molto curato e vista delle montagne spettacolare. È stata una delle migliori esperienze che ho vissuto.</p>
         <div class="review-author">
           <div class="review-avatar">Ma</div>
           <div>
             <p class="review-name">Marco 🇮🇹</p>
-            <p class="review-date">Agosto 2025</p>
+            <p data-i18n="recensioni.p18" class="review-date">Agosto 2025</p>
           </div>
         </div>
       </div>
@@ -2013,13 +2024,13 @@
       <div class="review-card">
         <div class="review-quote">"</div>
         <span class="review-score-badge">★ 10 / 10</span>
-        <p class="review-title">A quiet place for retreat</p>
-        <p class="review-text">A lovely place on three levels, very well equipped, clean and spacious. Two balconies with a view of the surrounding mountains and a nice garden. A hefty collection of maps and guidebooks prepared by the host — very helpful! If you're looking for a quiet place far away from the hustle of civilization, this is the place for you.</p>
+        <p data-i18n="recensioni.p19" class="review-title">A quiet place for retreat</p>
+        <p data-i18n="recensioni.p20" class="review-text">A lovely place on three levels, very well equipped, clean and spacious. Two balconies with a view of the surrounding mountains and a nice garden. A hefty collection of maps and guidebooks prepared by the host — very helpful! If you're looking for a quiet place far away from the hustle of civilization, this is the place for you.</p>
         <div class="review-author">
           <div class="review-avatar">Lu</div>
           <div>
             <p class="review-name">Lukasz 🇵🇱</p>
-            <p class="review-date">Luglio 2025</p>
+            <p data-i18n="recensioni.p22" class="review-date">Luglio 2025</p>
           </div>
         </div>
       </div>
@@ -2027,20 +2038,20 @@
       <div class="review-card">
         <div class="review-quote">"</div>
         <span class="review-score-badge">★ 10 / 10</span>
-        <p class="review-title">Consigliatissimo!</p>
-        <p class="review-text">Casa perfetta, pulitissima e in ordine. Proprietario super gentile. La struttura era perfetta, non mancava nulla. Spero di ritornare il prossimo anno.</p>
+        <p data-i18n="recensioni.p23" class="review-title">Consigliatissimo!</p>
+        <p data-i18n="recensioni.p24" class="review-text">Casa perfetta, pulitissima e in ordine. Proprietario super gentile. La struttura era perfetta, non mancava nulla. Spero di ritornare il prossimo anno.</p>
         <div class="review-author">
           <div class="review-avatar">Ti</div>
           <div>
             <p class="review-name">Tiziana 🇮🇹</p>
-            <p class="review-date">Dicembre 2024</p>
+            <p data-i18n="recensioni.p26" class="review-date">Dicembre 2024</p>
           </div>
         </div>
       </div>
 
     </div>
 
-    <div class="reviews-cta">
+    <div data-i18n="recensioni.div7" class="reviews-cta">
       <a href="https://www.booking.com/hotel/it/casa-vacanze-il-bearc.it.html#tab-reviews" target="_blank" class="btn-booking">
         🔵 Leggi tutte le 53 recensioni su Booking.com
       </a>
@@ -2052,8 +2063,8 @@
 <!-- DISPONIBILITÀ -->
 <section id="disponibilita">
   <div class="container">
-    <p class="section-label">Il tuo soggiorno inizia da qui</p>
-    <h2 class="section-title">Calendario disponibilità</h2>
+    <p data-i18n="disponibilita.p1" class="section-label">Il tuo soggiorno inizia da qui</p>
+    <h2 data-i18n="disponibilita.h21" class="section-title">Calendario disponibilità</h2>
 
     <div class="calendar-wrapper" id="cal-container">
       <!-- Generated by JS -->
@@ -2065,7 +2076,7 @@
       <div class="legend-item"><div class="legend-dot selected"></div> Selezione</div>
     </div>
 
-    <div class="cal-note">
+    <div data-i18n="disponibilita.div1" class="cal-note">
       💡 <strong>Come funziona:</strong> Clicca sul giorno di arrivo, poi sul giorno di partenza. <strong>Soggiorno minimo: 3 notti.</strong> Una volta selezionato il periodo clicca <em>"Verifica la disponibilità del tuo soggiorno"</em> — verrai reindirizzato su <strong>Avaibook</strong> che verifica la disponibilità reale in tempo reale ed elabora la prenotazione in sicurezza.
     </div>
   </div>
@@ -2074,26 +2085,26 @@
 <!-- PRENOTAZIONE -->
 <section id="prenotazione">
   <div class="container">
-    <p class="section-label">Richiedi il tuo soggiorno</p>
-    <h2 class="section-title">Prenota il tuo soggiorno</h2>
+    <p data-i18n="prenotazione.p1" class="section-label">Richiedi il tuo soggiorno</p>
+    <h2 data-i18n="prenotazione.h21" class="section-title">Prenota il tuo soggiorno</h2>
     <div class="booking-layout">
 
       <!-- INFO -->
       <div class="booking-info">
-        <h3>Saremo lieti di aiutarti</h3>
-        <p>Per conoscere la disponibilità o ricevere maggiori informazioni, scrivici o chiamaci. Saremo felici di aiutarti a organizzare il tuo soggiorno a Il Bearč.</p>
+        <h3 data-i18n="prenotazione.h31">Saremo lieti di aiutarti</h3>
+        <p data-i18n="prenotazione.p2">Per conoscere la disponibilità o ricevere maggiori informazioni, scrivici o chiamaci. Saremo felici di aiutarti a organizzare il tuo soggiorno a Il Bearč.</p>
         <a href="tel:+393299451083" class="contact-item">
           <span>📞</span><span>+39 329 945 1083</span>
         </a>
         <a id="email-link" class="contact-item" href="#">
           <span>✉️</span><span id="email-text">dario&#46;rovedo&#64;gmail&#46;com</span>
         </a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=46.418573,12.835759&waypoints=46.403458,12.822477&travelmode=driving" target="_blank" class="contact-item">
+        <a data-i18n="prenotazione.a2" href="https://www.google.com/maps/dir/?api=1&destination=46.418573,12.835759&waypoints=46.403458,12.822477&travelmode=driving" target="_blank" class="contact-item">
           <span>📍</span><span>Via Col Gentile 20a — Feltrone, Socchieve (UD) 33020</span>
         </a>
         <div class="platforms">
-          <p>Puoi trovarci anche su</p>
-          <div class="platform-links">
+          <p data-i18n="prenotazione.p3">Puoi trovarci anche su</p>
+          <div data-i18n="prenotazione.div1" class="platform-links">
             <a href="https://bookonline.pro/it/property/308348" target="_blank" class="platform-link">🟠 Prenota Diretto</a>
             <a href="https://www.booking.com/hotel/it/casa-vacanze-il-bearc.it.html" target="_blank" class="platform-link">🔵 Booking.com</a>
             <a href="https://www.tripadvisor.it/VacationRentalReview-g7104509-d23629233-Casa_Vacanze_Il_Bearc-Socchieve_Province_of_Udine_Friuli_Venezia_Giulia.html" target="_blank" class="platform-link">🟢 TripAdvisor</a>
@@ -2103,43 +2114,43 @@
 
       <!-- AVAIBOOK WIDGET -->
       <div class="booking-form">
-        <h3>Seleziona le date</h3>
-        <p class="form-subtitle">Scegli il periodo del tuo soggiorno · <strong>Permanenza minima: 3 notti</strong></p>
+        <h3 data-i18n="prenotazione.h32">Seleziona le date</h3>
+        <p data-i18n="prenotazione.p4" class="form-subtitle">Scegli il periodo del tuo soggiorno · <strong>Permanenza minima: 3 notti</strong></p>
 
         <div class="form-row">
           <div class="form-group">
-            <label>Arrivo *</label>
+            <label data-i18n="prenotazione.label1">Arrivo *</label>
             <input type="date" id="checkin" required>
           </div>
           <div class="form-group">
-            <label>Partenza *</label>
+            <label data-i18n="prenotazione.label2">Partenza *</label>
             <input type="date" id="checkout" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Adulti</label>
+            <label data-i18n="prenotazione.label3">Adulti</label>
             <select id="adults">
               <option>1</option><option selected>2</option><option>3</option><option>4</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Bambini</label>
+            <label data-i18n="prenotazione.label4">Bambini</label>
             <select id="children">
               <option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
             </select>
           </div>
         </div>
 
-        <button class="form-submit" onclick="goToAvaibook()">
+        <button data-i18n="prenotazione.button1" class="form-submit" onclick="goToAvaibook()">
           🔒 Verifica la disponibilità del tuo soggiorno
         </button>
-<div class="no-pets-alert">
+<div data-i18n="prenotazione.div2" class="no-pets-alert">
   <strong>Animali non ammessi</strong>
   Non sono consentiti animali di nessun tipo all’interno della casa vacanze.
   Procedendo con la prenotazione dichiari di aver letto e accettato questa condizione.
 </div>
-<div class="avaibook-note">
+<div data-i18n="prenotazione.div3" class="avaibook-note">
   <span>✅</span>
   <span>
   <strong>Tutto incluso nel prezzo a notte:</strong> biancheria da letto, asciugamani,
@@ -2147,29 +2158,29 @@
   nessun costo nascosto.
   </span>
 </div>
-<div class="avaibook-note">
+<div data-i18n="prenotazione.div4" class="avaibook-note">
   <span>🔄</span>
   <span>
   <strong>Cancellazione gratuita</strong> fino a 5 giorni prima della data di arrivo:
   rimborso totale dell'importo versato.
   </span>
 </div>
-<div class="avaibook-note">
+<div data-i18n="prenotazione.div5" class="avaibook-note">
   <span>🚭</span>
   <span><strong>Vietato fumare all'interno della casa.</strong> È possibile fumare in giardino o sulle terrazze.</span>
 </div>
-<div class="avaibook-note">
+<div data-i18n="prenotazione.div6" class="avaibook-note">
   <span>♿</span>
   <span><strong>Accessibilità:</strong> la casa si sviluppa su più livelli e <strong>non è accessibile</strong> a persone con disabilità motoria.</span>
 </div>
-<div class="avaibook-note">
+<div data-i18n="prenotazione.div7" class="avaibook-note">
   <span>⏰</span>
   <span>
   <strong>Check-in:</strong> dalle ore 17:00<br>
   <strong>Check-out:</strong> entro le ore 10:00
   </span>
 </div>
-        <div class="avaibook-note">
+        <div data-i18n="prenotazione.div8" class="avaibook-note">
 		          <span>🔄</span>
           <span>La disponibilità è gestita in tempo reale da <strong>Avaibook</strong>. Cliccando verrai reindirizzato al sistema di prenotazione ufficiale — nessun rischio di overbooking.</span>
         </div>
@@ -2190,7 +2201,7 @@
       referrerpolicy="no-referrer-when-downgrade"
       title="Mappa - Casa Vacanze Il Bearč a Feltrone, Socchieve">
     </iframe>
-    <p class="map-link">
+    <p data-i18n="posizione.p1" class="map-link">
       <a href="https://www.openstreetmap.org/?mlat=46.418573&amp;mlon=12.835759#map=17/46.418573/12.835759"
          target="_blank" rel="noopener noreferrer">
         Apri mappa interattiva su OpenStreetMap
@@ -2200,11 +2211,11 @@
 </div>
       <div class="location-details">
 	 
-        <p class="section-label">Arrivare a Il Bearč</p>
-        <h2 class="section-title">Feltrone, Socchieve</h2>
-        <p>Siamo nel cuore della Carnia, nel comune di Socchieve, a pochi chilometri da Tolmezzo e ben collegati con le principali stazioni sciistiche della regione.</p>
-        <p>Raggiungibile comodamente in auto dall'A23 (autostrada Udine-Tarvisio), uscita Carnia. Da Udine circa 55 km, da Vienna circa 464 km. La stazione ferroviaria più vicina è Stazione Carnia, a circa 25 km.</p>
-        <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+        <p data-i18n="posizione.p2" class="section-label">Arrivare a Il Bearč</p>
+        <h2 data-i18n="posizione.h21" class="section-title">Feltrone, Socchieve</h2>
+        <p data-i18n="posizione.p3">Siamo nel cuore della Carnia, nel comune di Socchieve, a pochi chilometri da Tolmezzo e ben collegati con le principali stazioni sciistiche della regione.</p>
+        <p data-i18n="posizione.p4">Raggiungibile comodamente in auto dall'A23 (autostrada Udine-Tarvisio), uscita Carnia. Da Udine circa 55 km, da Vienna circa 464 km. La stazione ferroviaria più vicina è Stazione Carnia, a circa 25 km.</p>
+        <div data-i18n="posizione.div1" style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
           <span class="location-tag">🚗 55km da Udine</span>
           <span class="location-tag">⛷️ 30km dallo Zoncolan</span>
           <span class="location-tag">🚆 25km da Stazione Carnia</span>
@@ -2216,17 +2227,17 @@
           <span class="location-tag">🏔️ 696m slm</span>
           <span class="location-tag">🌲 Alpi Carniche</span>
         </div>
-        <div style="margin-top: 2rem;">
+        <div data-i18n="posizione.div2" style="margin-top: 2rem;">
           <a href="https://www.google.com/maps/dir/?api=1&destination=46.418573,12.835759&waypoints=46.403458,12.822477&travelmode=driving" target="_blank" class="btn-primary" style="margin-top:1rem">
             🗺️ Apri il percorso
           </a>
         </div>
 
         <div style="margin-top: 3rem;">
-          <p class="section-label">Servizi nelle vicinanze</p>
-          <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--forest); margin-bottom:1rem;">Tutto quello che ti serve a pochi chilometri</h3>
-          <p style="margin-bottom:1.5rem;">Feltrone è un piccolo borgo tranquillo. I servizi essenziali si raggiungono comodamente in auto nei paesi vicini:</p>
-          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <p data-i18n="posizione.p5" class="section-label">Servizi nelle vicinanze</p>
+          <h3 data-i18n="posizione.h31" style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--forest); margin-bottom:1rem;">Tutto quello che ti serve a pochi chilometri</h3>
+          <p data-i18n="posizione.p6" style="margin-bottom:1.5rem;">Feltrone è un piccolo borgo tranquillo. I servizi essenziali si raggiungono comodamente in auto nei paesi vicini:</p>
+          <div data-i18n="posizione.div3" style="display:flex; flex-wrap:wrap; gap:0.4rem;">
             <span class="location-tag">🍞 Bar e forno a Mediis</span>
             <span class="location-tag">💊 Farmacia a Mediis</span>
             <span class="location-tag">💳 Bancomat ad Ampezzo</span>
@@ -2237,7 +2248,7 @@
         </div>
 
         <div style="margin-top: 2rem; padding: 1.2rem 1.5rem; background: var(--cream); border-radius: 8px;">
-          <p style="margin:0; font-size:0.95rem; color:var(--forest);">
+          <p data-i18n="posizione.p7" style="margin:0; font-size:0.95rem; color:var(--forest);">
             📶 <strong>Connettività:</strong> ottima copertura del segnale mobile e Wi-Fi domestico con velocità reali misurate di <strong>~68 Mbps in download</strong> e <strong>~20 Mbps in upload</strong> — adatto anche allo smart working e alle videochiamate.
           </p>
         </div>
@@ -2250,9 +2261,9 @@
 <section id="faq" class="section">
   <div class="container">
     <div class="faq-content">
-      <p class="eyebrow">Domande frequenti</p>
-      <h2>Domande frequenti</h2>
-      <p class="faq-intro">
+      <p data-i18n="faq.p1" class="eyebrow">Domande frequenti</p>
+      <h2 data-i18n="faq.h21">Domande frequenti</h2>
+      <p data-i18n="faq.p2" class="faq-intro">
         Una raccolta delle domande più comuni su Casa Vacanze Il Bearč:
         check‑in, soggiorno minimo, animali, pagamento e servizi in zona.
       </p>
@@ -2330,16 +2341,16 @@
 
       <div class="faq-accordion">
         <details id="faq-dove-si-trova">
-          <summary>Dove si trova esattamente Il Bearč?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary1">Dove si trova esattamente Il Bearč?</summary>
+          <div data-i18n="faq.div1" class="faq-answer">
             Casa Vacanze Il Bearč si trova a Feltrone, frazione del comune di Socchieve (Udine),
             nel cuore della Carnia, a circa 696 metri di altitudine e pochi chilometri da Tolmezzo.
           </div>
         </details>
 
         <details id="faq-quante-persone">
-          <summary>Quante persone può ospitare e com'è la casa?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary2">Quante persone può ospitare e com'è la casa?</summary>
+          <div data-i18n="faq.div2" class="faq-answer">
             Il Bearč è una casa vacanze indipendente su più livelli con 2 camere da letto,
             1 bagno e capienza fino a 4 ospiti. Dispone di soggiorno con TV satellitare,
             cucina attrezzata con lavastoviglie e lavatrice e di un ampio giardino recintato
@@ -2348,8 +2359,8 @@
         </details>
 
         <details id="faq-camere">
-          <summary>Come sono organizzate le camere da letto?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary3">Come sono organizzate le camere da letto?</summary>
+          <div data-i18n="faq.div3" class="faq-answer">
             La casa dispone di due camere: una con letto matrimoniale e una con due letti
             singoli, per ospitare comodamente fino a 4 persone. La biancheria da letto e gli
             asciugamani sono forniti dall'host e già pronti al tuo arrivo.
@@ -2357,8 +2368,8 @@
         </details>
 
         <details id="faq-incluso">
-          <summary>Cosa è incluso nel prezzo del soggiorno?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary4">Cosa è incluso nel prezzo del soggiorno?</summary>
+          <div data-i18n="faq.div4" class="faq-answer">
             Nel prezzo a notte è tutto compreso: biancheria da letto, asciugamani, pellet
             per la stufa, utenze (luce, acqua, gas, riscaldamento), Wi-Fi e pulizie finali.
             <strong>Non è prevista alcuna tassa di soggiorno</strong>, non ci sono costi nascosti
@@ -2367,8 +2378,8 @@
         </details>
 
         <details id="faq-cancellazione">
-          <summary>Qual è la politica di cancellazione?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary5">Qual è la politica di cancellazione?</summary>
+          <div data-i18n="faq.div5" class="faq-answer">
             La cancellazione è gratuita fino a 5 giorni prima della data di arrivo: in questo
             caso viene rimborsato l'intero importo versato. Per cancellazioni successive,
             contatta direttamente il proprietario.
@@ -2376,23 +2387,23 @@
         </details>
 
         <details id="faq-soggiorno-minimo">
-          <summary>Qual è il soggiorno minimo?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary6">Qual è il soggiorno minimo?</summary>
+          <div data-i18n="faq.div6" class="faq-answer">
             Il soggiorno minimo a Casa Vacanze Il Bearč è di 3 notti in tutte le stagioni.
           </div>
         </details>
 
         <details id="faq-checkin">
-          <summary>Come funziona il check‑in e a che ora posso arrivare?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary7">Come funziona il check‑in e a che ora posso arrivare?</summary>
+          <div data-i18n="faq.div7" class="faq-answer">
             Il check‑in è a partire dalle 17:00 con self check‑in tramite cassetta portachiavi,
             così puoi arrivare in autonomia senza vincoli di orario. Il check‑out è entro le 10:00.
           </div>
         </details>
 
         <details id="faq-riscaldamento">
-          <summary>Com'è riscaldata la casa in inverno?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary8">Com'è riscaldata la casa in inverno?</summary>
+          <div data-i18n="faq.div8" class="faq-answer">
             La casa è riscaldata da una stufa a pellet in soggiorno. Il pellet necessario al
             soggiorno è fornito incluso nel prezzo: non devi preoccuparti di acquistarlo o
             trasportarlo. In estate è disponibile l'aria condizionata.
@@ -2400,8 +2411,8 @@
         </details>
 
         <details id="faq-bambini">
-          <summary>È adatta a famiglie con bambini piccoli?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary9">È adatta a famiglie con bambini piccoli?</summary>
+          <div data-i18n="faq.div9" class="faq-answer">
             Sì, Il Bearč è particolarmente adatto alle famiglie: il giardino recintato permette
             ai bambini di giocare in sicurezza. Su richiesta è disponibile un lettino per
             neonati o bambini molto piccoli — basta segnalarlo al momento della prenotazione.
@@ -2409,31 +2420,31 @@
         </details>
 
         <details id="faq-accessibilita">
-          <summary>La casa è accessibile a persone con disabilità motoria?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary10">La casa è accessibile a persone con disabilità motoria?</summary>
+          <div data-i18n="faq.div10" class="faq-answer">
             No. La casa si sviluppa su più livelli con scale interne e non è accessibile a
             persone con disabilità motoria o ridotte capacità di deambulazione.
           </div>
         </details>
 
         <details id="faq-fumo">
-          <summary>Si può fumare?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary11">Si può fumare?</summary>
+          <div data-i18n="faq.div11" class="faq-answer">
             È vietato fumare all'interno della casa. Puoi farlo all'esterno, in giardino o
             sulle terrazze.
           </div>
         </details>
 
         <details id="faq-animali">
-          <summary>Sono ammessi animali domestici?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary12">Sono ammessi animali domestici?</summary>
+          <div data-i18n="faq.div12" class="faq-answer">
             No, gli animali non sono ammessi all'interno della casa vacanze Il Bearč.
           </div>
         </details>
 
         <details id="faq-mezzi">
-          <summary>Come si arriva con i mezzi pubblici?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary13">Come si arriva con i mezzi pubblici?</summary>
+          <div data-i18n="faq.div13" class="faq-answer">
             La stazione ferroviaria più vicina è <strong>Stazione Carnia</strong>, sulla linea
             Udine–Tarvisio. Da lì si raggiunge Feltrone in auto o con i collegamenti locali.
             Gli aeroporti più vicini sono Trieste, Venezia (Marco Polo), Treviso e Lubiana —
@@ -2443,8 +2454,8 @@
         </details>
 
         <details id="faq-servizi">
-          <summary>Quali servizi ci sono nei dintorni?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary14">Quali servizi ci sono nei dintorni?</summary>
+          <div data-i18n="faq.div14" class="faq-answer">
             Bar e forno si trovano a <strong>Mediis</strong>, dove c'è anche la farmacia.
             Per bancomat e distributore di carburante il riferimento è <strong>Ampezzo</strong>.
             I supermercati si raggiungono in auto nei paesi vicini. Il pronto soccorso più
@@ -2453,8 +2464,8 @@
         </details>
 
         <details id="faq-prenotazione">
-          <summary>Come avviene la prenotazione e il pagamento?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.summary15">Come avviene la prenotazione e il pagamento?</summary>
+          <div data-i18n="faq.div15" class="faq-answer">
             Puoi verificare la disponibilità e prenotare direttamente dal calendario sul sito:
             la disponibilità è gestita in tempo reale da Avaibook, che elabora il pagamento
             in modo sicuro. In alternativa puoi contattare direttamente il proprietario via
@@ -2486,7 +2497,7 @@
 
 
 <div class="widget-stack">
-  <button class="fab-guida" onclick="toggleGuida()" id="fab-guida">
+  <button data-i18n="global.button2" class="fab-guida" onclick="toggleGuida()" id="fab-guida">
     <span class="fab-dot"></span>
     <span id="fab-guida-label">🏔️ Guida della zona</span>
   </button>
@@ -2526,22 +2537,22 @@
 <!-- RICARICA EV -->
 <section id="ricarica-ev" style="background: var(--cream);">
   <div class="container">
-    <p class="section-label">Mobilità elettrica</p>
-    <h2 class="section-title">Arrivare in elettrico è ancora più semplice</h2>
+    <p data-i18n="ricarica-ev.p1" class="section-label">Mobilità elettrica</p>
+    <h2 data-i18n="ricarica-ev.h21" class="section-title">Arrivare in elettrico è ancora più semplice</h2>
 
     <div class="ev-layout">
       <div class="ev-text">
-        <p>
+        <p data-i18n="ricarica-ev.p2">
           Se viaggi in auto elettrica, Il Bearč ti accoglie senza pensieri: lungo il
           percorso e nei dintorni della casa vacanze sono disponibili diverse colonnine
           pubbliche, ideali per organizzare una sosta rilassata prima di raggiungere Feltrone.
         </p>
-        <p>
+        <p data-i18n="ricarica-ev.p3">
           Usa lo strumento qui sotto per trovare in tempo reale le colonnine
           più comode per il tuo viaggio: posizione, potenza e disponibilità sempre aggiornate.
         </p>
 
-        <div class="hero-ctas" style="justify-content:flex-start; margin-top: 1.8rem;">
+        <div data-i18n="ricarica-ev.div1" class="hero-ctas" style="justify-content:flex-start; margin-top: 1.8rem;">
           <a href="https://chargefinder.com/it"
              target="_blank" rel="noopener noreferrer" class="btn-primary">
             Trova la colonnina di ricarica più vicina a te
@@ -2550,13 +2561,13 @@
       </div>
 
       <div class="ev-card">
-        <h3>Un soggiorno EV-friendly</h3>
+        <h3 data-i18n="ricarica-ev.h31">Un soggiorno EV-friendly</h3>
         <ul>
-          <li>Colonnine pubbliche lungo le principali direttrici verso la Carnia.</li>
-          <li>Stazioni di ricarica in zona Tolmezzo, Socchieve e paesi limitrofi.</li>
-          <li>Possibilità di pianificare il viaggio con una sola o due soste mirate.</li>
+          <li data-i18n="ricarica-ev.li1">Colonnine pubbliche lungo le principali direttrici verso la Carnia.</li>
+          <li data-i18n="ricarica-ev.li2">Stazioni di ricarica in zona Tolmezzo, Socchieve e paesi limitrofi.</li>
+          <li data-i18n="ricarica-ev.li3">Possibilità di pianificare il viaggio con una sola o due soste mirate.</li>
         </ul>
-        <p class="ev-note">
+        <p data-i18n="ricarica-ev.p4" class="ev-note">
           Le informazioni sulle colonnine possono variare nel tempo. Per questo ti
           invitiamo sempre a verificare i dati aggiornati direttamente sulla piattaforma
           indicata, prima della partenza e durante il viaggio.
@@ -2568,8 +2579,8 @@
 
 <footer>
   <div class="footer-logo"><img src="images/Logo.jpg" alt="Logo Il Bearč" class="footer-logo-img" decoding="async"><span>Il Bearč</span></div>
-  <p style="font-style:italic; margin-bottom:0.3rem;">Casa Vacanze</p>
-  <p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
+  <p data-i18n="footer.p1" style="font-style:italic; margin-bottom:0.3rem;">Casa Vacanze</p>
+  <p data-i18n="footer.p2" style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile 20a — Feltrone, Socchieve (UD) 33020<br>
   <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="javascript:void(0)">[email&#160;protected]</a> </p>
@@ -2904,5 +2915,7 @@
   requestAnimationFrame(frame);
 })();
 </script>
+<!-- ==================== BEARC-I18N: script ==================== -->
+<script src="i18n/i18n.js" defer></script>
 </body>
 </html>
