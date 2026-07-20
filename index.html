@@ -1642,7 +1642,7 @@
     <li data-i18n="nav.li10"><a href="#posizione">Dove siamo</a></li>
     <li data-i18n="nav.li11"><a href="#prenotazione">Prenota</a></li>
   <li class="lang-switch" aria-label="Lingua / Language / Sprache"><button type="button" class="lang-btn active" data-lang="it" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('it')" aria-pressed="true">IT</button><button type="button" class="lang-btn" data-lang="en" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('en')" aria-pressed="false">EN</button><button type="button" class="lang-btn" data-lang="de" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('de')" aria-pressed="false">DE</button></li>
-</ul>
+  </ul>
 </nav>
 
 <!-- ABOUT -->
@@ -2071,9 +2071,9 @@
     </div>
 
     <div class="cal-legend">
-      <div class="legend-item"><div class="legend-dot available"></div> Disponibile</div>
-      <div class="legend-item"><div class="legend-dot booked"></div> Non disponibile</div>
-      <div class="legend-item"><div class="legend-dot selected"></div> Selezione</div>
+      <div class="legend-item" data-i18n="cal.legend1"><div class="legend-dot available"></div> Disponibile</div>
+      <div class="legend-item" data-i18n="cal.legend2"><div class="legend-dot booked"></div> Non disponibile</div>
+      <div class="legend-item" data-i18n="cal.legend3"><div class="legend-dot selected"></div> Selezione</div>
     </div>
 
     <div data-i18n="disponibilita.div1" class="cal-note">
@@ -2608,13 +2608,13 @@
     }
 
     if (new Date(checkout) <= new Date(checkin)) {
-      alert('La data di partenza deve essere successiva alla data di arrivo.');
+      alert(window.BEARC_CAL.alertOrder);
       return;
     }
 
     const nights = Math.round((new Date(checkout) - new Date(checkin)) / (1000*60*60*24));
     if (nights < 3) {
-      alert('⚠️ Soggiorno minimo: 3 notti.\nIl periodo selezionato (' + nights + ' notte' + (nights === 1 ? '' : 'i') + ') è inferiore al minimo consentito.\nSeleziona almeno 3 notti.');
+      alert(window.BEARC_CAL.alertMinStay.replace('{N}', nights + ' ' + (nights === 1 ? window.BEARC_CAL.nightSing : window.BEARC_CAL.nightPlur)));
       return;
     }
 
@@ -2628,7 +2628,7 @@
     const baseUrl = 'https://www.avaibook.com/reservas/nueva_reserva.php';
     const params = new URLSearchParams({
       cod_alojamiento: '308348',
-      lang: 'it',
+      lang: window.BEARC_CAL.avaibookLang,
       f_ini: checkin,
       f_fin: f_fin,
       capacidad: capacidad
@@ -2679,8 +2679,16 @@
 
   let selStart = null, selEnd = null;
   let calOffset = 0;
-  const MONTHS_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-  const DAYS_IT = ['Lu','Ma','Me','Gi','Ve','Sa','Do'];
+  // BEARC-I18N: testi del calendario localizzabili (default: italiano).
+  // i18n.js li sostituisce al cambio lingua e richiama renderCal().
+  window.BEARC_CAL = {
+    months: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
+    days: ['Lu','Ma','Me','Gi','Ve','Sa','Do'],
+    alertOrder: 'La data di partenza deve essere successiva alla data di arrivo.',
+    alertMinStay: '\u26A0\uFE0F Soggiorno minimo: 3 notti.\nIl periodo selezionato ({N}) \u00E8 inferiore al minimo consentito.\nSeleziona almeno 3 notti.',
+    nightSing: 'notte', nightPlur: 'notti',
+    avaibookLang: 'it'
+  };
 
   function toDateStr(y, m, d) {
     return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -2714,7 +2722,7 @@
       hdr.className = 'cal-header';
       hdr.innerHTML = `
         ${m === 0 ? `<button class="cal-nav" onclick="calPrev()">‹</button>` : '<span></span>'}
-        <h4>${MONTHS_IT[month]} ${year}</h4>
+        <h4>${window.BEARC_CAL.months[month]} ${year}</h4>
         ${m === 1 ? `<button class="cal-nav" onclick="calNext()">›</button>` : '<span></span>'}
       `;
       wrap.appendChild(hdr);
@@ -2725,7 +2733,7 @@
       // Day names
       const daysHdr = document.createElement('div');
       daysHdr.className = 'cal-days-header';
-      DAYS_IT.forEach(n => {
+      window.BEARC_CAL.days.forEach(n => {
         const dn = document.createElement('div');
         dn.className = 'cal-day-name';
         dn.textContent = n;
