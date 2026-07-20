@@ -206,5 +206,15 @@
  "ricarica-ev.li3": "Plan your journey with just one or two targeted stops.",
  "ricarica-ev.p4": "Charging station information may change over time. We therefore always recommend checking up-to-date data directly on the platform indicated, before departure and during your journey.",
  "footer.p1": "Holiday Cottage",
- "footer.p2": "Feltrone · Socchieve (UD)"
+ "footer.p2": "Feltrone · Socchieve (UD)",
+ "cal.legend1": "<div class=\"legend-dot available\"></div> Available",
+ "cal.legend2": "<div class=\"legend-dot booked\"></div> Not available",
+ "cal.legend3": "<div class=\"legend-dot selected\"></div> Selected",
+ "cal.months": "January,February,March,April,May,June,July,August,September,October,November,December",
+ "cal.days": "Mo,Tu,We,Th,Fr,Sa,Su",
+ "cal.alertOrder": "The departure date must be after the arrival date.",
+ "cal.alertMinStay": "⚠️ Minimum stay: 3 nights.\nThe selected period ({N}) is shorter than the minimum allowed.\nPlease select at least 3 nights.",
+ "cal.nightSing": "night",
+ "cal.nightPlur": "nights",
+ "cal.avaibook": "en"
 }

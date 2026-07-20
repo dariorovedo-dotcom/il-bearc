@@ -206,5 +206,15 @@
  "ricarica-ev.li3": "Planen Sie Ihre Reise mit nur ein oder zwei gezielten Stopps.",
  "ricarica-ev.p4": "Die Angaben zu den Ladesäulen können sich im Laufe der Zeit ändern. Wir empfehlen daher, die aktuellen Daten vor der Abfahrt und während der Reise direkt auf der angegebenen Plattform zu überprüfen.",
  "footer.p1": "Ferienhaus",
- "footer.p2": "Feltrone · Socchieve (UD)"
+ "footer.p2": "Feltrone · Socchieve (UD)",
+ "cal.legend1": "<div class=\"legend-dot available\"></div> Verfügbar",
+ "cal.legend2": "<div class=\"legend-dot booked\"></div> Nicht verfügbar",
+ "cal.legend3": "<div class=\"legend-dot selected\"></div> Auswahl",
+ "cal.months": "Januar,Februar,März,April,Mai,Juni,Juli,August,September,Oktober,November,Dezember",
+ "cal.days": "Mo,Di,Mi,Do,Fr,Sa,So",
+ "cal.alertOrder": "Das Abreisedatum muss nach dem Anreisedatum liegen.",
+ "cal.alertMinStay": "⚠️ Mindestaufenthalt: 3 Nächte.\nDer gewählte Zeitraum ({N}) liegt unter dem zulässigen Minimum.\nBitte wählen Sie mindestens 3 Nächte.",
+ "cal.nightSing": "Nacht",
+ "cal.nightPlur": "Nächte",
+ "cal.avaibook": "de"
 }

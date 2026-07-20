@@ -33,7 +33,29 @@
     if (m && v) m.setAttribute('content', v);
   }
 
+  var calIt = null;   // snapshot dei testi italiani del calendario
+
+  function applyCalendar(dict){
+    if (!window.BEARC_CAL) return;
+    if (!calIt) calIt = JSON.parse(JSON.stringify(window.BEARC_CAL));
+    if (dict){
+      if (dict['cal.months'])       window.BEARC_CAL.months = dict['cal.months'].split(',');
+      if (dict['cal.days'])         window.BEARC_CAL.days = dict['cal.days'].split(',');
+      if (dict['cal.alertOrder'])   window.BEARC_CAL.alertOrder = dict['cal.alertOrder'];
+      if (dict['cal.alertMinStay']) window.BEARC_CAL.alertMinStay = dict['cal.alertMinStay'];
+      if (dict['cal.nightSing'])    window.BEARC_CAL.nightSing = dict['cal.nightSing'];
+      if (dict['cal.nightPlur'])    window.BEARC_CAL.nightPlur = dict['cal.nightPlur'];
+      if (dict['cal.avaibook'])     window.BEARC_CAL.avaibookLang = dict['cal.avaibook'];
+    } else {
+      window.BEARC_CAL = JSON.parse(JSON.stringify(calIt));
+    }
+    if (typeof window.renderCal === 'function'){
+      try { window.renderCal(); } catch(e){}
+    }
+  }
+
   function applyDict(dict, lang){
+    applyCalendar(dict);
     nodes().forEach(function(el){
       var k = el.getAttribute('data-i18n');
       if (dict[k] !== undefined) el.innerHTML = dict[k];
@@ -46,6 +68,7 @@
   }
 
   function restoreItalian(){
+    applyCalendar(null);
     if (!cacheIt) { markActive('it'); try{localStorage.setItem(STORAGE_KEY,'it');}catch(e){} return; }
     nodes().forEach(function(el){
       var k = el.getAttribute('data-i18n');
