@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La cucina della Carnia — Il Bearč | Cjarsons, frico e prodotti tipici</title>
+<title data-i18n="head.title1">La cucina della Carnia — Il Bearč | Cjarsons, frico e prodotti tipici</title>
 <meta name="description" content="Guida alla cucina tradizionale della Carnia: i cjarsons, il frico, i formaggi di malga, i salumi di Sauris e i prodotti tipici delle Alpi Carniche. A cura di Il Bearč, casa vacanze a Feltrone di Socchieve.">
 <meta name="author" content="Il Bearč">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -1347,6 +1347,16 @@
 .cosetti .container { max-width: 760px; text-align:center; }
 .cosetti p { color: var(--bark); font-size:1.05rem; line-height:1.8; font-weight:300; }
 .cosetti .nome { font-family:'Playfair Display',serif; font-style:italic; color: var(--forest); font-weight:600; }
+
+/* ==================== BEARC-I18N: selettore lingua ==================== */
+.lang-switch{display:flex;align-items:center;gap:.15rem;margin-left:.6rem;padding-left:.8rem;border-left:1px solid rgba(0,0,0,.12)}
+.lang-btn{background:none;border:none;cursor:pointer;font:inherit;font-size:.72rem;letter-spacing:.08em;color:var(--stone);padding:.25rem .35rem;border-radius:4px;transition:color .2s,background .2s;text-transform:uppercase}
+.lang-btn:hover{color:var(--forest)}
+.lang-btn.active{color:var(--forest);font-weight:600;background:rgba(0,0,0,.05)}
+@media (max-width:768px){
+  .lang-switch{margin:0;padding:.6rem 0 0;border-left:none;border-top:1px solid rgba(0,0,0,.1);justify-content:center;width:100%}
+  .lang-btn{font-size:.85rem;padding:.4rem .7rem}
+}
 </style>
 </head>
 <body>
@@ -1354,10 +1364,10 @@
 <!-- HERO -->
 <section id="home" class="hero piatto-hero" style="min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; background-size:cover; background-position:center;">
   <div class="hero-content">
-    <p class="section-label" style="color:var(--accent); justify-content:center;">Sapori delle Alpi Carniche</p>
-    <h1 style="font-family:'Playfair Display',serif; color:var(--cream); font-size:clamp(2rem,7vw,3.6rem); line-height:1.1; font-weight:600;">La cucina della Carnia</h1>
-    <p style="color:rgba(245,240,232,0.85); max-width:620px; margin:1.2rem auto 0; font-weight:300; font-size:1.05rem; line-height:1.7;">Una cucina di montagna nata dalla necessità e dall'ingegno: pochi ingredienti, il latte delle malghe, le erbe dei prati e le spezie che gli emigranti riportavano da lontano.</p>
-    <a href="#cjarsons" class="btn-outline" style="margin-top:2rem; display:inline-block;">Scopri i cjarsons</a>
+    <p data-i18n="home.p1" class="section-label" style="color:var(--accent); justify-content:center;">Sapori delle Alpi Carniche</p>
+    <h1 data-i18n="home.h11" style="font-family:'Playfair Display',serif; color:var(--cream); font-size:clamp(2rem,7vw,3.6rem); line-height:1.1; font-weight:600;">La cucina della Carnia</h1>
+    <p data-i18n="home.p2" style="color:rgba(245,240,232,0.85); max-width:620px; margin:1.2rem auto 0; font-weight:300; font-size:1.05rem; line-height:1.7;">Una cucina di montagna nata dalla necessità e dall'ingegno: pochi ingredienti, il latte delle malghe, le erbe dei prati e le spezie che gli emigranti riportavano da lontano.</p>
+    <a data-i18n="home.a1" href="#cjarsons" class="btn-outline" style="margin-top:2rem; display:inline-block;">Scopri i cjarsons</a>
   </div>
 </section>
 
@@ -1368,162 +1378,163 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="index.html#about">La Casa</a></li>
-    <li><a href="index.html#attivita">Attività</a></li>
-    <li><a href="trekking.html">Trekking</a></li>
-    <li><a href="cucina.html" aria-current="page">Cucina</a></li>
-    <li><a href="index.html#storia">Storia</a></li>
-    <li><a href="index.html#disponibilita">Disponibilità</a></li>
-    <li><a href="index.html#prenotazione">Prenota</a></li>
+    <li data-i18n="nav.li1"><a href="index.html#about">La Casa</a></li>
+    <li data-i18n="nav.li2"><a href="index.html#attivita">Attività</a></li>
+    <li data-i18n="nav.li3"><a href="trekking.html">Trekking</a></li>
+    <li data-i18n="nav.li4"><a href="cucina.html" aria-current="page">Cucina</a></li>
+    <li data-i18n="nav.li5"><a href="index.html#storia">Storia</a></li>
+    <li data-i18n="nav.li6"><a href="index.html#disponibilita">Disponibilità</a></li>
+    <li data-i18n="nav.li7"><a href="index.html#prenotazione">Prenota</a></li>
+<li class="lang-switch" aria-label="Lingua / Language / Sprache"><button type="button" class="lang-btn active" data-lang="it" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('it')" aria-pressed="true">IT</button><button type="button" class="lang-btn" data-lang="en" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('en')" aria-pressed="false">EN</button><button type="button" class="lang-btn" data-lang="de" onclick="window.bearcSetLang&amp;&amp;bearcSetLang('de')" aria-pressed="false">DE</button></li>
   </ul>
 </nav>
 
 <!-- INTRO -->
 <section class="intro-carnia">
   <div class="container">
-    <p class="section-label">Una tradizione di montagna</p>
-    <h2 class="section-title" style="margin-bottom:1.5rem;">Fare di necessità<br>virtù</h2>
-    <p class="lead">La cucina carnica nasce nelle case di un tempo, dove le donne trasformavano <strong>pochi ingredienti poveri</strong> in piatti di festa. Il latte e il burro delle malghe, la polenta, i fagioli, le erbe spontanee raccolte nei prati, e le <strong>spezie preziose</strong> arrivate dal viavai tra la Carnia e Venezia. Da questo incontro tra povertà e ingegno nasce il piatto simbolo della Carnia: i cjarsons.</p>
+    <p data-i18n="global.p1" class="section-label">Una tradizione di montagna</p>
+    <h2 data-i18n="global.h21" class="section-title" style="margin-bottom:1.5rem;">Fare di necessità<br>virtù</h2>
+    <p data-i18n="global.p2" class="lead">La cucina carnica nasce nelle case di un tempo, dove le donne trasformavano <strong>pochi ingredienti poveri</strong> in piatti di festa. Il latte e il burro delle malghe, la polenta, i fagioli, le erbe spontanee raccolte nei prati, e le <strong>spezie preziose</strong> arrivate dal viavai tra la Carnia e Venezia. Da questo incontro tra povertà e ingegno nasce il piatto simbolo della Carnia: i cjarsons.</p>
   </div>
 </section>
 
 <!-- CJARSONS -->
 <section id="cjarsons" class="cjar-block">
   <div class="container">
-    <p class="section-label">Il piatto simbolo</p>
-    <h2 class="section-title" style="margin-bottom:1.8rem;">I Cjarsons</h2>
-    <p>Li si chiama in due modi, a seconda della zona della Carnia: <strong>cjarsons</strong> o <span class="friul-term">cjalsons</span> (si trovano anche le grafie <span class="friul-term">cjalzons</span> e <span class="friul-term">cjalsòns</span>). Sono un raviolo unico nel suo genere: un ripieno in cui <strong>il dolce e il salato convivono</strong>. Ricotta, erbe aromatiche — preferite quelle dal sentore di limone, come il geranio profumato — uvetta, cioccolato, cannella, biscotti sbriciolati, scorza di limone. Le proporzioni cambiano di paese in paese, e persino di famiglia in famiglia.</p>
-    <p>Una leggenda racconta che a insegnarne la ricetta fu il <strong>Guriut</strong>, un folletto goloso sorpreso da una massaia mentre rubava la panna dal latte appena munto. Per farsi perdonare, le rivelò il segreto dei cjarsons. Dietro la favola c'è una storia vera. I <strong>Cramars</strong>, i mercanti ambulanti carnici, dalla fine del Cinquecento all'Ottocento si rifornivano di spezie sui mercati veneti e risalivano di casa in casa fino alla Carnia e all'Austria: a casa restava <strong>ciò che avanzava</strong> di quel commercio. Si tramanda che le spezie arrivassero anche per una seconda via, con le ragazze carniche che andavano a servizio a Venezia. Dai rimasugli di queste vite è nata la passione carnica per le spezie, che ancora oggi profuma il ripieno dei cjarsons: cannella, noce moscata, cacao.</p>
-    <p>Il tocco finale è sempre lo stesso: <span class="friul-term">scuete fumade e l'ont</span>, ricotta affumicata grattugiata e burro fuso.</p>
-    <p>Un gastronomo locale ne ha censite <strong>oltre cinquanta varianti</strong>. Ogni prima domenica di giugno, il paese di <strong>Sutrio</strong> dedica ai cjarsons una festa che ne raccoglie dieci versioni diverse, una per ogni borgo della Carnia.</p>
-    <p class="fonte-nota">Fonti: <em>I Cjarsons — la tradizione della Carnia</em>, Sutrio 2016 (Albergo Diffuso Borgo Soandri, ProLoco Sutrio, Comune di Sutrio); <em>Il Cibario del Friuli Venezia Giulia</em>, ERSA 2017.</p>
+    <p data-i18n="cjarsons.p1" class="section-label">Il piatto simbolo</p>
+    <h2 data-i18n="cjarsons.h21" class="section-title" style="margin-bottom:1.8rem;">I Cjarsons</h2>
+    <p data-i18n="cjarsons.p2">Li si chiama in due modi, a seconda della zona della Carnia: <strong>cjarsons</strong> o <span class="friul-term">cjalsons</span> (si trovano anche le grafie <span class="friul-term">cjalzons</span> e <span class="friul-term">cjalsòns</span>). Sono un raviolo unico nel suo genere: un ripieno in cui <strong>il dolce e il salato convivono</strong>. Ricotta, erbe aromatiche — preferite quelle dal sentore di limone, come il geranio profumato — uvetta, cioccolato, cannella, biscotti sbriciolati, scorza di limone. Le proporzioni cambiano di paese in paese, e persino di famiglia in famiglia.</p>
+    <p data-i18n="cjarsons.p3">Una leggenda racconta che a insegnarne la ricetta fu il <strong>Guriut</strong>, un folletto goloso sorpreso da una massaia mentre rubava la panna dal latte appena munto. Per farsi perdonare, le rivelò il segreto dei cjarsons. Dietro la favola c'è una storia vera. I <strong>Cramars</strong>, i mercanti ambulanti carnici, dalla fine del Cinquecento all'Ottocento si rifornivano di spezie sui mercati veneti e risalivano di casa in casa fino alla Carnia e all'Austria: a casa restava <strong>ciò che avanzava</strong> di quel commercio. Si tramanda che le spezie arrivassero anche per una seconda via, con le ragazze carniche che andavano a servizio a Venezia. Dai rimasugli di queste vite è nata la passione carnica per le spezie, che ancora oggi profuma il ripieno dei cjarsons: cannella, noce moscata, cacao.</p>
+    <p data-i18n="cjarsons.p4">Il tocco finale è sempre lo stesso: <span class="friul-term">scuete fumade e l'ont</span>, ricotta affumicata grattugiata e burro fuso.</p>
+    <p data-i18n="cjarsons.p5">Un gastronomo locale ne ha censite <strong>oltre cinquanta varianti</strong>. Ogni prima domenica di giugno, il paese di <strong>Sutrio</strong> dedica ai cjarsons una festa che ne raccoglie dieci versioni diverse, una per ogni borgo della Carnia.</p>
+    <p data-i18n="cjarsons.p6" class="fonte-nota">Fonti: <em>I Cjarsons — la tradizione della Carnia</em>, Sutrio 2016 (Albergo Diffuso Borgo Soandri, ProLoco Sutrio, Comune di Sutrio); <em>Il Cibario del Friuli Venezia Giulia</em>, ERSA 2017.</p>
   </div>
 </section>
 
 <!-- IL SAPORE DEL FUMO -->
 <section id="affumicatura" class="cjar-block">
   <div class="container">
-    <p class="section-label">Come nasce il gusto affumicato</p>
-    <h2 class="section-title" style="margin-bottom:1.8rem;">Il sapore del fumo</h2>
-    <p>Un tempo, nelle case della Carnia, prosciutti, salumi e ricotta venivano affumicati lentamente sopra il <span class="friul-term">fogolâr</span>, il tradizionale focolare domestico. Le forme e le carni si appendevano sopra il fuoco, dove il fumo del legno di faggio le avvolgeva a poco a poco. Quel fumo, unito alla lunga stagionatura, donava un aroma delicato e inconfondibile, e al tempo stesso aiutava a conservare i prodotti durante i lunghi inverni di montagna.</p>
-    <p>È da questa tecnica che nascono la <span class="friul-term">scuete fumade</span>, la ricotta affumicata che ancora oggi profuma i cjarsons, e il gusto caratteristico dei salumi delle vallate carniche, tra cui il celebre <strong>Prosciutto di Sauris IGP</strong>. Alcuni produttori artigianali si ispirano tuttora a quell'antico metodo, pur affidandosi a impianti moderni che ne garantiscono qualità e sicurezza.</p>
+    <p data-i18n="affumicatura.p1" class="section-label">Come nasce il gusto affumicato</p>
+    <h2 data-i18n="affumicatura.h21" class="section-title" style="margin-bottom:1.8rem;">Il sapore del fumo</h2>
+    <p data-i18n="affumicatura.p2">Un tempo, nelle case della Carnia, prosciutti, salumi e ricotta venivano affumicati lentamente sopra il <span class="friul-term">fogolâr</span>, il tradizionale focolare domestico. Le forme e le carni si appendevano sopra il fuoco, dove il fumo del legno di faggio le avvolgeva a poco a poco. Quel fumo, unito alla lunga stagionatura, donava un aroma delicato e inconfondibile, e al tempo stesso aiutava a conservare i prodotti durante i lunghi inverni di montagna.</p>
+    <p data-i18n="affumicatura.p3">È da questa tecnica che nascono la <span class="friul-term">scuete fumade</span>, la ricotta affumicata che ancora oggi profuma i cjarsons, e il gusto caratteristico dei salumi delle vallate carniche, tra cui il celebre <strong>Prosciutto di Sauris IGP</strong>. Alcuni produttori artigianali si ispirano tuttora a quell'antico metodo, pur affidandosi a impianti moderni che ne garantiscono qualità e sicurezza.</p>
   </div>
 </section>
 
 <!-- PRODOTTI -->
 <section id="prodotti" style="background:var(--forest); padding:1rem 1.5rem 5rem;">
   <div class="container">
-    <p class="section-label">Prodotti della tradizione</p>
-    <h2 class="section-title" style="margin-bottom:0.8rem;">I sapori della Carnia</h2>
-    <p style="color:rgba(245,240,232,0.7); max-width:680px; font-weight:300; line-height:1.7;">Molti di questi prodotti sono iscritti all'elenco nazionale dei Prodotti Agroalimentari Tradizionali (PAT). Ecco quelli che racchiudono l'identità gastronomica di queste valli.</p>
+    <p data-i18n="prodotti.p1" class="section-label">Prodotti della tradizione</p>
+    <h2 data-i18n="prodotti.h21" class="section-title" style="margin-bottom:0.8rem;">I sapori della Carnia</h2>
+    <p data-i18n="prodotti.p2" style="color:rgba(245,240,232,0.7); max-width:680px; font-weight:300; line-height:1.7;">Molti di questi prodotti sono iscritti all'elenco nazionale dei Prodotti Agroalimentari Tradizionali (PAT). Ecco quelli che racchiudono l'identità gastronomica di queste valli.</p>
 
     <div class="prodotti-grid">
 
       <div class="prod-card">
-        <span class="friul">Frico</span>
-        <h3>Frico</h3>
-        <p>Il piatto carnico per eccellenza: formaggio fuso, da solo (croccante) o con patate e cipolla (morbido). Se ne trova traccia già nel Quattrocento, nella ricetta di Maestro Martino, cuoco del Patriarca di Aquileia.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span1" class="friul">Frico</span>
+        <h3 data-i18n="prodotti.h31">Frico</h3>
+        <p data-i18n="prodotti.p3">Il piatto carnico per eccellenza: formaggio fuso, da solo (croccante) o con patate e cipolla (morbido). Se ne trova traccia già nel Quattrocento, nella ricetta di Maestro Martino, cuoco del Patriarca di Aquileia.</p>
+        <span data-i18n="prodotti.span2" class="tag">Prodotto PAT</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Formadi frant</span>
-        <h3>Formadi frant</h3>
-        <p>Formaggio ottenuto impastando diverse forme di latteria sminuzzate con sale, pepe e latte. Nasce per non sprecare nulla: il recupero fatto sapore. Uno dei prodotti più identitari della Carnia.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span3" class="friul">Formadi frant</span>
+        <h3 data-i18n="prodotti.h32">Formadi frant</h3>
+        <p data-i18n="prodotti.p4">Formaggio ottenuto impastando diverse forme di latteria sminuzzate con sale, pepe e latte. Nasce per non sprecare nulla: il recupero fatto sapore. Uno dei prodotti più identitari della Carnia.</p>
+        <span data-i18n="prodotti.span4" class="tag">Prodotto PAT</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Scuete fumade</span>
-        <h3>Ricotta affumicata di malga</h3>
-        <p>La ricotta affumicata sul fuoco di malga: grattugiata, è il condimento immancabile dei cjarsons e di molti primi. Insieme al burro fuso (<em>l'ont</em>) definisce il gusto della cucina carnica.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span5" class="friul">Scuete fumade</span>
+        <h3 data-i18n="prodotti.h33">Ricotta affumicata di malga</h3>
+        <p data-i18n="prodotti.p5">La ricotta affumicata sul fuoco di malga: grattugiata, è il condimento immancabile dei cjarsons e di molti primi. Insieme al burro fuso (<em>l'ont</em>) definisce il gusto della cucina carnica.</p>
+        <span data-i18n="prodotti.span6" class="tag">Prodotto PAT</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Blave</span>
-        <h3>Mais da polenta della Carnia</h3>
-        <p>Pannocchie essiccate in trecce all'aria. La polenta è la base che accompagna frico, toc' e zuppe: il pane quotidiano della montagna, prima del pane.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span7" class="friul">Blave</span>
+        <h3 data-i18n="prodotti.h34">Mais da polenta della Carnia</h3>
+        <p data-i18n="prodotti.p6">Pannocchie essiccate in trecce all'aria. La polenta è la base che accompagna frico, toc' e zuppe: il pane quotidiano della montagna, prima del pane.</p>
+        <span data-i18n="prodotti.span8" class="tag">Prodotto PAT</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Fasûi borlots</span>
-        <h3>Fagioli borlotti di Carnia</h3>
-        <p>Tra i vegetali più rappresentativi dell'agricoltura carnica, pregiati per la sgusciatura fatta a mano. Base di minestroni e zuppe che scaldavano gli inverni di montagna.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span9" class="friul">Fasûi borlots</span>
+        <h3 data-i18n="prodotti.h35">Fagioli borlotti di Carnia</h3>
+        <p data-i18n="prodotti.p7">Tra i vegetali più rappresentativi dell'agricoltura carnica, pregiati per la sgusciatura fatta a mano. Base di minestroni e zuppe che scaldavano gli inverni di montagna.</p>
+        <span data-i18n="prodotti.span10" class="tag">Prodotto PAT</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Gnau, Raf</span>
-        <h3>Rapa di Verzegnis</h3>
-        <p>Prodotto tipico della Carnia, coltivato a Verzegnis, a pochi chilometri da Socchieve. Alla base del <em>brovadìn</em>, la versione carnica della brovada fatta senza vinacce, che qui mancavano.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span11" class="friul">Gnau, Raf</span>
+        <h3 data-i18n="prodotti.h36">Rapa di Verzegnis</h3>
+        <p data-i18n="prodotti.p8">Prodotto tipico della Carnia, coltivato a Verzegnis, a pochi chilometri da Socchieve. Alla base del <em>brovadìn</em>, la versione carnica della brovada fatta senza vinacce, che qui mancavano.</p>
+        <span data-i18n="prodotti.span12" class="tag">Prodotto PAT</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Prosciutto di Sauris</span>
-        <h3>Prosciutto di Carnia</h3>
-        <p>La produzione è particolarmente diffusa a Sauris, dove l'affumicatura dolce si fa solo con legno di faggio. Il <strong>Prosciutto di Sauris ha il marchio IGP dal 2010</strong>.</p>
-        <span class="tag">IGP · Sauris</span>
+        <span data-i18n="prodotti.span13" class="friul">Prosciutto di Sauris</span>
+        <h3 data-i18n="prodotti.h37">Prosciutto di Carnia</h3>
+        <p data-i18n="prodotti.p9">La produzione è particolarmente diffusa a Sauris, dove l'affumicatura dolce si fa solo con legno di faggio. Il <strong>Prosciutto di Sauris ha il marchio IGP dal 2010</strong>.</p>
+        <span data-i18n="prodotti.span14" class="tag">IGP · Sauris</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Speck di Sauris</span>
-        <h3>Speck di Carnia</h3>
-        <p>Prodotto con tradizione autonoma in tutta la Carnia, con una leggera affumicatura a legno di faggio e una lunga stagionatura. Tra le eccellenze spicca Sauris, dove il clima alpino e la lavorazione artigianale conferiscono un aroma elegante e delicato, diverso da quello dello speck altoatesino.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span15" class="friul">Speck di Sauris</span>
+        <h3 data-i18n="prodotti.h38">Speck di Carnia</h3>
+        <p data-i18n="prodotti.p10">Prodotto con tradizione autonoma in tutta la Carnia, con una leggera affumicatura a legno di faggio e una lunga stagionatura. Tra le eccellenze spicca Sauris, dove il clima alpino e la lavorazione artigianale conferiscono un aroma elegante e delicato, diverso da quello dello speck altoatesino.</p>
+        <span data-i18n="prodotti.span16" class="tag">Prodotto PAT</span>
       </div>
 
       <div class="prod-card">
-        <span class="friul">Sirop di pomulis di glerie</span>
-        <h3>Olivello spinoso</h3>
-        <p>Bacca ricchissima di vitamina C che cresce lungo i greti dei fiumi carnici. Se ne fanno sciroppo e marmellata. Un tempo raccolta dalle donne e venduta alle farmacie svizzere.</p>
-        <span class="tag">Prodotto PAT</span>
+        <span data-i18n="prodotti.span17" class="friul">Sirop di pomulis di glerie</span>
+        <h3 data-i18n="prodotti.h39">Olivello spinoso</h3>
+        <p data-i18n="prodotti.p11">Bacca ricchissima di vitamina C che cresce lungo i greti dei fiumi carnici. Se ne fanno sciroppo e marmellata. Un tempo raccolta dalle donne e venduta alle farmacie svizzere.</p>
+        <span data-i18n="prodotti.span18" class="tag">Prodotto PAT</span>
       </div>
 
     </div>
 
-    <p class="fonte-nota">Schede tratte da <em>Il Cibario del Friuli Venezia Giulia — Atlante dei Prodotti della Tradizione</em>, a cura di Cesare Corradini e Nadia Innocente, ERSA, 2017 (prodotti dell'elenco PAT, D.M. 12/12/16). I nomi in corsivo sono in lingua friulana.</p>
+    <p data-i18n="prodotti.p12" class="fonte-nota">Schede tratte da <em>Il Cibario del Friuli Venezia Giulia — Atlante dei Prodotti della Tradizione</em>, a cura di Cesare Corradini e Nadia Innocente, ERSA, 2017 (prodotti dell'elenco PAT, D.M. 12/12/16). I nomi in corsivo sono in lingua friulana.</p>
   </div>
 </section>
 
 <!-- COSETTI -->
 <section class="cosetti">
   <div class="container">
-    <p class="section-label" style="color:var(--moss); justify-content:center;">Un maestro della cucina carnica</p>
-    <p>La cucina carnica moderna deve molto a <span class="nome">Gianni Cosetti</span> (1939–2001), chef del ristorante Roma di Tolmezzo, che ne codificò e rilanciò le ricette tradizionali. Recuperò la cucina delle massaie di montagna e la portò all'attenzione della grande gastronomia: Luigi Veronelli lo definì «il cuoco più moderno che l'Italia abbia mai avuto».</p>
+    <p data-i18n="global.p3" class="section-label" style="color:var(--moss); justify-content:center;">Un maestro della cucina carnica</p>
+    <p data-i18n="global.p4">La cucina carnica moderna deve molto a <span class="nome">Gianni Cosetti</span> (1939–2001), chef del ristorante Roma di Tolmezzo, che ne codificò e rilanciò le ricette tradizionali. Recuperò la cucina delle massaie di montagna e la portò all'attenzione della grande gastronomia: Luigi Veronelli lo definì «il cuoco più moderno che l'Italia abbia mai avuto».</p>
   </div>
 </section>
 
 <!-- TIRAMISÙ -->
 <section id="tiramisu" style="background:var(--forest); padding:4rem 1.5rem;">
   <div class="container" style="max-width:820px;">
-    <p class="section-label">Il dolce che ha fatto il giro del mondo</p>
-    <h2 class="section-title" style="margin-bottom:1.8rem;">Il tiramisù di Tolmezzo</h2>
-    <p style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300; margin-bottom:1.1rem;">C'è una tesi, documentata e sostenuta da molti, secondo cui <strong style="color:var(--cream);">il tiramisù è nato proprio qui</strong>, a Tolmezzo, a pochi chilometri da Socchieve. A crearlo, nell'inverno del 1951, sarebbe stata <strong style="color:var(--cream);">Norma Pielli</strong> dell'Albergo Roma, trasformando il "Dolce Torino": al posto del burro e del liquore, mascarpone e caffè amaro. Fu il marito, <strong style="color:var(--cream);">Beppino Del Fabbro</strong>, a battezzarlo: assaggiandolo, disse che era «un dolce che tira su».</p>
-    <p style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300; margin-bottom:1.1rem;">A sostegno di questa origine ci sono documenti d'epoca: un menù dell'Albergo Roma datato 9 aprile 1952, in cui il dolce compare come "trancia al mascarpone", il nome con cui nacque. Nel <strong style="color:var(--cream);">2017 il Ministero ha riconosciuto il tiramisù tra i prodotti tradizionali del Friuli Venezia Giulia</strong>, nelle due varianti di Tolmezzo e Pieris.</p>
-    <p style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300;">La paternità del dolce è contesa — anche Treviso la rivendica — e la disputa è tuttora aperta. Ma c'è un dettaglio che lega tutto: l'Albergo Roma dei coniugi Del Fabbro è lo stesso ristorante che, dal 1969, passò a <span style="color:var(--accent); font-style:italic;">Gianni Cosetti</span>.</p>
-    <p class="fonte-nota">Fonti: <em>Il Cibario del Friuli Venezia Giulia</em>, ERSA 2017 (tiramisù tra i prodotti PAT); documentazione storica dell'Albergo Roma di Tolmezzo (menù del 9 aprile 1952).</p>
+    <p data-i18n="tiramisu.p1" class="section-label">Il dolce che ha fatto il giro del mondo</p>
+    <h2 data-i18n="tiramisu.h21" class="section-title" style="margin-bottom:1.8rem;">Il tiramisù di Tolmezzo</h2>
+    <p data-i18n="tiramisu.p2" style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300; margin-bottom:1.1rem;">C'è una tesi, documentata e sostenuta da molti, secondo cui <strong style="color:var(--cream);">il tiramisù è nato proprio qui</strong>, a Tolmezzo, a pochi chilometri da Socchieve. A crearlo, nell'inverno del 1951, sarebbe stata <strong style="color:var(--cream);">Norma Pielli</strong> dell'Albergo Roma, trasformando il "Dolce Torino": al posto del burro e del liquore, mascarpone e caffè amaro. Fu il marito, <strong style="color:var(--cream);">Beppino Del Fabbro</strong>, a battezzarlo: assaggiandolo, disse che era «un dolce che tira su».</p>
+    <p data-i18n="tiramisu.p3" style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300; margin-bottom:1.1rem;">A sostegno di questa origine ci sono documenti d'epoca: un menù dell'Albergo Roma datato 9 aprile 1952, in cui il dolce compare come "trancia al mascarpone", il nome con cui nacque. Nel <strong style="color:var(--cream);">2017 il Ministero ha riconosciuto il tiramisù tra i prodotti tradizionali del Friuli Venezia Giulia</strong>, nelle due varianti di Tolmezzo e Pieris.</p>
+    <p data-i18n="tiramisu.p4" style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300;">La paternità del dolce è contesa — anche Treviso la rivendica — e la disputa è tuttora aperta. Ma c'è un dettaglio che lega tutto: l'Albergo Roma dei coniugi Del Fabbro è lo stesso ristorante che, dal 1969, passò a <span style="color:var(--accent); font-style:italic;">Gianni Cosetti</span>.</p>
+    <p data-i18n="tiramisu.p5" class="fonte-nota">Fonti: <em>Il Cibario del Friuli Venezia Giulia</em>, ERSA 2017 (tiramisù tra i prodotti PAT); documentazione storica dell'Albergo Roma di Tolmezzo (menù del 9 aprile 1952).</p>
   </div>
 </section>
 
 <!-- DOVE ASSAGGIARE -->
 <section id="assaggiare" style="background:var(--forest); padding:4rem 1.5rem 5rem;">
   <div class="container" style="max-width:820px;">
-    <p class="section-label">Dove assaggiare</p>
-    <h2 class="section-title" style="margin-bottom:1.5rem;">A tavola in Carnia</h2>
-    <p style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300; margin-bottom:1.1rem;">Durante il vostro soggiorno a Il Bearč, i cjarsons, il frico e i salumi di Sauris si trovano nelle trattorie e negli agriturismi delle valli intorno a Socchieve. Il momento migliore per scoprirli tutti è la <strong style="color:var(--cream);">Festa dei Cjarsons a Sutrio</strong>, la prima domenica di giugno: dieci varianti del piatto, una per ogni borgo carnico.</p>
-    <p style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300;">Chiedeteci pure consiglio: saremo felici di indicarvi dove mangiare i piatti tipici qui vicino.</p>
-    <a href="index.html#prenotazione" class="btn-outline" style="margin-top:2rem; display:inline-block;">Prenota il tuo soggiorno</a>
+    <p data-i18n="assaggiare.p1" class="section-label">Dove assaggiare</p>
+    <h2 data-i18n="assaggiare.h21" class="section-title" style="margin-bottom:1.5rem;">A tavola in Carnia</h2>
+    <p data-i18n="assaggiare.p2" style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300; margin-bottom:1.1rem;">Durante il vostro soggiorno a Il Bearč, i cjarsons, il frico e i salumi di Sauris si trovano nelle trattorie e negli agriturismi delle valli intorno a Socchieve. Il momento migliore per scoprirli tutti è la <strong style="color:var(--cream);">Festa dei Cjarsons a Sutrio</strong>, la prima domenica di giugno: dieci varianti del piatto, una per ogni borgo carnico.</p>
+    <p data-i18n="assaggiare.p3" style="color:rgba(245,240,232,0.82); font-size:1.02rem; line-height:1.85; font-weight:300;">Chiedeteci pure consiglio: saremo felici di indicarvi dove mangiare i piatti tipici qui vicino.</p>
+    <a data-i18n="assaggiare.a1" href="index.html#prenotazione" class="btn-outline" style="margin-top:2rem; display:inline-block;">Prenota il tuo soggiorno</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
 <div class="footer-logo"><span>Il Bearč</span></div>
-<p style="font-style:italic; margin-bottom:0.3rem;">Casa Vacanze</p>
-<p style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
+<p data-i18n="footer.p1" style="font-style:italic; margin-bottom:0.3rem;">Casa Vacanze</p>
+<p data-i18n="footer.p2" style="margin-bottom:0.3rem;">Feltrone · Socchieve (UD)</p>
 <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
 <p style="margin-top:1rem;">Via Col Gentile 20a — Feltrone, Socchieve (UD) 33020<br>
 <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="javascript:void(0)">[email&#160;protected]</a></p>
@@ -1542,5 +1553,7 @@ function toggleNav(){
 })();
 </script>
 
+<!-- ==================== BEARC-I18N: script ==================== -->
+<script src="i18n/i18n.js" defer></script>
 </body>
 </html>
