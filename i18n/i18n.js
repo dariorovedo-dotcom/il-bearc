@@ -11,7 +11,11 @@
 
   var STORAGE_KEY = 'bearc-lang';
   var LANGS = ['it','en','de'];
-  var DICT_PATH = 'i18n/';        // en.json, de.json accanto a questo file
+  var DICT_PATH = 'i18n/';        // dizionari accanto a questo file
+  // Dizionari per pagina: index -> en.json / de.json (nomi storici),
+  // altre pagine -> <pagina>.en.json / <pagina>.de.json
+  var PAGE = (location.pathname.split('/').pop() || 'index.html').replace(/\.html?$/,'') || 'index';
+  var DICT_PREFIX = (PAGE === 'index') ? '' : PAGE + '.';
 
   var cacheIt = null;             // snapshot dell'italiano originale
   var dicts = {};                 // dizionari già scaricati
@@ -93,7 +97,7 @@
     snapshotItalian();                      // salva l'originale prima del primo cambio
     if (lang === 'it') { restoreItalian(); return; }
     if (dicts[lang]) { applyDict(dicts[lang], lang); return; }
-    fetch(DICT_PATH + lang + '.json')
+    fetch(DICT_PATH + DICT_PREFIX + lang + '.json')
       .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
       .then(function(d){ dicts[lang] = d; applyDict(d, lang); })
       .catch(function(err){
