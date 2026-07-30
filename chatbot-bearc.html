@@ -1080,7 +1080,7 @@ const DAYS_IT = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
 const MONTHS_IT = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
 
 async function fetchMeteo() {
-  const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.4184520&longitude=12.8356790&elevation=696&current=temperature_2m,apparent_temperature,weathercode,windspeed_10m,relativehumidity_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FRome&forecast_days=5&wind_speed_unit=kmh';
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.4184520&longitude=12.8356790&elevation=696&models=icon_seamless&current=temperature_2m,apparent_temperature,weathercode,windspeed_10m,wind_gusts_10m,relativehumidity_2m,snowfall&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_gusts_10m_max,snowfall_sum&timezone=Europe%2FRome&forecast_days=5&wind_speed_unit=kmh';
 
   const controller = new AbortController();
   setTimeout(() => controller.abort(), 8000);
@@ -1103,21 +1103,25 @@ async function fetchMeteo() {
     const max     = Math.round(d.temperature_2m_max[i]);
     const min     = Math.round(d.temperature_2m_min[i]);
     const rain    = d.precipitation_probability_max[i];
+    const gust    = Math.round(d.wind_gusts_10m_max[i]);
+    const snow    = d.snowfall_sum[i];
+    const snowTxt = snow > 0 ? ` · ❄️ ${snow} cm` : '';
+    const gustTxt = gust >= 40 ? ` · 💨 raffiche ${gust} km/h` : '';
     forecastRows += `
       <div class="place-card">
         <strong>${ico} ${dayName} ${dayNum} ${mon}</strong>
-        <small>${WMO_DESC[d.weathercode[i]] || ''} · Max ${max}° Min ${min}° · 🌧️ ${rain}%</small>
+        <small>${WMO_DESC[d.weathercode[i]] || ''} · Max ${max}° Min ${min}° · 🌧️ ${rain}%${snowTxt}${gustTxt}</small>
       </div>`;
   }
 
   return `<span class="section-title">${icon} Meteo a Feltrone – ora</span>
 <div class="place-card">
   <strong>${icon} ${Math.round(c.temperature_2m)}° — ${desc}</strong>
-  <small>Percepita ${Math.round(c.apparent_temperature)}° · Umidità ${c.relativehumidity_2m}% · Vento ${Math.round(c.windspeed_10m)} km/h</small>
+  <small>Percepita ${Math.round(c.apparent_temperature)}° · Umidità ${c.relativehumidity_2m}% · Vento ${Math.round(c.windspeed_10m)} km/h${c.wind_gusts_10m >= 40 ? ` (raffiche ${Math.round(c.wind_gusts_10m)})` : ''}</small>
   <small>📍 Feltrone, Socchieve · 696 m s.l.m.</small>
 </div>
 <b>Prossimi 4 giorni</b>${forecastRows}
-<small style="color:var(--stone);font-size:0.72rem">Fonte: Open-Meteo · aggiornato in tempo reale</small>`;
+<small style="color:var(--stone);font-size:0.72rem">Fonte: Open-Meteo (modello ICON alpino) · aggiornato ore ${new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})}</small>`;
 }
 
 // ─── NAVIGAZIONE PAGINA PADRE (se il chatbot è in un iframe) ──────────────────
@@ -1606,7 +1610,6 @@ init();
 </script>
 </body>
 </html>
-
 
 
 
