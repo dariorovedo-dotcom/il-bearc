@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Il Bearč · Benvenuti</title>
+<style>
+  /* ============================================================
+     IL BEARČ — SCHERMATA DI ACCOGLIENZA OSPITI
+     Pagina interna per la TV della casa. Non promozionale.
+     Coordinate: 46.418573, 12.835759 · 696 m · Feltrone, Socchieve
+     Il WiFi appare solo con ?k=<parola> nell'URL.
+     ============================================================ */
+
+  :root{
+    --bg:        #14110d;
+    --ink:       #f4ede0;
+    --ink-soft:  #b6ab97;
+    --gold:      #c8a45c;
+    --green:     #6fae5a;
+    --line:      rgba(200,164,92,.22);
+    --panel:     rgba(255,255,255,.045);
+    --panel-br:  rgba(255,255,255,.09);
+    --shadow:    0 24px 60px rgba(0,0,0,.55);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ height:100%; width:100%; overflow:hidden; background:var(--bg); }
+  body{
+    font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+    color:var(--ink); -webkit-font-smoothing:antialiased; cursor:none;
+  }
+
+  /* ---- SFONDO ---- */
+  .stage{ position:fixed; inset:0; z-index:0; }
+  .slide{
+    position:absolute; inset:0; background-size:cover; background-position:center;
+    opacity:0; transform:scale(1.08);
+    transition:opacity 2s ease, transform 9s ease;
+  }
+  .slide.on{ opacity:1; transform:scale(1); }
+  .stage::after{
+    content:""; position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(10,8,5,.88) 0%, rgba(10,8,5,.6) 38%, rgba(10,8,5,.2) 62%, rgba(10,8,5,.6) 100%),
+      linear-gradient(0deg, rgba(10,8,5,.85) 0%, rgba(10,8,5,.05) 42%);
+  }
+
+  /* ---- GRIGLIA ---- */
+  .screen{
+    position:relative; z-index:2; height:100vh; width:100vw;
+    display:grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "hello  clock"
+      "wifi   info"
+      "todo   numbers";
+    gap:clamp(16px,2.2vh,32px);
+    padding:clamp(24px,3.2vh,50px) clamp(30px,3vw,60px);
+  }
+
+  /* ---- BENVENUTO ---- */
+  .hello{ grid-area:hello; }
+  .hello .eyebrow{
+    font-size:clamp(11px,1.5vh,15px); letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:10px;
+  }
+  .hello h1{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(38px,6vh,78px); font-weight:700; line-height:.98;
+  }
+  .hello h1 em{ color:var(--gold); font-style:italic; }
+  .hello .place{
+    font-size:clamp(13px,1.9vh,20px); color:var(--ink-soft);
+    letter-spacing:2px; margin-top:12px; text-transform:uppercase;
+  }
+  .hello .meaning{
+    font-size:clamp(13px,1.85vh,19px); color:var(--ink); line-height:1.45;
+    margin-top:18px; max-width:88%; font-style:italic;
+  }
+  .hello .meaning b{ color:var(--gold); font-style:normal; }
+
+  /* ---- OROLOGIO / METEO ---- */
+  .clock{ grid-area:clock; text-align:right; align-self:start; }
+  .clock .time{
+    font-family:Georgia,serif; font-size:clamp(48px,8vh,104px); font-weight:700;
+    line-height:.92; font-variant-numeric:tabular-nums;
+  }
+  .clock .time small{ font-size:.34em; color:var(--gold); font-weight:400; margin-left:.12em; }
+  .clock .date{
+    font-size:clamp(14px,2vh,22px); color:var(--ink-soft); letter-spacing:1px;
+    margin-top:6px; text-transform:capitalize;
+  }
+  .clock .wx{
+    display:inline-flex; align-items:center; gap:12px; margin-top:16px;
+    padding:10px 18px; border:1px solid var(--panel-br); border-radius:100px;
+    background:var(--panel); backdrop-filter:blur(8px);
+  }
+  .clock .wx .i{ font-size:clamp(24px,3.6vh,40px); line-height:1; }
+  .clock .wx .t{ font-size:clamp(22px,3.4vh,40px); font-weight:700; font-variant-numeric:tabular-nums; }
+  .clock .wx .t sup{ font-size:.5em; color:var(--gold); }
+  .clock .wx .d{ font-size:clamp(12px,1.6vh,16px); color:var(--ink-soft); text-transform:capitalize; }
+
+  /* ---- CARD ---- */
+  .card{
+    background:var(--panel); border:1px solid var(--panel-br); border-radius:22px;
+    backdrop-filter:blur(9px); box-shadow:var(--shadow);
+    padding:clamp(18px,2.6vh,32px); position:relative; overflow:hidden;
+  }
+  .card .eyebrow{
+    font-size:clamp(10px,1.35vh,13px); letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:14px; display:flex; align-items:center; gap:9px;
+  }
+  .card .eyebrow::before{ content:""; width:22px; height:1px; background:var(--gold); }
+
+  /* ---- WIFI ---- */
+  .wifi{ grid-area:wifi; display:flex; align-items:center; gap:clamp(16px,2vw,30px); }
+  .wifi .qbox{ background:#fff; padding:clamp(10px,1.4vh,18px); border-radius:16px; flex-shrink:0; line-height:0; }
+  .wifi .qbox img, .wifi .qbox canvas{ display:block; width:clamp(104px,17vh,188px); height:clamp(104px,17vh,188px); }
+  .wifi .info-w{ min-width:0; }
+  .wifi .info-w .big{ font-family:Georgia,serif; font-size:clamp(22px,3.4vh,40px); font-weight:700; line-height:1.05; margin-bottom:14px; }
+  .wifi .row{ margin-bottom:10px; }
+  .wifi .k{ font-size:clamp(10px,1.3vh,13px); letter-spacing:2px; text-transform:uppercase; color:var(--ink-soft); }
+  .wifi .v{ font-size:clamp(16px,2.3vh,26px); font-weight:600; color:var(--ink); word-break:break-all; font-variant-numeric:tabular-nums; }
+  .wifi .hint{ font-size:clamp(12px,1.6vh,16px); color:var(--ink-soft); margin-top:6px; }
+  .wifi.locked .qbox, .wifi.locked .creds{ display:none; }
+  .wifi .locked-msg{ display:none; }
+  .wifi.locked .locked-msg{ display:block; font-size:clamp(14px,2vh,20px); color:var(--ink-soft); line-height:1.5; }
+
+  /* ---- INFO CASA ---- */
+  .info{ grid-area:info; }
+  .info .grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,1.6vh,18px); }
+  .info .it{ display:flex; gap:11px; align-items:flex-start; }
+  .info .it .ic{ font-size:clamp(18px,2.4vh,26px); line-height:1.1; flex-shrink:0; }
+  .info .it .tx{ font-size:clamp(12px,1.7vh,17px); line-height:1.3; }
+  .info .it .tx b{ color:var(--gold); display:block; font-size:.85em; letter-spacing:.5px; text-transform:uppercase; margin-bottom:2px; }
+
+  /* ---- COSA FARE ---- */
+  .todo{ grid-area:todo; display:flex; flex-direction:column; min-height:0; }
+  .todo .rwrap{ position:relative; flex:1; min-height:0; }
+  .act{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
+    opacity:0; transform:translateY(14px); transition:opacity .8s ease, transform .8s ease;
+  }
+  .act.on{ opacity:1; transform:translateY(0); }
+  .act .ic{ font-size:clamp(30px,4.6vh,52px); margin-bottom:12px; }
+  .act .ti{ font-family:Georgia,serif; font-size:clamp(20px,3vh,34px); font-weight:700; margin-bottom:8px; }
+  .act .de{ font-size:clamp(14px,2vh,21px); line-height:1.42; color:var(--ink); max-width:92%; }
+  .act .de b{ color:var(--gold); }
+
+  /* ---- NUMERI UTILI ---- */
+  .numbers{ grid-area:numbers; }
+  .numbers .list{ display:flex; flex-direction:column; gap:clamp(9px,1.5vh,15px); }
+  .numbers .n{ display:flex; align-items:center; gap:12px; }
+  .numbers .n .ic{ font-size:clamp(17px,2.3vh,24px); flex-shrink:0; }
+  .numbers .n .tx{ font-size:clamp(13px,1.8vh,18px); line-height:1.25; }
+  .numbers .n .tx b{ color:var(--ink); }
+  .numbers .n .tx span{ color:var(--ink-soft); display:block; font-size:.82em; }
+  .numbers .n .tel{ margin-left:auto; font-size:clamp(14px,2vh,20px); font-weight:700; color:var(--gold); font-variant-numeric:tabular-nums; }
+
+  .prog{ position:fixed; top:0; left:0; height:3px; background:var(--gold); z-index:5; width:0; opacity:.85; }
+
+  @media (prefers-reduced-motion: reduce){
+    .slide{ transition:opacity 1s ease; transform:none !important; }
+    .act{ transition:opacity .5s ease; transform:none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="prog" id="prog"></div>
+  <div class="stage" id="stage"></div>
+
+  <div class="screen">
+
+    <!-- BENVENUTO -->
+    <header class="hello">
+      <div class="eyebrow">Benvenuti nella vostra casa</div>
+      <h1>Il <em>Bearč</em></h1>
+      <div class="place">Feltrone · Socchieve · Carnia · 696 m</div>
+      <div class="meaning" id="meaning">In dialetto, il <b>bearč</b> è il prato chiuso accanto a casa — l'orto di montagna. Qui il tempo rallenta.</div>
+    </header>
+
+    <!-- OROLOGIO + METEO -->
+    <section class="clock">
+      <div class="time" id="time">--:--<small id="sec">00</small></div>
+      <div class="date" id="date">—</div>
+      <div class="wx">
+        <span class="i" id="wico">⛰️</span>
+        <span class="t"><span id="wtemp">--</span><sup>°C</sup></span>
+        <span class="d" id="wdesc">—</span>
+      </div>
+    </section>
+
+    <!-- WIFI -->
+    <section class="card wifi locked" id="wifi">
+      <div class="eyebrow" style="position:absolute;top:clamp(18px,2.6vh,32px);left:clamp(18px,2.6vw,32px)">Wi-Fi</div>
+      <div class="qbox" id="wifiQr"></div>
+      <div class="info-w">
+        <div class="big">Connettiti al Wi-Fi</div>
+        <div class="creds">
+          <div class="row"><div class="k">Rete</div><div class="v" id="wifiSsid"></div></div>
+          <div class="row"><div class="k">Password</div><div class="v" id="wifiPass"></div></div>
+          <div class="hint">📷 Inquadra il QR con la fotocamera per connetterti al volo</div>
+          <div class="hint">📶 Disponibile anche un WiFi extender per la copertura in tutta la casa</div>
+        </div>
+        <div class="locked-msg">La rete Wi-Fi è disponibile in casa.<br>Trovi le credenziali sul cartello o chiedi all'host.</div>
+      </div>
+    </section>
+
+    <!-- INFO CASA -->
+    <section class="card info">
+      <div class="eyebrow">Info utili</div>
+      <div class="grid">
+        <div class="it"><span class="ic">🔑</span><span class="tx"><b>Check-in / out</b>Dalle 17:00 · entro le 10:00</span></div>
+        <div class="it"><span class="ic">🤫</span><span class="tx"><b>Silenzio</b>22:00 – 7:00</span></div>
+        <div class="it"><span class="ic">🔥</span><span class="tx"><b>Riscaldamento</b>Stufa a pellet + termo</span></div>
+        <div class="it"><span class="ic">❄️</span><span class="tx"><b>Estate</b>Climatizzatore</span></div>
+        <div class="it"><span class="ic">🅿️</span><span class="tx"><b>Parcheggio</b>Gratuito, qui vicino</span></div>
+        <div class="it"><span class="ic">🚭</span><span class="tx"><b>Fumo</b>Solo in giardino</span></div>
+        <div class="it"><span class="ic">🐾</span><span class="tx"><b>Animali</b>Non ammessi</span></div>
+        <div class="it"><span class="ic">♻️</span><span class="tx"><b>Rifiuti</b>Differenziata, calendario in casa</span></div>
+      </div>
+    </section>
+
+    <!-- COSA FARE -->
+    <section class="card todo">
+      <div class="eyebrow">Cosa fare in Carnia</div>
+      <div class="rwrap" id="rwrap"></div>
+    </section>
+
+    <!-- NUMERI UTILI -->
+    <section class="card numbers">
+      <div class="eyebrow">Numeri utili</div>
+      <div class="list">
+        <div class="n"><span class="ic">🏔️</span><span class="tx"><b>Dario · Host</b><span>WhatsApp · qualsiasi necessità</span></span><span class="tel">329 945 1083</span></div>
+        <div class="n"><span class="ic">🚑</span><span class="tx"><b>Emergenze</b><span>Numero unico · anche Soccorso Alpino</span></span><span class="tel">112</span></div>
+        <div class="n"><span class="ic">🩺</span><span class="tx"><b>Guardia Medica</b><span>Notti e festivi · Ampezzo</span></span><span class="tel">116117</span></div>
+        <div class="n"><span class="ic">🏥</span><span class="tx"><b>Pronto Soccorso</b><span>Sant'Antonio Abate · Tolmezzo</span></span><span class="tel">0433 4881</span></div>
+        <div class="n"><span class="ic">💊</span><span class="tx"><b>Farmacie</b><span>Mediis, Ampezzo, Villa Santina, Enemonzo</span></span></div>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+/* ============================================================
+   CONFIGURAZIONE
+   ============================================================ */
+const CFG = {
+  lat: 46.418573,
+  lon: 12.835759,
+  slideMs: 8000,
+  actMs: 8000,
+  // --- WIFI ---
+  wifi: {
+    ssid: "EOLO - FRITZ!Box 7530 LI",
+    pass: "87061595423127173462",
+    enc:  "WPA",                // WPA/WPA2 (default FRITZ!Box)
+    // Protezione: il WiFi appare solo se ?k=<parola> corrisponde all'hash.
+    // Per cambiare parola: calcola il nuovo hash SHA-256 e sostituiscilo qui.
+    // Per disattivare la protezione e mostrare sempre il WiFi: keyHash: null
+    keyHash: "c5e648fd9c793275de03f2f1283ccda981c30a265c6ff3cd86ad04575543951f"
+  },
+  images: [
+    "https://www.ilbearc.com/images/Vista-dall-esterno.jpg",
+    "https://www.ilbearc.com/images/Feltrone-inverno-2010-012.jpg",
+    "https://www.ilbearc.com/images/Feltrone.jpg",
+    "https://www.ilbearc.com/images/Relax.jpg",
+    "https://www.ilbearc.com/images/Camera-matrimoniale.jpg",
+    "https://www.ilbearc.com/images/Cucina.jpg",
+    "https://www.ilbearc.com/images/Giardino.jpg",
+    "https://www.ilbearc.com/images/Bagno.jpg"
+  ],
+  activities: [
+    { ic:"🥾", ti:"Trekking dalla porta di casa", de:"I sentieri partono da Feltrone: dalla <b>Val Tagliamento</b> al <b>Col Gentile</b> e alle Alpi Tolmezzine. Mappe e percorsi sul nostro sito." },
+    { ic:"⛷️", ti:"Sci e Zoncolan", de:"In inverno <b>Monte Zoncolan</b> e <b>Ravascletto</b> per la discesa, <b>Forni di Sopra</b> per fondo e Dolomiti Friulane. A pochi km." },
+    { ic:"♨️", ti:"Terme di Arta", de:"Vicino a Tolmezzo, le <b>Terme di Arta</b>: acque termali e relax, perfette dopo una giornata sui sentieri." },
+    { ic:"🍽️", ti:"Osteria al Cervo · Lungis", de:"Cucina tipica carnica a due passi. <b>+39 347 715 2842</b>. Da provare frico, cjarsons e formaggi di malga." },
+    { ic:"🌾", ti:"Agriturismo In Già · Lungis", de:"Cucina carnica genuina in agriturismo. <b>+39 338 171 6413</b>. Sapori di montagna a km zero." },
+    { ic:"🏞️", ti:"Lago di Cavazzo e Tagliamento", de:"Il <b>lago di Cavazzo</b> (il più grande naturale del FVG) e le aree fluviali del <b>Tagliamento</b>, l'ultimo grande fiume alpino selvaggio." },
+    { ic:"🏛️", ti:"Musei della Carnia", de:"<b>Museo Carnico</b> a Tolmezzo, <b>Geologico</b> ad Ampezzo, <b>Orologeria</b> a Pesariis, <b>Grande Guerra</b> a Timau." },
+    { ic:"⛪", ti:"Borghi e Pieve di Castoia", de:"La <b>Pieve di Castoia</b>, le chiese e i borghi storici di Socchieve, tra i comuni più antichi della Carnia." },
+    { ic:"🍲", ti:"Sapori carnici", de:"<b>Cjarsons</b> (ravioli dolce-salato), <b>frico</b>, polenta, formaggi di malga e selvaggina. La cucina di montagna, genuina e generosa." }
+  ]
+};
+
+/* ============================================================
+   OROLOGIO + DATA
+   ============================================================ */
+const GIORNI=["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
+const MESI=["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+function tick(){
+  const d=new Date();
+  const hh=String(d.getHours()).padStart(2,"0"), mm=String(d.getMinutes()).padStart(2,"0"), ss=String(d.getSeconds()).padStart(2,"0");
+  document.getElementById("time").firstChild.textContent=hh+":"+mm;
+  document.getElementById("sec").textContent=ss;
+  document.getElementById("date").textContent=GIORNI[d.getDay()]+" "+d.getDate()+" "+MESI[d.getMonth()]+" "+d.getFullYear();
+}
+setInterval(tick,1000); tick();
+
+/* ============================================================
+   METEO — Open-Meteo
+   ============================================================ */
+const WMO={0:["☀️","Sereno"],1:["🌤️","Sereno"],2:["⛅","Nuvoloso"],3:["☁️","Coperto"],45:["🌫️","Nebbia"],48:["🌫️","Nebbia"],51:["🌦️","Pioviggine"],53:["🌦️","Pioviggine"],55:["🌦️","Pioviggine"],61:["🌧️","Pioggia"],63:["🌧️","Pioggia"],65:["🌧️","Pioggia forte"],71:["🌨️","Neve"],73:["🌨️","Neve"],75:["❄️","Neve"],77:["🌨️","Nevischio"],80:["🌦️","Rovesci"],81:["🌧️","Rovesci"],82:["⛈️","Rovesci"],85:["🌨️","Neve"],86:["❄️","Neve"],95:["⛈️","Temporale"],96:["⛈️","Temporale"],99:["⛈️","Temporale"]};
+async function loadMeteo(){
+  try{
+    const u=`https://api.open-meteo.com/v1/forecast?latitude=${CFG.lat}&longitude=${CFG.lon}&current=temperature_2m,weather_code&timezone=Europe%2FRome`;
+    const r=await fetch(u); const j=await r.json();
+    const wc=WMO[j.current.weather_code]||["⛰️","—"];
+    document.getElementById("wico").textContent=wc[0];
+    document.getElementById("wdesc").textContent=wc[1];
+    document.getElementById("wtemp").textContent=Math.round(j.current.temperature_2m);
+  }catch(e){ document.getElementById("wdesc").textContent="—"; }
+}
+loadMeteo(); setInterval(loadMeteo,15*60*1000);
+
+/* ============================================================
+   SFONDO
+   ============================================================ */
+(function(){
+  const stage=document.getElementById("stage");
+  const slides=CFG.images.map(src=>{const el=document.createElement("div");el.className="slide";el.style.backgroundImage=`url("${src}")`;stage.appendChild(el);return el;});
+  let i=0; if(slides.length) slides[0].classList.add("on");
+  setInterval(()=>{slides[i].classList.remove("on");i=(i+1)%slides.length;slides[i].classList.add("on");},CFG.slideMs);
+})();
+
+/* ============================================================
+   COSA FARE — carousel
+   ============================================================ */
+(function(){
+  const wrap=document.getElementById("rwrap");
+  const els=CFG.activities.map(a=>{const d=document.createElement("div");d.className="act";d.innerHTML=`<div class="ic">${a.ic}</div><div class="ti">${a.ti}</div><div class="de">${a.de}</div>`;wrap.appendChild(d);return d;});
+  let i=0; if(els.length) els[0].classList.add("on");
+  setInterval(()=>{els[i].classList.remove("on");i=(i+1)%els.length;els[i].classList.add("on");},CFG.actMs);
+})();
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+(function(){
+  const bar=document.getElementById("prog"); let start=Date.now();
+  function loop(){bar.style.width=(((Date.now()-start)%CFG.slideMs)/CFG.slideMs*100).toFixed(1)+"%";requestAnimationFrame(loop);}
+  loop();
+})();
+</script>
+
+<!-- Libreria QR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ============================================================
+   WIFI — sblocco protetto + QR di connessione
+   ============================================================ */
+(async function(){
+  const box = document.getElementById("wifi");
+  const w = CFG.wifi;
+
+  // Determina se sbloccare
+  let unlock = false;
+  if(!w.keyHash){
+    unlock = true; // protezione disattivata
+  }else{
+    const params = new URLSearchParams(location.search);
+    const k = params.get("k") || "";
+    if(k){
+      try{
+        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k));
+        const hex = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
+        unlock = (hex === w.keyHash);
+      }catch(e){ unlock = false; }
+    }
+  }
+
+  if(!unlock) return; // resta .locked -> mostra messaggio, niente credenziali
+
+  box.classList.remove("locked");
+  document.getElementById("wifiSsid").textContent = w.ssid;
+  document.getElementById("wifiPass").textContent = w.pass;
+
+  // QR WiFi standard: WIFI:T:WPA;S:<ssid>;P:<pass>;;
+  // Escape dei caratteri speciali \ ; , : "
+  const esc = s => s.replace(/([\\;,:"])/g, "\\$1");
+  const payload = `WIFI:T:${w.enc};S:${esc(w.ssid)};P:${esc(w.pass)};;`;
+  const qbox = document.getElementById("wifiQr");
+  const size = Math.round(Math.min(window.innerHeight*0.17, 188));
+  try{
+    new QRCode(qbox, { text:payload, width:size, height:size, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+  }catch(e){
+    qbox.innerHTML = '<div style="width:'+size+'px;height:'+size+'px;display:flex;align-items:center;justify-content:center;color:#14110d;font-size:12px;text-align:center;padding:8px">Vedi rete e<br>password a lato</div>';
+  }
+})();
+</script>
+</body>
+</html>
