@@ -80,6 +80,9 @@
   }
   .card .lbl { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#c8a45c; margin-bottom:16px; border-bottom:1px solid rgba(200,164,92,0.25); padding-bottom:9px; }
 
+  /* le card che contengono elementi float devono racchiuderli tutti */
+  .card:after { content:""; display:block; clear:both; }
+
   #midrow { margin-bottom:20px; }
 
   /* ---- WIFI ---- */
