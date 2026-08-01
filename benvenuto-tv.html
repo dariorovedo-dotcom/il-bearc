@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Il Bearč · Benvenuti</title>
+<style>
+  /* ============================================================
+     IL BEARČ — ACCOGLIENZA OSPITI · VERSIONE MASSIMA COMPATIBILITA'
+     No Grid, no clamp, no backdrop-filter, no object-fit, no emoji.
+     No crypto.subtle / TextEncoder / Promise (SHA-256 puro JS).
+     Immagini di sfondo via background-image su div (piu' compatibile
+     di object-fit per riempire lo schermo su Tizen datato).
+     ============================================================ */
+
+  * { margin:0; padding:0; }
+
+  html, body {
+    width:100%; height:100%; overflow:hidden;
+    background:#14110d;
+    font-family:"Segoe UI", Arial, Helvetica, sans-serif;
+    color:#f4ede0;
+  }
+
+  /* ---- SFONDO: div con background-image (cover funziona ovunque) ---- */
+  #stage { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; background:#14110d; }
+  .slide {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    filter:none;
+    opacity:0;
+    -webkit-transition:opacity 1.5s ease;
+    transition:opacity 1.5s ease;
+  }
+  .slide.on { opacity:1; }
+
+  /* velo scuro per leggibilità */
+  #veil {
+    position:fixed; top:0; left:0; width:100%; height:100%; z-index:1;
+    background:-webkit-linear-gradient(left, rgba(10,8,5,0.90) 0%, rgba(10,8,5,0.55) 45%, rgba(10,8,5,0.78) 100%);
+    background:linear-gradient(to right, rgba(10,8,5,0.90) 0%, rgba(10,8,5,0.55) 45%, rgba(10,8,5,0.78) 100%);
+  }
+
+  #wrap { position:relative; z-index:2; width:100%; height:100%; padding:40px 50px; }
+
+  .row { width:100%; }
+  .row:after { content:""; display:block; clear:both; }
+
+  .col-l { float:left; width:56%; }
+  .col-r { float:right; width:40%; }
+
+  /* ---- HEADER ---- */
+  #header { margin-bottom:24px; }
+  .eyebrow { font-size:14px; letter-spacing:3px; text-transform:uppercase; color:#c8a45c; margin-bottom:8px; }
+  h1 { font-family:Georgia, "Times New Roman", serif; font-size:58px; font-weight:bold; line-height:1; }
+  h1 em { color:#c8a45c; font-style:italic; }
+  .place { font-size:16px; color:#b6ab97; letter-spacing:2px; margin-top:10px; text-transform:uppercase; }
+  .meaning { font-size:16px; color:#f4ede0; line-height:1.4; margin-top:14px; font-style:italic; width:90%; }
+  .meaning b { color:#c8a45c; font-style:normal; }
+
+  .col-r.head { text-align:right; }
+  #time { font-family:Georgia, serif; font-size:78px; font-weight:bold; line-height:0.9; }
+  #time small { font-size:28px; color:#c8a45c; }
+  #date { font-size:19px; color:#b6ab97; margin-top:6px; }
+  #wx { margin-top:12px; font-size:0; }
+  #wx span { font-size:20px; vertical-align:middle; }
+  #wx .t { font-size:32px; font-weight:bold; margin-left:6px; }
+  #wx .t sup { font-size:15px; color:#c8a45c; }
+  #wx .d { font-size:16px; color:#b6ab97; margin-left:8px; }
+
+  /* ---- CARD ---- */
+  .card {
+    background:rgba(30,26,19,0.78);
+    border:1px solid rgba(200,164,92,0.30);
+    border-radius:16px;
+    padding:24px;
+  }
+  .card .lbl { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#c8a45c; margin-bottom:16px; border-bottom:1px solid rgba(200,164,92,0.25); padding-bottom:9px; }
+
+  #midrow { margin-bottom:20px; }
+
+  /* ---- WIFI ---- */
+  #wifi .qwrap { float:left; width:172px; }
+  #wifi #wifiQr { background:#fff; padding:10px; border-radius:10px; width:172px; height:172px; }
+  #wifi #wifiQr img, #wifi #wifiQr canvas { display:block; width:152px; height:152px; }
+  #wifi .wtext { margin-left:196px; }
+  #wifi .wbig { font-family:Georgia, serif; font-size:24px; font-weight:bold; margin-bottom:12px; }
+  #wifi .k { font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#b6ab97; margin-top:8px; }
+  #wifi .v { font-size:21px; font-weight:bold; word-wrap:break-word; }
+  #wifi .hint { font-size:13px; color:#b6ab97; margin-top:10px; }
+  #wifi.locked .qwrap, #wifi.locked .creds { display:none; }
+  #wifi .lockmsg { display:none; font-size:17px; color:#b6ab97; line-height:1.5; }
+  #wifi.locked .lockmsg { display:block; }
+
+  /* ---- INFO ---- */
+  #info .it { width:50%; float:left; margin-bottom:15px; }
+  #info .it .tx { font-size:15px; line-height:1.25; padding-right:12px; }
+  #info .it .tx b { display:block; color:#c8a45c; font-size:12px; text-transform:uppercase; margin-bottom:2px; }
+
+  /* ---- COSA FARE ---- */
+  #todo { height:225px; }
+  #todo .rwrap { position:relative; height:145px; }
+  .act { position:absolute; top:0; left:0; width:100%; opacity:0; -webkit-transition:opacity 0.8s ease; transition:opacity 0.8s ease; }
+  .act.on { opacity:1; }
+  .act .ati { font-family:Georgia, serif; font-size:27px; font-weight:bold; margin-bottom:10px; color:#c8a45c; }
+  .act .ade { font-size:19px; line-height:1.45; color:#f4ede0; }
+  .act .ade b { color:#c8a45c; }
+
+  /* ---- NUMERI ---- */
+  #numbers .n { margin-bottom:14px; }
+  #numbers .n:after { content:""; display:block; clear:both; }
+  #numbers .n .ntx { float:left; width:64%; font-size:15px; line-height:1.2; }
+  #numbers .n .ntx b { color:#f4ede0; }
+  #numbers .n .ntx span { display:block; font-size:12px; color:#b6ab97; }
+  #numbers .n .ntel { float:right; font-size:19px; font-weight:bold; color:#c8a45c; text-align:right; }
+</style>
+</head>
+<body>
+
+  <div id="stage"></div>
+  <div id="veil"></div>
+
+  <div id="wrap">
+
+    <!-- HEADER -->
+    <div id="header" class="row">
+      <div class="col-l">
+        <div class="eyebrow">Benvenuti nella vostra casa</div>
+        <h1>Il <em>Bear&#269;</em></h1>
+        <div class="place">Feltrone &middot; Socchieve &middot; Carnia &middot; 696 m</div>
+        <div class="meaning">In dialetto, il <b>bear&#269;</b> &egrave; il prato chiuso accanto a casa &mdash; l'orto di montagna. Qui il tempo rallenta.</div>
+      </div>
+      <div class="col-r head">
+        <div id="time">--:--<small id="sec">00</small></div>
+        <div id="date">&mdash;</div>
+        <div id="wx">
+          <span class="i" id="wico">&middot;</span>
+          <span class="t"><span id="wtemp">--</span><sup>&deg;C</sup></span>
+          <span class="d" id="wdesc">&mdash;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WIFI + INFO -->
+    <div id="midrow" class="row">
+      <div class="col-l">
+        <div class="card" id="wifi">
+          <div class="lbl">Wi-Fi</div>
+          <div class="qwrap"><div id="wifiQr"></div></div>
+          <div class="wtext">
+            <div class="wbig">Connettiti al Wi-Fi</div>
+            <div class="creds">
+              <div class="k">Rete</div><div class="v" id="wifiSsid"></div>
+              <div class="k">Password</div><div class="v" id="wifiPass"></div>
+              <div class="hint">Inquadra il QR con la fotocamera per connetterti al volo</div>
+            </div>
+            <div class="lockmsg">La rete Wi-Fi &egrave; disponibile in casa.<br>Trovi le credenziali sul cartello o chiedi all'host.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-r">
+        <div class="card" id="info">
+          <div class="lbl">Info utili</div>
+          <div class="it"><span class="tx"><b>Check-in / out</b>17:00 &middot; entro 10:00</span></div>
+          <div class="it"><span class="tx"><b>Silenzio</b>22:00 &ndash; 7:00</span></div>
+          <div class="it"><span class="tx"><b>Riscaldamento</b>Convettori gas GPL Robur + pellet</span></div>
+          <div class="it"><span class="tx"><b>Climatizzatore</b>Caldo e fresco</span></div>
+          <div class="it"><span class="tx"><b>Parcheggio</b>Gratuito, vicino</span></div>
+          <div class="it"><span class="tx"><b>Fumo</b>Solo in giardino</span></div>
+          <div class="it"><span class="tx"><b>Animali</b>Non ammessi</span></div>
+          <div class="it"><span class="tx"><b>Rifiuti</b>Differenziata</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COSA FARE + NUMERI -->
+    <div id="botrow" class="row">
+      <div class="col-l">
+        <div class="card" id="todo">
+          <div class="lbl">Cosa fare in Carnia</div>
+          <div class="rwrap" id="rwrap"></div>
+        </div>
+      </div>
+      <div class="col-r">
+        <div class="card" id="numbers">
+          <div class="lbl">Numeri utili</div>
+          <div class="n"><span class="ntx"><b>Dario &middot; Host</b><span>WhatsApp</span></span><span class="ntel">329 945 1083</span></div>
+          <div class="n"><span class="ntx"><b>Emergenze</b><span>anche Soccorso Alpino</span></span><span class="ntel">112</span></div>
+          <div class="n"><span class="ntx"><b>Guardia Medica</b><span>notti e festivi</span></span><span class="ntel">116117</span></div>
+          <div class="n"><span class="ntx"><b>Pronto Soccorso</b><span>Tolmezzo</span></span><span class="ntel">0433 4881</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+/* ============================================================
+   CONFIG
+   ============================================================ */
+var CFG = {
+  lat: 46.418573,
+  lon: 12.835759,
+  slideMs: 8000,
+  actMs: 8000,
+  wifi: {
+    ssid: "EOLO - FRITZ!Box 7530 LI",
+    pass: "87061595423127173462",
+    enc:  "WPA",
+    keyHash: "c5e648fd9c793275de03f2f1283ccda981c30a265c6ff3cd86ad04575543951f"
+  },
+  images: [
+    "https://www.ilbearc.com/images/Vista-dall-esterno.jpg",
+    "https://www.ilbearc.com/images/Feltrone-inverno-2010-012.jpg",
+    "https://www.ilbearc.com/images/Feltrone.jpg",
+    "https://www.ilbearc.com/images/Relax.jpg",
+    "https://www.ilbearc.com/images/Camera-matrimoniale.jpg",
+    "https://www.ilbearc.com/images/Cucina.jpg",
+    "https://www.ilbearc.com/images/Giardino.jpg",
+    "https://www.ilbearc.com/images/Bagno.jpg"
+  ],
+  activities: [
+    { ti:"Trekking dalla porta di casa", de:"I sentieri partono da Feltrone: dalla <b>Val Tagliamento</b> al <b>Col Gentile</b>. Mappe sul nostro sito." },
+    { ti:"Sci e Zoncolan", de:"In inverno <b>Monte Zoncolan</b> e <b>Ravascletto</b>, <b>Forni di Sopra</b> per fondo e Dolomiti Friulane." },
+    { ti:"Terme di Arta", de:"Vicino a Tolmezzo, le <b>Terme di Arta</b>: acque termali e relax dopo i sentieri." },
+    { ti:"Osteria al Cervo &middot; Lungis", de:"Cucina carnica a due passi. <b>347 715 2842</b>. Frico, cjarsons, formaggi di malga." },
+    { ti:"Agriturismo In Gi&agrave; &middot; Lungis", de:"Cucina genuina in agriturismo. <b>338 171 6413</b>. Sapori di montagna a km zero." },
+    { ti:"Lago di Cavazzo", de:"Il pi&ugrave; grande lago naturale del FVG e le aree del <b>Tagliamento</b>, l'ultimo fiume alpino selvaggio." },
+    { ti:"Musei della Carnia", de:"<b>Museo Carnico</b> a Tolmezzo, <b>Geologico</b> ad Ampezzo, <b>Orologeria</b> a Pesariis." },
+    { ti:"Sapori carnici", de:"<b>Cjarsons</b>, <b>frico</b>, polenta, formaggi di malga. La cucina di montagna, genuina e generosa." }
+  ]
+};
+
+/* ---- SHA-256 puro JS (no crypto.subtle, no TextEncoder, no Promise) ---- */
+function sha256(ascii) {
+  function rightRotate(value, amount) { return (value>>>amount) | (value<<(32-amount)); }
+  var mathPow = Math.pow, maxWord = mathPow(2, 32), result = "";
+  var words = [], asciiBitLength = ascii.length*8;
+  var hash = sha256.h = sha256.h || [];
+  var k = sha256.k = sha256.k || [];
+  var primeCounter = k.length;
+  var isComposite = {};
+  for (var candidate = 2; primeCounter < 64; candidate++) {
+    if (!isComposite[candidate]) {
+      for (var i = 0; i < 313; i += candidate) { isComposite[i] = candidate; }
+      hash[primeCounter] = (mathPow(candidate, .5)*maxWord)|0;
+      k[primeCounter++] = (mathPow(candidate, 1/3)*maxWord)|0;
+    }
+  }
+  ascii += "\x80";
+  while (ascii.length%64 - 56) ascii += "\x00";
+  for (i = 0; i < ascii.length; i++) {
+    var j = ascii.charCodeAt(i);
+    if (j>>8) return;
+    words[i>>2] |= j << ((3 - i)%4)*8;
+  }
+  words[words.length] = ((asciiBitLength/maxWord)|0);
+  words[words.length] = (asciiBitLength);
+  for (j = 0; j < words.length;) {
+    var w = words.slice(j, j += 16);
+    var oldHash = hash;
+    hash = hash.slice(0, 8);
+    for (i = 0; i < 64; i++) {
+      var w15 = w[i-15], w2 = w[i-2];
+      var a = hash[0], e = hash[4];
+      var temp1 = hash[7]
+        + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25))
+        + ((e&hash[5])^((~e)&hash[6]))
+        + k[i]
+        + (w[i] = i < 16 ? w[i] : (
+            w[i-16]
+            + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15>>>3))
+            + w[i-7]
+            + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2>>>10))
+          )|0
+        );
+      var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22))
+        + ((a&hash[1])^(a&hash[2])^(hash[1]&hash[2]));
+      hash = [(temp1+temp2)|0].concat(hash);
+      hash[4] = (hash[4]+temp1)|0;
+    }
+    for (i = 0; i < 8; i++) { hash[i] = (hash[i]+oldHash[i])|0; }
+  }
+  for (i = 0; i < 8; i++) {
+    for (j = 3; j+1; j--) {
+      var b = (hash[i]>>(j*8))&255;
+      result += ((b < 16) ? 0 : "") + b.toString(16);
+    }
+  }
+  return result;
+}
+
+/* ---- OROLOGIO ---- */
+var GIORNI=["domenica","luned\u00ec","marted\u00ec","mercoled\u00ec","gioved\u00ec","venerd\u00ec","sabato"];
+var MESI=["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+function pad(n){ return (n<10?"0":"")+n; }
+function tick(){
+  var d=new Date();
+  document.getElementById("time").firstChild.nodeValue = pad(d.getHours())+":"+pad(d.getMinutes());
+  document.getElementById("sec").innerHTML = pad(d.getSeconds());
+  document.getElementById("date").innerHTML = GIORNI[d.getDay()]+" "+d.getDate()+" "+MESI[d.getMonth()]+" "+d.getFullYear();
+}
+setInterval(tick,1000); tick();
+
+/* ---- METEO (XMLHttpRequest, testo condizione senza emoji) ---- */
+var WMO={0:"Sereno",1:"Sereno",2:"Nuvoloso",3:"Coperto",45:"Nebbia",48:"Nebbia",51:"Pioviggine",53:"Pioviggine",55:"Pioviggine",61:"Pioggia",63:"Pioggia",65:"Pioggia forte",71:"Neve",73:"Neve",75:"Neve",77:"Nevischio",80:"Rovesci",81:"Rovesci",82:"Rovesci",85:"Neve",86:"Neve",95:"Temporale",96:"Temporale",99:"Temporale"};
+function loadMeteo(){
+  try{
+    var xhr=new XMLHttpRequest();
+    var u="https://api.open-meteo.com/v1/forecast?latitude="+CFG.lat+"&longitude="+CFG.lon+"&current=temperature_2m,weather_code&timezone=Europe%2FRome";
+    xhr.open("GET",u,true);
+    xhr.onreadystatechange=function(){
+      if(xhr.readyState===4 && xhr.status===200){
+        try{
+          var j=JSON.parse(xhr.responseText);
+          var desc=WMO[j.current.weather_code]||"\u2014";
+          document.getElementById("wdesc").innerHTML=desc;
+          document.getElementById("wtemp").innerHTML=Math.round(j.current.temperature_2m);
+        }catch(e){}
+      }
+    };
+    xhr.send();
+  }catch(e){}
+}
+loadMeteo(); setInterval(loadMeteo,15*60*1000);
+
+/* ---- SFONDO (background-image su div) ---- */
+(function(){
+  var stage=document.getElementById("stage");
+  var slides=[];
+  for(var i=0;i<CFG.images.length;i++){
+    var d=document.createElement("div");
+    d.className="slide";
+    d.style.backgroundImage='url("'+CFG.images[i]+'")';
+    stage.appendChild(d);
+    slides.push(d);
+  }
+  var idx=0;
+  if(slides.length){ slides[0].className="slide on"; }
+  if(slides.length>1){
+    setInterval(function(){
+      slides[idx].className="slide";
+      idx=(idx+1)%slides.length;
+      slides[idx].className="slide on";
+    },CFG.slideMs);
+  }
+})();
+
+/* ---- COSA FARE ---- */
+(function(){
+  var wrap=document.getElementById("rwrap");
+  var els=[];
+  for(var i=0;i<CFG.activities.length;i++){
+    var a=CFG.activities[i];
+    var d=document.createElement("div");
+    d.className="act";
+    d.innerHTML='<div class="ati">'+a.ti+'</div><div class="ade">'+a.de+'</div>';
+    wrap.appendChild(d);
+    els.push(d);
+  }
+  var idx=0;
+  if(els.length){ els[0].className="act on"; }
+  if(els.length>1){
+    setInterval(function(){
+      els[idx].className="act";
+      idx=(idx+1)%els.length;
+      els[idx].className="act on";
+    },CFG.actMs);
+  }
+})();
+</script>
+
+<!-- QR library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ---- WIFI: sblocco (SHA-256 puro) + QR ---- */
+(function(){
+  var box=document.getElementById("wifi");
+  var w=CFG.wifi;
+
+  function reveal(){
+    box.className = box.className.replace(/\blocked\b/g,"");
+    document.getElementById("wifiSsid").innerHTML=w.ssid;
+    document.getElementById("wifiPass").innerHTML=w.pass;
+    var esc=function(s){ return s.replace(/([\\;,:"])/g,"\\$1"); };
+    var payload="WIFI:T:"+w.enc+";S:"+esc(w.ssid)+";P:"+esc(w.pass)+";;";
+    try{
+      new QRCode(document.getElementById("wifiQr"),{ text:payload, width:152, height:152, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+    }catch(e){
+      document.getElementById("wifiQr").innerHTML='<div style="color:#14110d;font-size:12px;padding:18px;text-align:center">Vedi rete e<br>password a lato</div>';
+    }
+  }
+
+  function getParam(name){
+    var q=location.search.replace(/^\?/,"").split("&");
+    for(var i=0;i<q.length;i++){ var p=q[i].split("="); if(p[0]===name){ return decodeURIComponent(p[1]||""); } }
+    return "";
+  }
+
+  box.className = box.className + " locked";
+
+  if(!w.keyHash){ reveal(); return; }
+
+  var k=getParam("k");
+  if(k){
+    try{
+      if(sha256(k)===w.keyHash){ reveal(); }
+    }catch(e){}
+  }
+})();
+</script>
+</body>
+</html>
