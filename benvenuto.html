@@ -309,11 +309,22 @@ window.__tick = tick;
 const WMO={0:["☀️","Sereno"],1:["🌤️","Sereno"],2:["⛅","Nuvoloso"],3:["☁️","Coperto"],45:["🌫️","Nebbia"],48:["🌫️","Nebbia"],51:["🌦️","Pioviggine"],53:["🌦️","Pioviggine"],55:["🌦️","Pioviggine"],61:["🌧️","Pioggia"],63:["🌧️","Pioggia"],65:["🌧️","Pioggia forte"],71:["🌨️","Neve"],73:["🌨️","Neve"],75:["❄️","Neve"],77:["🌨️","Nevischio"],80:["🌦️","Rovesci"],81:["🌧️","Rovesci"],82:["⛈️","Rovesci"],85:["🌨️","Neve"],86:["❄️","Neve"],95:["⛈️","Temporale"],96:["⛈️","Temporale"],99:["⛈️","Temporale"]};
 async function loadMeteo(){
   try{
-    const u=`https://api.open-meteo.com/v1/forecast?latitude=${CFG.lat}&longitude=${CFG.lon}&current=temperature_2m,weather_code&timezone=Europe%2FRome`;
-    const r=await fetch(u); const j=await r.json();
+    // Cache-buster: molti browser delle smart TV rileggono la stessa URL
+    // dalla cache invece di rifare la chiamata, lasciando il dato "vecchio".
+    // Un parametro che cambia a ogni richiesta forza il download aggiornato.
+    const bust = Date.now();
+    const u=`https://api.open-meteo.com/v1/forecast?latitude=${CFG.lat}&longitude=${CFG.lon}&current=temperature_2m,weather_code&timezone=Europe%2FRome&_=${bust}`;
+    const r=await fetch(u, { cache:"no-store" }); const j=await r.json();
     const wc=WMO[j.current.weather_code]||["⛰️","—"];
     document.getElementById("wico").textContent=wc[0];
-    document.getElementById("wdesc").textContent=wc[1];
+    // Mostra l'ora dell'ultimo aggiornamento accanto alla descrizione,
+    // così un dato dell'ora precedente si legge come "recente", non come errore.
+    let desc=wc[1];
+    if(j.current && j.current.time){
+      const hhmm=String(j.current.time).slice(11,16);
+      if(hhmm) desc = wc[1]+" · agg. "+hhmm;
+    }
+    document.getElementById("wdesc").textContent=desc;
     document.getElementById("wtemp").textContent=Math.round(j.current.temperature_2m);
   }catch(e){ document.getElementById("wdesc").textContent="—"; }
 }
