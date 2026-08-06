@@ -166,7 +166,118 @@
     .slide{ transition:opacity 1s ease; transform:none !important; }
     .act{ transition:opacity .5s ease; transform:none !important; }
   }
+
+  /* ============================================================
+     FALLBACK BROWSER DATATI (smart TV: Toshiba/Vidaa, WebOS, ecc.)
+     Si attiva automaticamente in due modi indipendenti:
+       1) @supports not (...)  -> feature detection nativa del browser
+       2) .tv-legacy su <html> -> impostata da JS se il rilevamento
+          runtime scopre che grid-areas/clamp non funzionano davvero.
+     Obiettivo: layout leggibile e QR visibile anche senza grid-areas,
+     clamp() e backdrop-filter. Su browser moderni non si attiva nulla.
+     ============================================================ */
+  html.tv-legacy .screen,
+  .screen{ } /* placeholder per specificità: le regole vere sono sotto */
+
+  /* --- Feature detection automatica: se il browser non sa fare
+         grid-template-areas, ridisegna il layout in blocchi. --- */
+  @supports not (grid-template-areas: "a"){
+    .screen{
+      display:block; height:auto; min-height:100vh; width:100%;
+      padding:28px 32px; box-sizing:border-box;
+    }
+    .hello, .clock, .wifi, .info, .todo, .numbers{
+      display:block; width:100%; margin-bottom:26px; text-align:left;
+    }
+    .clock{ text-align:left; }
+    .todo .rwrap{ position:static; min-height:220px; }
+    .act{ position:static; opacity:1; transform:none; margin-bottom:18px; }
+  }
+
+  /* --- Fallback esplicito via classe (JS) e via @supports per clamp/backdrop.
+         Ripetiamo le regole chiave con valori fissi al posto di clamp(). --- */
+  html.tv-legacy .screen{
+    display:block; height:auto; min-height:100vh; width:100%;
+    padding:28px 32px; box-sizing:border-box;
+  }
+  html.tv-legacy .hello,
+  html.tv-legacy .clock,
+  html.tv-legacy .wifi,
+  html.tv-legacy .info,
+  html.tv-legacy .todo,
+  html.tv-legacy .numbers{
+    display:block; width:100%; margin-bottom:26px; text-align:left;
+  }
+  html.tv-legacy .clock{ text-align:left; }
+  html.tv-legacy .todo .rwrap{ position:static; min-height:220px; }
+  html.tv-legacy .act{ position:static; opacity:1; transform:none; margin-bottom:18px; }
+
+  /* Effetti pesanti: rimossi sui browser datati (glitch + consumo memoria) */
+  html.tv-legacy .card,
+  html.tv-legacy .clock .wx{ backdrop-filter:none; }
+  @supports not (backdrop-filter: blur(1px)){
+    .card, .clock .wx{ background:var(--panel); }
+  }
+
+  /* WiFi: layout affiancato semplice e QR a DIMENSIONE FISSA in px,
+     così appare anche se clamp() viene ignorato dal browser. */
+  html.tv-legacy .wifi{ display:block; }
+  html.tv-legacy .wifi .qbox{
+    display:inline-block; padding:14px; margin-bottom:16px;
+    width:auto; height:auto;
+  }
+  html.tv-legacy .wifi .qbox img,
+  html.tv-legacy .wifi .qbox canvas,
+  html.tv-legacy .wifi .qbox table{
+    display:block; width:180px; height:180px;
+  }
+  @supports not (width: clamp(1px,1px,1px)){
+    .wifi .qbox img, .wifi .qbox canvas, .wifi .qbox table{
+      width:180px; height:180px;
+    }
+    .hello h1{ font-size:56px; }
+    .clock .time{ font-size:72px; }
+  }
 </style>
+<script>
+/* ============================================================
+   RILEVAMENTO BROWSER DATATO / SMART TV — eseguito subito,
+   prima del render, per evitare il "lampo" di layout errato.
+   Doppia rete di sicurezza:
+     A) feature detection: se CSS.supports non conferma
+        grid-template-areas e clamp(), è un browser datato;
+     B) user agent: marche di smart TV note (fallback ulteriore).
+   In entrambi i casi aggiunge la classe .tv-legacy su <html>.
+   ============================================================ */
+(function(){
+  try{
+    var legacy = false;
+
+    // A) Feature detection (il metodo robusto)
+    var okSupports = (typeof window.CSS !== "undefined" &&
+                      typeof window.CSS.supports === "function");
+    if(okSupports){
+      var hasGridAreas = window.CSS.supports("grid-template-areas", '"a"');
+      var hasClamp     = window.CSS.supports("width", "clamp(1px, 1px, 1px)");
+      if(!hasGridAreas || !hasClamp) legacy = true;
+    }else{
+      // Se CSS.supports non esiste, il browser è quasi certamente datato
+      legacy = true;
+    }
+
+    // B) User agent come rete ulteriore (marche smart TV note)
+    var ua = (navigator.userAgent || "").toLowerCase();
+    if(/smart-?tv|smarttv|tizen|web0s|webos|netcast|vidaa|hbbtv|viera|aquos|toshiba|dtv|googletv|android tv|crkey|appletv|hisense|philipstv|netrange/.test(ua)){
+      legacy = true;
+    }
+
+    if(legacy){
+      var el = document.documentElement;
+      el.className = (el.className ? el.className + " " : "") + "tv-legacy";
+    }
+  }catch(e){ /* in caso di errore non blocchiamo il render */ }
+})();
+</script>
 </head>
 <body>
 
@@ -394,7 +505,11 @@ var QRCode;!function(){function a(a){this.mode=c.MODE_8BIT_BYTE,this.data=a,this
   function drawWifiQr(){
     if(!qbox) return;
     qbox.innerHTML = "";
-    const size = Math.round(Math.min(window.innerHeight*0.17, 188));
+    // Su browser datati (.tv-legacy) usiamo una dimensione fissa: innerHeight
+    // può essere inaffidabile e generare un QR di dimensione 0 (invisibile).
+    const legacy = document.documentElement.className.indexOf("tv-legacy") !== -1;
+    const size = legacy ? 180
+                        : Math.max(120, Math.round(Math.min((window.innerHeight||600)*0.17, 188)));
     try{
       new QRCode(qbox, { text:payload, width:size, height:size, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
     }catch(e){
