@@ -44,13 +44,22 @@
     z-index:1;
   }
 
+  /* Wrapper per l'auto-fit: viene scalato via JS se il contenuto
+     è più alto dello schermo, così tutto entra su qualsiasi TV. */
+  #fit {
+    position:relative;
+    z-index:2;
+    width:100%;
+    transform-origin:top center;
+  }
+
   /* Contenitore principale: TABELLA (massima compatibilità TV) */
   #screen {
-    position:relative; width:100%; min-height:100%;
+    position:relative; width:100%;
     z-index:2;
     border-collapse:collapse;
   }
-  #screen > tbody > tr > td { vertical-align:top; padding:14px 34px; }
+  #screen > tbody > tr > td { vertical-align:top; padding:10px 30px; }
   .col-left  { width:56%; }
   .col-right { width:44%; }
 
@@ -115,14 +124,14 @@
   .act.on { display:block; }
   .act .ic { font-size:34px; margin-bottom:6px; }
   .act .ti { font-family:Georgia,serif; font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .act .de { font-size:17px; line-height:1.35; }
+  .act .de { font-size:16px; line-height:1.3; }
   .act .de b { color:#c8a45c; }
 
   /* Numeri utili */
-  .num { margin-bottom:8px; }
-  .num .b { color:#f4ede0; font-size:17px; font-weight:bold; }
-  .num .s { color:#b6ab97; font-size:13px; }
-  .num .tel { color:#c8a45c; font-size:20px; font-weight:bold; }
+  .num { margin-bottom:5px; }
+  .num .b { color:#f4ede0; font-size:16px; font-weight:bold; }
+  .num .s { color:#b6ab97; font-size:12px; }
+  .num .tel { color:#c8a45c; font-size:18px; font-weight:bold; }
 </style>
 </head>
 <body>
@@ -133,6 +142,7 @@
 </div>
 <div id="shade"></div>
 
+<div id="fit">
 <table id="screen"><tbody>
   <!-- RIGA 1: benvenuto + orologio -->
   <tr>
@@ -208,15 +218,18 @@
       <div id="acts"></div>
     </td>
     <td class="col-right">
-      <div class="eyebrow">Numeri utili</div>
-      <div class="num"><span class="b">🏔️ Dario · Host</span> <span class="tel">329 945 1083</span><br><span class="s">WhatsApp · qualsiasi necessità</span></div>
-      <div class="num"><span class="b">🚑 Emergenze</span> <span class="tel">112</span><br><span class="s">Numero unico · anche Soccorso Alpino</span></div>
-      <div class="num"><span class="b">🩺 Guardia Medica</span> <span class="tel">116117</span><br><span class="s">Notti e festivi · Ampezzo</span></div>
-      <div class="num"><span class="b">🏥 Pronto Soccorso</span> <span class="tel">0433 4881</span><br><span class="s">Sant'Antonio Abate · Tolmezzo</span></div>
-      <div class="num"><span class="b">💊 Farmacie</span><br><span class="s">Mediis, Ampezzo, Villa Santina, Enemonzo</span></div>
+      <div class="card">
+        <div class="eyebrow">Numeri utili</div>
+        <div class="num"><span class="b">🏔️ Dario · Host</span> <span class="tel">329 945 1083</span><br><span class="s">WhatsApp · qualsiasi necessità</span></div>
+        <div class="num"><span class="b">🚑 Emergenze</span> <span class="tel">112</span><br><span class="s">Numero unico · anche Soccorso Alpino</span></div>
+        <div class="num"><span class="b">➕ Guardia Medica</span> <span class="tel">116117</span><br><span class="s">Notti e festivi · Ampezzo</span></div>
+        <div class="num"><span class="b">🏥 Pronto Soccorso</span> <span class="tel">0433 4881</span><br><span class="s">Sant'Antonio Abate · Tolmezzo</span></div>
+        <div class="num"><span class="b">💊 Farmacie</span><br><span class="s">Mediis, Ampezzo, Villa Santina, Enemonzo</span></div>
+      </div>
     </td>
   </tr>
 </tbody></table>
+</div>
 
 <!-- Libreria QR incorporata (funziona offline e su smart TV) -->
 <script>
@@ -464,27 +477,74 @@ function checkUnlock(){
 /* ============================================================
    AVVIO + ridisegno al risveglio della TV
    ============================================================ */
+/* ============================================================
+   AUTO-FIT: adatta il contenuto all'altezza dello schermo.
+   Se il contenuto è più alto della finestra, scala il wrapper
+   #fit finché rientra. Funziona su qualsiasi risoluzione TV,
+   senza dover indovinare le dimensioni. Se transform non è
+   supportato, non fa danni: il contenuto resta invariato.
+   ============================================================ */
+function autoFit(){
+  var fit=document.getElementById("fit");
+  if(!fit) return;
+  // Azzero una scala precedente per misurare l'altezza naturale.
+  fit.style.transform="none";
+  // Altezza reale del contenuto e della finestra visibile.
+  var contentH=fit.scrollHeight || fit.offsetHeight;
+  var winH=window.innerHeight || document.documentElement.clientHeight;
+  if(!contentH || !winH) return;
+  if(contentH > winH){
+    var scale=winH/contentH;
+    // Non scendo sotto un limite ragionevole per non rendere illeggibile.
+    if(scale < 0.5){ scale = 0.5; }
+    // Applico la scala solo se il browser conosce transform.
+    var s=fit.style;
+    if("transform" in s || "webkitTransform" in s || "msTransform" in s){
+      var v="scale("+scale+")";
+      s.transform=v; s.webkitTransform=v; s.msTransform=v;
+    }
+  }
+}
+
 function boot(){
   tick(); setInterval(tick,1000);
   loadWeather(); setInterval(loadWeather, 600000);
   startSlides();
   startActs();
   checkUnlock();
+  // L'auto-fit gira dopo che il contenuto è stato disegnato.
+  autoFit();
+  setTimeout(autoFit, 300);   // seconda passata: QR e meteo possono cambiare l'altezza
+  setTimeout(autoFit, 1500);
 }
 if(document.readyState==="complete" || document.readyState==="interactive"){ boot(); }
 else{ if(window.addEventListener){ window.addEventListener("DOMContentLoaded",boot,false); } else { window.onload=boot; } }
 
-// Al risveglio dallo standby: se il QR è sparito, lo ridisegna.
-function redrawIfMissing(){
+// Ricalcola l'auto-fit se la finestra cambia dimensione.
+if(window.addEventListener){ window.addEventListener("resize", autoFit, false); }
+
+// Ridisegna il QR SOLO se è davvero sparito (usato dal timer periodico).
+function ensureQr(){
   var qbox=document.getElementById("wifiQr");
   var unlocked=document.getElementById("wifiUnlocked");
   if(unlocked && unlocked.style.display!=="none" && qbox && qbox.childNodes.length===0){ drawQr(); }
+}
+
+// Al risveglio dallo standby: ridisegna il QR se serve e riadatta il layout.
+function redrawIfMissing(){
+  ensureQr();
+  autoFit();
 }
 if(window.addEventListener){
   document.addEventListener("visibilitychange", redrawIfMissing, false);
   window.addEventListener("pageshow", redrawIfMissing, false);
   window.addEventListener("focus", redrawIfMissing, false);
 }
+
+// Rete di sicurezza per le TV che non emettono gli eventi di risveglio:
+// ogni 10s controlla SOLO il QR (non ripete l'autoFit). Non fa nulla se
+// il QR è già presente, quindi è un costo trascurabile.
+setInterval(ensureQr, 10000);
 </script>
 </body>
 </html>
