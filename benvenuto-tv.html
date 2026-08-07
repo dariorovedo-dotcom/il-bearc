@@ -15,18 +15,19 @@
      Il WiFi appare solo con ?k=<parola> nell'URL.
      ============================================================ */
   * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { width:100%; height:100%; }
+  html, body { width:100%; min-height:100%; }
   body {
     background:#14110d;              /* colore solido di sicurezza */
     color:#f4ede0;
     font-family:Arial, Helvetica, sans-serif;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
   }
 
   /* Sfondo foto (dietro a tutto). Se le foto non caricano, resta il colore. */
   #stage { background-color:#14110d; }
   .layer {
-    position:absolute; top:0; left:0; width:100%; height:100%;
+    position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#14110d;
     background-position:center center;
     background-repeat:no-repeat;
@@ -37,7 +38,7 @@
   }
   .layer.on { opacity:1; }
   #shade {
-    position:absolute; top:0; left:0; width:100%; height:100%;
+    position:fixed; top:0; left:0; width:100%; height:100%;
     background:#0a0805;
     opacity:0.62;
     z-index:1;
@@ -45,11 +46,11 @@
 
   /* Contenitore principale: TABELLA (massima compatibilità TV) */
   #screen {
-    position:absolute; top:0; left:0; width:100%; height:100%;
+    position:relative; width:100%; min-height:100%;
     z-index:2;
     border-collapse:collapse;
   }
-  #screen > tbody > tr > td { vertical-align:top; padding:26px 34px; }
+  #screen > tbody > tr > td { vertical-align:top; padding:14px 34px; }
   .col-left  { width:56%; }
   .col-right { width:44%; }
 
@@ -59,15 +60,15 @@
   }
 
   /* Benvenuto */
-  h1 { font-family:Georgia,"Times New Roman",serif; font-size:66px; font-weight:bold; line-height:1.0; }
+  h1 { font-family:Georgia,"Times New Roman",serif; font-size:50px; font-weight:bold; line-height:1.0; }
   h1 em { color:#c8a45c; font-style:italic; }
   .place { color:#b6ab97; font-size:18px; letter-spacing:2px; text-transform:uppercase; margin-top:12px; }
-  .meaning { color:#f4ede0; font-size:18px; line-height:1.4; margin-top:16px; font-style:italic; }
+  .meaning { color:#f4ede0; font-size:17px; line-height:1.35; margin-top:10px; font-style:italic; }
   .meaning b { color:#c8a45c; font-style:normal; }
 
   /* Orologio / meteo */
   .clockbox { text-align:right; }
-  .time { font-family:Georgia,serif; font-size:92px; font-weight:bold; line-height:1.0; }
+  .time { font-family:Georgia,serif; font-size:70px; font-weight:bold; line-height:1.0; }
   .time small { font-size:32px; color:#c8a45c; }
   .date { color:#b6ab97; font-size:20px; margin-top:4px; text-transform:capitalize; }
   .wx { margin-top:14px; font-size:26px; }
@@ -79,23 +80,23 @@
     background:#1c1811;
     border:1px solid #3a3225;
     border-radius:16px;
-    padding:22px;
-    margin-top:20px;
+    padding:16px;
+    margin-top:12px;
   }
-  .card .eyebrow { margin-bottom:14px; }
+  .card .eyebrow { margin-bottom:8px; }
 
   /* WiFi: tabella interna QR | testo */
   .wifi-tbl { width:100%; border-collapse:collapse; }
   .wifi-tbl td { vertical-align:middle; }
-  .qcell { width:200px; }
+  .qcell { width:184px; }
   .qbox {
     background:#ffffff; padding:12px; border-radius:12px;
     width:180px; height:180px; line-height:0;
     text-align:center;
   }
-  .qbox img, .qbox canvas, .qbox table { display:inline-block; width:180px; height:180px; }
-  .wcreds { padding-left:24px; }
-  .wbig { font-family:Georgia,serif; font-size:34px; font-weight:bold; margin-bottom:14px; }
+  .qbox img, .qbox canvas, .qbox table { display:inline-block; width:156px; height:156px; }
+  .wcreds { padding-left:24px; overflow-wrap:break-word; word-wrap:break-word; }
+  .wbig { font-family:Georgia,serif; font-size:30px; font-weight:bold; margin-bottom:14px; }
   .wrow { margin-bottom:10px; }
   .wk { color:#b6ab97; font-size:13px; letter-spacing:2px; text-transform:uppercase; }
   .wv { color:#f4ede0; font-size:24px; font-weight:bold; word-break:break-all; }
@@ -112,13 +113,13 @@
   /* Cosa fare (una voce alla volta) */
   .act { display:none; }
   .act.on { display:block; }
-  .act .ic { font-size:44px; margin-bottom:10px; }
-  .act .ti { font-family:Georgia,serif; font-size:30px; font-weight:bold; margin-bottom:8px; }
-  .act .de { font-size:19px; line-height:1.4; }
+  .act .ic { font-size:34px; margin-bottom:6px; }
+  .act .ti { font-family:Georgia,serif; font-size:26px; font-weight:bold; margin-bottom:6px; }
+  .act .de { font-size:17px; line-height:1.35; }
   .act .de b { color:#c8a45c; }
 
   /* Numeri utili */
-  .num { margin-bottom:12px; }
+  .num { margin-bottom:8px; }
   .num .b { color:#f4ede0; font-size:17px; font-weight:bold; }
   .num .s { color:#b6ab97; font-size:13px; }
   .num .tel { color:#c8a45c; font-size:20px; font-weight:bold; }
@@ -177,11 +178,11 @@
         <table class="info-tbl"><tbody>
           <tr>
             <td><span class="it-ic">🔑</span> <span class="it-t"><span class="it-b">Check-in / out</span><br>Dalle 17:00 · entro le 10:00</span></td>
-            <td><span class="it-ic">🤫</span> <span class="it-t"><span class="it-b">Silenzio</span><br>22:00 – 7:00</span></td>
+            <td><span class="it-ic">🌙</span> <span class="it-t"><span class="it-b">Silenzio</span><br>22:00 – 7:00</span></td>
           </tr>
           <tr>
             <td><span class="it-ic">🔥</span> <span class="it-t"><span class="it-b">Riscaldamento</span><br>Convettori a gas GPL Robur + pellet</span></td>
-            <td><span class="it-ic">🪨</span> <span class="it-t"><span class="it-b">In cucina</span><br>Stufa elettrica in pietra</span></td>
+            <td><span class="it-ic">🔌</span> <span class="it-t"><span class="it-b">In cucina</span><br>Stufa elettrica in pietra</span></td>
           </tr>
           <tr>
             <td><span class="it-ic">🌡️</span> <span class="it-t"><span class="it-b">Climatizzatore</span><br>Caldo d'inverno, fresco d'estate</span></td>
@@ -365,7 +366,7 @@ function drawQr(){
   qbox.innerHTML="";
   var payload="WIFI:T:"+CFG.wifi.enc+";S:"+escWifi(CFG.wifi.ssid)+";P:"+escWifi(CFG.wifi.pass)+";;";
   try{
-    new QRCode(qbox, { text:payload, width:180, height:180, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+    new QRCode(qbox, { text:payload, width:156, height:156, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
   }catch(e){
     qbox.innerHTML='<div style="width:156px;height:156px;color:#14110d;font-size:13px;padding:12px;">Vedi rete e password a lato</div>';
   }
