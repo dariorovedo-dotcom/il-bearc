@@ -132,6 +132,13 @@
   .num .b { color:#f4ede0; font-size:16px; font-weight:bold; }
   .num .s { color:#b6ab97; font-size:12px; }
   .num .tel { color:#c8a45c; font-size:18px; font-weight:bold; }
+  #langBadge {
+    position:fixed; top:14px; right:18px; z-index:5;
+    background:#c8a45c; color:#14110d;
+    font-family:Arial, sans-serif; font-size:15px; font-weight:bold;
+    padding:5px 12px; border-radius:20px; letter-spacing:1px;
+    opacity:0.9;
+  }
 </style>
 </head>
 <body>
@@ -143,14 +150,15 @@
 <div id="shade"></div>
 
 <div id="fit">
+<div id="langBadge">IT</div>
 <table id="screen"><tbody>
   <!-- RIGA 1: benvenuto + orologio -->
   <tr>
     <td class="col-left">
-      <div class="eyebrow">Benvenuti nella vostra casa</div>
+      <div class="eyebrow i18n" data-it="Benvenuti nella vostra casa" data-en="Welcome to your home">Benvenuti nella vostra casa</div>
       <h1>Il <em>Bearč</em></h1>
       <div class="place">Feltrone · Socchieve · Carnia · 696 m</div>
-      <div class="meaning">In dialetto, il <b>bearč</b> è il prato chiuso accanto a casa — l'orto di montagna. Qui il tempo rallenta.</div>
+      <div class="meaning i18n" data-it="In dialetto, il &lt;b&gt;bearč&lt;/b&gt; è il prato chiuso accanto a casa — l'orto di montagna. Qui il tempo rallenta." data-en="In the local dialect, the &lt;b&gt;bearč&lt;/b&gt; is the enclosed meadow beside the house — the mountain garden. Here, time slows down.">In dialetto, il <b>bearč</b> è il prato chiuso accanto a casa — l'orto di montagna. Qui il tempo rallenta.</div>
     </td>
     <td class="col-right">
       <div class="clockbox">
@@ -165,45 +173,45 @@
   <tr>
     <td class="col-left">
       <div class="card">
-        <div class="eyebrow">Wi-Fi</div>
+        <div class="eyebrow i18n" data-it="Wi-Fi" data-en="Wi-Fi">Wi-Fi</div>
         <div id="wifiUnlocked" style="display:none;">
           <table class="wifi-tbl"><tbody><tr>
             <td class="qcell"><div class="qbox" id="wifiQr"></div></td>
             <td class="wcreds">
-              <div class="wbig">Connettiti al Wi-Fi</div>
-              <div class="wrow"><div class="wk">Rete</div><div class="wv" id="wifiSsid"></div></div>
-              <div class="wrow"><div class="wk">Password</div><div class="wv" id="wifiPass"></div></div>
-              <div class="whint">Inquadra il QR con la fotocamera per connetterti al volo</div>
+              <div class="wbig i18n" data-it="Connettiti al Wi-Fi" data-en="Connect to Wi-Fi">Connettiti al Wi-Fi</div>
+              <div class="wrow"><div class="wk i18n" data-it="Rete" data-en="Network">Rete</div><div class="wv" id="wifiSsid"></div></div>
+              <div class="wrow"><div class="wk i18n" data-it="Password" data-en="Password">Password</div><div class="wv" id="wifiPass"></div></div>
+              <div class="whint i18n" data-it="Inquadra il QR con la fotocamera per connetterti al volo" data-en="Scan the QR code with your camera to connect instantly">Inquadra il QR con la fotocamera per connetterti al volo</div>
             </td>
           </tr></tbody></table>
         </div>
         <div id="wifiLocked" class="lockmsg">
-          La rete Wi-Fi è disponibile in casa.<br>Trovi le credenziali sul cartello o chiedi all'host.
+          <span class="i18n" data-it="La rete Wi-Fi è disponibile in casa.&lt;br&gt;Trovi le credenziali sul cartello o chiedi all'host." data-en="Wi-Fi is available in the house.&lt;br&gt;You will find the credentials on the sign or ask the host.">La rete Wi-Fi è disponibile in casa.<br>Trovi le credenziali sul cartello o chiedi all'host.</span>
         </div>
       </div>
     </td>
     <td class="col-right">
       <div class="card">
-        <div class="eyebrow">Info utili</div>
+        <div class="eyebrow i18n" data-it="Info utili" data-en="Useful info">Info utili</div>
         <table class="info-tbl"><tbody>
           <tr>
-            <td><span class="it-ic">🔑</span> <span class="it-t"><span class="it-b">Check-in / out</span><br>Dalle 17:00 · entro le 10:00</span></td>
-            <td><span class="it-ic">🌙</span> <span class="it-t"><span class="it-b">Silenzio</span><br>22:00 – 7:00</span></td>
+            <td><span class="it-ic">🔑</span> <span class="it-t"><span class="it-b i18n" data-it="Check-in / out" data-en="Check-in / out">Check-in / out</span><br><span class="i18n" data-it="Dalle 17:00 · entro le 10:00" data-en="From 5:00 PM · by 10:00 AM">Dalle 17:00 · entro le 10:00</span></span></td>
+            <td><span class="it-ic">🌙</span> <span class="it-t"><span class="it-b i18n" data-it="Silenzio" data-en="Quiet hours">Silenzio</span><br><span class="i18n" data-it="22:00 – 7:00" data-en="10:00 PM – 7:00 AM">22:00 – 7:00</span></span></td>
           </tr>
           <tr>
-            <td><span class="it-ic">🔥</span> <span class="it-t"><span class="it-b">Riscaldamento</span><br>Convettori a gas GPL Robur + pellet</span></td>
-            <td><span class="it-ic">🔌</span> <span class="it-t"><span class="it-b">In cucina</span><br>Stufa elettrica in pietra</span></td>
+            <td><span class="it-ic">🔥</span> <span class="it-t"><span class="it-b i18n" data-it="Riscaldamento" data-en="Heating">Riscaldamento</span><br><span class="i18n" data-it="Convettori a gas GPL Robur + pellet" data-en="LPG gas convectors (Robur) + pellet stove">Convettori a gas GPL Robur + pellet</span></span></td>
+            <td><span class="it-ic">🔌</span> <span class="it-t"><span class="it-b i18n" data-it="In cucina" data-en="In the kitchen">In cucina</span><br><span class="i18n" data-it="Stufa elettrica in pietra" data-en="Electric stone stove">Stufa elettrica in pietra</span></span></td>
           </tr>
           <tr>
-            <td><span class="it-ic">🌡️</span> <span class="it-t"><span class="it-b">Climatizzatore</span><br>Caldo d'inverno, fresco d'estate</span></td>
-            <td><span class="it-ic">🅿️</span> <span class="it-t"><span class="it-b">Parcheggio</span><br>Gratuito, qui vicino</span></td>
+            <td><span class="it-ic">🌡️</span> <span class="it-t"><span class="it-b i18n" data-it="Climatizzatore" data-en="Air conditioning">Climatizzatore</span><br><span class="i18n" data-it="Caldo d'inverno, fresco d'estate" data-en="Warm in winter, cool in summer">Caldo d'inverno, fresco d'estate</span></span></td>
+            <td><span class="it-ic">🅿️</span> <span class="it-t"><span class="it-b i18n" data-it="Parcheggio" data-en="Parking">Parcheggio</span><br><span class="i18n" data-it="Gratuito, qui vicino" data-en="Free, nearby">Gratuito, qui vicino</span></span></td>
           </tr>
           <tr>
-            <td><span class="it-ic">🚭</span> <span class="it-t"><span class="it-b">Fumo</span><br>Solo in giardino</span></td>
-            <td><span class="it-ic">🐾</span> <span class="it-t"><span class="it-b">Animali</span><br>Non ammessi</span></td>
+            <td><span class="it-ic">🚭</span> <span class="it-t"><span class="it-b i18n" data-it="Fumo" data-en="Smoking">Fumo</span><br><span class="i18n" data-it="Solo in giardino" data-en="Garden only">Solo in giardino</span></span></td>
+            <td><span class="it-ic">🐾</span> <span class="it-t"><span class="it-b i18n" data-it="Animali" data-en="Pets">Animali</span><br><span class="i18n" data-it="Non ammessi" data-en="Not allowed">Non ammessi</span></span></td>
           </tr>
           <tr>
-            <td><span class="it-ic">♻️</span> <span class="it-t"><span class="it-b">Rifiuti</span><br>Differenziata, calendario in casa</span></td>
+            <td><span class="it-ic">♻️</span> <span class="it-t"><span class="it-b i18n" data-it="Rifiuti" data-en="Waste">Rifiuti</span><br><span class="i18n" data-it="Differenziata, calendario in casa" data-en="Sorted recycling, schedule in the house">Differenziata, calendario in casa</span></span></td>
             <td></td>
           </tr>
         </tbody></table>
@@ -214,17 +222,17 @@
   <!-- RIGA 3: cosa fare + numeri utili -->
   <tr>
     <td class="col-left">
-      <div class="eyebrow">Cosa fare in Carnia</div>
+      <div class="eyebrow i18n" data-it="Cosa fare in Carnia" data-en="What to do in Carnia">Cosa fare in Carnia</div>
       <div id="acts"></div>
     </td>
     <td class="col-right">
       <div class="card">
-        <div class="eyebrow">Numeri utili</div>
-        <div class="num"><span class="b">🏔️ Dario · Host</span> <span class="tel">329 945 1083</span><br><span class="s">WhatsApp · qualsiasi necessità</span></div>
-        <div class="num"><span class="b">🚑 Emergenze</span> <span class="tel">112</span><br><span class="s">Numero unico · anche Soccorso Alpino</span></div>
-        <div class="num"><span class="b">📞 Guardia Medica</span> <span class="tel">116117</span><br><span class="s">Notti e festivi · Ampezzo</span></div>
-        <div class="num"><span class="b">🏥 Pronto Soccorso</span> <span class="tel">0433 4881</span><br><span class="s">Sant'Antonio Abate · Tolmezzo</span></div>
-        <div class="num"><span class="b">💊 Farmacie</span><br><span class="s">Mediis, Ampezzo, Villa Santina, Enemonzo</span></div>
+        <div class="eyebrow i18n" data-it="Numeri utili" data-en="Useful numbers">Numeri utili</div>
+        <div class="num"><span class="b i18n" data-it="🏔️ Dario · Host" data-en="🏔️ Dario · Host">🏔️ Dario · Host</span> <span class="tel">329 945 1083</span><br><span class="s i18n" data-it="WhatsApp · qualsiasi necessità" data-en="WhatsApp · for anything you need">WhatsApp · qualsiasi necessità</span></div>
+        <div class="num"><span class="b i18n" data-it="🚑 Emergenze" data-en="🚑 Emergency">🚑 Emergenze</span> <span class="tel">112</span><br><span class="s i18n" data-it="Numero unico · anche Soccorso Alpino" data-en="Single emergency number · incl. Mountain Rescue">Numero unico · anche Soccorso Alpino</span></div>
+        <div class="num"><span class="b i18n" data-it="📞 Guardia Medica" data-en="📞 Medical Guard (after-hours)">📞 Guardia Medica</span> <span class="tel">116117</span><br><span class="s i18n" data-it="Notti e festivi · Ampezzo" data-en="Nights & holidays · Ampezzo">Notti e festivi · Ampezzo</span></div>
+        <div class="num"><span class="b i18n" data-it="🏥 Pronto Soccorso" data-en="🏥 Emergency Room">🏥 Pronto Soccorso</span> <span class="tel">0433 4881</span><br><span class="s i18n" data-it="Sant'Antonio Abate · Tolmezzo" data-en="Sant'Antonio Abate · Tolmezzo">Sant'Antonio Abate · Tolmezzo</span></div>
+        <div class="num"><span class="b i18n" data-it="💊 Farmacie" data-en="💊 Pharmacies">💊 Farmacie</span><br><span class="s i18n" data-it="Mediis, Ampezzo, Villa Santina, Enemonzo" data-en="Mediis, Ampezzo, Villa Santina, Enemonzo">Mediis, Ampezzo, Villa Santina, Enemonzo</span></div>
       </div>
     </td>
   </tr>
@@ -262,15 +270,15 @@ var CFG = {
     "https://www.ilbearc.com/images/Bagno.jpg"
   ],
   activities: [
-    { ic:"🚶", ti:"Trekking dalla porta di casa", de:"I sentieri partono da Feltrone: dalla <b>Val Tagliamento</b> al <b>Col Gentile</b> e alle Alpi Tolmezzine. Mappe e percorsi sul nostro sito." },
-    { ic:"⛷️", ti:"Sci e Zoncolan", de:"In inverno <b>Monte Zoncolan</b> e <b>Ravascletto</b> per la discesa, <b>Forni di Sopra</b> per fondo e Dolomiti Friulane. A pochi km." },
-    { ic:"♨️", ti:"Terme di Arta", de:"Vicino a Tolmezzo, le <b>Terme di Arta</b>: acque termali e relax, perfette dopo una giornata sui sentieri." },
-    { ic:"🍽️", ti:"Osteria al Cervo · Lungis", de:"Cucina tipica carnica a due passi. <b>+39 347 715 2842</b>. Da provare frico, cjarsons e formaggi di malga." },
-    { ic:"🌾", ti:"Agriturismo In Già · Lungis", de:"Cucina carnica genuina in agriturismo. <b>+39 338 171 6413</b>. Sapori di montagna a km zero." },
-    { ic:"🏞️", ti:"Lago di Cavazzo e Tagliamento", de:"Il <b>lago di Cavazzo</b> (il più grande naturale del FVG) e le aree fluviali del <b>Tagliamento</b>, l'ultimo grande fiume alpino selvaggio." },
-    { ic:"🏛️", ti:"Musei della Carnia", de:"<b>Museo Carnico</b> a Tolmezzo, <b>Geologico</b> ad Ampezzo, <b>Orologeria</b> a Pesariis, <b>Grande Guerra</b> a Timau." },
-    { ic:"⛪", ti:"Borghi e Pieve di Castoia", de:"La <b>Pieve di Castoia</b>, le chiese e i borghi storici di Socchieve, tra i comuni più antichi della Carnia." },
-    { ic:"🍲", ti:"Sapori carnici", de:"<b>Cjarsons</b> (ravioli dolce-salato), <b>frico</b>, polenta, formaggi di malga e selvaggina. La cucina di montagna, genuina e generosa." }
+    { ic:"🚶", ti:"Trekking dalla porta di casa", ti_en:"Hiking right from the doorstep", de:"I sentieri partono da Feltrone: dalla <b>Val Tagliamento</b> al <b>Col Gentile</b> e alle Alpi Tolmezzine. Mappe e percorsi sul nostro sito.", de_en:"Trails start right in Feltrone: from the <b>Tagliamento Valley</b> to <b>Col Gentile</b> and the Tolmezzine Alps. Maps and routes on our website." },
+    { ic:"⛷️", ti:"Sci e Zoncolan", ti_en:"Skiing & Zoncolan", de:"In inverno <b>Monte Zoncolan</b> e <b>Ravascletto</b> per la discesa, <b>Forni di Sopra</b> per fondo e Dolomiti Friulane. A pochi km.", de_en:"In winter, <b>Monte Zoncolan</b> and <b>Ravascletto</b> for downhill, <b>Forni di Sopra</b> for cross-country and the Friulian Dolomites. Just a few km away." },
+    { ic:"♨️", ti:"Terme di Arta", ti_en:"Arta Thermal Baths", de:"Vicino a Tolmezzo, le <b>Terme di Arta</b>: acque termali e relax, perfette dopo una giornata sui sentieri.", de_en:"Near Tolmezzo, the <b>Arta Thermal Baths</b>: thermal waters and relaxation, perfect after a day on the trails." },
+    { ic:"🍽️", ti:"Osteria al Cervo · Lungis", ti_en:"Osteria al Cervo · Lungis", de:"Cucina tipica carnica a due passi. <b>+39 347 715 2842</b>. Da provare frico, cjarsons e formaggi di malga.", de_en:"Traditional Carnian cuisine just steps away. <b>+39 347 715 2842</b>. Try frico, cjarsons and mountain-hut cheeses." },
+    { ic:"🌾", ti:"Agriturismo In Già · Lungis", ti_en:"In Già Farmhouse · Lungis", de:"Cucina carnica genuina in agriturismo. <b>+39 338 171 6413</b>. Sapori di montagna a km zero.", de_en:"Genuine Carnian farmhouse cooking. <b>+39 338 171 6413</b>. Zero-mile mountain flavours." },
+    { ic:"🏞️", ti:"Lago di Cavazzo e Tagliamento", ti_en:"Lake Cavazzo & Tagliamento", de:"Il <b>lago di Cavazzo</b> (il più grande naturale del FVG) e le aree fluviali del <b>Tagliamento</b>, l'ultimo grande fiume alpino selvaggio.", de_en:"<b>Lake Cavazzo</b> (the largest natural lake in the region) and the riverlands of the <b>Tagliamento</b>, the last great wild Alpine river." },
+    { ic:"🏛️", ti:"Musei della Carnia", ti_en:"Museums of Carnia", de:"<b>Museo Carnico</b> a Tolmezzo, <b>Geologico</b> ad Ampezzo, <b>Orologeria</b> a Pesariis, <b>Grande Guerra</b> a Timau.", de_en:"<b>Carnia Museum</b> in Tolmezzo, <b>Geology Museum</b> in Ampezzo, <b>Clockmaking Museum</b> in Pesariis, <b>Great War Museum</b> in Timau." },
+    { ic:"⛪", ti:"Borghi e Pieve di Castoia", ti_en:"Villages & Pieve di Castoia", de:"La <b>Pieve di Castoia</b>, le chiese e i borghi storici di Socchieve, tra i comuni più antichi della Carnia.", de_en:"The <b>Pieve di Castoia</b> church, and the historic villages of Socchieve, among the oldest in Carnia." },
+    { ic:"🍲", ti:"Sapori carnici", ti_en:"Carnian flavours", de:"<b>Cjarsons</b> (ravioli dolce-salato), <b>frico</b>, polenta, formaggi di malga e selvaggina. La cucina di montagna, genuina e generosa.", de_en:"<b>Cjarsons</b> (sweet-and-savoury ravioli), <b>frico</b>, polenta, mountain cheeses and game. Mountain cooking, genuine and generous." }
   ]
 };
 
@@ -278,12 +286,18 @@ var CFG = {
    OROLOGIO + DATA
    ============================================================ */
 var GIORNI=["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
+var GIORNI_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var MESI=["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+var MESI_EN=["January","February","March","April","May","June","July","August","September","October","November","December"];
 function two(n){ return (n<10?"0":"")+n; }
 function tick(){
   var d=new Date();
   document.getElementById("time").innerHTML = two(d.getHours())+":"+two(d.getMinutes())+'<small>'+two(d.getSeconds())+'</small>';
-  document.getElementById("date").innerHTML = GIORNI[d.getDay()]+" "+d.getDate()+" "+MESI[d.getMonth()];
+  if(window.LANG==="en"){
+    document.getElementById("date").innerHTML = GIORNI_EN[d.getDay()]+", "+MESI_EN[d.getMonth()]+" "+d.getDate();
+  } else {
+    document.getElementById("date").innerHTML = GIORNI[d.getDay()]+" "+d.getDate()+" "+MESI[d.getMonth()];
+  }
 }
 
 /* ============================================================
@@ -354,7 +368,13 @@ function startActs(){
   var html="";
   for(var k=0;k<CFG.activities.length;k++){
     var a=CFG.activities[k];
-    html+='<div class="act'+(k===0?' on':'')+'"><div class="ic">'+a.ic+'</div><div class="ti">'+a.ti+'</div><div class="de">'+a.de+'</div></div>';
+    var tiEn=a.ti_en||a.ti;
+    var deEn=a.de_en||a.de;
+    html+='<div class="act'+(k===0?' on':'')+'">'
+        + '<div class="ic">'+a.ic+'</div>'
+        + '<div class="ti i18n" data-it="'+escAttr(a.ti)+'" data-en="'+escAttr(tiEn)+'">'+(window.LANG==="en"?tiEn:a.ti)+'</div>'
+        + '<div class="de i18n" data-it="'+escAttr(a.de)+'" data-en="'+escAttr(deEn)+'">'+(window.LANG==="en"?deEn:a.de)+'</div>'
+        + '</div>';
   }
   wrap.innerHTML=html;
   var els=wrap.getElementsByTagName("div");
@@ -366,6 +386,11 @@ function startActs(){
     i=(i+1)%acts.length;
     acts[i].className="act on";
   }, CFG.actMs);
+}
+
+// Escape per inserire testo (che può contenere <b>, virgolette) negli attributi.
+function escAttr(str){
+  return String(str).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
 }
 
 /* ============================================================
@@ -506,12 +531,39 @@ function autoFit(){
   }
 }
 
+/* ============================================================
+   LINGUA: italiano di default, alternanza automatica ogni 2 min.
+   Ogni elemento con classe .i18n ha data-it e data-en.
+   applyLang() sostituisce il contenuto senza ricaricare la pagina.
+   ============================================================ */
+window.LANG = "it";
+function applyLang(lang){
+  window.LANG = lang;
+  var els = document.getElementsByClassName("i18n");
+  for(var i=0;i<els.length;i++){
+    var val = els[i].getAttribute("data-"+lang);
+    if(val!==null){ els[i].innerHTML = val; }
+  }
+  // aggiorno data e badge
+  var badge=document.getElementById("langBadge");
+  if(badge){ badge.innerHTML = (lang==="en"?"EN":"IT"); }
+  tick(); // riscrive la data nella lingua giusta
+  autoFit(); // il testo tradotto può cambiare l'altezza
+}
+function startLangRotation(){
+  setInterval(function(){
+    applyLang(window.LANG==="it" ? "en" : "it");
+  }, 60000); // 60 secondi
+}
+
 function boot(){
+  applyLang("it");            // parte in italiano
   tick(); setInterval(tick,1000);
   loadWeather(); setInterval(loadWeather, 600000);
   startSlides();
   startActs();
   checkUnlock();
+  startLangRotation();        // avvia l'alternanza IT/EN
   // L'auto-fit gira dopo che il contenuto è stato disegnato.
   autoFit();
   setTimeout(autoFit, 300);   // seconda passata: QR e meteo possono cambiare l'altezza
