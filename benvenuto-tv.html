@@ -104,6 +104,11 @@
     text-align:center;
   }
   .qbox img, .qbox canvas, .qbox table { display:inline-block; width:156px; height:156px; }
+  .backup-tbl { margin-top:10px; }
+  .qcell-mini { width:92px; }
+  .qbox-mini { width:80px; height:80px; padding:6px; }
+  .qbox-mini img, .qbox-mini canvas, .qbox-mini table { width:68px; height:68px; }
+  .wv-mini { font-size:18px; }
   .wcreds { padding-left:24px; overflow-wrap:break-word; word-wrap:break-word; }
   .wbig { font-family:Georgia,serif; font-size:30px; font-weight:bold; margin-bottom:14px; }
   .wrow { margin-bottom:10px; }
@@ -164,7 +169,7 @@
       <div class="clockbox">
         <div class="time" id="time">--:--</div>
         <div class="date" id="date">—</div>
-        <div class="wx" id="wx"><span class="i">·</span> <span id="wxt">--°C</span> <span class="d" id="wxd">—</span></div>
+        <div class="wx" id="wx"><span class="i" id="wxi">·</span> <span id="wxt">--°C</span> <span class="d" id="wxd">—</span></div>
       </div>
     </td>
   </tr>
@@ -182,6 +187,14 @@
               <div class="wrow"><div class="wk i18n" data-it="Rete" data-en="Network">Rete</div><div class="wv" id="wifiSsid"></div></div>
               <div class="wrow"><div class="wk i18n" data-it="Password" data-en="Password">Password</div><div class="wv" id="wifiPass"></div></div>
               <div class="whint i18n" data-it="Inquadra il QR con la fotocamera per connetterti al volo" data-en="Scan the QR code with your camera to connect instantly">Inquadra il QR con la fotocamera per connetterti al volo</div>
+            </td>
+          </tr></tbody></table>
+          <table class="wifi-tbl backup-tbl"><tbody><tr>
+            <td class="qcell qcell-mini"><div class="qbox qbox-mini" id="wifiQr2"></div></td>
+            <td class="wcreds">
+              <div class="wrow"><div class="wk i18n" data-it="Rete di riserva" data-en="Backup network">Rete di riserva</div><div class="wv wv-mini" id="wifiSsid2"></div></div>
+              <div class="wrow"><div class="wk i18n" data-it="Password riserva" data-en="Backup password">Password riserva</div><div class="wv wv-mini" id="wifiPass2"></div></div>
+              <div class="whint i18n" data-it="Solo se la principale non funziona" data-en="Only if the main network is not working">Solo se la principale non funziona</div>
             </td>
           </tr></tbody></table>
         </div>
@@ -254,9 +267,11 @@ var CFG = {
   slideMs: 8000,
   actMs: 8000,
   wifi: {
-    ssid: "EOLO - FRITZ!Box 7530 LI",
-    pass: "87061595423127173462",
+    ssid: "TP-Link",
+    pass: "Gitomo.1&yc",
     enc:  "WPA",
+    backupSsid: "EOLO - FRITZ!Box 7530 LI",
+    backupPass: "87061595423127173462",
     keyHash: "c5e648fd9c793275de03f2f1283ccda981c30a265c6ff3cd86ad04575543951f"
   },
   images: [
@@ -319,7 +334,9 @@ function loadWeather(){
           var t=Math.round(j.current.temperature_2m);
           var c=j.current.weather_code;
           var w=WMO[c]||["·",""];
-          document.getElementById("wx").innerHTML='<span class="i">'+w[0]+'</span> <span id="wxt">'+t+'°C</span> <span class="d">'+w[1]+'</span>';
+          document.getElementById("wxi").innerHTML=w[0];
+          document.getElementById("wxt").innerHTML=t+"°C";
+          document.getElementById("wxd").innerHTML=w[1];
         }catch(e){}
       }
     };
@@ -400,13 +417,24 @@ function escWifi(s){ return s.replace(/([\\;,:"])/g, "\\$1"); }
 
 function drawQr(){
   var qbox=document.getElementById("wifiQr");
-  if(!qbox) return;
-  qbox.innerHTML="";
-  var payload="WIFI:T:"+CFG.wifi.enc+";S:"+escWifi(CFG.wifi.ssid)+";P:"+escWifi(CFG.wifi.pass)+";;";
-  try{
-    new QRCode(qbox, { text:payload, width:156, height:156, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-  }catch(e){
-    qbox.innerHTML='<div style="width:156px;height:156px;color:#14110d;font-size:13px;padding:12px;">Vedi rete e password a lato</div>';
+  if(qbox){
+    qbox.innerHTML="";
+    var payload="WIFI:T:"+CFG.wifi.enc+";S:"+escWifi(CFG.wifi.ssid)+";P:"+escWifi(CFG.wifi.pass)+";;";
+    try{
+      new QRCode(qbox, { text:payload, width:156, height:156, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+    }catch(e){
+      qbox.innerHTML='<div style="width:156px;height:156px;color:#14110d;font-size:13px;padding:12px;">Vedi rete e password a lato</div>';
+    }
+  }
+  var qbox2=document.getElementById("wifiQr2");
+  if(qbox2 && CFG.wifi.backupSsid){
+    qbox2.innerHTML="";
+    var payload2="WIFI:T:"+CFG.wifi.enc+";S:"+escWifi(CFG.wifi.backupSsid)+";P:"+escWifi(CFG.wifi.backupPass)+";;";
+    try{
+      new QRCode(qbox2, { text:payload2, width:68, height:68, colorDark:"#14110d", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+    }catch(e){
+      qbox2.innerHTML='<div style="width:68px;height:68px;color:#14110d;font-size:9px;padding:4px;">Vedi rete a lato</div>';
+    }
   }
 }
 
@@ -415,6 +443,10 @@ function showWifi(){
   document.getElementById("wifiLocked").style.display="none";
   document.getElementById("wifiSsid").innerHTML=CFG.wifi.ssid;
   document.getElementById("wifiPass").innerHTML=CFG.wifi.pass;
+  var ssid2=document.getElementById("wifiSsid2");
+  var pass2=document.getElementById("wifiPass2");
+  if(ssid2) ssid2.innerHTML=CFG.wifi.backupSsid||"";
+  if(pass2) pass2.innerHTML=CFG.wifi.backupPass||"";
   drawQr();
 }
 
@@ -578,8 +610,12 @@ if(window.addEventListener){ window.addEventListener("resize", autoFit, false); 
 // Ridisegna il QR SOLO se è davvero sparito (usato dal timer periodico).
 function ensureQr(){
   var qbox=document.getElementById("wifiQr");
+  var qbox2=document.getElementById("wifiQr2");
   var unlocked=document.getElementById("wifiUnlocked");
-  if(unlocked && unlocked.style.display!=="none" && qbox && qbox.childNodes.length===0){ drawQr(); }
+  if(!unlocked || unlocked.style.display==="none") return;
+  var mainMissing = qbox && qbox.childNodes.length===0;
+  var backupMissing = CFG.wifi.backupSsid && qbox2 && qbox2.childNodes.length===0;
+  if(mainMissing || backupMissing){ drawQr(); }
 }
 
 // Al risveglio dallo standby: ridisegna il QR se serve e riadatta il layout.
