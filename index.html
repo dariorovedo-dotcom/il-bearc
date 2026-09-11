@@ -23,8 +23,9 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "VacationRental",
-  "additionalType": "https://schema.org/LodgingBusiness",
+  "@type": "LodgingBusiness",
+  "@id": "https://www.ilbearc.com/#ilbearc",
+  "additionalType": "https://schema.org/VacationRental",
   "identifier": "ilbearc-001",
   "name": "Il Bearč — Casa Vacanze in Carnia",
   "description": "Casa vacanze indipendente a Feltrone di Socchieve, nelle Alpi Carniche, a 696 metri di altitudine. 2 camere da letto, 1 bagno, fino a 4 ospiti, giardino recintato, Wi‑Fi, aria condizionata, cucina attrezzata. A 30 km dallo Zoncolan.",
@@ -62,6 +63,21 @@
     "images/Bagno.jpg",
     "images/Giardino.jpg"
   ],
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Wi‑Fi gratuito", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Stufa a pellet", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Lavastoviglie", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Lavatrice", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "TV satellitare", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Giardino recintato", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Terrazza", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Vista montagna", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Biancheria fornita", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Lettino per bambini su richiesta", "value": true }
+  ],
   "containsPlace": {
     "@type": "House",
     "additionalType": "https://schema.org/Accommodation",
@@ -69,10 +85,10 @@
     "numberOfRooms": 2,
     "numberOfBedrooms": 2,
     "occupancy": {
-  "@type": "QuantitativeValue",
-  "value": 4,
-  "maxValue": 4
-  },
+      "@type": "QuantitativeValue",
+      "value": 4,
+      "maxValue": 4
+    },
     "floorSize": {
       "@type": "QuantitativeValue",
       "value": 70,
@@ -91,20 +107,6 @@
         "typeOfBed": "Letto singolo",
         "numberOfBeds": 2
       }
-    ],
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Wi‑Fi gratuito", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Stufa a pellet", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Lavastoviglie", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Lavatrice", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "TV satellitare", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Giardino recintato", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Terrazza", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Biancheria fornita", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Lettino per bambini su richiesta", "value": true }
     ]
   },
   "checkinTime": "17:00",
@@ -1499,67 +1501,6 @@
       }
     }
   ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "@id": "https://www.ilbearc.com/#ilbearc",
-  "name": "Casa Vacanze Il Bearč",
-  "description": "Casa vacanze indipendente a Feltrone, Socchieve (Carnia, Friuli Venezia Giulia) con 2 camere da letto, fino a 4 ospiti, giardino recintato, vista sulle Alpi Carniche, self check-in tramite cassetta portachiavi, Wi-Fi veloce e cucina completamente attrezzata.",
-  "url": "https://www.ilbearc.com/",
-  "telephone": "+393299451083",
-  "email": "dario.rovedo@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Via Col Gentile 20a",
-    "addressLocality": "Feltrone",
-    "addressRegion": "UD",
-    "postalCode": "33020",
-    "addressCountry": "IT"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 46.418573,
-    "longitude": 12.835759,
-    "elevation": 696
-  },
-  "amenityFeature": [
-    { "@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuito", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Giardino recintato", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Vista montagna", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Parcheggio pubblico gratuito nelle vicinanze", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata con lavastoviglie e lavatrice", "value": true }
-  ],
-  "containsPlace": {
-    "@type": "House",
-    "name": "Casa Vacanze Il Bearč",
-    "numberOfRooms": 2,
-    "occupancy": {
-      "@type": "QuantitativeValue",
-      "maxValue": 4
-    },
-    "floorSize": {
-      "@type": "QuantitativeValue",
-      "value": 70,
-      "unitCode": "MTK"
-    },
-    "numberOfBathroomsTotal": 1,
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Wi‑Fi gratuito", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Lavastoviglie", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Lavatrice", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "TV satellitare", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Giardino recintato", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Terrazza", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true }
-    ]
-  }
 }
 </script>
 <style>
