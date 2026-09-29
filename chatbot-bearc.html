@@ -5,11 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1e3a2f">
 <title>Assistente — Il Bearč</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
 <style>
+  @font-face { font-family:'Jost'; font-style:normal; font-weight:300; font-display:swap; src:url('fonts/jost-300.woff2') format('woff2'); }
+  @font-face { font-family:'Jost'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/jost-400.woff2') format('woff2'); }
+  @font-face { font-family:'Jost'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/jost-500.woff2') format('woff2'); }
+  @font-face { font-family:'Playfair Display'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/playfair-display-400.woff2') format('woff2'); }
+  @font-face { font-family:'Playfair Display'; font-style:italic; font-weight:400; font-display:swap; src:url('fonts/playfair-display-400-italic.woff2') format('woff2'); }
+  @font-face { font-family:'Playfair Display'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/playfair-display-600.woff2') format('woff2'); }
+  .chat-notice { font-size:.68rem; color:var(--stone); text-align:center; padding:0 .9rem .6rem; line-height:1.4; background:var(--snow); flex-shrink:0; }
+  .chat-notice a { color:var(--moss); }
   :root {
     --forest: #1e3a2f;
     --moss: #3d6b4f;
@@ -444,6 +449,12 @@
       id="chat-send-btn"
       class="chat-send-btn"
       aria-label="Invia messaggio">➤</button>
+  </div>
+
+  <div class="chat-notice">
+    Assistente basato su IA: può sbagliare. Non inserire dati personali.
+    I messaggi liberi sono elaborati da Vercel e OpenAI.
+    <a href="privacy.html" target="_top">Privacy</a>
   </div>
 
 </div>
@@ -1610,7 +1621,6 @@ init();
 </script>
 </body>
 </html>
-
 
 
 
