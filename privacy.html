@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index,follow">
+<title>Privacy — Il Bearč</title>
+<style>
+  @font-face{font-family:'Jost';font-style:normal;font-weight:300;font-display:swap;src:url('fonts/jost-300.woff2') format('woff2');}
+  @font-face{font-family:'Jost';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/jost-400.woff2') format('woff2');}
+  @font-face{font-family:'Jost';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/jost-500.woff2') format('woff2');}
+  @font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/playfair-display-600.woff2') format('woff2');}
+  :root{--forest:#1e3a2f;--moss:#3d6b4f;--cream:#f5f0e8;--snow:#fafaf8;--stone:#8a7e6e;--accent:#c8a96e;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Jost',sans-serif;background:var(--snow);color:var(--forest);line-height:1.7;font-weight:300}
+  header{background:var(--forest);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+  header a{color:var(--accent);text-decoration:none;font-weight:500}
+  .lang button{background:none;border:none;color:#f5f0e8;cursor:pointer;font:inherit;font-size:.85rem;letter-spacing:.08em;padding:.3rem .5rem;border-radius:4px}
+  .lang button.active{background:rgba(255,255,255,.15);font-weight:500}
+  main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+  h1{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:.4rem}
+  h2{font-family:'Playfair Display',serif;font-size:1.2rem;margin:2rem 0 .5rem;color:var(--moss)}
+  p,li{font-size:.98rem;margin-bottom:.7rem}
+  ul{padding-left:1.3rem}
+  a{color:var(--moss)}
+  .updated{color:var(--stone);font-size:.85rem;margin-bottom:1.5rem}
+  .todo{background:#fff3cd;border-radius:3px;padding:0 .3rem;font-weight:400}
+  section.l{display:none}
+  section.l.on{display:block}
+  footer{text-align:center;padding:1.5rem;color:var(--stone);font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html">← Il Bearč</a>
+  <div class="lang">
+    <button data-l="it" class="active">IT</button><button data-l="en">EN</button><button data-l="de">DE</button>
+  </div>
+</header>
+<main>
+
+<!-- ============ ITALIANO ============ -->
+<section class="l on" id="l-it">
+  <h1>Informativa sulla privacy</h1>
+  <p class="updated">Ultimo aggiornamento: 29 settembre 2026 · ai sensi degli artt. 13-14 del Regolamento (UE) 2016/679 (GDPR)</p>
+
+  <h2>1. Titolare del trattamento</h2>
+  <p>Dario Rovedo, titolare di Casa Vacanze Il Bearč (ilbearc.com), Via Pietro Zorutti 13, 33028 Tolmezzo (UD) · <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a> · +39 329 945 1083 · Codice fiscale: RVDDRA61R11L195B</p>
+
+  <h2>2. Quali dati trattiamo e perché</h2>
+  <p><strong>Navigazione.</strong> Quando visiti il sito, i server che lo ospitano e lo distribuiscono (Vercel) registrano dati tecnici come indirizzo IP, data e ora, pagina richiesta e browser. Finalità: sicurezza e funzionamento del sito. Base giuridica: legittimo interesse (art. 6.1.f). Tempi di conservazione: quelli stabiliti dal fornitore secondo la propria informativa.</p>
+  <p><strong>Contatti.</strong> Se ci scrivi o telefoniamo, usiamo i dati che ci fornisci per risponderti e gestire la tua richiesta (art. 6.1.b). Li conserviamo per il tempo necessario a gestire la richiesta e i relativi obblighi di legge.</p>
+  <p><strong>Disponibilità e prenotazione.</strong> Il sito non raccoglie i dati di prenotazione. Il pulsante «Verifica la disponibilità» apre in una nuova scheda il sistema Avaibook, passando solo date e numero di ospiti. La prenotazione e il pagamento sono gestiti da Avaibook, che agisce con la propria informativa. Lo stesso vale per Booking.com e TripAdvisor, se scegli di prenotare o consultare le recensioni lì.</p>
+  <p><strong>Assistente virtuale.</strong> Le risposte ai pulsanti e alle parole chiave vengono elaborate nel tuo browser. Se scrivi una domanda libera che non corrisponde a nessuna parola chiave, il testo (massimo 500 caratteri) viene inviato al nostro servizio su Vercel e da lì a OpenAI (modello gpt-4o-mini), che genera la risposta. A OpenAI inviamo solo quel testo, non il tuo IP. Il codice del nostro servizio non salva né registra il testo dei messaggi; l'IP viene tenuto in memoria temporanea solo per limitare le richieste (20 al minuto). Ti chiediamo di <strong>non inserire dati personali</strong>. Le risposte sono generate da un sistema di intelligenza artificiale e possono contenere errori: per informazioni importanti contatta direttamente Dario.</p>
+  <p><strong>Meteo.</strong> Solo se lo richiedi nell'assistente, il tuo browser si collega a Open-Meteo, che riceve il tuo indirizzo IP.</p>
+  <p><strong>Mappe.</strong> Le mappe di OpenStreetMap (nella home e nella pagina Trekking) vengono caricate solo dopo che premi «Carica la mappa»; a quel punto OpenStreetMap riceve il tuo indirizzo IP. La libreria Leaflet della pagina Trekking è servita dal nostro stesso sito.</p>
+
+  <h2>3. Cookie e archiviazione locale</h2>
+  <p>Il codice delle pagine (principale, Trekking, Cucina) e dell'assistente non imposta cookie e non include strumenti di analisi o pubblicità. Salva nel tuo browser solo due dati tecnici: la lingua scelta (<code>localStorage</code>, «bearc-lang») e il fatto che hai già visto l'introduzione (<code>sessionStorage</code>, «bearc_intro»). Puoi cancellarli dalle impostazioni del browser.</p>
+
+  <h2>4. Destinatari e trasferimenti fuori dall'UE</h2>
+  <p>I dati possono essere trattati dai fornitori indicati sopra: Vercel (hosting), OpenAI (assistente virtuale), Open-Meteo, OpenStreetMap Foundation, Avaibook. Alcuni hanno sede o infrastrutture fuori dall'UE, in particolare negli Stati Uniti. Vercel indica nella propria informativa la certificazione EU-U.S. Data Privacy Framework e l'uso di clausole contrattuali standard. Per gli altri fornitori si rimanda alle rispettive informative sulla privacy. </p>
+
+  <h2>5. I tuoi diritti</h2>
+  <p>Puoi chiedere accesso, rettifica, cancellazione, limitazione, portabilità e opporti al trattamento scrivendo a <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a>. Hai anche il diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener" target="_blank">garanteprivacy.it</a>).</p>
+</section>
+
+<!-- ============ ENGLISH ============ -->
+<section class="l" id="l-en">
+  <h1>Privacy notice</h1>
+  <p class="updated">Last updated: 29 September 2026 · pursuant to Articles 13-14 of Regulation (EU) 2016/679 (GDPR)</p>
+
+  <h2>1. Data controller</h2>
+  <p>Dario Rovedo, owner of Casa Vacanze Il Bearč (ilbearc.com), Via Pietro Zorutti 13, 33028 Tolmezzo (UD), Italy · <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a> · +39 329 945 1083 · Tax code (codice fiscale): RVDDRA61R11L195B</p>
+
+  <h2>2. What data we process and why</h2>
+  <p><strong>Browsing.</strong> When you visit the site, the servers that host and deliver it (Vercel) record technical data such as IP address, date and time, requested page and browser. Purpose: security and operation of the site. Legal basis: legitimate interest (Art. 6(1)(f)). Retention: as set by the provider in its own privacy notice.</p>
+  <p><strong>Contact.</strong> If you write or call us, we use the data you provide to reply and handle your request (Art. 6(1)(b)). We keep it for as long as needed to handle the request and meet legal obligations.</p>
+  <p><strong>Availability and booking.</strong> This site does not collect booking data. The «Check availability» button opens the Avaibook system in a new tab, passing only dates and number of guests. Booking and payment are handled by Avaibook under its own privacy notice. The same applies to Booking.com and TripAdvisor if you choose to book or read reviews there.</p>
+  <p><strong>Virtual assistant.</strong> Answers to buttons and keywords are processed in your browser. If you type a free question that matches no keyword, the text (up to 500 characters) is sent to our service on Vercel and from there to OpenAI (model gpt-4o-mini), which generates the reply. We send OpenAI only that text, not your IP. The code of our service does not store or log the text of messages; your IP is held in temporary memory only to limit requests (20 per minute). Please <strong>do not enter personal data</strong>. Replies are generated by an AI system and may contain errors: for important information, contact Dario directly.</p>
+  <p><strong>Weather.</strong> Only if you request it in the assistant, your browser connects to Open-Meteo, which receives your IP address.</p>
+  <p><strong>Maps.</strong> The OpenStreetMap maps (on the home page and the Trekking page) load only after you press «Load map»; at that point OpenStreetMap receives your IP address. The Leaflet library used on the Trekking page is served from our own site.</p>
+
+  <h2>3. Cookies and local storage</h2>
+  <p>The code of the pages (main, Trekking, Cucina) and of the assistant sets no cookies and includes no analytics or advertising tools. It stores only two technical items in your browser: your chosen language (<code>localStorage</code>, "bearc-lang") and whether you have already seen the intro (<code>sessionStorage</code>, "bearc_intro"). You can delete them in your browser settings.</p>
+
+  <h2>4. Recipients and transfers outside the EU</h2>
+  <p>Data may be processed by the providers listed above: Vercel (hosting), OpenAI (virtual assistant), Open-Meteo, OpenStreetMap Foundation, Avaibook. Some are based or operate infrastructure outside the EU, notably in the United States. Vercel states in its privacy notice that it is certified under the EU-U.S. Data Privacy Framework and uses standard contractual clauses. For the other providers, please refer to their respective privacy notices. </p>
+
+  <h2>5. Your rights</h2>
+  <p>You may request access, rectification, erasure, restriction, portability and object to processing by writing to <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a>. You also have the right to lodge a complaint with the Italian data protection authority (<a href="https://www.garanteprivacy.it" rel="noopener" target="_blank">garanteprivacy.it</a>) or your local authority.</p>
+</section>
+
+<!-- ============ DEUTSCH ============ -->
+<section class="l" id="l-de">
+  <h1>Datenschutzerklärung</h1>
+  <p class="updated">Stand: 29. September 2026 · gemäß Art. 13-14 der Verordnung (EU) 2016/679 (DSGVO)</p>
+
+  <h2>1. Verantwortlicher</h2>
+  <p>Dario Rovedo, Inhaber von Casa Vacanze Il Bearč (ilbearc.com), Via Pietro Zorutti 13, 33028 Tolmezzo (UD), Italien · <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a> · +39 329 945 1083 · Steuernummer (Codice fiscale): RVDDRA61R11L195B</p>
+
+  <h2>2. Welche Daten wir verarbeiten und warum</h2>
+  <p><strong>Besuch der Website.</strong> Beim Aufruf der Seite protokollieren die Server, die sie hosten und ausliefern (Vercel), technische Daten wie IP-Adresse, Datum und Uhrzeit, aufgerufene Seite und Browser. Zweck: Sicherheit und Betrieb der Website. Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f). Speicherdauer: gemäß der Datenschutzerklärung des Anbieters.</p>
+  <p><strong>Kontakt.</strong> Wenn Sie uns schreiben oder anrufen, verwenden wir Ihre Angaben, um zu antworten und Ihre Anfrage zu bearbeiten (Art. 6 Abs. 1 lit. b). Wir speichern sie so lange, wie es für die Bearbeitung und gesetzliche Pflichten nötig ist.</p>
+  <p><strong>Verfügbarkeit und Buchung.</strong> Diese Website erhebt keine Buchungsdaten. Die Schaltfläche «Verfügbarkeit prüfen» öffnet das System Avaibook in einem neuen Tab und übergibt nur Daten und Gästezahl. Buchung und Zahlung werden von Avaibook mit eigener Datenschutzerklärung abgewickelt. Dasselbe gilt für Booking.com und TripAdvisor.</p>
+  <p><strong>Virtueller Assistent.</strong> Antworten auf Schaltflächen und Stichwörter werden in Ihrem Browser verarbeitet. Wenn Sie eine freie Frage eingeben, die zu keinem Stichwort passt, wird der Text (max. 500 Zeichen) an unseren Dienst bei Vercel und von dort an OpenAI (Modell gpt-4o-mini) gesendet, das die Antwort erzeugt. An OpenAI senden wir nur diesen Text, nicht Ihre IP. Der Code unseres Dienstes speichert oder protokolliert den Nachrichtentext nicht; Ihre IP wird nur kurzzeitig im Arbeitsspeicher gehalten, um Anfragen zu begrenzen (20 pro Minute). Bitte <strong>geben Sie keine personenbezogenen Daten ein</strong>. Die Antworten stammen von einem KI-System und können Fehler enthalten: bei wichtigen Fragen wenden Sie sich direkt an Dario.</p>
+  <p><strong>Wetter.</strong> Nur auf Ihre Anfrage im Assistenten verbindet sich Ihr Browser mit Open-Meteo, das Ihre IP-Adresse erhält.</p>
+  <p><strong>Karten.</strong> Die OpenStreetMap-Karten (auf der Startseite und der Trekking-Seite) werden erst geladen, nachdem Sie «Karte laden» drücken; dann erhält OpenStreetMap Ihre IP-Adresse. Die auf der Trekking-Seite verwendete Bibliothek Leaflet wird von unserer eigenen Website ausgeliefert.</p>
+
+  <h2>3. Cookies und lokaler Speicher</h2>
+  <p>Der Code der Seiten (Haupt-, Trekking- und Cucina-Seite) und des Assistenten setzt keine Cookies und enthält keine Analyse- oder Werbewerkzeuge. Im Browser werden nur zwei technische Werte gespeichert: die gewählte Sprache (<code>localStorage</code>, «bearc-lang») und ob Sie das Intro schon gesehen haben (<code>sessionStorage</code>, «bearc_intro»). Sie können sie in den Browsereinstellungen löschen.</p>
+
+  <h2>4. Empfänger und Übermittlung außerhalb der EU</h2>
+  <p>Daten können von den oben genannten Anbietern verarbeitet werden: Vercel (Hosting), OpenAI (Assistent), Open-Meteo, OpenStreetMap Foundation, Avaibook. Einige haben ihren Sitz oder ihre Infrastruktur außerhalb der EU, insbesondere in den USA. Vercel gibt in seiner Datenschutzerklärung an, nach dem EU-U.S. Data Privacy Framework zertifiziert zu sein und Standardvertragsklauseln zu verwenden. Für die übrigen Anbieter wird auf deren jeweilige Datenschutzerklärungen verwiesen.</p>
+
+  <h2>5. Ihre Rechte</h2>
+  <p>Sie können Auskunft, Berichtigung, Löschung, Einschränkung und Übertragbarkeit verlangen und der Verarbeitung widersprechen, per E-Mail an <a href="mailto:dario.rovedo@gmail.com">dario.rovedo@gmail.com</a>. Sie haben außerdem das Recht auf Beschwerde bei der italienischen Datenschutzbehörde (<a href="https://www.garanteprivacy.it" rel="noopener" target="_blank">garanteprivacy.it</a>) oder Ihrer örtlichen Aufsichtsbehörde.</p>
+</section>
+
+</main>
+<footer>Il Bearč · Feltrone, Socchieve (UD) · CIN IT030110C2TSFD92GI</footer>
+
+<script>
+(function(){
+  var langs=['it','en','de'];
+  function show(l){
+    if(langs.indexOf(l)<0) l='it';
+    langs.forEach(function(x){document.getElementById('l-'+x).classList.toggle('on',x===l)});
+    document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l)});
+    document.documentElement.setAttribute('lang',l);
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click',function(){show(b.getAttribute('data-l'))});
+  });
+  var saved=null; try{saved=localStorage.getItem('bearc-lang');}catch(e){}
+  show(saved||'it');
+})();
+</script>
+</body>
+</html>
