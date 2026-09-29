@@ -2141,12 +2141,10 @@
     <div class="location-grid">
       <div class="map-placeholder">
   <div class="map-wrapper">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=12.82568%2C46.41345%2C12.84568%2C46.42345&amp;layer=mapnik&amp;marker=46.418573%2C12.835759"
-      height="360" style="border:0; width:100%;"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Mappa - Casa Vacanze Il Bearč a Feltrone, Socchieve">
-    </iframe>
+    <div id="map-box" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;min-height:300px;padding:1.5rem;text-align:center">
+      <button type="button" class="btn-primary" onclick="loadMap()" data-i18n="posizione.mapbtn">Carica la mappa</button>
+      <p data-i18n="posizione.mapnote" style="font-size:.8rem;color:var(--stone);line-height:1.5;margin:0">Caricando la mappa, OpenStreetMap riceve il tuo indirizzo IP. <a href="privacy.html" style="color:var(--moss)">Privacy</a></p>
+    </div>
     <p data-i18n="posizione.p1" class="map-link">
       <a href="https://www.openstreetmap.org/?mlat=46.418573&amp;mlon=12.835759#map=17/46.418573/12.835759"
          target="_blank" rel="noopener noreferrer">
@@ -2530,6 +2528,7 @@
   <p class="cin-code">CODICE CIN: IT030110C2TSFD92GI</p>
   <p style="margin-top:1rem;">Via Col Gentile 20a — Feltrone, Socchieve (UD) 33020<br>
   <a href="tel:+393299451083">+39 329 945 1083</a> · <a id="email-link-footer" href="javascript:void(0)">[email&#160;protected]</a> </p>
+  <p style="margin-top:.8rem;font-size:.8rem"><a href="privacy.html" data-i18n="footer.privacy">Privacy</a></p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -2868,6 +2867,19 @@
   }
   requestAnimationFrame(frame);
 })();
+</script>
+<script>
+/* Mappa OpenStreetMap: si carica solo dopo il click dell'utente */
+function loadMap(){
+  var b=document.getElementById('map-box');
+  if(!b) return;
+  var fr=document.createElement('iframe');
+  fr.src='https://www.openstreetmap.org/export/embed.html?bbox=12.82568%2C46.41345%2C12.84568%2C46.42345&layer=mapnik&marker=46.418573%2C12.835759';
+  fr.title='Mappa - Casa Vacanze Il Bearč a Feltrone, Socchieve';
+  fr.referrerPolicy='strict-origin-when-cross-origin';
+  fr.style.cssText='border:0;width:100%;height:360px;display:block';
+  b.replaceWith(fr);
+}
 </script>
 <!-- ==================== BEARC-I18N: script ==================== -->
 <script src="i18n/i18n.js" defer></script>
