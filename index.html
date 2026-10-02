@@ -242,6 +242,29 @@
     position: relative;
   }
 
+  /* HERO VIDEO (clip in loop, solo sfondo) */
+  .hero-video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(15,30,20,0.6) 0%, rgba(20,40,30,0.5) 55%, rgba(15,30,20,0.35) 100%);
+    pointer-events: none;
+  }
+  .hero > *:not(.hero-video) { z-index: 2; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+    .hero::before { display: none; }
+  }
+
   .hero-badge {
     display: inline-block;
     background: rgba(200,169,110,0.25);
@@ -1556,6 +1579,10 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero.jpg" aria-hidden="true" tabindex="-1">
+    <source src="bearc-hero.webm" type="video/webm">
+    <source src="bearc-hero.mp4" type="video/mp4">
+  </video>
   <span data-i18n="home.span1" class="hero-badge">Carnia · Friuli Venezia Giulia · 696m</span>
   <h1>Il <em>Bearč</em></h1>
   <p data-i18n="home.p1" class="hero-sub">Casa Vacanze a Feltrone · Socchieve, Carnia (UD)</p>
