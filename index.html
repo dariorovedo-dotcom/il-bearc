@@ -1579,9 +1579,9 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero.jpg" aria-hidden="true" tabindex="-1">
-    <source src="bearc-hero.webm" type="video/webm">
-    <source src="bearc-hero.mp4" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-v2.jpg" aria-hidden="true" tabindex="-1">
+    <source src="bearc-hero-v2.webm" type="video/webm">
+    <source src="bearc-hero-v2.mp4" type="video/mp4">
   </video>
   <span data-i18n="home.span1" class="hero-badge">Carnia · Friuli Venezia Giulia · 696m</span>
   <h1>Il <em>Bearč</em></h1>
@@ -1705,14 +1705,7 @@
   </div>
   <style>
     #tour .tour-video { margin-top: 2rem; max-width: 960px; margin-left: auto; margin-right: auto; }
-    #tour .tour-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; object-position: top; border-radius: 12px; background: #000; }
-    /* Desktop con mouse: fascia sotto il filmato per i comandi, così non coprono le scritte in basso */
-    @media (hover: hover) and (pointer: fine) and (min-width: 700px) {
-      @supports (width: 1cqw) {
-        #tour .tour-video { container-type: inline-size; }
-        #tour .tour-video video { height: calc(56.25cqw + 56px); aspect-ratio: auto; }
-      }
-    }
+    #tour .tour-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 12px; background: #000; }
   </style>
 </section>
 
