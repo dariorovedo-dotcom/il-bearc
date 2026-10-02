@@ -1663,6 +1663,25 @@
   </div>
 </section>
 
+<!-- TOUR VIDEO -->
+<section id="tour">
+  <div class="container">
+    <p class="section-label">Un giro in casa</p>
+    <h2 class="section-title">Scopri il Bearč<br>prima di arrivare</h2>
+    <div class="tour-video">
+      <video controls preload="none" playsinline poster="tour.jpg" width="1280" height="720"
+             aria-label="Video tour della casa vacanze Il Bearč a Feltrone">
+        <source src="https://res.cloudinary.com/j7b75f7o/video/upload/bearc-tour.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+  </div>
+  <style>
+    #tour .tour-video { margin-top: 2rem; max-width: 960px; margin-left: auto; margin-right: auto; }
+    #tour .tour-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 12px; background: #000; }
+  </style>
+</section>
+
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
   <button id="lb-prev" onclick="event.stopPropagation(); lbMove(-1)">&#8249;</button>
