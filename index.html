@@ -1705,7 +1705,14 @@
   </div>
   <style>
     #tour .tour-video { margin-top: 2rem; max-width: 960px; margin-left: auto; margin-right: auto; }
-    #tour .tour-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 12px; background: #000; }
+    #tour .tour-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; object-position: top; border-radius: 12px; background: #000; }
+    /* Desktop con mouse: fascia sotto il filmato per i comandi, così non coprono le scritte in basso */
+    @media (hover: hover) and (pointer: fine) and (min-width: 700px) {
+      @supports (width: 1cqw) {
+        #tour .tour-video { container-type: inline-size; }
+        #tour .tour-video video { height: calc(56.25cqw + 56px); aspect-ratio: auto; }
+      }
+    }
   </style>
 </section>
 
