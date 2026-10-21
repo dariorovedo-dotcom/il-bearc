@@ -215,7 +215,7 @@
     --sage: #7aaa8a;
     --cream: #f5f0e8;
     --warm: #e8dfc8;
-    --stone: #8a7e6e;
+    --stone: #6e6456;
     --bark: #5c4a35;
     --snow: #fafaf8;
     --accent: #c8a96e;
@@ -235,7 +235,7 @@
     min-height: 100vh;
     background:
       linear-gradient(to bottom, rgba(15,30,20,0.55) 0%, rgba(30,58,47,0.3) 60%, rgba(245,240,232,0) 100%),
-      url('images/Vista-dall-esterno.jpg') center/cover no-repeat;
+      #1e3a2f; /* la foto di sfondo arriva dal poster del video; quella sotto serve solo se il video è nascosto */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,6 +268,7 @@
   @media (prefers-reduced-motion: reduce) {
     .hero-video { display: none; }
     .hero::before { display: none; }
+    .hero { background: linear-gradient(to bottom, rgba(15,30,20,0.55) 0%, rgba(30,58,47,0.3) 60%, rgba(245,240,232,0) 100%), url('images/Vista-dall-esterno.jpg') center/cover no-repeat; }
   }
 
   .hero-badge {
@@ -665,7 +666,7 @@
   .activity-card:hover { background: rgba(255,255,255,0.09); }
   .activity-icon { font-size: 1.6rem; flex-shrink: 0; }
   .activity-card h3 { color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 0.3rem; }
-  .activity-card p { color: rgba(245,240,232,0.6); font-size: 0.88rem; line-height: 1.6; font-weight: 300; }
+  .activity-card p { color: rgba(245,240,232,0.75); font-size: 0.88rem; line-height: 1.6; font-weight: 300; }
 
   /* BOOKING */
   #prenotazione { background: var(--warm); }
@@ -821,7 +822,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  .cal-header h4 {
+  .cal-header h3 {
     font-family: 'Playfair Display', serif;
     color: var(--cream);
     font-size: 1.1rem;
@@ -854,7 +855,7 @@
     text-align: center;
     font-size: 0.7rem;
     letter-spacing: 0.08em;
-    color: rgba(122,170,138,0.8);
+    color: #9cc5a9;
     text-transform: uppercase;
     padding: 0.3rem 0;
   }
@@ -1539,14 +1540,14 @@
 #introBearc.done{opacity:0;pointer-events:none;}
 #introBearc .ib-fog{position:absolute;left:-30%;width:160%;height:70%;pointer-events:none;
   background:radial-gradient(closest-side, rgba(245,240,232,.55), rgba(245,240,232,.18) 55%, transparent 78%);
-  filter:blur(14px);opacity:0;}
+  filter:blur(14px);opacity:0;will-change:opacity,transform;}
 #introBearc .ib-fog1{top:8%;height:60%;}
 #introBearc .ib-fog2{top:32%;height:66%;}
 #introBearc .ib-fog3{top:0;height:80%;}
 #introBearc .ib-sun{position:absolute;top:26%;left:50%;transform:translateX(-50%);width:70%;height:60%;
   background:radial-gradient(closest-side, rgba(240,192,72,.20), transparent 70%);opacity:0;pointer-events:none;filter:blur(20px);}
 #introBearc .ib-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.04);
-  width:min(340px,72vw);text-align:center;opacity:0;filter:blur(8px);}
+  width:min(340px,72vw);text-align:center;opacity:.35;filter:blur(4px);}
 #introBearc .ib-logo img{width:100%;display:block;filter:drop-shadow(0 6px 30px rgba(0,0,0,.45));}
 #introBearc .ib-welcome{position:absolute;top:calc(50% + min(150px,32vw));left:50%;transform:translateX(-50%);
   width:90%;text-align:center;opacity:0;font-family:'Playfair Display',serif;}
@@ -1584,9 +1585,9 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-hd.jpg" aria-hidden="true" tabindex="-1">
-    <source src="bearc-hero-hd.webm" type="video/webm">
-    <source src="bearc-hero-hd.mp4" type="video/mp4">
+  <video class="hero-video" muted loop playsinline preload="none" poster="hero-hd.jpg" aria-hidden="true" tabindex="-1">
+    <source data-src="bearc-hero-hd.webm" type="video/webm">
+    <source data-src="bearc-hero-hd.mp4" type="video/mp4">
   </video>
   <span data-i18n="home.span1" class="hero-badge">Carnia · Friuli Venezia Giulia · 696m</span>
   <h1>Il <em>Bearč</em></h1>
@@ -1729,7 +1730,7 @@
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
   <button id="lb-prev" onclick="event.stopPropagation(); lbMove(-1)">&#8249;</button>
-  <img id="lb-img" src="#" alt="Foto della casa vacanze Il Bearč" decoding="async">
+  <img id="lb-img" alt="Foto della casa vacanze Il Bearč" decoding="async">
   <span id="lb-caption"></span>
   <button id="lb-next" onclick="event.stopPropagation(); lbMove(1)">&#8250;</button>
   <button id="lb-close" onclick="closeLightbox()">&#10005;</button>
@@ -2128,23 +2129,23 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label data-i18n="prenotazione.label1">Arrivo *</label>
+            <label for="checkin" data-i18n="prenotazione.label1">Arrivo *</label>
             <input type="date" id="checkin" required>
           </div>
           <div class="form-group">
-            <label data-i18n="prenotazione.label2">Partenza *</label>
+            <label for="checkout" data-i18n="prenotazione.label2">Partenza *</label>
             <input type="date" id="checkout" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label data-i18n="prenotazione.label3">Adulti</label>
+            <label for="adults" data-i18n="prenotazione.label3">Adulti</label>
             <select id="adults">
               <option>1</option><option selected>2</option><option>3</option><option>4</option>
             </select>
           </div>
           <div class="form-group">
-            <label data-i18n="prenotazione.label4">Bambini</label>
+            <label for="children" data-i18n="prenotazione.label4">Bambini</label>
             <select id="children">
               <option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
             </select>
@@ -2511,13 +2512,15 @@
 </div>
 
 <div class="guida-panel" id="guida-panel">
-<iframe src="chatbot-bearc.html" id="guida-iframe" title="Guida della zona — Il Bearč" scrolling="yes" style="width:100%;height:100%;border:0;display:block;"></iframe>
+<iframe data-src="chatbot-bearc.html" id="guida-iframe" title="Guida della zona — Il Bearč" scrolling="yes" style="width:100%;height:100%;border:0;display:block;"></iframe>
 </div>
 
 <script>
   let guidaOpen = false;
   function toggleGuida() {
   guidaOpen = !guidaOpen;
+  var gf = document.getElementById('guida-iframe');
+  if (guidaOpen && gf && !gf.getAttribute('src')) gf.src = gf.dataset.src;
   document.getElementById('guida-panel').classList.toggle('open', guidaOpen);
   document.getElementById('fab-guida-label').textContent = guidaOpen ? '✕ Chiudi guida' : '🏔️ Guida della zona';
   // Blocca lo scroll della pagina quando il pannello è aperto (mobile)
@@ -2730,7 +2733,7 @@
       hdr.className = 'cal-header';
       hdr.innerHTML = `
         ${m === 0 ? `<button class="cal-nav" onclick="calPrev()">‹</button>` : '<span></span>'}
-        <h4>${window.BEARC_CAL.months[month]} ${year}</h4>
+        <h3>${window.BEARC_CAL.months[month]} ${year}</h3>
         ${m === 1 ? `<button class="cal-nav" onclick="calNext()">›</button>` : '<span></span>'}
       `;
       wrap.appendChild(hdr);
@@ -2915,8 +2918,8 @@
   skip.addEventListener('click',finish);
   if(seen){ finish(); return; }
   if(reduce){ logo.style.opacity='1';logo.style.filter='none';logo.style.transform='translate(-50%,-50%)';
-    welcome.style.opacity='1'; setTimeout(finish,3200); return; }
-  var mobile=window.innerWidth<640, DUR=mobile?4200:7000, t0=null;
+    welcome.style.opacity='1'; setTimeout(finish,1500); return; }
+  var mobile=window.innerWidth<640, DUR=mobile?2200:3600, t0=null;
   function ei(t){ return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2; }
   function cl(v){ return v<0?0:v>1?1:v; }
   function frame(ts){
@@ -2927,7 +2930,7 @@
     fog2.style.opacity=fogOp*0.9; fog2.style.transform='translateX('+(-drift+e2*14)+'%)';
     fog3.style.opacity=fogOp*0.6; fog3.style.transform='translateX('+(drift*0.5)+'%) translateY('+(-e2*8)+'%)';
     sun.style.opacity=e2*0.9*(1-0.3*e3);
-    logo.style.opacity=e3; logo.style.filter='blur('+((1-e3)*8)+'px)'; logo.style.transform='translate(-50%,-50%) scale('+(1.04-0.04*e3)+')';
+    logo.style.opacity=0.35+0.65*e3; logo.style.filter='blur('+((1-e3)*4)+'px)'; logo.style.transform='translate(-50%,-50%) scale('+(1.04-0.04*e3)+')';
     var tw=cl((p-0.72)/0.22); welcome.style.opacity=ei(tw); welcome.style.transform='translateX(-50%) translateY('+((1-tw)*12)+'px)';
     if(e<DUR){ requestAnimationFrame(frame); } else { setTimeout(finish,500); }
   }
@@ -2949,5 +2952,17 @@ function loadMap(){
 </script>
 <!-- ==================== BEARC-I18N: script ==================== -->
 <script src="i18n/i18n.js" defer></script>
+<script>
+/* Video hero: caricato solo su schermi larghi, dopo il load, se non c'è risparmio dati o movimento ridotto */
+window.addEventListener('load',function(){
+  var v=document.querySelector('.hero-video'); if(!v) return;
+  var c=navigator.connection||{};
+  if(window.innerWidth<768||c.saveData||/2g/.test(c.effectiveType||'')||window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  setTimeout(function(){
+    v.querySelectorAll('source[data-src]').forEach(function(s){s.src=s.dataset.src;});
+    v.load(); var p=v.play(); if(p&&p.catch)p.catch(function(){});
+  },1200);
+});
+</script>
 </body>
 </html>
